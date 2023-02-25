@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserSekolahStoreRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AdminSekolahController extends Controller
 {
     private $viewIndex = 'index';
     private $viewCreate = 'create';
     private $viewEdit = 'crete';
     private $viewShow = 'show';
-    private $routePrefix = 'user';
+    private $routePrefix = 'user-sekolah';
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +24,9 @@ class UserController extends Controller
     {
         return view('dinas.user.' . $this->viewIndex, [
             // 'user' => User::where('akses', '<>', 'Siswa')->where('akses', '<>', 'Admin Sekolah')->latest()->get()
-            'user' => User::where('akses', '<>', 'Siswa')->latest()->get(),
+            'user' => User::where('akses', 'Admin Sekolah')->latest()->get(),
             'routePrefix' => $this->routePrefix,
-            'title' => 'Data Semua User',
+            'title' => 'Data User Sekolah',
         ]);
     }
 
@@ -41,7 +42,7 @@ class UserController extends Controller
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN',
-            'title' => 'Form Tambah User',
+            'title' => 'Form Edit User Sekolah',
             'routePrefix' => $this->routePrefix,
         ];
 
@@ -54,13 +55,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserStoreRequest $request)
+    public function store(UserSekolahStoreRequest $request)
     {
-        $requestData =  $request->validated();
+        $requestData = $request->validated();
         $requestData['password'] = bcrypt($request->password);
+        $requestData['akses'] = 'Admin Sekolah';
         $user = User::create($requestData);
         flash('Data berhasil disimpan');
-        return redirect()->route('user.index');
+        return redirect()->route('user-sekolah.index');
     }
 
     /**
@@ -87,7 +89,7 @@ class UserController extends Controller
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
             'button' => 'UPDATE',
-            'title' => 'Form Edit User',
+            'title' => 'Form Edit User Sekolah',
             'routePrefix' => $this->routePrefix,
         ];
 
@@ -107,7 +109,6 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'nohp' => 'required|unique:users,nohp,' . $id,
-            'akses' => 'required|in:Admin Dinas,Admin Sekolah',
             'password' => 'nullable',
         ]);
         $user = User::findOrFail($id);
@@ -120,7 +121,7 @@ class UserController extends Controller
         }
         $user->update($requestData);
         flash('Data berhasil diUpdate');
-        return redirect()->route('user.index');
+        return redirect()->route('user-sekolah.index');
     }
 
     /**
@@ -131,13 +132,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-
-        if ($user->id == auth()->user()->id) {
-            flash()->addError('Anda tidak bisa menghapus akun anda sendiri', 'danger');
-            return back();
-        }
-        $user->delete();
+        $user = User::findOrFail($id)->delete();
         flash('Data berhasil dihapus');
         return back();
     }
