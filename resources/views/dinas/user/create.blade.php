@@ -37,7 +37,7 @@
                                     'Admin Sekolah' => 'Admin Sekolah',
                                 ],
                                 null,
-                                ['class' => 'form-control', 'placeholder' => 'Pilih Hak Akses'],
+                                ['class' => 'form-control select2', 'placeholder' => 'Pilih Hak Akses'],
                             ) !!}
                             <small class="text-danger">{{ $errors->first('akses') }}</small>
                         </div>
@@ -53,7 +53,7 @@
                                     'Admin Sekolah' => 'Admin Sekolah',
                                 ],
                                 null,
-                                ['class' => 'form-control', 'placeholder' => 'Pilih Hak Akses'],
+                                ['class' => 'form-control select2', 'placeholder' => 'Pilih Hak Akses'],
                             ) !!}
                             <small class="text-danger">{{ $errors->first('akses') }}</small>
                         </div>

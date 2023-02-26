@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminSekolahController;
+use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\DashboardDinasController;
 use App\Http\Controllers\DashboardSiswaController;
@@ -30,6 +31,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::get('dashboard', [DashboardDinasController::class, 'index'])->name('dashboard_dinas');
     Route::resource('user', UserController::class);
     Route::resource('user-sekolah', AdminSekolahController::class);
+    Route::resource('sekolah', SekolahController::class);
 });
 
 

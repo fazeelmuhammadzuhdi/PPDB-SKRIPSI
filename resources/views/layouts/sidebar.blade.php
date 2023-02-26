@@ -83,6 +83,12 @@
                 </a>
 
             </li>
+            <li class="menu-item {{ Route::is('sekolah.*') ? 'active' : '' }}">
+                <a href="{{ route('sekolah.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Data Sekolah</div>
+                </a>
+            </li>
         @elseif (Auth::user()->akses == 'Admin Sekolah')
             <li class="menu-item {{ Route::is('user-sekolah.*') ? 'active' : '' }}">
                 <a href="{{ route('user-sekolah.index') }}" class="menu-link">
