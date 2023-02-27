@@ -20,19 +20,35 @@
                         ]) !!}
                         <small class="text-danger">{{ $errors->first('name') }}</small>
                     </div>
-                    <div class="form-group mt-3">
-                        <label for="npsn">NPSN Sekolah</label>
-                        {!! Form::text('npsn', null, [
-                            'class' => 'form-control',
-                            'rows' => 1,
-                            'placeholder' => 'Inputkan NPSN Sekolah',
-                            'autofocus' => true,
-                        ]) !!}
-                        <small class="text-danger">{{ $errors->first('npsn') }}</small>
-                    </div>
+                    @if (Route::is('sekolah.create'))
+                        <div class="form-group mt-3">
+                            <label for="npsn">NPSN Sekolah</label>
+                            {!! Form::text('npsn', null, [
+                                'class' => 'form-control',
+                                'placeholder' => 'Inputkan NPSN Sekolah',
+                                'autofocus' => true,
+                            ]) !!}
+                            <small class="text-danger">{{ $errors->first('npsn') }}</small>
+                        </div>
+                    @else
+                        <div class="form-group mt-3">
+                            <label for="npsn">NPSN Sekolah</label>
+                            {!! Form::text('npsn', null, [
+                                'class' => 'form-control',
+                                'readonly' => true,
+                            ]) !!}
+                            <small class="text-danger">{{ $errors->first('npsn') }}</small>
+                        </div>
+                    @endif
+
+
                     <div class="form-group mt-3">
                         <label for="nama">Nama Sekolah</label>
-                        {!! Form::text('nama', null, ['class' => 'form-control', 'placeholder' => 'Inputkan Nama Sekolah']) !!}
+                        {!! Form::text('nama', null, [
+                            'class' => 'form-control',
+                            'placeholder' => 'Inputkan Nama Sekolah',
+                            'autofocus' => true,
+                        ]) !!}
                         <small class="text-danger">{{ $errors->first('nama') }}</small>
                     </div>
                     <div class="form-group mt-3">

@@ -20,7 +20,7 @@ class Sekolah extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function sekolah()
+    public function adminSekolah()
     {
         return $this->belongsTo(User::class, 'sekolah_id')->withDefault([
             'name' => 'Belum ada operator sekolah',

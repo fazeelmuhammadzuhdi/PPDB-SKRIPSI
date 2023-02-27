@@ -25,7 +25,8 @@ class SekolahController extends Controller
     public function index()
     {
         return view('dinas.sekolah.' . $this->viewIndex, [
-            'sekolah' => Sekolah::latest()->get(),
+            // 'sekolah' => Sekolah::latest()->get(),
+            'sekolah' => Sekolah::with('adminSekolah')->latest()->get(),
             'routePrefix' => $this->routePrefix,
             'title' => 'Data Semua Sekolah',
         ]);
@@ -75,7 +76,11 @@ class SekolahController extends Controller
      */
     public function show($id)
     {
-        //
+
+        return view('dinas.sekolah.' . $this->viewShow, [
+            'sekolah' => Sekolah::findOrFail($id),
+            'title' => 'Detail Data Sekolah',
+        ]);
     }
 
     /**

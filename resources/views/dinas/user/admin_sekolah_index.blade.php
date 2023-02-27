@@ -52,13 +52,18 @@
                                                 class="btn btn-warning btn-sm">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
-                                            
+
+                                            <a href="{{ route($routePrefix . '.show', $item->id) }}"
+                                                class="btn btn-info btn-sm">
+                                                <i class="fas fa-eye"></i> Detail
+                                            </a>
+
                                             <form action="{{ route($routePrefix . '.destroy', $item->id) }}" method="POST"
                                                 class="d-inline"
                                                 onsubmit="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm ">
+                                                <button type="submit" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i> Hapus
                                                 </button>
                                             </form>

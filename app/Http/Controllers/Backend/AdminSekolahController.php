@@ -5,15 +5,16 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserSekolahStoreRequest;
 use App\Http\Requests\UserStoreRequest;
+use App\Models\Sekolah;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminSekolahController extends Controller
 {
-    private $viewIndex = 'index';
+    private $viewIndex = 'admin_sekolah_index';
     private $viewCreate = 'create';
     private $viewEdit = 'crete';
-    private $viewShow = 'show';
+    private $viewShow = 'admin_sekolah_show';
     private $routePrefix = 'user-sekolah';
     /**
      * Display a listing of the resource.
@@ -22,6 +23,7 @@ class AdminSekolahController extends Controller
      */
     public function index()
     {
+
         return view('dinas.user.' . $this->viewIndex, [
             // 'user' => User::where('akses', '<>', 'Siswa')->where('akses', '<>', 'Admin Sekolah')->latest()->get()
             'user' => User::where('akses', 'Admin Sekolah')->latest()->get(),
@@ -73,7 +75,13 @@ class AdminSekolahController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('dinas.user.' . $this->viewShow, [
+            'user' => User::AdminSekolah()->where('id', $id)->firstOrFail(),
+            // 'sekolah' => Sekolah::whereNotIn('sekolah_id', [$id])->pluck('nama', 'id'),
+            'sekolah' => Sekolah::where('sekolah_id', '=', null)->pluck('nama', 'id'),
+            'routePrefix' => $this->routePrefix,
+            'title' => 'Detail Data Admin Sekolah',
+        ]);
     }
 
     /**

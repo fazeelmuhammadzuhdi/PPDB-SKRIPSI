@@ -5,8 +5,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end"><a
-                            href="{{ route($routePrefix . '.create') }}" class="btn btn-primary"> <i
+                    <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
+                        <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary"> <i
                                 class="fa fa-circle-plus"></i> Tambah Data</a></small>
                 </div>
                 <div class="card-body">
@@ -20,14 +20,14 @@
                                     <th>NPSN</th>
                                     <th>Akreditasi</th>
                                     <th>Kecamatan</th>
-                                    <th>Aksi</th>
+                                    <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($sekolah as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ ucwords($item->sekolah->name) }}</td>
+                                        <td>{{ ucwords($item->adminSekolah->name) }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->npsn }}</td>
                                         <td>{{ $item->akreditasi }}</td>
@@ -38,12 +38,17 @@
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
 
+                                            <a href="{{ route($routePrefix . '.show', $item->id) }}"
+                                                class="btn btn-info btn-sm mx-1">
+                                                <i class="fas fa-eye"></i> Detail
+                                            </a>
+
                                             <form action="{{ route($routePrefix . '.destroy', $item->id) }}" method="POST"
                                                 class="d-inline">
                                                 {{-- onsubmit="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini')"> --}}
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger show_confirm btn-sm mx-2">
+                                                <button type="submit" class="btn btn-danger show_confirm btn-sm">
                                                     <i class="fas fa-trash"></i> Hapus
                                                 </button>
                                             </form>
