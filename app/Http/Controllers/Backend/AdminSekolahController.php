@@ -144,6 +144,9 @@ class AdminSekolahController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id)->delete();
+        // dd($user);
+        $updateSekolah = Sekolah::where('sekolah_id', $id)->update(['sekolah_id' => null]);
+
         flash('Data berhasil dihapus');
         return back();
     }

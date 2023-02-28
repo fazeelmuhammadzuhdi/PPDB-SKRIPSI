@@ -92,7 +92,9 @@ class SekolahAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $sekolah = Sekolah::findOrFail($id);
+        // $sekolah->sekolah_id = null;
+        // $sekolah->save();
     }
 
     /**

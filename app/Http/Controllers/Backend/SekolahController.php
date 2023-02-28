@@ -130,6 +130,9 @@ class SekolahController extends Controller
     public function destroy($id)
     {
         $sekolah = Sekolah::findOrFail($id);
+     
+        flash("Data Berhasil Di Hapus");
+        return back();
         $sekolah->delete();
         // flash('Data berhasil dihapus');
         return back();

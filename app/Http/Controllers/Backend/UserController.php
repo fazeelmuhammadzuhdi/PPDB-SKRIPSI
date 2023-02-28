@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Models\Sekolah;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -138,6 +139,7 @@ class UserController extends Controller
             return back();
         }
         $user->delete();
+        $updateSekolah = Sekolah::where('sekolah_id', $id)->update(['sekolah_id' => null]);
         flash('Data berhasil dihapus');
         return back();
     }

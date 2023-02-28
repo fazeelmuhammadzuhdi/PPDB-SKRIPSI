@@ -50,10 +50,10 @@
                                                 </form>
                                             @endif --}}
 
-                                                <a href="{{ route($routePrefix . '.edit', $item->id) }}"
+                                                {{-- <a href="{{ route($routePrefix . '.edit', $item->id) }}"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fas fa-edit"></i> Edit
-                                                </a>
+                                                </a> --}}
 
                                                 <a href="{{ route($routePrefix . '.show', $item->id) }}"
                                                     class="btn btn-info btn-sm">
