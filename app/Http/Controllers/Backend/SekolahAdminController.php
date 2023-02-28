@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Sekolah;
 use App\Models\User;
+use finfo;
 use Illuminate\Http\Request;
 
 class SekolahAdminController extends Controller
@@ -51,11 +52,12 @@ class SekolahAdminController extends Controller
         // $a = $sekolah->sekolah_id = $request->admin_sekolah_id;
         // dd($a);
         // dd($sekolah);
-        if ($request->admin_sekolah_id == $sekolah->sekolah_id) {
-            flash()->addError('Data Gagal di Tambahkan');
-        }
+        // if ($request->admin_sekolah_id == $sekolah->sekolah_id) {
+        //     flash()->addError('Data Gagal di Tambahkan');
+        // }
         $sekolah->sekolah_id = $request->admin_sekolah_id;
         $sekolah->save();
+        flash('Data Berhasil di Tambahkan');
         return back();
     }
 

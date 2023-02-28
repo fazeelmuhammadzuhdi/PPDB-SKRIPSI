@@ -26,7 +26,9 @@ class AdminSekolahController extends Controller
 
         return view('dinas.user.' . $this->viewIndex, [
             // 'user' => User::where('akses', '<>', 'Siswa')->where('akses', '<>', 'Admin Sekolah')->latest()->get()
-            'user' => User::where('akses', 'Admin Sekolah')->latest()->get(),
+            // 'user' => User::where('akses', 'Admin Sekolah')->where('id', auth()->user()->id)->latest()->get(),
+            'userDinas' => User::where('akses', 'Admin Sekolah')->latest()->get(),
+            'user' => User::where('akses', 'Admin Sekolah')->where('id', auth()->user()->id)->latest()->get(),
             'routePrefix' => $this->routePrefix,
             'title' => 'Data User Sekolah',
         ]);
@@ -93,7 +95,8 @@ class AdminSekolahController extends Controller
     public function edit($id)
     {
         $data = [
-            'user' => User::findOrFail($id),
+            // 'user' => User::findOrFail($id),
+            'user' => User::where('id', auth()->user()->id)->findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
             'button' => 'UPDATE',
