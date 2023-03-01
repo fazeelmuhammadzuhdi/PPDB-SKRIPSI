@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminSekolahController;
+use App\Http\Controllers\Backend\AdminSekolahShowController;
 use App\Http\Controllers\Backend\SekolahAdminController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\UserController;
@@ -24,7 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
@@ -33,7 +34,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('user-sekolah', AdminSekolahController::class);
     Route::resource('sekolah', SekolahController::class);
-    Route::resource('sekolahadmin', SekolahAdminController::class);
+    // Route::resource('sekolahadmin', SekolahAdminController::class);
+    Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
 });
 
 

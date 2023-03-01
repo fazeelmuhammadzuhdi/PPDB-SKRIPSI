@@ -90,6 +90,12 @@
                 </a>
             </li>
         @elseif (Auth::user()->akses == 'Admin Sekolah')
+            <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">
+                <a href="{{ route('dashboard_dinas') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
             <li class="menu-item {{ Route::is('user-sekolah.*') ? 'active' : '' }}">
                 <a href="{{ route('user-sekolah.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-dock-top"></i>
@@ -97,8 +103,8 @@
                 </a>
             </li>
         @else
-            <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">
-                <a href="{{ route('dashboard_dinas') }}" class="menu-link">
+            <li class="menu-item {{ Route::is('dashboard_siswa') ? 'active' : '' }}">
+                <a href="{{ route('dashboard_siswa') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Dashboard</div>
                 </a>

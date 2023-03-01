@@ -27,8 +27,8 @@ class AdminSekolahController extends Controller
         return view('dinas.user.' . $this->viewIndex, [
             // 'user' => User::where('akses', '<>', 'Siswa')->where('akses', '<>', 'Admin Sekolah')->latest()->get()
             // 'user' => User::where('akses', 'Admin Sekolah')->where('id', auth()->user()->id)->latest()->get(),
-            'userDinas' => User::where('akses', 'Admin Sekolah')->latest()->get(),
-            'user' => User::where('akses', 'Admin Sekolah')->where('id', auth()->user()->id)->latest()->get(),
+            'userDinas' => User::with('sekolah')->AdminSekolah()->latest()->get(),
+            'user' => User::with('sekolah')->AdminSekolah()->where('id', auth()->user()->id)->latest()->get(),
             'routePrefix' => $this->routePrefix,
             'title' => 'Data User Sekolah',
         ]);
@@ -78,9 +78,9 @@ class AdminSekolahController extends Controller
     public function show($id)
     {
         return view('dinas.user.' . $this->viewShow, [
-            'user' => User::AdminSekolah()->where('id', $id)->firstOrFail(),
+            'user' => User::with('sekolah')->AdminSekolah()->where('id', $id)->firstOrFail(),
             // 'sekolah' => Sekolah::whereNotIn('sekolah_id', [$id])->pluck('nama', 'id'),
-            'sekolah' => Sekolah::where('sekolah_id', '=', null)->pluck('nama', 'id'),
+            'sekolah' => Sekolah::whereNull('sekolah_id')->pluck('nama', 'id'),
             'routePrefix' => $this->routePrefix,
             'title' => 'Detail Data Admin Sekolah',
         ]);

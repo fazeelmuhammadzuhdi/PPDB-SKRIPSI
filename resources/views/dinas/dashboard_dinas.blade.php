@@ -4,17 +4,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <h5 class="card-header">DINAS PENDIDIKAN</h5>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
+                <h5 class="card-header">
+                    <div class="alert alert-primary" role="alert">
+                        <center>
+                            <strong>Selamat Datang {{ ucwords(Auth::user()->name) }} Sebagai {{ Auth::user()->akses }}
+                                {{-- {{ $sekolah->nama }} --}} {{ Auth::user()->sekolah->nama ?? '' }}</strong>
+                        </center>
+                    </div>
+                </h5>
             </div>
         </div>
     </div>
