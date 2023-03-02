@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminSekolahController;
 use App\Http\Controllers\Backend\AdminSekolahShowController;
+use App\Http\Controllers\Backend\PenghasilanController;
 use App\Http\Controllers\Backend\SekolahAdminController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\UserController;
@@ -28,23 +29,30 @@ Route::get('/', function () {
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::controller(PenghasilanController::class)->middleware('auth')->group(function () {
+    Route::get('/penghasilan', 'index')->name('penghasilan.index');
+    Route::post('/penghasilan/store', 'store')->name('penghasilan.store');
+    Route::post('/penghasilan/edit', 'edit')->name('penghasilan.edit');
+    Route::post('/penghasilan/update', 'update')->name('penghasilan.update');
+    Route::post('/penghasilan/hapus', 'hapus')->name('penghasilan.hapus');
+});
+
+
 Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     //ini route khusus untuk dinas pendidikan
     Route::get('dashboard', [DashboardDinasController::class, 'index'])->name('dashboard_dinas');
     Route::resource('user', UserController::class);
     Route::resource('user-sekolah', AdminSekolahController::class);
     Route::resource('sekolah', SekolahController::class);
-    // Route::resource('sekolahadmin', SekolahAdminController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
 });
 
 
+
 Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
-    //ini route khusus untuk wali-murid
+    //ini route khusus untuk siswa
     Route::get('dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard_siswa');
 });
-
-// Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Auth::routes();
 

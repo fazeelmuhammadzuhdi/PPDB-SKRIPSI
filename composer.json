@@ -12,7 +12,8 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "laravelcollective/html": "^6.4",
-        "php-flasher/flasher-laravel": "^1.13"
+        "php-flasher/flasher-laravel": "^1.13",
+        "yajra/laravel-datatables": "9.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

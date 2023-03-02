@@ -24,6 +24,7 @@ class SekolahController extends Controller
      */
     public function index()
     {
+
         return view('dinas.sekolah.' . $this->viewIndex, [
             // 'sekolah' => Sekolah::latest()->get(),
             'sekolah' => Sekolah::with('adminSekolah')->latest()->get(),
@@ -130,7 +131,7 @@ class SekolahController extends Controller
     public function destroy($id)
     {
         $sekolah = Sekolah::findOrFail($id);
-     
+
         flash("Data Berhasil Di Hapus");
         return back();
         $sekolah->delete();
