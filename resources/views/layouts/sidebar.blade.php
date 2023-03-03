@@ -95,6 +95,12 @@
                     <div data-i18n="Account Settings">Data Penghasilan</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('pekerjaan.index') ? 'active' : '' }}">
+                <a href="{{ route('pekerjaan.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Data Pekerjaan</div>
+                </a>
+            </li>
         @elseif (Auth::user()->akses == 'Admin Sekolah')
             <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_dinas') }}" class="menu-link">

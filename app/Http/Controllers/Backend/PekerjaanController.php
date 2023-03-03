@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Penghasilan;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
 
-class PenghasilanController extends Controller
+class PekerjaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class PenghasilanController extends Controller
      */
     public function index()
     {
-        $penghasilan  = Penghasilan::latest();
-        $title = 'Penghasilan';
+        $pekerjaan  = Pekerjaan::latest();
+        $title = 'Pekerjaan';
 
         if (request()->ajax()) {
-            return datatables()->of($penghasilan)
+            return datatables()->of($pekerjaan)
                 ->addColumn('aksi', function ($data) {
                     $button = '<button class="edit btn btn-sm btn-warning" id="' . $data->id . '" name="edit">Edit</button> ';
                     $button .= ' <button class="hapus btn btn-sm btn-danger" id="' . $data->id . '" name="hapus">Hapus</button> ';
@@ -30,7 +30,7 @@ class PenghasilanController extends Controller
                 ->make(true);
         }
 
-        return view('dinas.penghasilan.index', compact('title'));
+        return view('dinas.pekerjaan.index', compact('title'));
     }
 
     /**
@@ -51,7 +51,7 @@ class PenghasilanController extends Controller
      */
     public function store(Request $request)
     {
-        $simpan = Penghasilan::create($request->all());
+        $simpan = Pekerjaan::create($request->all());
 
         if ($simpan) {
             return response()->json(['text' => 'Data Berhasil Di Simpan'], 200);
@@ -79,7 +79,7 @@ class PenghasilanController extends Controller
      */
     public function edit(Request $request)
     {
-        $data = Penghasilan::findOrFail($request->id);
+        $data = Pekerjaan::findOrFail($request->id);
         return response()->json($data);
     }
 
@@ -92,8 +92,9 @@ class PenghasilanController extends Controller
      */
     public function update(Request $request)
     {
-        $data = Penghasilan::findOrFail($request->id);
+        $data = Pekerjaan::findOrFail($request->id);
         $simpan = $data->update($request->all());
+
 
         if ($simpan) {
             return response()->json(['text' => 'Data Berhasil Di Update'], 200);
@@ -110,7 +111,7 @@ class PenghasilanController extends Controller
      */
     public function destroy(Request $request)
     {
-        $data = Penghasilan::findOrFail($request->id);
+        $data = Pekerjaan::findOrFail($request->id);
         $simpan = $data->delete($request->all());
 
         if ($simpan) {

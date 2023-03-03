@@ -7,12 +7,13 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
                         <button type="button" class="btn btn-primary" id="btn-tambah" data-bs-toggle="modal"
-                            data-bs-target="#modalPenghasilan">
+                            data-bs-target="#modalPekerjaan">
                             <i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah
                         </button>
 
                         <button class="btn btn-flat btn-dark btn-refresh mx-2"><i class="fa fa-refresh"></i>
-                            Refresh</button>
+                            Refresh
+                        </button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap ">
@@ -20,7 +21,7 @@
                             <thead>
                                 <tr>
                                     <th width="1%">No</th>
-                                    <th>Penghasilan</th>
+                                    <th>Pekerjaan</th>
                                     <th width="20%">Aksi</th>
                                 </tr>
                             </thead>
@@ -31,9 +32,9 @@
         </div>
     </div>
     <!-- Modal Penghasilan -->
-    @include('dinas.penghasilan.modal_penghasilan')
+    @include('dinas.pekerjaan.modal_pekerjaan')
 @endsection
 
 @push('after-script')
-    @include('dinas.penghasilan.script')
+    @include('dinas.pekerjaan.script')
 @endpush
