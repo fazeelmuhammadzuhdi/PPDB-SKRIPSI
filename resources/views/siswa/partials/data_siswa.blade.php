@@ -2,7 +2,13 @@
     <div class="col-5">
         <div class="card mb-4">
             <div class="card-body">
-                <input type="file" name="foto" id="foto">
+                <input type="file" name="foto" id="foto"
+                    class="form-control @error('foto') 'is-invalid' @enderror">
+                @error('foto')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
                 <div class="mt-4">
                     <div class="fw-bold">Drop files here or click to upload.</div>
                     <div>
@@ -17,12 +23,12 @@
     <div class="col-7">
         <div class="card mb-2">
             <div class="card-body">
-                <label for="name">Nama Lengkap <span class="text-danger">*</span></label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                    id="name" placeholder="Inputkan Nama" autocomplete="off" autofocus value="{{ old('name') }}"
-                    required>
+                <label for="nama_lengkap">Nama Lengkap <span class="text-danger">*</span></label>
+                <input type="text" name="nama_lengkap"
+                    class="form-control @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap"
+                    placeholder="Inputkan Nama" autocomplete="off" autofocus value="{{ old('nama_lengkap', ) }}">
 
-                @error('name')
+                @error('nama_lengkap')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -55,28 +61,29 @@
                 </div>
 
                 <div class="mt-3">
-                    <label for="tempat_lahir" class="form-label">Tanggal Lahir *</label>
-                    <input type="text" name="tempat_lahir"
-                        class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir"
-                        placeholder="Inputkan Nama" autocomplete="off" autofocus value="{{ old('tempat_lahir') }}">
+                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir *</label>
+                    <input type="date" name="tanggal_lahir"
+                        class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
+                        placeholder="Inputkan Nama" autocomplete="off" autofocus value="{{ old('tanggal_lahir') }}">
 
-                    @error('tempat_lahir')
+                    @error('tanggal_lahir')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
                 <div class="mt-3">
-                    <label for="gender">Jenis Kelamin</label>
-                    <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select name="jenis_kelamin" id="jenis_kelamin"
+                        class="form-control @error('jenis_kelamin') is-invalid @enderror">
                         <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
-                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Laki - Laki
+                        <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki - Laki
                         </option>
-                        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Perempuan
+                        <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan
                         </option>
                     </select>
 
-                    @error('gender')
+                    @error('jenis_kelamin')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -115,7 +122,7 @@
                     @enderror
                 </div>
                 <div class="mt-3">
-                    <label for="kk" class="form-label">No Kartu Keluarga *</label>
+                    <label for="no_kk" class="form-label">No Kartu Keluarga *</label>
                     <input type="text" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror"
                         id="no_kk" placeholder="Inputkan Nama" autocomplete="off" autofocus
                         value="{{ old('no_kk') }}">
@@ -141,7 +148,8 @@
                 <div class="mt-3">
                     <label for="alamat">Alamat Rumah *</label>
                     <textarea name="alamat" id="alamat" cols="50" rows="3"
-                        class="form-control @error('gender') is-invalid @enderror">{{ old('alamat') }}</textarea>
+                        class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat') }}
+                    </textarea>
 
                     @error('alamat')
                         <div class="invalid-feedback">

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SiswaStoreRequest;
+use App\Models\Pekerjaan;
+use App\Models\Penghasilan;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -15,6 +19,8 @@ class SiswaController extends Controller
     public function index()
     {
         $data['title'] = 'Biodata Siswa';
+        $data['siswa'] = Siswa::where('user_id', auth()->user()->id)->get();
+        // dd($data);
         return view('siswa.index', $data);
     }
 
@@ -26,6 +32,10 @@ class SiswaController extends Controller
     public function create()
     {
         $data['title'] = 'Tambah Biodata Siswa';
+        $data['penghasilan'] = Penghasilan::all();
+        $data['pekerjaan'] = Pekerjaan::all();
+        $data['siswa'] = Siswa::all();
+        // dd($data);
         return view('siswa.create', $data);
     }
 
@@ -35,9 +45,16 @@ class SiswaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SiswaStoreRequest $request)
     {
-        //
+        $requestData = $request->validated();
+        if ($request->hasFile('foto')) {
+            $requestData['foto'] = $request->file('foto')->store('public');
+        }
+        $user = Siswa::create($requestData);
+        // dd($user);
+        flash('Data berhasil disimpan');
+        return redirect()->route('siswa.index');
     }
 
     /**

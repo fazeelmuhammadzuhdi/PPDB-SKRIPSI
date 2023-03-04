@@ -6,8 +6,6 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
-                        <a href="{{ route('siswa.create') }}" class="btn btn-primary"> <i class="fa fa-plus-circle"></i>
-                            Tambah Data</a></small>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap ">
@@ -15,10 +13,25 @@
                             <thead>
                                 <tr>
                                     <th width="1%">No</th>
-                                    <th>Pekerjaan</th>
-                                    <th width="20%">Aksi</th>
+                                    <th>Nama</th>
+                                    <th>NISN</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($siswa as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->nama_lengkap }}</td>
+                                        <td>{{ $item->nisn }}</td>
+                                        <td>
+                                            {{-- <a href="{{ route('pekerjaan.edit', $item->id) }}"
+                                                class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                            </a> --}}
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
