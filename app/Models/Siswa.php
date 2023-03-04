@@ -15,4 +15,17 @@ class Siswa extends Model
      * @var array
      */
     protected $guarded = [];
+
+
+    protected static function booted()
+    {
+        //memasukkan user id
+        static::creating(function ($siswa) {
+            $siswa->user_id = auth()->user()->id;
+        });
+
+        static::updating(function ($siswa) {
+            $siswa->user_id = auth()->user()->id;
+        });
+    }
 }

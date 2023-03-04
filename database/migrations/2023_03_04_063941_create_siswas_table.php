@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('nama_ibu');
             $table->string('pekerjaan_ibu');
             $table->string('penghasilan_ibu');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

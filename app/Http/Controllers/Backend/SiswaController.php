@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SiswaStoreRequest;
+use App\Http\Requests\SiswaUpdateRequest;
 use App\Models\Pekerjaan;
 use App\Models\Penghasilan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -18,10 +20,13 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $data['title'] = 'Biodata Siswa';
-        $data['siswa'] = Siswa::where('user_id', auth()->user()->id)->get();
+        // $siswa = Siswa::where('user_id', auth()->user()->id)->get();
+        // dd($siswa);
         // dd($data);
-        return view('siswa.index', $data);
+        return view('siswa.index', [
+            'siswa' => Siswa::where('user_id', auth()->user()->id)->get(),
+            'title' => 'BIODATA SISWA'
+        ]);
     }
 
     /**
@@ -31,12 +36,19 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        $data['title'] = 'Tambah Biodata Siswa';
-        $data['penghasilan'] = Penghasilan::all();
-        $data['pekerjaan'] = Pekerjaan::all();
-        $data['siswa'] = Siswa::all();
+        // $data['title'] = 'Tambah Biodata Siswa';
+        // $data['penghasilan'] = Penghasilan::all();
+        // $data['pekerjaan'] = Pekerjaan::all();
+        // $data['siswa'] = Siswa::all();
         // dd($data);
-        return view('siswa.create', $data);
+        // return view('siswa.create', $data);
+
+
+        return view('siswa.create', [
+            'title' => 'Biodata Siswa',
+            'penghasilan' => Penghasilan::all(),
+            'pekerjaan' => Pekerjaan::all(),
+        ]);
     }
 
     /**
@@ -74,9 +86,20 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Siswa $siswa)
     {
-        //
+        // $data['title'] = 'Tambah Biodata Siswa';
+        // $data['penghasilan'] = Penghasilan::all();
+        // $data['pekerjaan'] = Pekerjaan::all();
+        // $data['siswa'] = Siswa::findOrFail($id);
+
+        // return view('siswa.edit', $data);
+
+        return view("siswa.edit", [
+            'siswa' => $siswa,
+            "penghasilan" => Penghasilan::all(),
+            "pekerjaan" => Pekerjaan::all(),
+        ]);
     }
 
     /**
@@ -86,9 +109,25 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SiswaUpdateRequest $request, $id)
     {
-        //
+        $requestData = $request->validated();
+
+        $siswa = Siswa::findOrFail($id);
+
+        if ($request->hasFile('foto')) {
+            if ($siswa->foto !== null && Storage::exists($siswa->foto)) {
+                Storage::delete($siswa->foto);
+            }
+            $requestData['foto'] = $request->file('foto')->store('public');
+        }
+        $siswa->fill($requestData);
+        $siswa->save();
+
+        // dd($siswa);
+
+        flash('Data Berhasil Di Update');
+        return redirect()->route('siswa.index');
     }
 
     /**

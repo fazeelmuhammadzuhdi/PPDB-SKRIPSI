@@ -13,21 +13,30 @@
                             <thead>
                                 <tr>
                                     <th width="1%">No</th>
+                                    <th>Foto</th>
                                     <th>Nama</th>
                                     <th>NISN</th>
+                                    <th>Alamat</th>
+                                    <th>Tempat Tanggal Lahir</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($siswa as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <img src="{{ Storage::url($item->foto) }}" alt=""
+                                                class="img-thumbnail rounded-full" width="40px">
+                                        </td>
                                         <td>{{ $item->nama_lengkap }}</td>
                                         <td>{{ $item->nisn }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td>{{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }}</td>
                                         <td>
-                                            {{-- <a href="{{ route('pekerjaan.edit', $item->id) }}"
-                                                class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
-                                            </a> --}}
-
+                                            <a href="{{ route('siswa.edit', $item->id) }}" class="btn btn-sm btn-warning"><i
+                                                    class="fa fa-edit"></i> Edit
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
