@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminSekolahShowController;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
 use App\Http\Controllers\Backend\SekolahController;
+use App\Http\Controllers\Backend\SiswaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\DashboardDinasController;
 use App\Http\Controllers\DashboardSiswaController;
@@ -57,6 +58,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
 Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     //ini route khusus untuk siswa
     Route::get('dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard_siswa');
+    Route::resource('siswa', SiswaController::class);
 });
 
 Auth::routes();

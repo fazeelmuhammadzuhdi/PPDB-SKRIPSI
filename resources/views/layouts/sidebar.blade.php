@@ -121,6 +121,12 @@
                     <div data-i18n="Analytics">Dashboard</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('siswa.*') ? 'active' : '' }}">
+                <a href="{{ route('siswa.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Biodata Siswa</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>

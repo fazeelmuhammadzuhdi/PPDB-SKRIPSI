@@ -5,8 +5,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end"><a
-                            href="{{ route($routePrefix . '.index') }}" class="btn btn-secondary"> <i
+                    <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
+                        <a href="{{ route($routePrefix . '.index') }}" class="btn btn-secondary"> <i
                                 class="fa fa-backward"></i>
                             Kembali</a></small>
                 </div>
