@@ -79,12 +79,28 @@
                     @enderror
                 </div>
 
+                @if (Request::routeIs('siswa.edit'))
+                    <div class="mt-3">
+                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir *</label>
+                        <input type="date" name="tanggal_lahir"
+                            class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
+                            placeholder="Inputkan Nama" autocomplete="off"
+                            value="{{ old('tanggal_lahir', $siswa->tanggal_lahir->format('Y-m-d') ?? '') }}">
+
+                        @error('tanggal_lahir')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                @endif
+
                 <div class="mt-3">
                     <label for="tanggal_lahir" class="form-label">Tanggal Lahir *</label>
                     <input type="date" name="tanggal_lahir"
                         class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
                         placeholder="Inputkan Nama" autocomplete="off"
-                        value="{{ old('tanggal_lahir', $siswa->tanggal_lahir->translatedFormat('Y-m-d') ?? '') }}">
+                        value="{{ old('tanggal_lahir', $siswa->tanggal_lahir ?? '') }}">
 
                     @error('tanggal_lahir')
                         <div class="invalid-feedback">
@@ -92,6 +108,8 @@
                         </div>
                     @enderror
                 </div>
+
+
                 <div class="mt-3">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                     <select name="jenis_kelamin" id="jenis_kelamin"

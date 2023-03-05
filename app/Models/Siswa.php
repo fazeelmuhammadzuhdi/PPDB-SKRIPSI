@@ -16,7 +16,7 @@ class Siswa extends Model
      */
     protected $guarded = [];
 
-    protected $dates = ['tanggal_lahir'];
+    // protected $dates = ['tanggal_lahir'];
 
 
     protected static function booted()

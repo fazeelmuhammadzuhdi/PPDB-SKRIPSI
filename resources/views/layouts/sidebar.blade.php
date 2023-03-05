@@ -83,6 +83,13 @@
                 </a>
 
             </li>
+            <li class="menu-item {{ Route::is('usersiswa*') ? 'active' : '' }}">
+                <a href="{{ route('usersiswa.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Data User Siswa</div>
+                </a>
+
+            </li>
             <li class="menu-item {{ Route::is('sekolah.*') ? 'active' : '' }}">
                 <a href="{{ route('sekolah.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-dock-top"></i>

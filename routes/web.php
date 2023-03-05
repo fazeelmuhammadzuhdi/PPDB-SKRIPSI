@@ -4,9 +4,11 @@ use App\Http\Controllers\Backend\AdminSekolahController;
 use App\Http\Controllers\Backend\AdminSekolahShowController;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\SiswaController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\UserSiswaController;
 use App\Http\Controllers\DashboardDinasController;
 use App\Http\Controllers\DashboardSiswaController;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +31,10 @@ Route::get('/', function () {
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::get('profile/{id}', [ProfileController::class, 'edit'])->name('profile.dinas');
+
+Route::get('profile', [UserController::class, 'profile'])->name('profile');
+Route::resource('usersiswa', UserSiswaController::class);
 
 Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     //ini route khusus untuk dinas pendidikan

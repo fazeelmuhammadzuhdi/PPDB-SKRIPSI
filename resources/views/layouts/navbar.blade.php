@@ -53,12 +53,28 @@
                      <li>
                          <div class="dropdown-divider"></div>
                      </li>
-                     <li>
-                         <a class="dropdown-item" href="#">
-                             <i class="bx bx-user me-2"></i>
-                             <span class="align-middle">My Profile</span>
-                         </a>
-                     </li>
+                     @if (auth()->user()->akses == 'Admin Dinas')
+                         <li>
+                             <a class="dropdown-item" href="{{ route('profile') }}">
+                                 <i class="bx bx-user me-2"></i>
+                                 <span class="align-middle">My Profile</span>
+                             </a>
+                         </li>
+                     @elseif (auth()->user()->akses == 'Admin Sekolah')
+                         <li>
+                             <a class="dropdown-item" href="{{ route('profile') }}">
+                                 <i class="bx bx-user me-2"></i>
+                                 <span class="align-middle">My Profile</span>
+                             </a>
+                         </li>
+                     @else
+                         <li>
+                             <a class="dropdown-item" href="{{ route('profile') }}">
+                                 <i class="bx bx-user me-2"></i>
+                                 <span class="align-middle">My Profile</span>
+                             </a>
+                         </li>
+                     @endif
                      <li>
                          <a class="dropdown-item" href="#">
                              <i class="bx bx-cog me-2"></i>
