@@ -84,7 +84,7 @@
                     <input type="date" name="tanggal_lahir"
                         class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
                         placeholder="Inputkan Nama" autocomplete="off"
-                        value="{{ old('tanggal_lahir', $siswa->tanggal_lahir ?? '') }}">
+                        value="{{ old('tanggal_lahir', $siswa->tanggal_lahir->translatedFormat('Y-m-d') ?? '') }}">
 
                     @error('tanggal_lahir')
                         <div class="invalid-feedback">

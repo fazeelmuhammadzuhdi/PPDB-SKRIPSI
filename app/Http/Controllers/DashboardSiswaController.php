@@ -15,7 +15,7 @@ class DashboardSiswaController extends Controller
 
         // dd($cek);
         if ($cek < 1) {
-            $pesan = "Biodata Anda Belum Lengkap !!!";
+            $pesan = "Biodata Anda Belum Lengkap !";
         } else {
             $pesan = "Biodata Anda Telah Lengkap.. Terima Kasih";
         }

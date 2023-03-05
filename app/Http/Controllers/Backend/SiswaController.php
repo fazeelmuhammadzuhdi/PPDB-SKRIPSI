@@ -8,7 +8,9 @@ use App\Http\Requests\SiswaUpdateRequest;
 use App\Models\Pekerjaan;
 use App\Models\Penghasilan;
 use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
@@ -43,11 +45,17 @@ class SiswaController extends Controller
         // dd($data);
         // return view('siswa.create', $data);
 
+        $cek = Siswa::where('user_id', Auth::user()->id)->count();
+        if ($cek == 1) {
+            flash()->addError('Tidak Dapat Menambahkan Biodata Karena Biodata Anda Telah Lengkap');
+        }
+        // dd($cek);
 
         return view('siswa.create', [
             'title' => 'Biodata Siswa',
             'penghasilan' => Penghasilan::all(),
             'pekerjaan' => Pekerjaan::all(),
+            'cek' => $cek,
         ]);
     }
 
@@ -86,7 +94,7 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit($id)
     {
         // $data['title'] = 'Tambah Biodata Siswa';
         // $data['penghasilan'] = Penghasilan::all();
@@ -94,6 +102,13 @@ class SiswaController extends Controller
         // $data['siswa'] = Siswa::findOrFail($id);
 
         // return view('siswa.edit', $data);
+
+        // $siswa = Siswa::where('user_id', auth()->user()->id)->first();
+        // $siswa = Siswa::where('user_id', $id)->first();
+        // $siswa = Siswa::findOrFail($id);
+
+        $siswa = Siswa::where('user_id', auth()->user()->id)->findOrFail($id); // slug for user profile
+        // dd($siswa);
 
         return view("siswa.edit", [
             'siswa' => $siswa,

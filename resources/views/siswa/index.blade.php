@@ -32,7 +32,8 @@
                                         <td>{{ $item->nama_lengkap }}</td>
                                         <td>{{ $item->nisn }}</td>
                                         <td>{{ $item->alamat }}</td>
-                                        <td>{{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }}</td>
+                                        {{-- <td>{{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }}</td> --}}
+                                        <td>{{ $item->tempat_tanggal_lahir }}</td>
                                         <td>
                                             <a href="{{ route('siswa.edit', $item->id) }}" class="btn btn-sm btn-warning"><i
                                                     class="fa fa-edit"></i> Edit

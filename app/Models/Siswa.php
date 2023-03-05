@@ -16,6 +16,8 @@ class Siswa extends Model
      */
     protected $guarded = [];
 
+    protected $dates = ['tanggal_lahir'];
+
 
     protected static function booted()
     {
@@ -27,5 +29,10 @@ class Siswa extends Model
         static::updating(function ($siswa) {
             $siswa->user_id = auth()->user()->id;
         });
+    }
+
+    public function getTempatTanggalLahirAttribute()
+    {
+        return $this->tempat_lahir . ", " . $this->tanggal_lahir->format('d F Y');
     }
 }
