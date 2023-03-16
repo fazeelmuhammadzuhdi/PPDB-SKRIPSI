@@ -95,7 +95,7 @@
                     </div>
                 @endif
 
-                <div class="mt-3">
+                {{-- <div class="mt-3">
                     <label for="tanggal_lahir" class="form-label">Tanggal Lahir *</label>
                     <input type="date" name="tanggal_lahir"
                         class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
@@ -107,7 +107,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div>
+                </div> --}}
 
 
                 <div class="mt-3">
@@ -135,12 +135,12 @@
                     <label for="agama">Agama</label>
                     <select name="agama" id="agama" class="form-control @error('agama') is-invalid @enderror">
                         <option value="" selected disabled>-- Pilih Agama --</option>
-                        <option value="islam" {{ old('agama', $siswa->agama ?? '') == 'islam' ? 'selected' : '' }}>
+                        <option value="Islam" {{ old('agama', $siswa->agama ?? '') == 'Islam' ? 'selected' : '' }}>
                             Islam</option>
                         <option value="Khatolik"
                             {{ old('agama', $siswa->agama ?? '') == 'Khatolik' ? 'selected' : '' }}> Khatolik
                         </option>
-                        <option value="budha" {{ old('agama', $siswa->agama ?? '') == 'budha' ? 'selected' : '' }}>
+                        <option value="Budha" {{ old('agama', $siswa->agama ?? '') == 'Budha' ? 'selected' : '' }}>
                             Budha
                         </option>
                         <option value="Hindu" {{ old('agama', $siswa->agama ?? '') == 'Hindu' ? 'selected' : '' }}>

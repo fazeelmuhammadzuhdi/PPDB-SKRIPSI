@@ -27,7 +27,8 @@ class SiswaController extends Controller
         // dd($data);
         return view('siswa.index', [
             'siswa' => Siswa::where('user_id', auth()->user()->id)->get(),
-            'title' => 'BIODATA SISWA'
+            'title' => 'BIODATA SISWA',
+            'cek' =>  Siswa::where('user_id', Auth::user()->id)->count()
         ]);
     }
 
