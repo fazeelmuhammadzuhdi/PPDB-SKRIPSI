@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Siswa extends Model
 {
@@ -34,5 +36,25 @@ class Siswa extends Model
     public function getTempatTanggalLahirAttribute()
     {
         return $this->tempat_lahir . ", " . $this->tanggal_lahir->format('d F Y');
+    }
+
+    /**
+     * Get all of the prestasi for the Siswa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function prestasi(): HasMany
+    {
+        return $this->hasMany(Prestasi::class);
+    }
+
+    /**
+     * Get the user that owns the Siswa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

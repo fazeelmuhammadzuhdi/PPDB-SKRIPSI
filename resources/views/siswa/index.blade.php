@@ -50,7 +50,8 @@
                                 <div class="panel-heading">
                                     <div class="float-end">
                                         @if ($cek > 0)
-                                            <a href="{{ route('jalur_pendaftaran') }}" class="btn btn-primary mb-3"><i class="fa fa-user"></i> Daftar
+                                            <a href="{{ route('jalur_pendaftaran') }}" class="btn btn-primary mb-3"><i
+                                                    class="fa fa-user"></i> Daftar
                                                 PPDB</a>
                                         @endif
                                     </div>
@@ -84,7 +85,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Jenis Kelamin</b>:</td>
-                                                    <td>{{ $item->jenis_kelamin == 'P' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                                                    <td>{{ $item->jenis_kelamin == 'P' ? 'Laki - Laki' : 'Perempuan' }}
+                                                    </td>
                                                     <td><b>Agama</b> :</td>
                                                     <td> {{ $item->agama }}</td>
                                                     <td><b>Alamat Rumah</b> :</td>
@@ -106,10 +108,12 @@
                                                     <td><b>Penghasilan Ibu</b> :</td>
                                                     <td>{{ $item->penghasilan_ibu }}</td>
                                                 </tr>
+
                                                 <tr>
                                                     <td colspan="7"><b style="color:#ff6b81;">Upload foto
                                                             dan Silahkan
-                                                            Lakukan Pendaftaran, Klik <a href="{{ route('jalur_pendaftaran') }}">Daftar PPDB</a></b>
+                                                            Lakukan Pendaftaran, Klik <a
+                                                                href="{{ route('jalur_pendaftaran') }}">Daftar PPDB</a></b>
                                                     </td>
 
                                                 </tr>

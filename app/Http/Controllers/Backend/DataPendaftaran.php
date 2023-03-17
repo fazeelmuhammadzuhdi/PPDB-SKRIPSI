@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
-use App\Models\Siswa;
 use Illuminate\Http\Request;
-use Termwind\Components\Dd;
 
-class PrestasiController extends Controller
+class DataPendaftaran extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +16,12 @@ class PrestasiController extends Controller
      */
     public function index()
     {
-        // return view('prestasi.index');
+        //get data prestasi
+        $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
+        // dd($sekolah);
+        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
+        // dd($data_prestasi);
+        return view('sekolah.data_pendaftaran', compact('prestasi'));
     }
 
     /**
@@ -28,10 +31,7 @@ class PrestasiController extends Controller
      */
     public function create()
     {
-        $sekolah = Sekolah::all()->pluck('nama', 'id');
-        // dd($sekolah);
-
-        return view('prestasi.create', compact('sekolah'));
+        //
     }
 
     /**
@@ -42,18 +42,7 @@ class PrestasiController extends Controller
      */
     public function store(Request $request)
     {
-        // $siswa = Siswa::with('prestasi')->where('user_id', auth()->user()->id)->first();
-        $siswa = Siswa::where('user_id', auth()->user()->id)->first();
-        // dd($siswa);
-
-        $requestData = $request->all();
-        $requestData['siswa_id'] = $siswa->id;
-        // dd($requestData);
-
-        Prestasi::create($requestData);
-
-        flash("Data Berhasil Di Tambahkan");
-        return back();
+        //
     }
 
     /**
