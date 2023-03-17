@@ -61,7 +61,7 @@
                                         <tbody>
                                             @foreach ($siswa as $item)
                                                 <tr>
-                                                    <td rowspan="5">
+                                                    <td rowspan="6">
                                                         <img src="{{ Storage::url($item->foto) }}" width="200px">
                                                         <a href="{{ route('siswa.edit', $item->id) }}"
                                                             class="btn btn-success mt-3 d-flex justify-content-center align-items-center">
@@ -99,9 +99,19 @@
                                                     <td>{{ $item->penghasilan_ayah }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="7"><b style="color:#ff6b81;">Upload foto dan silahkan
-                                                            lakukan pendaftaran, klik <a href="#">Daftar
-                                                                PPDB</a></b></td>
+                                                    <td><b>Nama Ibu</b> :</td>
+                                                    <td> {{ $item->nama_ibu }}</td>
+                                                    <td><b>Pekerjaan Ibu</b> :</td>
+                                                    <td> {{ $item->pekerjaan_ibu }}</td>
+                                                    <td><b>Penghasilan Ibu</b> :</td>
+                                                    <td>{{ $item->penghasilan_ibu }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="7"><b style="color:#ff6b81;">Upload foto
+                                                            dan Silahkan
+                                                            Lakukan Pendaftaran, Klik <a href="#">Daftar PPDB</a></b>
+                                                    </td>
+
                                                 </tr>
                                             @endforeach
 

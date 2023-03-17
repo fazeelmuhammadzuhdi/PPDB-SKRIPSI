@@ -134,6 +134,12 @@
                     <div data-i18n="Analytics">Biodata Siswa</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('jalur_pendaftaran') ? 'active' : '' }}">
+                <a href="{{ route('jalur_pendaftaran') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Jalur Pendftaran</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>

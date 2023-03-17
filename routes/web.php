@@ -64,6 +64,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
 Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     //ini route khusus untuk siswa
     Route::get('dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard_siswa');
+    Route::get('jalur_pendaftaran', [DashboardSiswaController::class, 'jalurPendaftaran'])->name('jalur_pendaftaran');
     Route::resource('siswa', SiswaController::class);
 });
 

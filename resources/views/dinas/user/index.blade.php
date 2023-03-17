@@ -6,8 +6,8 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end"><a
-                            href="{{ route($routePrefix . '.create') }}" class="btn btn-primary"> <i
-                                class="fa fa-circle-plus"></i> Tambah Data</a></small>
+                            href="{{ route($routePrefix . '.create') }}" class="btn btn-primary">
+                            <i class="fa fa-circle-plus"></i> Tambah Data</a></small>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -52,7 +52,7 @@
                                                 class="btn btn-warning btn-sm">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
-                                            
+
                                             <form action="{{ route($routePrefix . '.destroy', $item->id) }}" method="POST"
                                                 class="d-inline"
                                                 onsubmit="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini')">

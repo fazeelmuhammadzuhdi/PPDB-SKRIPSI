@@ -21,4 +21,9 @@ class DashboardSiswaController extends Controller
         }
         return view('siswa.dashboard_siswa', compact('pesan', 'cek'));
     }
+
+    public function jalurPendaftaran()
+    {
+        return view('siswa.jalur_pendaftaran');
+    }
 }
