@@ -61,7 +61,7 @@
                         {{-- <i class="fas fa-arrow-circle-right"></i> --}}
                         <i class="fas fa-duotone fa-circle-exclamation"></i>
                     </div>
-                    <a href="{{ route('dashboard_siswa') }}" class="small-box-footer">Klik Disini &nbsp;
+                    <a href="{{ route('prestasi.index') }}" class="small-box-footer">Klik Disini &nbsp;
                         <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>

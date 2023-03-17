@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AdminSekolahController;
 use App\Http\Controllers\Backend\AdminSekolahShowController;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
+use App\Http\Controllers\Backend\PrestasiController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\SiswaController;
@@ -66,6 +67,7 @@ Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     Route::get('dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard_siswa');
     Route::get('jalur_pendaftaran', [DashboardSiswaController::class, 'jalurPendaftaran'])->name('jalur_pendaftaran');
     Route::resource('siswa', SiswaController::class);
+    Route::resource('prestasi', PrestasiController::class);
 });
 
 Auth::routes();

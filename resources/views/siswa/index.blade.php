@@ -64,7 +64,7 @@
                                                     <td rowspan="6">
                                                         <img src="{{ Storage::url($item->foto) }}" width="200px">
                                                         <a href="{{ route('siswa.edit', $item->id) }}"
-                                                            class="btn btn-success mt-3 d-flex justify-content-center align-items-center">
+                                                            class="btn btn-success mt-5 d-flex justify-content-center align-items-center">
                                                             <i class="fa fa-edit"> &nbsp; </i> Edit Data</a>
                                                     </td>
                                                     <td><b>NISN</b> :</td>
@@ -80,7 +80,7 @@
                                                     <td><b>Tempat Lahir</b> :</td>
                                                     <td> {{ $item->tempat_lahir }}</td>
                                                     <td><b>Tanggal Lahir</b>:</td>
-                                                    <td> {{ $item->tanggal_lahir->format('d M Y') }}</td>
+                                                    <td> {{ $item->tanggal_lahir->format('d F Y') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Jenis Kelamin</b>:</td>
@@ -99,7 +99,7 @@
                                                     <td>{{ $item->penghasilan_ayah }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Nama Ibu</b> :</td>
+                                                    <td><b>Nama <br> Ibu</b> :</td>
                                                     <td> {{ $item->nama_ibu }}</td>
                                                     <td><b>Pekerjaan Ibu</b> :</td>
                                                     <td> {{ $item->pekerjaan_ibu }}</td>
@@ -131,7 +131,7 @@
     <style>
         .table td,
         .table th {
-            padding: 0.625rem 1.4rem;
+            padding: 0.9rem 0.9rem;
         }
     </style>
 @endpush
