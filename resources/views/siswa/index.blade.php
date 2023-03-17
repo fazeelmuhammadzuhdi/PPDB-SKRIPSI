@@ -50,7 +50,7 @@
                                 <div class="panel-heading">
                                     <div class="float-end">
                                         @if ($cek > 0)
-                                            <a href="#" class="btn btn-primary mb-3"><i class="fa fa-user"></i> Daftar
+                                            <a href="{{ route('jalur_pendaftaran') }}" class="btn btn-primary mb-3"><i class="fa fa-user"></i> Daftar
                                                 PPDB</a>
                                         @endif
                                     </div>
@@ -109,7 +109,7 @@
                                                 <tr>
                                                     <td colspan="7"><b style="color:#ff6b81;">Upload foto
                                                             dan Silahkan
-                                                            Lakukan Pendaftaran, Klik <a href="#">Daftar PPDB</a></b>
+                                                            Lakukan Pendaftaran, Klik <a href="{{ route('jalur_pendaftaran') }}">Daftar PPDB</a></b>
                                                     </td>
 
                                                 </tr>

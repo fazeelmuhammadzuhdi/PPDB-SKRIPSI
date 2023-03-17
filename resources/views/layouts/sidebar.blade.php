@@ -137,7 +137,7 @@
             <li class="menu-item {{ Route::is('jalur_pendaftaran') ? 'active' : '' }}">
                 <a href="{{ route('jalur_pendaftaran') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                    <div data-i18n="Analytics">Jalur Pendftaran</div>
+                    <div data-i18n="Analytics">Jalur Pendaftaran</div>
                 </a>
             </li>
         @endif

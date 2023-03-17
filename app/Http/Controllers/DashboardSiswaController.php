@@ -24,6 +24,8 @@ class DashboardSiswaController extends Controller
 
     public function jalurPendaftaran()
     {
-        return view('siswa.jalur_pendaftaran');
+        $cek = Siswa::where('user_id', Auth::user()->id)->count();
+
+        return view('siswa.jalur_pendaftaran', compact('cek'));
     }
 }
