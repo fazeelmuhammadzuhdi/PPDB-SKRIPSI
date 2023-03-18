@@ -58,7 +58,7 @@
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary">
                             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
 
-                        @if ($data_prestasi->status == 0)
+                        @if ($data_prestasi->status == null)
                             <button type="submit" class="btn btn-dark mx-1">
                                 Diterima ✅
                             </button>
