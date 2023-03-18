@@ -50,21 +50,39 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <p>Jalur Pendaftaran</p>
-                        <h5 class="text-white fw-bold">PRESTASI</h5>
+            @if ($cek_prestasi != 1)
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <p>Jalur Pendaftaran</p>
+                            <h5 class="text-white fw-bold">PRESTASI</h5>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="fas fa-arrow-circle-right"></i> --}}
+                            <i class="fas fa-duotone fa-circle-exclamation"></i>
+                        </div>
+                        <a href="{{ route('prestasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
+                            <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        {{-- <i class="fas fa-arrow-circle-right"></i> --}}
-                        <i class="fas fa-duotone fa-circle-exclamation"></i>
-                    </div>
-                    <a href="{{ route('prestasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
-                        <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+            @else
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <p>Jalur Pendaftaran</p>
+                            <h5 class="text-white fw-bold">PRESTASI</h5>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="fas fa-arrow-circle-right"></i> --}}
+                            <i class="fas fa-duotone fa-circle-exclamation"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Anda Telah Mendaftar &nbsp;
+                            <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            @endif
+
+
 
         </div>
     @else

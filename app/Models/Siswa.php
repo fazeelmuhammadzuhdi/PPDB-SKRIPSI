@@ -43,7 +43,7 @@ class Siswa extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function prestasi(): HasMany
+    public function prestasis(): HasMany
     {
         return $this->hasMany(Prestasi::class);
     }

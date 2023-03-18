@@ -46,14 +46,27 @@ class PrestasiController extends Controller
         $siswa = Siswa::where('user_id', auth()->user()->id)->first();
         // dd($siswa);
 
+        $collection = collect([$request->k4sm2, $request->k5sm1, $request->k5sm2, $request->k6sm1, $request->k6sm2,]);
+
+        $mapped = $collection->map(function ($item) {
+            return (int) $item;
+        });
+
+        // dd($mapped->all());
+
+        $hasil = round($mapped->avg());
+        // dd($hasil);
         $requestData = $request->all();
         $requestData['siswa_id'] = $siswa->id;
+        $requestData['jumlah'] = $hasil;
+
         // dd($requestData);
 
-        Prestasi::create($requestData);
+        $prestasi = Prestasi::create($requestData);
+        // dd($prestasi);
 
         flash("Data Berhasil Di Tambahkan");
-        return back();
+        return redirect(to_route('jalur_pendaftaran'));
     }
 
     /**
