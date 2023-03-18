@@ -16,6 +16,7 @@
                 <th>Jenis Kelamin</th>
                 <th>NISN</th>
                 <th>Rata2 Nilai Rapor</th>
+                <th>Status</th>
                 <th>Foto</th>
                 <th>Aksi</th>
             </tr>
@@ -29,6 +30,15 @@
                     <td>{{ $item->siswa->nisn }}</td>
                     <td class="text-center">{{ $item->jumlah }}</td>
                     <td>
+                        @if ($item->status == 1)
+                            <span class="badge bg-success">Lulus</span>
+                        @elseif ($item->status == 2)
+                            <span class="badge bg-danger">Belum Lulus</span>
+                        @else
+                            <span class="badge bg-warning">Dalam Seleksi</span>
+                        @endif
+                    </td>
+                    <td>
                         <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
                     </td>
                     <td>
@@ -36,6 +46,8 @@
                             class="btn btn-info btn-sm mx-1">
                             <i class="fas fa-eye"></i> Detail
                         </a>
+
+
                     </td>
                 </tr>
             @endforeach

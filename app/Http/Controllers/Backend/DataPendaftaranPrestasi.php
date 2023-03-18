@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class DataPendaftaranPrestasi extends Controller
 {
@@ -76,9 +77,17 @@ class DataPendaftaranPrestasi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        // $cekStatus = Prestasi::where('id', $id)->first();
+
+        $lulus = Prestasi::where('id', $id)->update([
+            'status' => 1
+        ]);
+        // dd($lulus);
+
+        flash('Status Berhasil Di Update');
+        return redirect()->route('data_pendaftaran_prestasi.index');
     }
 
     /**
@@ -90,5 +99,16 @@ class DataPendaftaranPrestasi extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateStatusDitolak($id)
+    {
+        $lulus = Prestasi::where('id', $id)->update([
+            'status' => 2
+        ]);
+        // dd($lulus);
+
+        flash('Status Berhasil Di Update');
+        return redirect()->route('data_pendaftaran_prestasi.index');
     }
 }

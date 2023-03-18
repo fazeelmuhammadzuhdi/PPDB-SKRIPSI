@@ -93,7 +93,7 @@
                                                     <td> {{ $item->alamat }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Nama Ayah</b> :</td>
+                                                    <td><b>Nama Ayah</b>:</td>
                                                     <td> {{ $item->nama_ayah }}</td>
                                                     <td><b>Pekerjaan Ayah</b> :</td>
                                                     <td> {{ $item->pekerjaan_ayah }}</td>

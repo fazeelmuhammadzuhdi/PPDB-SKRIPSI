@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('k4sm2');
             $table->integer('jumlah')->nullable();
             $table->integer('status')->nullable();
+            // $table->enum('status', [0, 1, 2])->default(0);
             $table->timestamps();
         });
     }
