@@ -7,7 +7,7 @@ use App\Models\Prestasi;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
-class DataPendaftaran extends Controller
+class DataPendaftaranPrestasi extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,13 @@ class DataPendaftaran extends Controller
      */
     public function index()
     {
+
         //get data prestasi
         $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
         // dd($sekolah);
         $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($data_prestasi);
-        return view('sekolah.data_pendaftaran', compact('prestasi'));
+        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah'));
     }
 
     /**
@@ -31,7 +32,6 @@ class DataPendaftaran extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -53,7 +53,9 @@ class DataPendaftaran extends Controller
      */
     public function show($id)
     {
-        //
+        $data_prestasi = Prestasi::findOrFail($id);
+
+        return view('sekolah.detail_prestasi', compact('data_prestasi'));
     }
 
     /**

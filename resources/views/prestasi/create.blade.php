@@ -14,8 +14,8 @@
                         <div class="row">
                             <div class="form-group col-4">
                                 <label for="k4sm2" class="form-label">Kelas 4 Semester 2</label>
-                                <input type="text" class="form-control @error('k4sm2') is-invalid @enderror"
-                                    id="k4sm2" name="k4sm2" placeholder="Nilai Rapor Kelas 4 Semestr 2 Ex: 90"
+                                <input type="number" class="form-control @error('k4sm2') is-invalid @enderror"
+                                    id="k4sm2" name="k4sm2" placeholder="Nilai Rapor Kelas 4 Sem 2 Ex: 90"
                                     value="{{ old('k4sm2') }}" autofocus>
 
                                 @error('k4sm2')
@@ -27,8 +27,8 @@
 
                             <div class="form-group col-4 mb-3 ">
                                 <label for="k5sm1" class="form-label">Kelas 5 Semester 1</label>
-                                <input type="text" class="form-control @error('k5sm1') is-invalid @enderror"
-                                    id="k5sm1" name="k5sm1" placeholder="Nilai Rapor Kelas 5 Semestr 1 Ex: 90"
+                                <input type="number" class="form-control @error('k5sm1') is-invalid @enderror"
+                                    id="k5sm1" name="k5sm1" placeholder="Nilai Rapor Kelas 5 Sem 1 Ex: 90"
                                     value="{{ old('k5sm1') }}" autofocus>
 
                                 @error('k5sm1')
@@ -41,8 +41,8 @@
 
                             <div class="form-group col-4">
                                 <label for="k5sm2" class="form-label">Kelas 5 Semester 2</label>
-                                <input type="text" class="form-control @error('k5sm2') is-invalid @enderror"
-                                    id="k5sm2" name="k5sm2" placeholder="Nilai Rapor Kelas 5 Semestr 2 Ex: 90"
+                                <input type="number" class="form-control @error('k5sm2') is-invalid @enderror"
+                                    id="k5sm2" name="k5sm2" placeholder="Nilai Rapor Kelas 5 Sem 2 Ex: 90"
                                     value="{{ old('k5sm2') }}" autofocus>
 
                                 @error('k5sm2')
@@ -57,8 +57,8 @@
                         <div class="row">
                             <div class="form-group col-4">
                                 <label for="k6sm1" class="form-label">Kelas 6 Semester 1</label>
-                                <input type="text" class="form-control @error('k6sm1') is-invalid @enderror"
-                                    id="k6sm1" name="k6sm1" placeholder="Nilai Rapor Kelas 6 Semestr 1 Ex: 90"
+                                <input type="number" class="form-control @error('k6sm1') is-invalid @enderror"
+                                    id="k6sm1" name="k6sm1" placeholder="Nilai Rapor Kelas 6 Sem 1 Ex: 90"
                                     value="{{ old('k6sm1') }}" autofocus>
 
                                 @error('k6sm1')
@@ -69,8 +69,8 @@
                             </div>
                             <div class="form-group col-4 mb-3">
                                 <label for="k6sm2" class="form-label">Kelas 6 Semester 2</label>
-                                <input type="text" class="form-control @error('k6sm2') is-invalid @enderror"
-                                    id="k6sm2" name="k6sm2" placeholder="Nilai Rapor Kelas 6 Semestr 2 Ex: 90"
+                                <input type="number" class="form-control @error('k6sm2') is-invalid @enderror"
+                                    id="k6sm2" name="k6sm2" placeholder="Nilai Rapor Kelas 6 Sem 2 Ex: 90"
                                     value="{{ old('k6sm2') }}" autofocus>
 
                                 @error('k6sm2')
@@ -84,7 +84,7 @@
                             {{-- <div class="form-group col-4">
                                 <label for="jumlah_sm" class="form-label">Jumlah Nilai / Rata - Rata</label>
                                 <input type="text" class="form-control @error('jumlah_sm') is-invalid @enderror"
-                                    id="jumlah_sm" name="jumlah_sm" placeholder="Nilai Rapor Kelas 4 Semestr 2 Ex: 90"
+                                    id="jumlah_sm" name="jumlah_sm" placeholder="Nilai Rapor Kelas 4 Sem 2 Ex: 90"
                                     value="{{ old('jumlah_sm') }}" autofocus>
 
                                 @error('jumlah_sm')
@@ -107,7 +107,9 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        <button type="submit" class="btn btn-primary"><i
+                                class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
+                            Daftar</button>
                     </div>
                 </form>
             </div>

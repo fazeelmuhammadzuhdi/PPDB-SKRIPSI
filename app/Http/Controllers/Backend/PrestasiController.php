@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PrestasiStoreRequest;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
@@ -40,7 +41,7 @@ class PrestasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PrestasiStoreRequest $request)
     {
         // $siswa = Siswa::with('prestasi')->where('user_id', auth()->user()->id)->first();
         $siswa = Siswa::where('user_id', auth()->user()->id)->first();
@@ -56,7 +57,7 @@ class PrestasiController extends Controller
 
         $hasil = round($mapped->avg());
         // dd($hasil);
-        $requestData = $request->all();
+        $requestData = $request->validated();
         $requestData['siswa_id'] = $siswa->id;
         $requestData['jumlah'] = $hasil;
 
@@ -65,8 +66,8 @@ class PrestasiController extends Controller
         $prestasi = Prestasi::create($requestData);
         // dd($prestasi);
 
-        flash("Data Berhasil Di Tambahkan");
-        return redirect(to_route('jalur_pendaftaran'));
+        flash("Berhasil Melakukan Pendaftaran");
+        return redirect()->route('jalur_pendaftaran');
     }
 
     /**

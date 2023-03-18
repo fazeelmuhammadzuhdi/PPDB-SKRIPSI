@@ -121,8 +121,8 @@
                     <div data-i18n="Account Settings">Data Admin Sekolah</div>
                 </a>
             </li>
-            <li class="menu-item {{ Route::is('data_pendaftaran.index*') ? 'active' : '' }}">
-                <a href="{{ route('data_pendaftaran.index') }}" class="menu-link">
+            <li class="menu-item {{ Route::is('data_pendaftaran_prestasi.*') ? 'active' : '' }}">
+                <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-dock-top"></i>
                     <div data-i18n="Account Settings">Data PPDB</div>
                 </a>

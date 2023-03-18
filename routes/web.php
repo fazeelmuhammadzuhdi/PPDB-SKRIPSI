@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminSekolahController;
 use App\Http\Controllers\Backend\AdminSekolahShowController;
 use App\Http\Controllers\Backend\DataPendaftaran;
+use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
 use App\Http\Controllers\Backend\PrestasiController;
@@ -43,7 +44,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::get('dashboard', [DashboardDinasController::class, 'index'])->name('dashboard_dinas');
     Route::resource('user', UserController::class);
     Route::resource('user-sekolah', AdminSekolahController::class);
-    Route::resource('data_pendaftaran', DataPendaftaran::class);
+    Route::resource('data_pendaftaran_prestasi', DataPendaftaranPrestasi::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
     Route::controller(PenghasilanController::class)->group(function () {
