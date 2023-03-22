@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    @if ($cek > 0)
+    @if ($cek > 0 && $cek_prestasi != 1)
         <div class="row">
             <div class="col-lg-3 col-6">
 
@@ -50,7 +50,22 @@
                 </div>
             </div>
 
-            @if ($cek_prestasi != 1)
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <p>Jalur Pendaftaran</p>
+                        <h5 class="text-white fw-bold">PRESTASI</h5>
+                    </div>
+                    <div class="icon">
+                        {{-- <i class="fas fa-arrow-circle-right"></i> --}}
+                        <i class="fas fa-duotone fa-circle-exclamation"></i>
+                    </div>
+                    <a href="{{ route('prestasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
+                        <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            {{-- @if ($cek_prestasi != 1)
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-danger">
                         <div class="inner">
@@ -58,7 +73,6 @@
                             <h5 class="text-white fw-bold">PRESTASI</h5>
                         </div>
                         <div class="icon">
-                            {{-- <i class="fas fa-arrow-circle-right"></i> --}}
                             <i class="fas fa-duotone fa-circle-exclamation"></i>
                         </div>
                         <a href="{{ route('prestasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
@@ -73,19 +87,25 @@
                             <h5 class="text-white fw-bold">PRESTASI</h5>
                         </div>
                         <div class="icon">
-                            {{-- <i class="fas fa-arrow-circle-right"></i> --}}
                             <i class="fas fa-duotone fa-circle-exclamation"></i>
                         </div>
                         <a href="#" class="small-box-footer">Anda Telah Mendaftar &nbsp;
                             <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-            @endif
-
-
-
+            @endif --}}
         </div>
-    @else
+        {{-- @else
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
+            <p class="mb-0">BIODATA ANDA BELUM LENGKAP. SILAHKAN LENGKAPI BIODATA TERLEBIH DAHULU SEBELUM MELAKUKAN
+                PENDAFTARAN</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div> --}}
+    @endif
+
+    @if ($cek == 0)
         <div class="alert alert-danger alert-dismissible" role="alert">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
             <p class="mb-0">BIODATA ANDA BELUM LENGKAP. SILAHKAN LENGKAPI BIODATA TERLEBIH DAHULU SEBELUM MELAKUKAN
@@ -93,6 +113,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             </button>
         </div>
+    @endif
+
+    @if ($cekLulusJalurPrestasi?->status == 1)
+        <h1>UNTUK CETAK BUKTI PENDAFTARAN</h1>
     @endif
 @endsection
 

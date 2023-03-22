@@ -44,10 +44,11 @@ class DashboardSiswaController extends Controller
     {
 
         $cek = Siswa::where('user_id', Auth::user()->id)->count();
-        //cek apakah siswa sudah pernah mendaftar melalui jalur prestasi
         $cek_siswa = Siswa::where('user_id', Auth::user()->id)->first();
+        $cekLulusJalurPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        //cek apakah siswa sudah pernah mendaftar melalui jalur prestasi
         $cek_prestasi = Prestasi::where('siswa_id', $cek_siswa->id  ?? '')->count();
         // dd($cek_prestasi);
-        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi'));
+        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi'));
     }
 }
