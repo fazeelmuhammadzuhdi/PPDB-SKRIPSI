@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SiswaUpdateRequest extends FormRequest
 {
@@ -25,15 +26,17 @@ class SiswaUpdateRequest extends FormRequest
 
         return [
             'nama_lengkap' => 'required',
-            'nisn' => 'required|unique:siswas,nisn,' . $this->siswa,
+            'nisn' => 'required|',
+            Rule::unique('siswas', 'nisn')->ignore($this->id, 'id'),
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
             'sekolah_asal' => 'required',
             'no_kk' => 'required',
-            'no_nik' =>
-            'required|unique:siswas,no_nik,' . $this->siswa,
+            // 'no_nik' => 'required|unique:siswas,no_nik,' . $this->siswa,
+            'no_nik' => 'required|',
+            Rule::unique('siswas', 'no_nik')->ignore($this->id, 'id'),
             'alamat' => 'required',
             'foto' => 'nullable|mimes:png,jpg,jpeg|max:2048',
             'nama_ayah' => 'required',
@@ -58,6 +61,7 @@ class SiswaUpdateRequest extends FormRequest
             'sekolah_asal.required' => ':attribute Tidak Boleh Kosong',
             'no_kk.required' => ':attribute Tidak Boleh Kosong',
             'no_nik.required' => ':attribute Tidak Boleh Kosong',
+            'no_nik.unique' => ':attribute Sudah Terdaftar',
             'alamat.required' => ':attribute Tidak Boleh Kosong',
             'nama_ayah.required' => ':attribute Tidak Boleh Kosong',
             'pekerjaan_ayah.required' => ':attribute Tidak Boleh Kosong',

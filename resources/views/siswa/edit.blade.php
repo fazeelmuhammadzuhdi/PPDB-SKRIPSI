@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <form action="{{ route('siswa.update', $siswa->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('siswa.update', Crypt::encrypt($siswa->id)) }}" method="POST" enctype="multipart/form-data">
             {{-- <form action="{{ route('siswa.update', [$siswa->id]) }}" method="POST" enctype="multipart/form-data"> --}}
             @csrf
             @method('PUT')

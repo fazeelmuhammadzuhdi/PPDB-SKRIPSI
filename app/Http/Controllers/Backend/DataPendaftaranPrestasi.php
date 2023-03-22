@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
 
@@ -54,7 +55,11 @@ class DataPendaftaranPrestasi extends Controller
      */
     public function show($id)
     {
-        $data_prestasi = Prestasi::findOrFail($id);
+        // $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
+        // dd($sekolah);
+        // $data_prestasi = Prestasi::where('sekolah_id', $sekolah->id)->findOrFail($id);
+        $data_prestasi = Prestasi::findOrFail(decrypt($id));
+        // dd($data_prestasi);
 
         return view('sekolah.detail_prestasi', compact('data_prestasi'));
     }

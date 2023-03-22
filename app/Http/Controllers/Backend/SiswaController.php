@@ -131,7 +131,7 @@ class SiswaController extends Controller
     {
         $requestData = $request->validated();
 
-        $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::findOrFail(decrypt($id));
 
         if ($request->hasFile('foto')) {
             if ($siswa->foto !== null && Storage::exists($siswa->foto)) {
