@@ -38,7 +38,7 @@ Route::get('/', function () {
 // Route::get('profile/{id}', [ProfileController::class, 'edit'])->name('profile.dinas');
 
 Route::get('profile', [UserController::class, 'profile'])->name('profile');
-Route::resource('usersiswa', UserSiswaController::class);
+
 
 Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     //ini route khusus untuk dinas pendidikan
@@ -47,6 +47,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('user-sekolah', AdminSekolahController::class);
     Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_prestasi', DataPendaftaranPrestasi::class);
+    Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
     Route::controller(PenghasilanController::class)->group(function () {
@@ -72,6 +73,8 @@ Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     Route::get('dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard_siswa');
     Route::get('jalur_pendaftaran', [DashboardSiswaController::class, 'jalurPendaftaran'])->name('jalur_pendaftaran');
     Route::resource('siswa', SiswaController::class);
+    Route::resource('usersiswa', UserSiswaController::class);
+
     Route::resource('prestasi', PrestasiController::class);
 });
 

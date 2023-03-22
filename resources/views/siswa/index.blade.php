@@ -64,7 +64,7 @@
                                                 <tr>
                                                     <td rowspan="6">
                                                         <img src="{{ Storage::url($item->foto) }}" width="200px">
-                                                        <a href="{{ route('siswa.edit', $item->id) }}"
+                                                        <a href="{{ route('siswa.edit', encrypt($item->id)) }}"
                                                             class="btn btn-success mt-5 d-flex justify-content-center align-items-center">
                                                             <i class="fa fa-edit"> &nbsp; </i> Edit Data</a>
                                                     </td>
@@ -85,7 +85,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Jenis Kelamin</b>:</td>
-                                                    <td>{{ $item->jenis_kelamin == 'P' ? 'Laki - Laki' : 'Perempuan' }}
+                                                    <td>{{ $item->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}
                                                     </td>
                                                     <td><b>Agama</b> :</td>
                                                     <td> {{ $item->agama }}</td>

@@ -11,6 +11,8 @@ use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+
 use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
@@ -107,8 +109,8 @@ class SiswaController extends Controller
         // $siswa = Siswa::where('user_id', auth()->user()->id)->first();
         // $siswa = Siswa::where('user_id', $id)->first();
         // $siswa = Siswa::findOrFail($id);
-
-        $siswa = Siswa::where('user_id', auth()->user()->id)->findOrFail($id); // slug for user profile
+        $siswa = Siswa::where('user_id', auth()->user()->id)->findOrFail(decrypt($id));
+        // $siswa = Siswa::where('user_id', auth()->user()->id)->findOrFail($id); 
         // dd($siswa);
 
         return view("siswa.edit", [

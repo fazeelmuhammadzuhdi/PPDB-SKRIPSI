@@ -84,13 +84,15 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = [
-            'user' => User::findOrFail($id),
+            'user' => User::where('id', auth()->user()->id)->findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
             'button' => 'UPDATE',
             'title' => 'Form Edit User',
             'routePrefix' => $this->routePrefix,
         ];
+
+        // dd($data);
 
         return view('dinas.user.' . $this->viewCreate, $data);
     }
