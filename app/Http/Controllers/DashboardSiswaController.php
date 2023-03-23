@@ -56,24 +56,26 @@ class DashboardSiswaController extends Controller
     public function kartuPendaftaran()
     {
         $siswa = Siswa::where('user_id', Auth::user()->id)->first();
-        $prestasi = Prestasi::where('siswa_id', $siswa->id ?? '')->first();
+        $prestasi = Prestasi::where('siswa_id', $siswa->id)->first();
+        $cekLulus = Prestasi::where('siswa_id', $siswa->id)->count();
 
         if (request('output') == 'pdf') {
             $pdf = Pdf::loadView(
-                'kartuspp_index',
+                'siswa.kartu_pendaftaran',
                 [
-                    'prestasi' => collect($prestasi),
+                    'prestasi' => $prestasi,
                     'siswa' => $siswa,
+                    'cekLulus' => $cekLulus
                 ]
             );
             $namaFile = "Kartu Pendaftaran " . $siswa->nama_lengkap . ' Tahun ' . date('Y') . '.pdf';
             return $pdf->download($namaFile);
         }
 
-
         return view('siswa.kartu_pendaftaran', [
-            'prestasi' => collect($prestasi),
+            'prestasi' => $prestasi,
             'siswa' => $siswa,
+            'cekLulus' => $cekLulus,
             'title' => "Cetak Kartu Pendaftaran"
         ]);
     }

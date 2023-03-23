@@ -70,16 +70,17 @@
             <tr>
                 <td width="80">
                     @if (request('output') == 'pdf')
-                        <img src="{{ public_path() . '/images/logo.png' }}" alt="" width="70">
+                        <img src="{{ public_path() . '/images/logo.png' }}" alt="" width="100">
                     @else
                         <img src="{{ asset('images/logo.png') }}" alt="" width="70">
                     @endif
                 </td>
 
-                {{-- <td style="text-align: left; vertical-align: middle;">
-                    <div style="font-size: 20px; font-weight: bold">{{ settings()->get('app_name', 'My App') }}</div>
-                    <div>{!! settings()->get('app_address') !!}</div>
-                </td> --}}
+                <td style="text-align: left; vertical-align: middle;">
+                    {{-- <div style="font-size: 20px; font-weight: bold">{{ settings()->get('app_name', 'My App') }}</div>
+                    <div>{!! settings()->get('app_address') !!}</div> --}}
+                    <div style="font-size: 26px; font-weight: bold">DINAS PENDIDIKAN PESISIR SELATAN</div>
+                </td>
             </tr>
             <tr>
                 <td colspan="3">
@@ -87,62 +88,65 @@
                 </td>
             </tr>
 
+
             <tr class="information">
                 <td colspan="3">
                     <table>
-
-                        <tr>
-                            <td>
-                                Nama Siswa : {{ $siswa->nama }} {{ $siswa->nisn }}<br />
-                                Kelas : {{ $siswa->kelas }}<br />
-                                Jurusan : {{ $siswa->jurusan }}
-                            </td>
-
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="2">
-                    <table width="100%" class="table-tagihan">
-                        <tr class="heading">
-                            <th width="1%" style="text-align: center">No.</th>
-                            <th style="text-align: start">Bulan Tagihan</th>
-                            <th style="text-align: center">Jumlah Tagihan</th>
-                            <th style="text-align: center">Tanggal Bayar</th>
-                            <th style="text-align: center">Paraf</th>
-                            <th style="text-align: center">Keterangan</th>
-                        </tr>
-
-                        {{-- @foreach ($kartuSpp as $item)
-                            <tr class="item">
-                                <td style="text-align: center">{{ $loop->iteration }}</td>
-                                <td style="text-align: start">{{ $item['bulan'] . ' ' . $item['tahun'] }}</td>
-                                <td style="text-align: end">{{ formatRupiah($item['total_tagihan']) }}</td>
-                                <td style="text-align: center">{{ $item['tanggal_bayar'] }}
+                        @if ($cekLulus)
+                            <tr>
+                                <td width="45%"><b>Jalur Pendaftaran</b></td>
+                                <td>: ZONASI</td>
+                                <td rowspan="8">
+                                    {{-- @if (request('output') == 'pdf')
+                                        <img src="{{ storage_path($siswa->foto) }}" width="100%">
+                                    @endif --}}
                                 </td>
-                                <td></td>
-                                <td></td>
                             </tr>
-                        @endforeach --}}
+                        @endif
+                        <tr>
+                            <td><b>Sekolah Pendaftaran</b></td>
+                            <td>: {{ $prestasi->sekolah->nama }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>NISN</b></td>
+                            <td>: {{ $siswa->nisn }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>NIK</b></td>
+                            <td>: {{ $siswa->no_nik }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Nama Lengkap</b></td>
+                            <td>: {{ $siswa->nama_lengkap }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Asal Sekolah</b></td>
+                            <td>: {{ $siswa->sekolah_asal }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Jenis Kelamin</b></td>
+                            <td>: {{ $siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Tempat / Tanggal Lahir</b></td>
+                            <td>: {{ $siswa->getTempatTanggalLahirAttribute() }}</td>
+                        </tr>
                     </table>
                 </td>
             </tr>
-
 
             <tr>
                 <td colspan="3">
                     <br>
                     Padang, {{ now()->translatedFormat('d F Y') }} <br>
-                    @include('informasi_penanggung_jawab')
+                    {{-- @include('siswa.informasi_penanggung_jawab') --}}
 
                 </td>
             </tr>
 
         </table>
         <center>
-            <a href="{{ url()->full() . '&output=pdf' }}" class="btn">
+            <a href="{{ url()->current() . '?output=pdf' }}" class="btn">
                 Download Pdf</a>
             <a href="#" onclick="window.print()" class="btn">Cetak PDF</a>
         </center>

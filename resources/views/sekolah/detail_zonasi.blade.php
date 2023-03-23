@@ -14,12 +14,7 @@
                     <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary">
                         <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
                 </div>
-
-
-
-
             </div>
-
         </div>
     </div>
 @endsection

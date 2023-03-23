@@ -74,7 +74,7 @@
                                                         {{-- {{ $pesanLulus }} --}}
                                                         Selamat Anda Diterima Di Sekolah {{ $cekLulus->sekolah->nama }}
                                                     </h2>
-                                                    <p class="mt-2">Klik Disini Untuk <a href="#">Cetak Kartu Pendaftaran</a></p>
+                                                    <p class="mt-2">Klik Disini Untuk <a href="{{ route('kartu_pendaftaran') }}">Cetak Kartu Pendaftaran</a></p>
                                                 </div>
 
                                             </div>
