@@ -6,7 +6,6 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Data Nilai Rapor</h3> <small class="text-muted float-end">
-
                 </div>
                 <form enctype="multipart/form-data" method="POST" action="{{ route('prestasi.store') }}">
                     @csrf
@@ -80,20 +79,6 @@
                                 @enderror
                             </div>
 
-
-                            {{-- <div class="form-group col-4">
-                                <label for="jumlah_sm" class="form-label">Jumlah Nilai / Rata - Rata</label>
-                                <input type="text" class="form-control @error('jumlah_sm') is-invalid @enderror"
-                                    id="jumlah_sm" name="jumlah_sm" placeholder="Nilai Rapor Kelas 4 Sem 2 Ex: 90"
-                                    value="{{ old('jumlah_sm') }}" autofocus>
-
-                                @error('jumlah_sm')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div> --}}
-
                             <div class="form-group col-4">
                                 <label for="sekolah_id" class="form-label">Nama Sekolah Pendaftaran</label>
                                 {!! Form::select('sekolah_id', $sekolah, null, [
@@ -103,6 +88,31 @@
                                 <small class="text-danger">{{ $errors->first('sekolah_id') }}</small>
                             </div>
                         </div>
+
+                        <h3 class="mb-3">Data Penghargaan</h3> <small class="text-muted float-end">
+
+                            <table class="table table-bordered" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Penghargaan</th>
+                                        <th width="12%">Tahun</th>
+                                        <th width="25%">File / Foto</th>
+                                        <th width="15%">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" class="form-control" name="nama_penghargaan[]"
+                                                placeholder="Masukkan Penghargaan"></td>
+                                        <td><input type="text" class="form-control" name="tahun[]" placeholder="2023">
+                                        </td>
+                                        <td><input type="file" class="form-control" name="file[]"></td>
+                                        <td><button type="button" name="add" id="add" class="btn btn-success"><i
+                                                    class="fa fa-plus-circle"></i> Add</button></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
                     </div>
                     <!-- /.card-body -->
 
@@ -116,3 +126,36 @@
         </div>
     </div>
 @endsection
+
+
+@push('after-script')
+    <script>
+        $(document).ready(function() {
+            var i = 0;
+            $('#add').click(function() {
+                i++;
+                $('#table').append(
+                    `<tr>
+                        <td>
+                            <input type="text" name="nama_penghargaan[]" placeholder="Masukkan Penghargaan" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" name="tahun[]" placeholder="2023" class="form-control">
+                        </td>
+                        <td>
+                            <input type="file" name="file[]"  class="form-control">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger remove">Remove</button>
+                        </td>
+                            
+                    </tr>`);
+            });
+
+            $(document).on('click', '.remove', function() {
+                $(this).parents('tr').remove();
+            });
+
+        });
+    </script>
+@endpush

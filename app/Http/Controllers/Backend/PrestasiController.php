@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PrestasiStoreRequest;
+use App\Models\Penghargaan;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
@@ -66,6 +67,39 @@ class PrestasiController extends Controller
         $prestasi = Prestasi::create($requestData);
         // dd($prestasi);
 
+        // $validator = $request->validate([
+        //     'nama_penghargaan' => 'required',
+        //     'tahun' => 'required',
+        //     'file' => 'required|max:2048|mimes:png,jpg,jpeg',
+        // ]);
+
+
+
+        $nama_penghargaan = $request->nama_penghargaan;
+        $tahun = $request->tahun;
+
+        $file = [];
+
+        if ($request->hasFile('file')) {
+            foreach ($request->file('file') as $item) {
+                $name = $item->getClientOriginalName();
+                $item->move(public_path() . '/images/prestasi/', $name);
+                $file[] = $name;
+            }
+        }
+
+        // $file = $request->file('file')->store('images/prestasi', 'public');
+
+        for ($i = 0; $i < count($nama_penghargaan); $i++) {
+            $penghargaan = Penghargaan::create([
+                'siswa_id' => $siswa->id,
+                'nama_penghargaan' => $nama_penghargaan[$i],
+                'tahun' => $tahun[$i],
+                'file' => $file[$i]
+                // 'file' => $file[$i],
+            ]);
+        }
+        // dd($penghargaan);
         flash("Berhasil Melakukan Pendaftaran");
         return redirect()->route('jalur_pendaftaran');
     }
@@ -114,6 +148,4 @@ class PrestasiController extends Controller
     {
         //
     }
-
-  
 }

@@ -20,7 +20,6 @@
 
 
             <div class="col-lg-3 col-6">
-
                 <div class="small-box bg-success">
                     <div class="inner">
                         <p>Jalur Pendaftaran</p>
@@ -105,6 +104,23 @@
         </div> --}}
     @endif
 
+    @if ($cek == 0)
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
+            <p class="mb-0">BIODATA ANDA BELUM LENGKAP. SILAHKAN LENGKAPI BIODATA TERLEBIH DAHULU SEBELUM MELAKUKAN
+                PENDAFTARAN</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+    @endif
+    @if ($cek_prestasi == 1)
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
+            <p class="mb-0">Terima Kasih Telah Melakukan Pendaftaran. Tunggu Hasil Pengumuman</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+    @endif
     @if ($cek == 0)
         <div class="alert alert-danger alert-dismissible" role="alert">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>

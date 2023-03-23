@@ -3,6 +3,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 @if (Request::routeIs('siswa.edit'))
+                    <label for="nama_lengkap">Foto <span class="text-danger">*</span></label>
                     <input type="file" name="foto" id="foto"
                         class="form-control @error('foto') 'is-invalid' @enderror">
                     @error('foto')
@@ -18,6 +19,7 @@
                         </div>
                     </div>
                 @else
+                    <label for="foto" class="form-label">Upload Foto</label>
                     <input type="file" name="foto" id="foto"
                         class="form-control @error('foto') 'is-invalid' @enderror" required>
                     @error('foto')
@@ -40,7 +42,7 @@
     <div class="col-7">
         <div class="card mb-2">
             <div class="card-body">
-                <label for="nama_lengkap">Nama Lengkap <span class="text-danger">*</span></label>
+                <label for="nama_lengkap" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                 <input type="text" name="nama_lengkap"
                     class="form-control @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap"
                     placeholder="Inputkan Nama" autocomplete="off"
