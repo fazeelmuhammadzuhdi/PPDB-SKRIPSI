@@ -116,7 +116,71 @@
     @endif
 
     @if ($cekLulusJalurPrestasi?->status == 1)
-        <h1>UNTUK CETAK BUKTI PENDAFTARAN</h1>
+        <div class="card">
+            <div class="card-body">
+                <div class="panel-body">
+                    <div class="alert" role="alert" style="background-color:#576574; color:#fff;">
+                        Kamu sudah Terdaftar PPDB {{ date('Y') }} Kabupaten Pesisir Selatan
+                    </div>
+
+                    <center>
+                        <h4>KARTU PENDAFTARAN PPDB {{ date('Y') }}</h4>
+                        <hr>
+                        <table width="80%" class="table table-bordered">
+                            <tbody>
+                                @if ($cek_prestasi)
+                                    <tr>
+                                        <td width="30%"><b>Jalur Pendaftaran</b></td>
+                                        <td width="50%">ZONASI</td>
+                                        <td width="20%" rowspan="8">
+                                            <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
+                                        </td>
+                                    </tr>
+                                @endif
+                                <tr>
+                                    <td><b>Sekolah Pendaftaran</b></td>
+                                    <td>{{ $cekLulusJalurPrestasi->sekolah->nama }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>NISN</b></td>
+                                    <td>{{ $cek_siswa->nisn }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>NIK</b></td>
+                                    <td>{{ $cek_siswa->no_nik }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Nama Lengkap</b></td>
+                                    <td>{{ $cek_siswa->nama_lengkap }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Asal Sekolah</b></td>
+                                    <td>{{ $cek_siswa->sekolah_asal }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Jenis Kelamin</b></td>
+                                    <td>{{ $cek_siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Tempat / Tanggal Lahir</b></td>
+                                    <td>{{ $cek_siswa->getTempatTanggalLahirAttribute() }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="mt-3">
+                            {{-- Keterangan : Kartu Pendaftaran ini adalah bukti pendaftaran yang sah PPDB {{date('Y')}}. <button
+                                onclick="window.print()" class="btn btn-primary btn-sm"><i class="fa fa-print"></i>
+                                Cetak</button> --}}
+                            Keterangan : Kartu Pendaftaran ini adalah bukti pendaftaran yang sah PPDB {{ date('Y') }}.
+                            <a href="{{ route('kartu_pendaftaran') }}" class="btn btn-primary btn-sm"><i
+                                    class="fa fa-print"></i>
+                                Cetak</a>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
     @endif
 @endsection
 
