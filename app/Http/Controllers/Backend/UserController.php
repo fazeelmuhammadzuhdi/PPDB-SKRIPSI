@@ -84,7 +84,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = [
-            'user' => User::where('id', auth()->user()->id)->findOrFail($id),
+            'user' => User::user()->findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
             'button' => 'UPDATE',

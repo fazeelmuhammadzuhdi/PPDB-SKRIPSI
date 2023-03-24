@@ -14,8 +14,8 @@ class DashboardSiswaController extends Controller
 {
     public function index()
     {
-        $cek = Siswa::where('user_id', Auth::user()->id)->count();
-        $cek_siswa = Siswa::where('user_id', Auth::user()->id)->first();
+        $cek = Siswa::siswa()->count();
+        $cek_siswa = Siswa::siswa()->first();
         // cek status kelulusan
         // $cek_lulus = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->count();
         $cekLulus = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
@@ -44,8 +44,8 @@ class DashboardSiswaController extends Controller
     public function jalurPendaftaran()
     {
 
-        $cek = Siswa::where('user_id', Auth::user()->id)->count();
-        $cek_siswa = Siswa::where('user_id', Auth::user()->id)->first();
+        $cek = Siswa::siswa()->count();
+        $cek_siswa = Siswa::siswa()->first();
         $cekLulusJalurPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         //cek apakah siswa sudah pernah mendaftar melalui jalur prestasi
         $cek_prestasi = Prestasi::where('siswa_id', $cek_siswa->id  ?? '')->count();
@@ -55,7 +55,7 @@ class DashboardSiswaController extends Controller
 
     public function kartuPendaftaran()
     {
-        $siswa = Siswa::where('user_id', Auth::user()->id)->first();
+        $siswa = Siswa::siswa()->first();
         $prestasi = Prestasi::where('siswa_id', $siswa->id)->first();
         $cekLulus = Prestasi::where('siswa_id', $siswa->id)->count();
 

@@ -60,4 +60,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Sekolah::class, 'sekolah_id', 'id');
     }
+
+    public function scopeUser($query)
+    {
+        return $query->where('id', auth()->user()->id);
+    }
+
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class);
+    }
 }
