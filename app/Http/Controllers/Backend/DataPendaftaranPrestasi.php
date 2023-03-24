@@ -21,7 +21,8 @@ class DataPendaftaranPrestasi extends Controller
     {
 
         //get data prestasi
-        $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
+        // $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
+        $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
         $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->get();
         // dd($data_prestasi);

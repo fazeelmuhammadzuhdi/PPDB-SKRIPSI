@@ -28,9 +28,9 @@ class SiswaController extends Controller
         // dd($siswa);
         // dd($data);
         return view('siswa.index', [
-            'siswa' => Siswa::where('user_id', auth()->user()->id)->get(),
+            'siswa' => Siswa::siswa()->get(),
             'title' => 'BIODATA SISWA',
-            'cek' =>  Siswa::where('user_id', Auth::user()->id)->count()
+            'cek' =>  Siswa::siswa()->count()
         ]);
     }
 
@@ -48,7 +48,7 @@ class SiswaController extends Controller
         // dd($data);
         // return view('siswa.create', $data);
 
-        $cek = Siswa::where('user_id', Auth::user()->id)->count();
+        $cek = Siswa::siswa()->count();
         if ($cek == 1) {
             flash()->addError('Tidak Dapat Menambahkan Biodata Karena Biodata Anda Telah Lengkap');
         }
@@ -109,7 +109,7 @@ class SiswaController extends Controller
         // $siswa = Siswa::where('user_id', auth()->user()->id)->first();
         // $siswa = Siswa::where('user_id', $id)->first();
         // $siswa = Siswa::findOrFail($id);
-        $siswa = Siswa::where('user_id', auth()->user()->id)->findOrFail(decrypt($id));
+        $siswa = Siswa::siswa()->findOrFail(decrypt($id));
         // $siswa = Siswa::where('user_id', auth()->user()->id)->findOrFail($id); 
         // dd($siswa);
 

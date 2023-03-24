@@ -45,7 +45,7 @@ class PrestasiController extends Controller
     public function store(PrestasiStoreRequest $request)
     {
         // $siswa = Siswa::with('prestasi')->where('user_id', auth()->user()->id)->first();
-        $siswa = Siswa::where('user_id', auth()->user()->id)->first();
+        $siswa = Siswa::siswa()->first();
         // dd($siswa);
 
         $collection = collect([$request->k4sm2, $request->k5sm1, $request->k5sm2, $request->k6sm1, $request->k6sm2,]);
@@ -72,8 +72,6 @@ class PrestasiController extends Controller
         //     'tahun' => 'required',
         //     'file' => 'required|max:2048|mimes:png,jpg,jpeg',
         // ]);
-
-
 
         $nama_penghargaan = $request->nama_penghargaan;
         $tahun = $request->tahun;

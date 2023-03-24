@@ -60,7 +60,7 @@
                             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
 
 
-                        <h4 class="mb-0" style="color:#8e44ad">Data Penghargaan {{ $data_prestasi->siswa->nama_lengkap }}
+                        <h4 class="mb-3" style="color:#8e44ad">Data Penghargaan {{ $data_prestasi->siswa->nama_lengkap }}
                             (<small>{{ $data_prestasi->siswa->nisn }}</small>)
                         </h4>
                         <div class="table-responsive text-nowrap">

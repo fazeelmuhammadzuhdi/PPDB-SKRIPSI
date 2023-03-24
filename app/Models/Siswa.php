@@ -57,4 +57,9 @@ class Siswa extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeSiswa($query)
+    {
+        return $query->where('user_id', auth()->user()->id);
+    }
 }

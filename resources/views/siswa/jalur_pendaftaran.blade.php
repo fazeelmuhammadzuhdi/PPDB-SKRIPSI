@@ -113,12 +113,11 @@
             </button>
         </div>
     @endif
-    @if ($cek_prestasi == 1)
-        <div class="alert alert-success alert-dismissible" role="alert">
+    @if ($cek_prestasi == 1 && $cekLulusJalurPrestasi?->status != 1)
+        <div class="alert" role="alert" style="background-color:#0ca255; color:#fff;">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
-            <p class="mb-0">Terima Kasih Telah Melakukan Pendaftaran. Tunggu Hasil Pengumuman</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            </button>
+            <p class="mb-0" style="font-size: 18px">Terima Kasih Telah Melakukan Pendaftaran. Tunggu Hasil Pengumuman
+                Kelulusan</p>
         </div>
     @endif
     @if ($cek == 0)

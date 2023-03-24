@@ -26,4 +26,9 @@ class Sekolah extends Model
             'name' => 'Belum ada operator sekolah',
         ]);
     }
+
+    public function scopeSekolah($query)
+    {
+        return $query->where('sekolah_id', auth()->user()->id);
+    }
 }
