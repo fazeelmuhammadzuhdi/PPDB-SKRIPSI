@@ -110,7 +110,7 @@
                                             <input type="text" class="form-control" name="tahun[]" placeholder="2023"
                                                 required>
                                         </td>
-                                        <td><input type="file" class="form-control" name="file[]" accept="image/*"></td>
+                                        <td><input type="file" class="form-control" name="file[]" accept="image/*" required></td>
                                         <td><button type="button" name="add" id="add" class="btn btn-success"><i
                                                     class="fa fa-plus-circle"></i> Add</button></td>
                                     </tr>

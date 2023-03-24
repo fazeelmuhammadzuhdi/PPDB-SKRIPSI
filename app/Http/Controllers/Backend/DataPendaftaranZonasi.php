@@ -16,8 +16,8 @@ class DataPendaftaranZonasi extends Controller
      */
     public function index()
     {
-        //get data prestasi
-        $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
+        //get data sekolah
+        $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
         $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($data_prestasi);
