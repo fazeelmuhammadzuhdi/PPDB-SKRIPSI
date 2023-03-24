@@ -86,8 +86,6 @@
                                                     Lihat Sertifikat
                                                 </a>
                                             <td>
-
-
                                                 @if ($data_prestasi->status == null)
                                                     <button type="submit" class="btn btn-dark mx-1">
                                                         Diterima ✅
@@ -98,7 +96,6 @@
                                                         Ditolak ❌
                                                     </a>
                                                 @endif
-                                            </td>
                                             </td>
                                         </tr>
                                     @endforeach

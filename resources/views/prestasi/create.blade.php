@@ -102,11 +102,15 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input type="text" class="form-control" name="nama_penghargaan[]"
-                                                placeholder="Masukkan Penghargaan"></td>
-                                        <td><input type="text" class="form-control" name="tahun[]" placeholder="2023">
+                                        <td>
+                                            <input type="text" class="form-control" name="nama_penghargaan[]"
+                                                placeholder="Masukkan Penghargaan" required>
                                         </td>
-                                        <td><input type="file" class="form-control" name="file[]"></td>
+                                        <td>
+                                            <input type="text" class="form-control" name="tahun[]" placeholder="2023"
+                                                required>
+                                        </td>
+                                        <td><input type="file" class="form-control" name="file[]" accept="image/*"></td>
                                         <td><button type="button" name="add" id="add" class="btn btn-success"><i
                                                     class="fa fa-plus-circle"></i> Add</button></td>
                                     </tr>

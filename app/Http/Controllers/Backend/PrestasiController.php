@@ -67,11 +67,11 @@ class PrestasiController extends Controller
         $prestasi = Prestasi::create($requestData);
         // dd($prestasi);
 
-        // $validator = $request->validate([
-        //     'nama_penghargaan' => 'required',
-        //     'tahun' => 'required',
-        //     'file' => 'required|max:2048|mimes:png,jpg,jpeg',
-        // ]);
+        $validator = $request->validate([
+            'nama_penghargaan' => 'required',
+            'tahun' => 'required',
+            'file' => 'nullable', 'max:2048', 'mimes:jpg,jpeg,png'
+        ]);
 
         $nama_penghargaan = $request->nama_penghargaan;
         $tahun = $request->tahun;

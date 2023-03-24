@@ -29,8 +29,13 @@
              <li class="nav-item navbar-dropdown dropdown-user dropdown">
                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                      <div class="avatar avatar-online">
-                         @if (auth()->user()->akses == 'Siswa')
+
+
+                         @if (auth()->user()->akses == 'Siswa' && auth()->user()->siswa?->foto != null)
                              <img src="{{ Storage::url(Auth::user()->siswa->foto) }}" alt
+                                 class="w-px-30 h-auto rounded-circle" />
+                         @else
+                             <img src="{{ asset('sneat/assets/img/avatars/1.png') }}" alt
                                  class="w-px-30 h-auto rounded-circle" />
                          @endif
                      </div>
@@ -41,9 +46,12 @@
                              <div class="d-flex">
                                  <div class="flex-shrink-0 me-3">
                                      <div class="avatar avatar-online">
-                                         @if (auth()->user()->akses == 'Siswa')
+                                         @if (auth()->user()->akses == 'Siswa' && auth()->user()->siswa?->foto != null)
                                              <img src="{{ Storage::url(Auth::user()->siswa->foto) }}" alt
-                                                 class="w-px-40 h-auto rounded-circle" />
+                                                 class="w-px-30 h-auto rounded-circle" />
+                                         @else
+                                             <img src="{{ asset('sneat/assets/img/avatars/1.png') }}" alt
+                                                 class="w-px-30 h-auto rounded-circle" />
                                          @endif
                                      </div>
                                  </div>

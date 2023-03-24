@@ -105,10 +105,11 @@
     @endif
 
     @if ($cek == 0)
-        <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert alert-danger alert-dismissible" role="alert" style="background-color: red; color: #FFF;">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
             <p class="mb-0">BIODATA ANDA BELUM LENGKAP. SILAHKAN LENGKAPI BIODATA TERLEBIH DAHULU SEBELUM MELAKUKAN
                 PENDAFTARAN</p>
+            <span><a href="{{ route('siswa.create') }}" style="color: #FFF">Klik Disini Untuk Melengkapi Biodata</a></span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             </button>
         </div>
@@ -120,15 +121,7 @@
                 Kelulusan</p>
         </div>
     @endif
-    @if ($cek == 0)
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
-            <p class="mb-0">BIODATA ANDA BELUM LENGKAP. SILAHKAN LENGKAPI BIODATA TERLEBIH DAHULU SEBELUM MELAKUKAN
-                PENDAFTARAN</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            </button>
-        </div>
-    @endif
+
 
     @if ($cekLulusJalurPrestasi?->status == 1)
         <div class="card">
