@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Penghargaan;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
@@ -22,7 +23,7 @@ class DataPendaftaranPrestasi extends Controller
         //get data prestasi
         $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
         // dd($sekolah);
-        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
+        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->get();
         // dd($data_prestasi);
         return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah'));
     }
@@ -59,9 +60,10 @@ class DataPendaftaranPrestasi extends Controller
         // dd($sekolah);
         // $data_prestasi = Prestasi::where('sekolah_id', $sekolah->id)->findOrFail($id);
         $data_prestasi = Prestasi::findOrFail(decrypt($id));
+        $penghargaan = Penghargaan::where('siswa_id', $data_prestasi->siswa_id)->get();
         // dd($data_prestasi);
 
-        return view('sekolah.detail_prestasi', compact('data_prestasi'));
+        return view('sekolah.detail_prestasi', compact('data_prestasi', 'penghargaan'));
     }
 
     /**

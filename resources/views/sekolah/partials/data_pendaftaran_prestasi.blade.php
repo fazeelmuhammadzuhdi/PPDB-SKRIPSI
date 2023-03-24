@@ -8,7 +8,7 @@
 <h2>Data Pendaftaran</h2>
 <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }}.</p>
 <div class="table-responsive text-nowrap">
-    <table class="table table-hover" id="myTable">
+    <table class="table table-hover" id="myTablePrestasi">
         <thead>
             <tr>
                 <th width="1%">No</th>
@@ -54,16 +54,11 @@
         </tbody>
     </table>
 </div>
-{{-- </div>
-        </div>
-    </div>
-</div> --}}
-
 
 @push('after-script')
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTablePrestasi').DataTable();
         });
     </script>
 @endpush

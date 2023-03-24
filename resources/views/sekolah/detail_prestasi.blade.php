@@ -55,18 +55,56 @@
                             <hr style="border: 1px solid gray">
                         </div>
 
-                        <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary">
+
+                        <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary mb-3">
                             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
 
-                        @if ($data_prestasi->status == null)
-                            <button type="submit" class="btn btn-dark mx-1">
-                                Diterima ✅
-                            </button>
 
-                            <a href="{{ route('updateStatusDitolak', $data_prestasi->id) }}" class="btn btn-dark mx-1">
-                                Ditolak ❌
-                            </a>
-                        @endif
+                        <h4 class="mb-0" style="color:#8e44ad">Data Penghargaan {{ $data_prestasi->siswa->nama_lengkap }}
+                            (<small>{{ $data_prestasi->siswa->nisn }}</small>)
+                        </h4>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-hover" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th width="1%">No</th>
+                                        <th>Nama Penghargaan</th>
+                                        <th>Tahun</th>
+                                        <th>File</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($penghargaan as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->nama_penghargaan }}</td>
+                                            <td>{{ $item->tahun }}</td>
+                                            <td>
+                                                <a href="javascript:void(0)"
+                                                    onclick="popupCenter({url: '{{ url('/images/prestasi/' . $item->file) }}', title: 'Sertifikat', w: 800, h: 600});">
+                                                    Lihat Sertifikat
+                                                </a>
+                                            <td>
+
+
+                                                @if ($data_prestasi->status == null)
+                                                    <button type="submit" class="btn btn-dark mx-1">
+                                                        Diterima ✅
+                                                    </button>
+
+                                                    <a href="{{ route('updateStatusDitolak', $data_prestasi->id) }}"
+                                                        class="btn btn-dark">
+                                                        Ditolak ❌
+                                                    </a>
+                                                @endif
+                                            </td>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </form>
