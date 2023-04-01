@@ -30,6 +30,7 @@ class PrestasiStoreRequest extends FormRequest
             'k5sm1' => 'required',
             'k5sm2' => 'required',
             'k4sm2' => 'required',
+            'bukti_nilai_rapor' => 'required|file|mimes:pdf|max:2048',
         ];
     }
 
@@ -42,6 +43,8 @@ class PrestasiStoreRequest extends FormRequest
             'k5sm1.required' => ':attribute Tidak Boleh Kosong',
             'k5sm2.required' => ':attribute Tidak Boleh Kosong',
             'k4sm2.required' => ':attribute Tidak Boleh Kosong',
+            'bukti_nilai_rapor.required' => ':attribute Tidak Boleh Kosong',
+            'bukti_nilai_rapor.max' => ':attribute Maksimal 2 MB',
         ];
     }
 
@@ -54,7 +57,8 @@ class PrestasiStoreRequest extends FormRequest
             'k5sm1' => 'Nilai Rapor Kelas 5 Semester 1',
             'k5sm2' => 'Nilai Rapor Kelas 5 Semester 2',
             'k4sm2' => 'Nilai Rapor Kelas 4 Semester 2',
-            
+            'bukti_nilai_rapor' => 'Bukti Nilai Rapor',
+
         ];
     }
 }

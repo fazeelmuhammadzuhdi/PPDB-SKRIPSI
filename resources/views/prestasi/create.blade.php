@@ -79,7 +79,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-4">
+                            <div class="form-group col-4 mb-3">
                                 <label for="sekolah_id" class="form-label">Nama Sekolah Pendaftaran</label>
                                 {!! Form::select('sekolah_id', $sekolah, null, [
                                     'class' => 'form-control select2',
@@ -88,6 +88,25 @@
                                 <small class="text-danger">{{ $errors->first('sekolah_id') }}</small>
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <div class="form-group col-12">
+                                <label for="bukti_nilai_rapor" class="form-label">Bukti Nilai Rapor <small
+                                        class="text-danger">(Harus Format
+                                        Pdf)</small></label>
+                                <input type="file" class="form-control @error('bukti_nilai_rapor') is-invalid @enderror"
+                                    id="bukti_nilai_rapor" name="bukti_nilai_rapor" accept="application/pdf">
+
+                                @error('bukti_nilai_rapor')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
 
                         <h3 class="mb-3">Data Penghargaan</h3> <small class="text-muted float-end">
 
@@ -110,7 +129,8 @@
                                             <input type="text" class="form-control" name="tahun[]" placeholder="2023"
                                                 required>
                                         </td>
-                                        <td><input type="file" class="form-control" name="file[]" accept="image/*" required></td>
+                                        <td><input type="file" class="form-control" name="file[]" accept="image/*"
+                                                required></td>
                                         <td><button type="button" name="add" id="add" class="btn btn-success"><i
                                                     class="fa fa-plus-circle"></i> Add</button></td>
                                     </tr>

@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                 @else
-                                    <div class="col-8">
+                                    {{-- <div class="col-8">
                                         <div class="card-body">
                                             <div class="alert alert-info d-flex" role="alert">
                                                 <span
@@ -126,7 +126,7 @@
                                             </div>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 @endif
                             </center>
                         </div>

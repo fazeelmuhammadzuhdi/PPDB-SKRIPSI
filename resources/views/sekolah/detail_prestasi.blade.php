@@ -49,6 +49,12 @@
                                     <small>*Pembulatan</small></label>
                                 <input type="text" class="form-control-plaintext" value="{{ $data_prestasi->jumlah }}">
                             </div>
+                            <div class="form-group col-4">
+
+
+
+
+                            </div>
                         </div>
 
                         <div class="col-lg-12">
@@ -58,6 +64,11 @@
 
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary mb-3">
                             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
+                        <a href="{{ route('viewpdf', $data_prestasi->id) }}" class="btn mb-3"
+                            style="background-color: #8e44ad; color: white">
+                            <i class="fa fa-file" aria-hidden="true"></i> View
+                            Bukti Nilai Rapor</a>
+
 
 
                         <h4 class="mb-3" style="color:#8e44ad">Data Penghargaan {{ $data_prestasi->siswa->nama_lengkap }}

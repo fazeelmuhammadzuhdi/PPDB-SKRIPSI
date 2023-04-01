@@ -7,7 +7,9 @@ use App\Models\Penghargaan;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Termwind\Components\Dd;
 
 class DataPendaftaranPrestasi extends Controller
@@ -119,4 +121,16 @@ class DataPendaftaranPrestasi extends Controller
         flash('Status Berhasil Di Update');
         return redirect()->route('data_pendaftaran_prestasi.index');
     }
+
+
+    // public function viewPdf($id)
+    // {
+    //     $data = Prestasi::findOrFail(($id));
+
+    //     $title = "Cetak Bukti Nilai Rapor";
+
+    //     $pdf = Pdf::loadView('prestasi.view_pdf', compact('data', 'title'));
+    //     $namaFile = "Bukti Nilai Rapor" . $data->id;
+    //     return $pdf->stream($namaFile);
+    // }
 }
