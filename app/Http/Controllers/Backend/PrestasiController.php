@@ -9,7 +9,6 @@ use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
-use Termwind\Components\Dd;
 
 class PrestasiController extends Controller
 {

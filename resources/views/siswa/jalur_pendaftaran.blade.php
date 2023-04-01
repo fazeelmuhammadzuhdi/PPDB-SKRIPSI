@@ -114,6 +114,7 @@
             </button>
         </div>
     @endif
+
     @if ($cek_prestasi == 1 && $cekLulusJalurPrestasi?->status != 1)
         <div class="alert" role="alert" style="background-color:#0ca255; color:#fff;">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
@@ -121,6 +122,8 @@
                 Kelulusan</p>
         </div>
     @endif
+
+
 
 
     @if ($cekLulusJalurPrestasi?->status == 1)

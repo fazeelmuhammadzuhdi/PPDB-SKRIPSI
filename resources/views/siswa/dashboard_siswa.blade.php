@@ -71,10 +71,11 @@
                                                 <div class="d-flex flex-column ps-1">
                                                     <h2
                                                         class="alert-heading d-flex justify-content-center align-items-center fw-bold mb-1">
-                                                        {{-- {{ $pesanLulus }} --}}
                                                         Selamat Anda Diterima Di Sekolah {{ $cekLulus->sekolah->nama }}
                                                     </h2>
-                                                    <p class="mt-2">Klik Disini Untuk <a href="{{ route('kartu_pendaftaran') }}">Cetak Kartu Pendaftaran</a></p>
+                                                    <p class="mt-2">Klik Disini Untuk <a
+                                                            href="{{ route('kartu_pendaftaran') }}">Cetak Kartu
+                                                            Pendaftaran</a></p>
                                                 </div>
 
                                             </div>
@@ -91,7 +92,6 @@
                                                 <div class="d-flex flex-column ps-1">
                                                     <h2
                                                         class="alert-heading d-flex justify-content-center align-items-center fw-bold mb-1">
-                                                        {{-- {{ $pesanLulus }} --}}
                                                         Maaf, Anda Belum Lulus
                                                     </h2>
                                                     <span style="width:100%">Silahkan Lanjutkan Pendaftaran..</span>
@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                 @else
-                                    {{-- <div class="col-8">
+                                    <div class="col-8">
                                         <div class="card-body">
                                             <div class="alert alert-info d-flex" role="alert">
                                                 <span
@@ -126,7 +126,7 @@
                                             </div>
 
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 @endif
                             </center>
                         </div>
