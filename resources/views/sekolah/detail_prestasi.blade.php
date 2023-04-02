@@ -49,12 +49,6 @@
                                     <small>*Pembulatan</small></label>
                                 <input type="text" class="form-control-plaintext" value="{{ $data_prestasi->jumlah }}">
                             </div>
-                            <div class="form-group col-4">
-
-
-
-
-                            </div>
                         </div>
 
                         <div class="col-lg-12">
@@ -96,6 +90,7 @@
                                                     onclick="popupCenter({url: '{{ url('/images/prestasi/' . $item->file) }}', title: 'Sertifikat', w: 800, h: 600});">
                                                     Lihat Sertifikat
                                                 </a>
+                                            </td>
                                             <td>
                                                 @if ($data_prestasi->status == null)
                                                     <button type="submit" class="btn btn-dark mx-1">

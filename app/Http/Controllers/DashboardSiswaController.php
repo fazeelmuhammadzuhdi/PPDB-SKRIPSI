@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Afirmasi;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
@@ -49,8 +50,10 @@ class DashboardSiswaController extends Controller
         $cekLulusJalurPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         //cek apakah siswa sudah pernah mendaftar melalui jalur prestasi
         $cek_prestasi = Prestasi::where('siswa_id', $cek_siswa->id  ?? '')->count();
+        $cek_afirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->count();
+        // dd($cek_afirmasi);
         // dd($cek_prestasi);
-        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi', 'cek_siswa'));
+        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi', 'cek_siswa', 'cek_afirmasi'));
     }
 
     public function kartuPendaftaran()

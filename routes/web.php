@@ -2,20 +2,18 @@
 
 use App\Http\Controllers\Backend\AdminSekolahController;
 use App\Http\Controllers\Backend\AdminSekolahShowController;
-use App\Http\Controllers\Backend\DataPendaftaran;
+use App\Http\Controllers\Backend\AfirmasiController;
+use App\Http\Controllers\Backend\DataPendaftaranAfirmasi;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
-use App\Http\Controllers\Backend\DataPendaftaranZonasi;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
 use App\Http\Controllers\Backend\PrestasiController;
-use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\SiswaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\UserSiswaController;
 use App\Http\Controllers\DashboardDinasController;
 use App\Http\Controllers\DashboardSiswaController;
-use App\Models\Prestasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,14 +40,16 @@ Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
 
 Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
-    //ini route khusus untuk dinas pendidikan
+    //ini route khusus untuk dinas pendidikan dan admin sekolah
     Route::get('dashboard', [DashboardDinasController::class, 'index'])->name('dashboard_dinas');
     Route::resource('user', UserController::class);
     Route::resource('user-sekolah', AdminSekolahController::class);
     Route::get('viewpdf/{id}', [DataPendaftaranPrestasi::class, 'viewPdf'])->name('viewpdf');
     Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_prestasi', DataPendaftaranPrestasi::class);
-    Route::resource('data_pendaftaran_zonasi', DataPendaftaranZonasi::class);
+    Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+    Route::get('status/{id}/gagal', [DataPendaftaranAfirmasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+    Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class);
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
@@ -78,8 +78,8 @@ Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     Route::get('kartupendaftaran', [DashboardSiswaController::class, 'kartuPendaftaran'])->name('kartu_pendaftaran');
     Route::resource('siswa', SiswaController::class);
     Route::resource('usersiswa', UserSiswaController::class);
-
     Route::resource('prestasi', PrestasiController::class);
+    Route::resource('afirmasi', AfirmasiController::class);
 });
 
 Auth::routes();

@@ -58,9 +58,6 @@ class PrestasiController extends Controller
         $hasil = round($mapped->avg());
         // dd($hasil);
         $requestData = $request->validated();
-
-
-
         $requestData['siswa_id'] = $siswa->id;
         $requestData['jumlah'] = $hasil;
         if ($request->hasFile('bukti_nilai_rapor')) {

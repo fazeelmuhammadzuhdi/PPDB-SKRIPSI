@@ -80,10 +80,10 @@
                             </div>
 
                             <div class="form-group col-4 mb-3">
-                                <label for="sekolah_id" class="form-label">Nama Sekolah Pendaftaran</label>
+                                <label for="sekolah_id" class="form-label">Sekolah Tujuan</label>
                                 {!! Form::select('sekolah_id', $sekolah, null, [
                                     'class' => 'form-control select2',
-                                    'placeholder' => 'Pilih Nama Sekolah',
+                                    'placeholder' => 'Pilih Nama Sekolah Tujuan',
                                 ]) !!}
                                 <small class="text-danger">{{ $errors->first('sekolah_id') }}</small>
                             </div>
@@ -91,12 +91,10 @@
 
                         <div class="row mb-3">
                             <div class="form-group col-12">
-                                <label for="bukti_nilai_rapor" class="form-label">Bukti Nilai Rapor <small
-                                        class="text-danger">(Harus Format
-                                        Pdf)</small></label>
+                                <label for="bukti_nilai_rapor" class="form-label">Bukti Nilai Rapor </label>
                                 <input type="file" class="form-control @error('bukti_nilai_rapor') is-invalid @enderror"
                                     id="bukti_nilai_rapor" name="bukti_nilai_rapor" accept="application/pdf">
-
+                                <small class="text-danger">Nilai Rapor Sem 4 - 6, Format Pdf, (Maksimal Ukuran 2 Mb)</small>
                                 @error('bukti_nilai_rapor')
                                     <div class="invalid-feedback">
                                         {{ $message }}

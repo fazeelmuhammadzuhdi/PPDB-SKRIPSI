@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Afirmasi;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
-class DataPendaftaranZonasi extends Controller
+class DataPendaftaranAfirmasi extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +17,7 @@ class DataPendaftaranZonasi extends Controller
      */
     public function index()
     {
-        //get data sekolah
-        $sekolah = Sekolah::sekolah()->first();
-        // dd($sekolah);
-        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
-        // dd($data_prestasi);
-        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah'));
+        //
     }
 
     /**
@@ -53,8 +49,8 @@ class DataPendaftaranZonasi extends Controller
      */
     public function show($id)
     {
-        $data_prestasi = Prestasi::findOrFail(decrypt($id));
-        return view('sekolah.detail_zonasi', compact('data_prestasi'));
+        $data_afirmasi = Afirmasi::findOrFail(decrypt($id));
+        return view('sekolah.detail_afirmasi', compact('data_afirmasi'));
     }
 
     /**
@@ -77,7 +73,13 @@ class DataPendaftaranZonasi extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lulus = Afirmasi::where('id', $id)->update([
+            'status' => 1
+        ]);
+        // dd($lulus);
+
+        flash('Status Berhasil Di Update');
+        return redirect()->route('data_pendaftaran_prestasi.index');
     }
 
     /**
@@ -89,5 +91,16 @@ class DataPendaftaranZonasi extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateStatusDitolak($id)
+    {
+        $lulus = Afirmasi::where('id', $id)->update([
+            'status' => 2
+        ]);
+        // dd($lulus);
+
+        flash('Status Berhasil Di Update');
+        return redirect()->route('data_pendaftaran_prestasi.index');
     }
 }

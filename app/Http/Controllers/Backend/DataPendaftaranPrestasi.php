@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Afirmasi;
 use App\Models\Penghargaan;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
@@ -27,8 +28,9 @@ class DataPendaftaranPrestasi extends Controller
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
         $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->get();
+        $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($data_prestasi);
-        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah'));
+        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah', 'afirmasi'));
     }
 
     /**

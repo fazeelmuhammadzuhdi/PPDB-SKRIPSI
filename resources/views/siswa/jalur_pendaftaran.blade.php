@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    @if ($cek > 0 && $cek_prestasi != 1)
+    @if ($cek > 0 && $cek_prestasi != 1 && $cek_afirmasi != 1)
         <div class="row">
             <div class="col-lg-3 col-6">
 
@@ -44,7 +44,7 @@
                     <div class="icon">
                         <i class="fas fa-brands fa-github"></i>
                     </div>
-                    <a href="{{ route('dashboard_siswa') }}" class="small-box-footer">Klik Disini &nbsp;
+                    <a href="{{ route('afirmasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
                         <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -115,15 +115,14 @@
         </div>
     @endif
 
-    @if ($cek_prestasi == 1 && $cekLulusJalurPrestasi?->status != 1)
+    {{-- @if ($cek_prestasi == 1 && $cekLulusJalurPrestasi?->status != 1) --}}
+    @if ($cek_prestasi == 1 || $cek_afirmasi == 1)
         <div class="alert" role="alert" style="background-color:#0ca255; color:#fff;">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
             <p class="mb-0" style="font-size: 18px">Terima Kasih Telah Melakukan Pendaftaran. Tunggu Hasil Pengumuman
                 Kelulusan</p>
         </div>
     @endif
-
-
 
 
     @if ($cekLulusJalurPrestasi?->status == 1)
