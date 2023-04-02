@@ -48,12 +48,13 @@ class DashboardSiswaController extends Controller
         $cek = Siswa::siswa()->count();
         $cek_siswa = Siswa::siswa()->first();
         $cekLulusJalurPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
-        //cek apakah siswa sudah pernah mendaftar melalui jalur prestasi
+        $cekLulusJalurAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        //cek apakah siswa sudah pernah mendaftar melalui jalur prestasi, afirmasi dll
         $cek_prestasi = Prestasi::where('siswa_id', $cek_siswa->id  ?? '')->count();
         $cek_afirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->count();
         // dd($cek_afirmasi);
         // dd($cek_prestasi);
-        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi', 'cek_siswa', 'cek_afirmasi'));
+        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi', 'cek_siswa', 'cek_afirmasi', 'cekLulusJalurAfirmasi'));
     }
 
     public function kartuPendaftaran()

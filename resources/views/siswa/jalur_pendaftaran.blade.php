@@ -116,16 +116,16 @@
     @endif
 
     {{-- @if ($cek_prestasi == 1 && $cekLulusJalurPrestasi?->status != 1) --}}
-    @if ($cek_prestasi == 1 || $cek_afirmasi == 1)
+    {{-- @if ($cek_prestasi == 1 || $cek_afirmasi == 1 || $cekLulusJalurPrestasi?->status != 1 || $cekLulusJalurAfirmasi?->status != 1)
         <div class="alert" role="alert" style="background-color:#0ca255; color:#fff;">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
             <p class="mb-0" style="font-size: 18px">Terima Kasih Telah Melakukan Pendaftaran. Tunggu Hasil Pengumuman
                 Kelulusan</p>
         </div>
-    @endif
+    @endif --}}
 
 
-    @if ($cekLulusJalurPrestasi?->status == 1)
+    @if ($cekLulusJalurPrestasi?->status == 1 || $cekLulusJalurAfirmasi?->status == 1)
         <div class="card">
             <div class="card-body">
                 <div class="panel-body">
@@ -147,9 +147,24 @@
                                         </td>
                                     </tr>
                                 @endif
+                                @if ($cek_afirmasi)
+                                    <tr>
+                                        <td width="30%"><b>Jalur Pendaftaran</b></td>
+                                        <td width="50%">AFIRMASI</td>
+                                        <td width="20%" rowspan="8">
+                                            <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
+                                        </td>
+                                    </tr>
+                                @endif
                                 <tr>
-                                    <td><b>Sekolah Pendaftaran</b></td>
-                                    <td>{{ $cekLulusJalurPrestasi->sekolah->nama }}</td>
+                                    @if ($cek_prestasi)
+                                        <td><b>Sekolah Pendaftaran</b></td>
+                                        <td>{{ $cekLulusJalurPrestasi->sekolah->nama }}</td>
+                                    @endif
+                                    @if ($cek_afirmasi)
+                                        <td><b>Sekolah Pendaftaran</b></td>
+                                        <td>{{ $cekLulusJalurAfirmasi->sekolah->nama }}</td>
+                                    @endif
                                 </tr>
                                 <tr>
                                     <td><b>NISN</b></td>
