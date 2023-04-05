@@ -4,9 +4,11 @@ use App\Http\Controllers\Backend\AdminSekolahController;
 use App\Http\Controllers\Backend\AdminSekolahShowController;
 use App\Http\Controllers\Backend\AfirmasiController;
 use App\Http\Controllers\Backend\DataPendaftaranAfirmasi;
+use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
+use App\Http\Controllers\Backend\PindahTugasOrangTuaController;
 use App\Http\Controllers\Backend\PrestasiController;
 use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\SiswaController;
@@ -50,6 +52,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::get('status/{id}/gagal', [DataPendaftaranAfirmasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class);
+    Route::resource('data_pendaftaran_pindah_tugas', DataPendaftaranPindahTugas::class);
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
@@ -80,6 +83,7 @@ Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     Route::resource('usersiswa', UserSiswaController::class);
     Route::resource('prestasi', PrestasiController::class);
     Route::resource('afirmasi', AfirmasiController::class);
+    Route::resource('pindahtugas', PindahTugasOrangTuaController::class);
 });
 
 Auth::routes();
