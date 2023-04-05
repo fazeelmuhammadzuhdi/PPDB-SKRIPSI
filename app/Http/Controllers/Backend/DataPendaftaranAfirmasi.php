@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Afirmasi;
-use App\Models\Prestasi;
-use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
 class DataPendaftaranAfirmasi extends Controller

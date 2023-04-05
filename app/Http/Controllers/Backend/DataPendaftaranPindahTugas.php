@@ -48,7 +48,7 @@ class DataPendaftaranPindahTugas extends Controller
     public function show($id)
     {
         $title = 'Detail Pendaftaran Pindah Tugas';
-        $dataPindahTugas = PindahTugas::findOrFail(decrypt($id));
+        $dataPindahTugas = PindahTugas::with('siswa', 'sekolah')->findOrFail(decrypt($id));
         return view('sekolah.detail_pindah_tugas', compact('dataPindahTugas', 'title'));
     }
 
@@ -90,5 +90,16 @@ class DataPendaftaranPindahTugas extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateStatusDitolak($id)
+    {
+        $lulus = PindahTugas::where('id', $id)->update([
+            'status' => 2
+        ]);
+        // dd($lulus);
+
+        flash('Status Berhasil Di Update');
+        return redirect()->route('data_pendaftaran_prestasi.index');
     }
 }
