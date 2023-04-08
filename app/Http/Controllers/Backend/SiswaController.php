@@ -59,6 +59,7 @@ class SiswaController extends Controller
             'penghasilan' => Penghasilan::all(),
             'pekerjaan' => Pekerjaan::all(),
             'cek' => $cek,
+            'noPendaftaran' => Siswa::noPendaftaran()
         ]);
     }
 

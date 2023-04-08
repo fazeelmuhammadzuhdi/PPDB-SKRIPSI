@@ -24,7 +24,7 @@ class SiswaStoreRequest extends FormRequest
     {
         return [
             'nama_lengkap' => 'required',
-            // 'nisn' => 'required|unique:siswas',
+            'no_pendaftaran' => 'nullable|unique:siswas',
             'nisn' => 'required|unique:siswas|min:10|numeric',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',

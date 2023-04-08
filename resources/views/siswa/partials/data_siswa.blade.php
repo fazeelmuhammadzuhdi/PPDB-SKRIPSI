@@ -53,6 +53,9 @@
                         {{ $message }}
                     </div>
                 @enderror
+                <input type="hidden" name="no_pendaftaran"
+                    class="form-control @error('no_pendaftaran') is-invalid @enderror" id="no_pendaftaran"
+                    placeholder="Inputkan Nama" autocomplete="off" value="{{ $noPendaftaran }}">
 
                 <div class="mt-3">
                     <label for="nisn" class="form-label">NISN *</label>
@@ -201,8 +204,7 @@
                 </div>
                 <div class="mt-3">
                     <label for="alamat">Alamat Rumah *</label>
-                    <textarea name="alamat" id="alamat" cols="50" rows="2"
-                        class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $siswa->alamat ?? '') }}
+                    <textarea name="alamat" id="editor" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $siswa->alamat ?? '') }}
                     </textarea>
 
                     @error('alamat')

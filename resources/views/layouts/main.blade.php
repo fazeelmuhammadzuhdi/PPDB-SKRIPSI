@@ -98,11 +98,23 @@
   </body>
 </html>
 
+<script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
 <script>
     $(document).ready(function() {
         $('.select2').select2();
     });
+
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 </script>
+
+
 
 <script>
     const popupCenter = ({

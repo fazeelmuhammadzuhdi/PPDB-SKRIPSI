@@ -126,7 +126,10 @@
     @endif
 
 
-    @if ($cekLulusJalurPrestasi?->status == 1 || $cekLulusJalurAfirmasi?->status == 1)
+    @if (
+        $cekLulusJalurPrestasi?->status == 1 ||
+            $cekLulusJalurAfirmasi?->status == 1 ||
+            $cekLulusJalurPindahTugas?->status == 1)
         <div class="card">
             <div class="card-body">
                 <div class="panel-body">
@@ -139,11 +142,12 @@
                         <hr>
                         <table width="80%" class="table table-bordered">
                             <tbody>
+
                                 @if ($cek_prestasi)
                                     <tr>
                                         <td width="30%"><b>Jalur Pendaftaran</b></td>
-                                        <td width="50%">ZONASI</td>
-                                        <td width="20%" rowspan="8">
+                                        <td width="50%">PRESTASI</td>
+                                        <td width="20%" rowspan="9">
                                             <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
                                         </td>
                                     </tr>
@@ -152,11 +156,25 @@
                                     <tr>
                                         <td width="30%"><b>Jalur Pendaftaran</b></td>
                                         <td width="50%">AFIRMASI</td>
-                                        <td width="20%" rowspan="8">
+                                        <td width="20%" rowspan="9">
                                             <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
                                         </td>
                                     </tr>
                                 @endif
+                                @if ($cek_pindah_tugas)
+                                    <tr>
+                                        <td width="30%"><b>Jalur Pendaftaran</b></td>
+                                        <td width="50%">PINDAH TUGAS ORANG TUA</td>
+                                        <td width="20%" rowspan="9">
+                                            <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
+                                        </td>
+                                    </tr>
+                                @endif
+                                <tr>
+                                    <td><b>NO PENDAFTARAN</b></td>
+                                    <td><span class="badge rounded-pill bg-info fw-bold">{{ $cek_siswa->no_pendaftaran }}</span>
+                                    </td>
+                                </tr>
                                 <tr>
                                     @if ($cek_prestasi)
                                         <td><b>Sekolah Pendaftaran</b></td>
@@ -166,7 +184,12 @@
                                         <td><b>Sekolah Pendaftaran</b></td>
                                         <td>{{ $cekLulusJalurAfirmasi->sekolah->nama }}</td>
                                     @endif
+                                    @if ($cek_pindah_tugas)
+                                        <td><b>Sekolah Pendaftaran</b></td>
+                                        <td>{{ $cekLulusJalurPindahTugas->sekolah->nama }}</td>
+                                    @endif
                                 </tr>
+
                                 <tr>
                                     <td><b>NISN</b></td>
                                     <td>{{ $cek_siswa->nisn }}</td>

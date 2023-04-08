@@ -25,9 +25,9 @@
             @foreach ($prestasi as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->siswa->nama_lengkap }}</td>
-                    <td>{{ $item->siswa->jenis_kelamin == 'P' ? 'Laki - Laki' : 'Perempuan' }}</td>
-                    <td>{{ $item->siswa->nisn }}</td>
+                    <td>{{ $item->siswa?->nama_lengkap }}</td>
+                    <td>{{ $item->siswa?->jenis_kelamin == 'P' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                    <td>{{ $item->siswa?->nisn }}</td>
                     <td class="text-center">{{ $item->jumlah }}</td>
                     <td>
                         @if ($item->status == 1)
@@ -39,7 +39,7 @@
                         @endif
                     </td>
                     <td>
-                        <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
+                        <img src="{{ Storage::url($item->siswa?->foto) }}" alt="" width="30">
                     </td>
                     <td>
                         <a href="{{ route('data_pendaftaran_prestasi.show', encrypt($item->id)) }}"

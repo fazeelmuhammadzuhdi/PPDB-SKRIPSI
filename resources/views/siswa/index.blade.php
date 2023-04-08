@@ -90,7 +90,7 @@
                                                     <td><b>Agama</b> :</td>
                                                     <td> {{ $item->agama }}</td>
                                                     <td><b>Alamat Rumah</b> :</td>
-                                                    <td> {{ $item->alamat }}</td>
+                                                    <td> {!! $item->alamat !!}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Nama Ayah</b>:</td>
