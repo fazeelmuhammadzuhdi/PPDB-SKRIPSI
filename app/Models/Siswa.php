@@ -76,6 +76,16 @@ class Siswa extends Model
         return $this->hasMany(Prestasi::class);
     }
 
+    public function pindahTugas(): HasMany
+    {
+        return $this->hasMany(PindahTugas::class, 'siswa_id', 'id');
+    }
+
+    public function afirmasis(): HasMany
+    {
+        return $this->hasMany(Afirmasi::class);
+    }
+
     /**
      * Get the user that owns the Siswa
      *

@@ -40,6 +40,7 @@
                         <div class="modal-footer justify-content-between m-0 p-0">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                                 id="btn-tutup">Close</button>
+
                             <button type="submit" class="btn btn-primary"><i class="fa fa-eye"></i> Lihat</button>
                         </div>
                     </form>

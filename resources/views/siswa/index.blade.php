@@ -68,20 +68,31 @@
                                                             class="btn btn-success mt-5 d-flex justify-content-center align-items-center">
                                                             <i class="fa fa-edit"> &nbsp; </i> Edit Data</a>
                                                     </td>
+                                                    <td><b>No Pendaftaran</b>:</td>
+                                                    <td><span class="badge rounded bg-primary fw-bold">
+                                                            {{ $item->no_pendaftaran }}
+                                                        </span>
+                                                    </td>
                                                     <td><b>NISN</b> :</td>
-                                                    <td> {{ $item->nisn }}</td>
+                                                    <td>
+                                                        <span class="badge rounded bg-success fw-bold">
+                                                            {{ $item->nisn }}
+                                                        </span>
+                                                    </td>
                                                     <td><b>NO KK</b> :</td>
-                                                    <td>{{ $item->no_kk }}</td>
-                                                    <td><b>NIK</b> :</td>
-                                                    <td> {{ $item->no_nik }} </td>
+                                                    <td>
+                                                        <span class="badge rounded bg-dark fw-bold">
+                                                            {{ $item->no_kk }}
+                                                        </span>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Nama Lengkap</b>:</td>
                                                     <td> {{ $item->nama_lengkap }}</td>
-                                                    <td><b>Tempat Lahir</b> :</td>
-                                                    <td> {{ $item->tempat_lahir }}</td>
-                                                    <td><b>Tanggal Lahir</b>:</td>
-                                                    <td> {{ $item->tanggal_lahir->format('d F Y') }}</td>
+                                                    <td><b>TTL</b> :</td>
+                                                    <td> {{ $item->tempat_tanggal_lahir }} </td>
+                                                    <td><b>NIK</b> :</td>
+                                                    <td> {{ $item->no_nik }} </td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Jenis Kelamin</b>:</td>

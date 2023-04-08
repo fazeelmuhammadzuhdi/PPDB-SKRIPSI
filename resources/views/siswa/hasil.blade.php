@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.blank')
 
 @section('content')
     <div class="row justify-content-center">
@@ -31,7 +31,7 @@
 
                             </div>
                         </div>
-                    @else
+                    @elseif ($cekLulusPrestasi?->status == 2 || $cekLulusAfirmasi?->status == 2 || $cekLulusPindahTugas?->status == 2)
                         <div class="col-8">
                             <div class="card-body">
                                 <div class="alert alert-danger d-flex" role="alert">
@@ -43,6 +43,23 @@
                                             Maaf, Anda Belum Lulus
                                         </h2>
                                         <span style="width:100%">Silahkan Lanjutkan Pendaftaran..</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    @else
+                        <div class="col-8">
+                            <div class="card-body">
+                                <div class="alert alert-danger d-flex" role="alert">
+                                    <span class="badge badge-center rounded-pill bg-danger border-label-danger p-3 me-2"><i
+                                            class="bx bx-detail fs-6"></i></span>
+                                    <div class="d-flex flex-column ps-1">
+                                        <h2
+                                            class="alert-heading d-flex justify-content-center align-items-center fw-bold mb-1">
+                                            Sedang Dalam Proses Seleksi
+                                        </h2>
                                     </div>
 
                                 </div>
