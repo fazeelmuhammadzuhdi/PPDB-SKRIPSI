@@ -146,6 +146,12 @@
                     <div data-i18n="Analytics">Pendaftaran</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('cek') ? 'active' : '' }}">
+                <a href="{{ route('cek') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Hasil Pengumuman</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>

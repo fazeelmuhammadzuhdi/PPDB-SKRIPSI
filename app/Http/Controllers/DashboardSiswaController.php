@@ -85,4 +85,25 @@ class DashboardSiswaController extends Controller
             'title' => "Cetak Kartu Pendaftaran"
         ]);
     }
+
+    public function cek()
+    {
+        return view('siswa.cek_kelulusan');
+    }
+
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->first();
+        $cekLulusPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusPindahTugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->first();
+
+        if (!$cekLulusPrestasi && !$cekLulusAfirmasi && !$cekLulusPindahTugas) {
+            flash()->addError('Data Tidak Ada');
+            return redirect()->back();
+        } else {
+            return view('siswa.hasil', compact('cekLulusPrestasi', 'cekLulusAfirmasi', 'cekLulusPindahTugas'));
+        }
+    }
 }

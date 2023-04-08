@@ -79,6 +79,8 @@ Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     Route::get('dashboard', [DashboardSiswaController::class, 'index'])->name('dashboard_siswa');
     Route::get('jalur_pendaftaran', [DashboardSiswaController::class, 'jalurPendaftaran'])->name('jalur_pendaftaran');
     Route::get('kartupendaftaran', [DashboardSiswaController::class, 'kartuPendaftaran'])->name('kartu_pendaftaran');
+    Route::get('cek', [DashboardSiswaController::class, 'cek'])->name('cek');
+    Route::get('cek/hasil', [DashboardSiswaController::class, 'cari'])->name('cek_hasil_kelulusan');
     Route::resource('siswa', SiswaController::class);
     Route::resource('usersiswa', UserSiswaController::class);
     Route::resource('prestasi', PrestasiController::class);
