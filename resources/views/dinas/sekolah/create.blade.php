@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="alamat">Alamat Sekolah</label>
-                        {{ Form::textarea('alamat', null, ['class' => 'form-control', 'cols' => 3, 'rows' => 2, 'maxlength' => '400']) }}
+                        {{ Form::textarea('alamat', null, ['class' => 'form-control', 'cols' => 3, 'rows' => 2, 'maxlength' => '400', 'id' => 'editor']) }}
                         <small class="text-danger">{{ $errors->first('alamat') }}</small>
                     </div>
                     <div class="form-group mt-3">

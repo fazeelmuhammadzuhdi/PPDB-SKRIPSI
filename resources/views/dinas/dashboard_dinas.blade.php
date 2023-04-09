@@ -4,13 +4,31 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="alert alert-primary" role="alert">
-                <center>
+
+                {{-- <center>
                     <strong>Selamat Datang {{ ucwords(Auth::user()->name) }} Sebagai {{ Auth::user()->akses }}
-                        {{-- {{ $sekolah->nama }} --}} {{ Auth::user()->sekolah->nama ?? '' }}</strong>
-                </center>
+                        {{ $sekolah->nama }} {{ Auth::user()->sekolah->nama ?? '' }}</strong>
+                </center> --}}
             </div>
 
-            @if (auth()->user()->role == 'Admin Sekolah')
+            @if (auth()->user()->akses == 'Admin Dinas')
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <p>PENDAFTAR</p>
+                            <h3>{{ $siswa }} Orang</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-school'></i>
+                        <span class="text">
+                            <p>SEKOLAH</p>
+                            <h3>{{ $sekolah }} Sekolah</h3>
+                        </span>
+                    </li>
+                </ul>
+            @else
                 <ul class="box-info">
                     <li>
                         <i class='bx bxs-calendar-check'></i>
@@ -40,24 +58,6 @@
                             <h3>{{ $prestasi }} Pendaftar</h3>
                         </span>
                     </li>
-                </ul>
-            @else
-                <ul class="box-info">
-                    <li>
-                        <i class='bx bxs-group'></i>
-                        <span class="text">
-                            <p>PENDAFTAR</p>
-                            <h3>{{ $siswa }} Orang</h3>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-school'></i>
-                        <span class="text">
-                            <p>SEKOLAH</p>
-                            <h3>{{ $sekolah }} Sekolah</h3>
-                        </span>
-                    </li>
-
                 </ul>
             @endif
 

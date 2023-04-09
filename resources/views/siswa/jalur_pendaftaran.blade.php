@@ -131,142 +131,144 @@
                     </div>
 
                     <center>
-                        <h4>KARTU PENDAFTARAN PPDB {{ date('Y') }}</h4>
-                        <hr>
-                        <table width="80%" class="table table-bordered">
-                            <tbody>
-                                @if ($cek_prestasi)
-                                    <tr>
-                                        <td width="30%"><b>Jalur Pendaftaran</b></td>
-                                        <td width="50%">PRESTASI</td>
-                                        <td width="20%" rowspan="9">
-                                            <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
-                                        </td>
-                                    </tr>
-                                @endif
-                                @if ($cek_afirmasi)
-                                    <tr>
-                                        <td width="30%"><b>Jalur Pendaftaran</b></td>
-                                        <td width="50%">AFIRMASI</td>
-                                        <td width="20%" rowspan="9">
-                                            <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
-                                        </td>
-                                    </tr>
-                                @endif
-                                @if ($cek_pindah_tugas)
-                                    <tr>
-                                        <td width="30%"><b>Jalur Pendaftaran</b></td>
-                                        <td width="50%">PINDAH TUGAS ORANG TUA</td>
-                                        <td width="20%" rowspan="9">
-                                            <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
-                                        </td>
-                                    </tr>
-                                @endif
-                                <tr>
-                                    <td><b>NO PENDAFTARAN</b></td>
-                                    <td><span
-                                            class="badge rounded-pill bg-info fw-bold">{{ $cek_siswa->no_pendaftaran }}</span>
-                                    </td>
-                                </tr>
-                                <tr>
+                        <div class="card-body" id="cetak">
+                            <h4 style="text-align: center">KARTU PENDAFTARAN PPDB {{ date('Y') }}</h4>
+                            <hr>
+                            <table width="80%" class="table table-bordered">
+                                <tbody>
                                     @if ($cek_prestasi)
-                                        <td><b>Sekolah Pendaftaran</b></td>
-                                        <td>{{ $cekLulusJalurPrestasi->sekolah->nama }}</td>
+                                        <tr>
+                                            <td width="30%"><b>Jalur Pendaftaran</b></td>
+                                            <td width="50%">PRESTASI</td>
+                                            <td width="20%" rowspan="9">
+                                                <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
+                                            </td>
+                                        </tr>
                                     @endif
                                     @if ($cek_afirmasi)
-                                        <td><b>Sekolah Pendaftaran</b></td>
-                                        <td>{{ $cekLulusJalurAfirmasi->sekolah->nama }}</td>
+                                        <tr>
+                                            <td width="30%"><b>Jalur Pendaftaran</b></td>
+                                            <td width="50%">AFIRMASI</td>
+                                            <td width="20%" rowspan="9">
+                                                <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
+                                            </td>
+                                        </tr>
                                     @endif
                                     @if ($cek_pindah_tugas)
-                                        <td><b>Sekolah Pendaftaran</b></td>
-                                        <td>{{ $cekLulusJalurPindahTugas->sekolah->nama }}</td>
+                                        <tr>
+                                            <td width="30%"><b>Jalur Pendaftaran</b></td>
+                                            <td width="50%">PINDAH TUGAS ORANG TUA</td>
+                                            <td width="20%" rowspan="9">
+                                                <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
+                                            </td>
+                                        </tr>
                                     @endif
-                                </tr>
-                                <tr>
-                                    @if ($cek_prestasi)
-                                        <td><b>Status Pendaftaran</b></td>
-                                        <td>
-                                            @foreach ($cek_siswa->prestasis as $item)
-                                                @if ($item->status == 1)
-                                                    <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
-                                                @elseif($item->status == 2)
-                                                    <span class="badge rounded-pill bg-danger fw-bold">DITOLAK</span>
-                                                @else
-                                                    <span class="badge rounded-pill bg-warning fw-bold">PROSES
-                                                        SELEKSI</span>
-                                                @endif
-                                            @endforeach
+                                    <tr>
+                                        <td><b>NO PENDAFTARAN</b></td>
+                                        <td><span
+                                                class="badge rounded-pill bg-info fw-bold">{{ $cek_siswa->no_pendaftaran }}</span>
                                         </td>
-                                    @endif
-                                    @if ($cek_afirmasi)
-                                        <td><b>Status Pendaftaran</b></td>
-                                        <td>
-                                            @foreach ($cek_siswa->afirmasis as $item)
-                                                @if ($item->status == 1)
-                                                    <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
-                                                @elseif($item->status == 2)
-                                                    <span class="badge rounded-pill bg-danger fw-bold">DITOLAK</span>
-                                                @else
-                                                    <span class="badge rounded-pill bg-warning fw-bold">PROSES
-                                                        SELEKSI</span>
-                                                @endif
-                                            @endforeach
-                                        </td>
-                                    @endif
-                                    @if ($cek_pindah_tugas)
-                                        <td><b>Status Pendaftaran</b></td>
-                                        <td>
-                                            @foreach ($cek_siswa->pindahTugas as $item)
-                                                @if ($item->status == 1)
-                                                    <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
-                                                @elseif($item->status == 2)
-                                                    <span class="badge rounded-pill bg-danger fw-bold">DITOLAK</span>
-                                                @else
-                                                    <span class="badge rounded-pill bg-warning fw-bold">PROSES
-                                                        SELEKSI</span>
-                                                @endif
-                                            @endforeach
-                                        </td>
-                                    @endif
-                                </tr>
+                                    </tr>
+                                    <tr>
+                                        @if ($cek_prestasi)
+                                            <td><b>Sekolah Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurPrestasi->sekolah->nama }}</td>
+                                        @endif
+                                        @if ($cek_afirmasi)
+                                            <td><b>Sekolah Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurAfirmasi->sekolah->nama }}</td>
+                                        @endif
+                                        @if ($cek_pindah_tugas)
+                                            <td><b>Sekolah Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurPindahTugas->sekolah->nama }}</td>
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        @if ($cek_prestasi)
+                                            <td><b>Status Pendaftaran</b></td>
+                                            <td>
+                                                @foreach ($cek_siswa->prestasis as $item)
+                                                    @if ($item->status == 1)
+                                                        <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
+                                                    @elseif($item->status == 2)
+                                                        <span class="badge rounded-pill bg-danger fw-bold">DITOLAK</span>
+                                                    @else
+                                                        <span class="badge rounded-pill bg-warning fw-bold">PROSES
+                                                            SELEKSI</span>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        @endif
+                                        @if ($cek_afirmasi)
+                                            <td><b>Status Pendaftaran</b></td>
+                                            <td>
+                                                @foreach ($cek_siswa->afirmasis as $item)
+                                                    @if ($item->status == 1)
+                                                        <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
+                                                    @elseif($item->status == 2)
+                                                        <span class="badge rounded-pill bg-danger fw-bold">DITOLAK</span>
+                                                    @else
+                                                        <span class="badge rounded-pill bg-warning fw-bold">PROSES
+                                                            SELEKSI</span>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        @endif
+                                        @if ($cek_pindah_tugas)
+                                            <td><b>Status Pendaftaran</b></td>
+                                            <td>
+                                                @foreach ($cek_siswa->pindahTugas as $item)
+                                                    @if ($item->status == 1)
+                                                        <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
+                                                    @elseif($item->status == 2)
+                                                        <span class="badge rounded-pill bg-danger fw-bold">DITOLAK</span>
+                                                    @else
+                                                        <span class="badge rounded-pill bg-warning fw-bold">PROSES
+                                                            SELEKSI</span>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td><b>NISN</b></td>
+                                        <td>{{ $cek_siswa->nisn }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>NIK</b></td>
+                                        <td>{{ $cek_siswa->no_nik }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Nama Lengkap</b></td>
+                                        <td>{{ $cek_siswa->nama_lengkap }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Asal Sekolah</b></td>
+                                        <td>{{ $cek_siswa->sekolah_asal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Jenis Kelamin</b></td>
+                                        <td>{{ $cek_siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Tempat / Tanggal Lahir</b></td>
+                                        <td>{{ $cek_siswa->getTempatTanggalLahirAttribute() }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-
-
-                                <tr>
-                                    <td><b>NISN</b></td>
-                                    <td>{{ $cek_siswa->nisn }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>NIK</b></td>
-                                    <td>{{ $cek_siswa->no_nik }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Nama Lengkap</b></td>
-                                    <td>{{ $cek_siswa->nama_lengkap }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Asal Sekolah</b></td>
-                                    <td>{{ $cek_siswa->sekolah_asal }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Jenis Kelamin</b></td>
-                                    <td>{{ $cek_siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Tempat / Tanggal Lahir</b></td>
-                                    <td>{{ $cek_siswa->getTempatTanggalLahirAttribute() }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
 
                         <div class="mt-3">
                             {{-- Keterangan : Kartu Pendaftaran ini adalah bukti pendaftaran yang sah PPDB {{date('Y')}}. <button
                                 onclick="window.print()" class="btn btn-primary btn-sm"><i class="fa fa-print"></i>
                                 Cetak</button> --}}
                             Keterangan : Kartu Pendaftaran ini adalah bukti pendaftaran yang sah PPDB {{ date('Y') }}.
-                            <a href="{{ route('kartu_pendaftaran') }}" class="btn btn-primary btn-sm"><i
+                            {{-- <a href="{{ route('kartu_pendaftaran') }}" class="btn btn-primary btn-sm"><i
                                     class="fa fa-print"></i>
-                                Cetak</a>
+                                Cetak</a> --}}
+                            <button class="btn btn-primary btn-sm" onclick="printDiv('cetak')"><i class="fa fa-print"> </i>
+                                Cetak</button>
                         </div>
                     </center>
                 </div>

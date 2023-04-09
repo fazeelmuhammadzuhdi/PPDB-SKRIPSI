@@ -79,7 +79,8 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email or Username</label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                    id="email" name="email" placeholder="Enter your email or username" autofocus />
+                                    id="email" name="email" placeholder="Enter your email or username"
+                                    value="{{ old('email') }}" required autofocus />
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
