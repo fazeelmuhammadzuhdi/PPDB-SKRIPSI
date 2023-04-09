@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Afirmasi;
+use App\Models\PindahTugas;
+use App\Models\Prestasi;
 use App\Models\Sekolah;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class DashboardDinasController extends Controller
 {
     public function index()
     {
-        // $sekolah = Sekolah::select('nama', 'id')->where('sekolah_id', auth()->user()->id)->first();
-        // dd($sekolah);
-        // return view('dinas.dashboard_dinas', compact('sekolah'));
-        return view('dinas.dashboard_dinas');
+
+
+        return view('dinas.dashboard_dinas', [
+            'afirmasi' => Afirmasi::count(),
+            'pindahTugas' => PindahTugas::count(),
+            'prestasi' => Prestasi::count(),
+            'siswa' => Siswa::count(),
+            'sekolah' => Sekolah::count(),
+        ]);
     }
 }
