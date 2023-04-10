@@ -24,7 +24,7 @@
                         <i class='bx bxs-school'></i>
                         <span class="text">
                             <p>SEKOLAH</p>
-                            <h3>{{ $sekolah }} Sekolah</h3>
+                            <h3>{{ $jumlahSekolah }} Sekolah</h3>
                         </span>
                     </li>
                 </ul>
@@ -40,7 +40,7 @@
                     <li>
                         <i class='bx bxs-group'></i>
                         <span class="text">
-                            <p>PINDAH TUGAS ORANG TUA</p>
+                            <p>PINDAH TUGAS </p>
                             <h3>{{ $pindahTugas }} Pendaftar</h3>
                         </span>
                     </li>
@@ -56,6 +56,20 @@
                         <span class="text">
                             <p>ZONASI</p>
                             <h3>0 Pendaftar</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle'></i>
+                        <span class="text">
+                            <p>Total Siswa Lulus</p>
+                            <h3>{{ $totalSiswaLulus }} Pendaftar</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle'></i>
+                        <span class="text">
+                            <p>Total Siswa Ditolak</p>
+                            <h3>{{ $totalSiswaBelumLulus }} Pendaftar</h3>
                         </span>
                     </li>
                 </ul>
@@ -90,7 +104,7 @@
 
         .box-info {
             display: grid;
-            grid-template-columns: repeat(2, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             grid-gap: 24px;
             margin-top: 36px;
         }
@@ -131,6 +145,16 @@
         }
 
         .box-info li:nth-child(4) .bx {
+            background: var(--light-green);
+            color: var(--green);
+        }
+
+        .box-info li:nth-child(5) .bx {
+            background: var(--light-green);
+            color: var(--green);
+        }
+
+        .box-info li:nth-child(6) .bx {
             background: var(--light-green);
             color: var(--green);
         }

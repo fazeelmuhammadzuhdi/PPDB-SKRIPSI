@@ -127,10 +127,16 @@
                     <div data-i18n="Account Settings">Data PPDB</div>
                 </a>
             </li>
-            <li class="menu-item {{ Route::is('lulus.index') ? 'active' : '' }}">
-                <a href="{{ route('lulus.index') }}" class="menu-link">
+            <li class="menu-item {{ Route::is('lulus') ? 'active' : '' }}">
+                <a href="{{ route('lulus') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Laporan Siswa Lulus</div>
+                </a>
+            </li>
+            <li class="menu-item {{ Route::is('ditolak') ? 'active' : '' }}">
+                <a href="{{ route('ditolak') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Laporan Siswa Yang Ditolak</div>
                 </a>
             </li>
         @else

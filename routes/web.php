@@ -72,7 +72,9 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::post('/pekerjaan/hapus', 'destroy')->name('pekerjaan.hapus');
     });
     Route::controller(LaporanController::class)->middleware('auth', 'sekolah')->group(function () {
-        Route::get('/lulus', 'index')->name('lulus.index');
+        Route::get('/lulus', 'lulus')->name('lulus');
+        Route::get('/export', 'cetakPdf')->name('cetakpdf');
+        Route::get('/ditolak', 'ditolak')->name('ditolak');
     });
 });
 
