@@ -15,13 +15,12 @@ class DashboardDinasController extends Controller
     public function index()
     {
 
-
-        return view('dinas.dashboard_dinas', [
-            'afirmasi' => Afirmasi::count(),
-            'pindahTugas' => PindahTugas::count(),
-            'prestasi' => Prestasi::count(),
-            'siswa' => Siswa::count(),
-            'sekolah' => Sekolah::count(),
-        ]);
+        $sekolah = Sekolah::sekolah()->first();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->count();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->count();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->count();
+        $siswa = Siswa::count();
+        $sekolah = Sekolah::count();
+        return view('dinas.dashboard_dinas', compact('afirmasi', 'pindahTugas', 'prestasi', 'siswa'));
     }
 }

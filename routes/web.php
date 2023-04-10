@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AfirmasiController;
 use App\Http\Controllers\Backend\DataPendaftaranAfirmasi;
 use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
+use App\Http\Controllers\Backend\LaporanController;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
 use App\Http\Controllers\Backend\PindahTugasOrangTuaController;
@@ -69,6 +70,9 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::post('/pekerjaan/edit', 'edit')->name('pekerjaan.edit');
         Route::post('/pekerjaan/update', 'update')->name('pekerjaan.update');
         Route::post('/pekerjaan/hapus', 'destroy')->name('pekerjaan.hapus');
+    });
+    Route::controller(LaporanController::class)->middleware('auth', 'sekolah')->group(function () {
+        Route::get('/lulus', 'index')->name('lulus.index');
     });
 });
 

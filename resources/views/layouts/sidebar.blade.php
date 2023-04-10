@@ -127,6 +127,12 @@
                     <div data-i18n="Account Settings">Data PPDB</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('lulus.index') ? 'active' : '' }}">
+                <a href="{{ route('lulus.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Laporan Siswa Lulus</div>
+                </a>
+            </li>
         @else
             <li class="menu-item {{ Route::is('dashboard_siswa') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_siswa') }}" class="menu-link">

@@ -5,10 +5,10 @@
         <div class="col-md-12">
             <div class="alert alert-primary" role="alert">
 
-                {{-- <center>
+                <center>
                     <strong>Selamat Datang {{ ucwords(Auth::user()->name) }} Sebagai {{ Auth::user()->akses }}
-                        {{ $sekolah->nama }} {{ Auth::user()->sekolah->nama ?? '' }}</strong>
-                </center> --}}
+                        {{ Auth::user()->sekolah->nama ?? '' }}</strong>
+                </center>
             </div>
 
             @if (auth()->user()->akses == 'Admin Dinas')
@@ -55,7 +55,7 @@
                         <i class='bx bxs-dollar-circle'></i>
                         <span class="text">
                             <p>ZONASI</p>
-                            <h3>{{ $prestasi }} Pendaftar</h3>
+                            <h3>0 Pendaftar</h3>
                         </span>
                     </li>
                 </ul>

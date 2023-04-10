@@ -30,6 +30,7 @@ class DataPendaftaranPrestasi extends Controller
         // dd($sekolah);
         $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->get();
         $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
+        // dd($afirmasi);
         $pindahTugas = PindahTugas::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($data_prestasi);
         return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah', 'afirmasi', 'pindahTugas'));
