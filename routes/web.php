@@ -75,6 +75,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::get('/lulus', 'lulus')->name('lulus');
         Route::get('/export', 'cetakPdf')->name('cetakpdf');
         Route::get('/ditolak', 'ditolak')->name('ditolak');
+        Route::get('/export/ditolak', 'cetakPdfSiswaDitolak')->name('cetakPdfSiswaDitolak');
     });
 });
 
