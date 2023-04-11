@@ -140,7 +140,7 @@
                                         <tr>
                                             <td width="30%"><b>Jalur Pendaftaran</b></td>
                                             <td width="50%">PRESTASI</td>
-                                            <td width="20%" rowspan="9">
+                                            <td width="20%" rowspan="10">
                                                 <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
                                             </td>
                                         </tr>
@@ -149,7 +149,7 @@
                                         <tr>
                                             <td width="30%"><b>Jalur Pendaftaran</b></td>
                                             <td width="50%">AFIRMASI</td>
-                                            <td width="20%" rowspan="9">
+                                            <td width="20%" rowspan="10">
                                                 <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
                                             </td>
                                         </tr>
@@ -158,7 +158,7 @@
                                         <tr>
                                             <td width="30%"><b>Jalur Pendaftaran</b></td>
                                             <td width="50%">PINDAH TUGAS ORANG TUA</td>
-                                            <td width="20%" rowspan="9">
+                                            <td width="20%" rowspan="10">
                                                 <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
                                             </td>
                                         </tr>

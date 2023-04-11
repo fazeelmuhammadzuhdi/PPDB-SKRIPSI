@@ -94,16 +94,20 @@ class DashboardSiswaController extends Controller
     public function cari(Request $request)
     {
         $cari = $request->cari;
-        $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->first();
-        $cekLulusPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->where('user_id', auth()->user()->id)->first();
+        // dd($cek_siswa);
+        // $cekLulusPrestasi = Prestasi::with('siswa', 'sekolah')->where('siswa_id', auth()->user()->id)->first();
+        $cekLulusPrestasi = Prestasi::with('siswa', 'sekolah')->where('siswa_id', $cek_siswa->id ?? '')->first();
+        // dd($cekLulusPrestasi);
         $cekLulusAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         $cekLulusPindahTugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->first();
 
-        if (!$cekLulusPrestasi && !$cekLulusAfirmasi && !$cekLulusPindahTugas) {
+        // if (!$cekLulusPrestasi && !$cekLulusAfirmasi && !$cekLulusPindahTugas) {
+        if (!$cek_siswa) {
             flash()->addError('Data Tidak Ada');
             return redirect()->back();
         } else {
-            return view('siswa.hasil', compact('cekLulusPrestasi', 'cekLulusAfirmasi', 'cekLulusPindahTugas'));
+            return view('siswa.hasil', compact('cekLulusPrestasi', 'cekLulusAfirmasi', 'cekLulusPindahTugas', 'cek_siswa'));
         }
     }
 }
