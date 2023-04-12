@@ -97,7 +97,7 @@ class DashboardSiswaController extends Controller
         $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->where('user_id', auth()->user()->id)->first();
         // dd($cek_siswa);
         // $cekLulusPrestasi = Prestasi::with('siswa', 'sekolah')->where('siswa_id', auth()->user()->id)->first();
-        $cekLulusPrestasi = Prestasi::with('siswa', 'sekolah')->where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         // dd($cekLulusPrestasi);
         $cekLulusAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         $cekLulusPindahTugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->first();
