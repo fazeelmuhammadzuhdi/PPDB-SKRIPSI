@@ -1,7 +1,7 @@
 <h2>Data Pendaftaran</h2>
 <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }}.</p>
 <div class="table-responsive text-nowrap">
-    <table class="table table-hover" id="myTableZonasi">
+    <table class="table table-hover" id="myTablePindahTugas">
         <thead>
             <tr>
                 <th width="1%">No</th>
@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa->nama_lengkap }}</td>
-                    <td>{{ $item->siswa->jenis_kelamin == 'P' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                    <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
                     <td>{{ $item->siswa->nisn }}</td>
                     <td>
                         @if ($item->status == 1)
@@ -51,7 +51,7 @@
 @push('after-script')
     <script>
         $(document).ready(function() {
-            $('#myTableZonasi').DataTable();
+            $('#myTablePindahTugas').DataTable();
         });
     </script>
 @endpush

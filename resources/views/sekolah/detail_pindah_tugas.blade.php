@@ -59,7 +59,7 @@
                             <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary">
                                 <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
 
-                            <a href="{{ Storage::url( $dataPindahTugas->file) }}" class="btn btn-success">
+                            <a href="{{ Storage::url($dataPindahTugas->file) }}" class="btn btn-success" target="_blank">
                                 <i class="fa fa-eye" aria-hidden="true"></i> View Bukti Surat Pindah</a>
 
                             @if ($dataPindahTugas->status == null)

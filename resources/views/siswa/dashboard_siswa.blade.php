@@ -3,8 +3,14 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
+
+            <div class="alert" role="alert" style="background-color:#2e2a4cc9; color:#fff;">
+                <p class="mb-0"><b>Selamat Datang
+                        {{ ucwords(Auth::user()->name) }} </b></p>
+            </div>
             <div class="card">
-                <h5 class="card-header">Selamat Datang {{ ucwords(Auth::user()->name) }}</h5>
+
+                <h5 class="card-header"></h5>
 
                 <div class="card-body ">
                     <div class="card">

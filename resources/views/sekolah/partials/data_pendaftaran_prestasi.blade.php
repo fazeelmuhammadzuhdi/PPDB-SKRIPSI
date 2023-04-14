@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa?->nama_lengkap }}</td>
-                    <td>{{ $item->siswa?->jenis_kelamin == 'P' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                    <td>{{ $item->siswa?->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
                     <td>{{ $item->siswa?->nisn }}</td>
                     <td class="text-center">{{ $item->jumlah }}</td>
                     <td>

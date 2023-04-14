@@ -4,7 +4,7 @@
             <div class="card-body">
                 @if (Request::routeIs('siswa.edit'))
                     <label for="nama_lengkap">Foto <span class="text-danger">*</span></label>
-                    <input type="file" name="foto" id="foto"
+                    <input type="file" name="foto" id="foto" accept="image/*"
                         class="form-control @error('foto') 'is-invalid' @enderror">
                     @error('foto')
                         <div class="invalid-feedback">
@@ -20,7 +20,7 @@
                     </div>
                 @else
                     <label for="foto" class="form-label">Upload Foto</label>
-                    <input type="file" name="foto" id="foto"
+                    <input type="file" name="foto" accept="image/*" id="foto"
                         class="form-control @error('foto') 'is-invalid' @enderror" required>
                     @error('foto')
                         <div class="invalid-feedback">
@@ -61,7 +61,7 @@
                     <label for="nisn" class="form-label">NISN *</label>
                     <input type="text" name="nisn" class="form-control @error('nisn') is-invalid @enderror"
                         id="nisn" placeholder="Inputkan NISN" minlength="10" maxlength="10" autocomplete="off"
-                        value="{{ old('nisn', $siswa->nisn ?? '') }}">
+                        value="{{ old('nisn', $siswa->nisn ?? '') }}" onkeypress="return inputAngka(event)">
 
                     @error('nisn')
                         <div class="invalid-feedback">
@@ -182,7 +182,8 @@
                     <label for="no_kk" class="form-label">No Kartu Keluarga *</label>
                     <input type="text" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror"
                         id="no_kk" placeholder="Inputkan No KK" minlength="16" maxlength="16"
-                        autocomplete="off" value="{{ old('no_kk', $siswa->no_kk ?? '') }}">
+                        onkeypress="return inputAngka(event)" autocomplete="off"
+                        value="{{ old('no_kk', $siswa->no_kk ?? '') }}">
 
                     @error('no_kk')
                         <div class="invalid-feedback">
@@ -194,7 +195,8 @@
                     <label for="nik" class="form-label">No Induk Keluarga *</label>
                     <input type="text" name="no_nik" class="form-control @error('no_nik') is-invalid @enderror"
                         id="no_nik" placeholder="Inputkan No NIK" minlength="16" maxlength="16"
-                        autocomplete="off" value="{{ old('no_nik', $siswa->no_nik ?? '') }}">
+                        onkeypress="return inputAngka(event)" autocomplete="off"
+                        value="{{ old('no_nik', $siswa->no_nik ?? '') }}">
 
                     @error('no_nik')
                         <div class="invalid-feedback">

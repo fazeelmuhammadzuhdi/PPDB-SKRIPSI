@@ -3,12 +3,21 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-primary" role="alert" style="background-color: #3C91E6; color: #fff">
 
-                <center>
-                    <strong>Selamat Datang {{ ucwords(Auth::user()->name) }} Sebagai {{ Auth::user()->akses }}
-                        {{ Auth::user()->sekolah->nama ?? '' }}</strong>
-                </center>
+                @if (auth()->user()->akses == 'Admin Dinas')
+                    <center>
+                        <strong>Selamat Datang {{ ucwords(Auth::user()->name) }} Sebagai {{ Auth::user()->akses }}
+                        </strong>
+                    </center>
+                @else
+                    <center>
+                        <strong>Selamat Datang {{ ucwords(Auth::user()->name) }} Anda Login Sebagai
+                            {{ Auth::user()->akses }}
+                            {{ Auth::user()->sekolah->nama ?? '' }}</strong>
+                    </center>
+                @endif
+
             </div>
 
             @if (auth()->user()->akses == 'Admin Dinas')
@@ -149,7 +158,7 @@
             background: var(--grey);
             color: var(--dark-grey);
         }
-        
+
         .box-info li:nth-child(5) .bx {
             background: var(--light-green);
             color: var(--green);

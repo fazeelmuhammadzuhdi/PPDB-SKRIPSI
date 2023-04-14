@@ -3,6 +3,10 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
+            <div class="alert" role="alert" style="background-color:#83ae14b3; color:#000000;">
+                <p class="mb-0"><b>Perhatian !</b> Seluruh Dokumen <b>Yang diunggah Harus Asli</b> dan
+                    Dapat Dilihat Dengan Jelas Dan Terbaca</p>
+            </div>
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Data Nilai Rapor</h3> <small class="text-muted float-end">
@@ -129,8 +133,9 @@
                                         </td>
                                         <td><input type="file" class="form-control" name="file[]" accept="image/*"
                                                 required></td>
-                                        <td><button type="button" name="add" id="add" class="btn btn-success"><i
-                                                    class="fa fa-plus-circle"></i> Add</button></td>
+                                        <td><button type="button" name="add" id="add"
+                                                class="btn btn-success"><i class="fa fa-plus-circle"></i> Add</button>
+                                        </td>
                                     </tr>
 
                                 </tbody>
