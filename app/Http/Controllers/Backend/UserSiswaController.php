@@ -25,7 +25,7 @@ class UserSiswaController extends Controller
             // 'user' => User::where('akses', '<>', 'Siswa')->where('akses', '<>', 'Admin Sekolah')->latest()->get()
             'user' => User::where('akses', 'Siswa')->latest()->get(),
             'routePrefix' => $this->routePrefix,
-            'title' => 'Data Semua Siswa ',
+            'title' => 'Data Semua User Akses Siswa ',
         ]);
     }
 
