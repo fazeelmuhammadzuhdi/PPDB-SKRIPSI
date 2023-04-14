@@ -21,7 +21,7 @@ class LaporanController extends Controller
         // dd($afirmasi);
         $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
         $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $siswa = Siswa::with('afirmasis', 'pindahTugas', 'prestasis')->get();
+        $siswa = Siswa::get();
         // dd($user);
         return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
     }
@@ -29,10 +29,10 @@ class LaporanController extends Controller
     public function cetakPdf()
     {
         $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $pindahTugas = PindahTugas::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $siswa = Siswa::with('afirmasis', 'pindahTugas', 'prestasis')->get();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $siswa = Siswa::get();
 
         // $pdf = PDF::loadView('laporan.siswa_lulus', [
         //     'afirmasi' => $afirmasi,
@@ -49,11 +49,11 @@ class LaporanController extends Controller
     {
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
-        $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
         // dd($afirmasi);
-        $pindahTugas = PindahTugas::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $siswa = Siswa::with('afirmasis', 'pindahTugas', 'prestasis')->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $siswa = Siswa::get();
         // dd($user);
         return view('laporan.ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
     }
@@ -64,7 +64,7 @@ class LaporanController extends Controller
         $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
         $pindahTugas = PindahTugas::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
         $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $siswa = Siswa::with('afirmasis', 'pindahTugas', 'prestasis')->get();
+        $siswa = Siswa::get();
 
         // $pdf = PDF::loadView('laporan.siswa_lulus', [
         //     'afirmasi' => $afirmasi,
