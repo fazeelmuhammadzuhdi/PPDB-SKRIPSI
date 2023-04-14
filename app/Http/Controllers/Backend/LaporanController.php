@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Afirmasi;
-use App\Models\PindahTugas;
-use App\Models\Prestasi;
-use App\Models\Sekolah;
 use App\Models\Siswa;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Sekolah;
+use App\Models\Afirmasi;
+use App\Models\Prestasi;
+use App\Models\PindahTugas;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\SiswaLulusExport;
+use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanController extends Controller
 {
@@ -26,7 +29,7 @@ class LaporanController extends Controller
         return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
     }
 
-    public function cetakPdf()
+    public function cetakPdfSiswaLulus()
     {
         $sekolah = Sekolah::sekolah()->first();
         $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
@@ -75,5 +78,11 @@ class LaporanController extends Controller
         // ])->setOptions(['defaultFont' => 'sans-serif']);;
         // return $pdf->stream("LAPORAN SISWA LULUS.pdf");
         return view('laporan.siswa_ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
+    }
+
+    public function exportExcelSiswaLulus()
+    {
+        // return Excel::download(new SiswaLulusExport, 'siswaLulus-' . Carbon::now()->timestamp . ' .xlsx' ?? '');
+        return (new SiswaLulusExport)->download('siswaLulus.xlsx');
     }
 }
