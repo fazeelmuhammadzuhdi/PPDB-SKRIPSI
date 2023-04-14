@@ -4,7 +4,6 @@
     @if ($cek > 0 && $cek_prestasi != 1 && $cek_afirmasi != 1 && $cek_pindah_tugas != 1)
         <div class="row">
             <div class="col-lg-3 col-6">
-
                 <div class="small-box bg-info">
                     <div class="inner">
                         <p>Jalur Pendaftaran</p>

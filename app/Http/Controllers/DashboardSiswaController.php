@@ -19,7 +19,7 @@ class DashboardSiswaController extends Controller
         $cek_siswa = Siswa::siswa()->first();
         // cek status kelulusan
         // $cek_lulus = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->count();
-        $cekLulus = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        // $cekLulus = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
 
         // dd($cek_lulus);
         // if ($cek_prestasi->status == 1) {
@@ -39,7 +39,7 @@ class DashboardSiswaController extends Controller
             $pesan = "Biodata Anda Telah Lengkap.. Terima Kasih";
         }
         // return view('siswa.dashboard_siswa', compact('pesan', 'cek', 'cek_lulus', 'pesanLulus'));
-        return view('siswa.dashboard_siswa', compact('pesan', 'cek', 'cekLulus'));
+        return view('siswa.dashboard_siswa', compact('pesan', 'cek'));
     }
 
     public function jalurPendaftaran()
@@ -59,31 +59,47 @@ class DashboardSiswaController extends Controller
         return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi', 'cek_siswa', 'cek_afirmasi', 'cekLulusJalurAfirmasi', 'cek_pindah_tugas', 'cekLulusJalurPindahTugas'));
     }
 
-    public function kartuPendaftaran()
+    public function kartuPendaftaran(Request $request)
     {
-        $siswa = Siswa::siswa()->first();
-        $prestasi = Prestasi::where('siswa_id', $siswa->id)->first();
-        $cekLulus = Prestasi::where('siswa_id', $siswa->id)->count();
+        // $siswa = Siswa::siswa()->first();
+        // $prestasi = Prestasi::where('siswa_id', $siswa->id)->first();
+        // $cekLulus = Prestasi::where('siswa_id', $siswa->id)->count();
 
-        if (request('output') == 'pdf') {
-            $pdf = Pdf::loadView(
-                'siswa.kartu_pendaftaran',
-                [
-                    'prestasi' => $prestasi,
-                    'siswa' => $siswa,
-                    'cekLulus' => $cekLulus
-                ]
-            );
-            $namaFile = "Kartu Pendaftaran " . $siswa->nama_lengkap . ' Tahun ' . date('Y') . '.pdf';
-            return $pdf->download($namaFile);
-        }
+        // if (request('output') == 'pdf') {
+        //     $pdf = Pdf::loadView(
+        //         'siswa.kartu_pendaftaran',
+        //         [
+        //             'prestasi' => $prestasi,
+        //             'siswa' => $siswa,
+        //             'cekLulus' => $cekLulus
+        //         ]
+        //     );
+        //     $namaFile = "Kartu Pendaftaran " . $siswa->nama_lengkap . ' Tahun ' . date('Y') . '.pdf';
+        //     return $pdf->download($namaFile);
+        // }
 
-        return view('siswa.kartu_pendaftaran', [
-            'prestasi' => $prestasi,
-            'siswa' => $siswa,
-            'cekLulus' => $cekLulus,
-            'title' => "Cetak Kartu Pendaftaran"
-        ]);
+        // return view('siswa.kartu_pendaftaran', [
+        //     'prestasi' => $prestasi,
+        //     'siswa' => $siswa,
+        //     'cekLulus' => $cekLulus,
+        //     'title' => "Cetak Kartu Pendaftaran"
+        // ]);
+
+
+        // dd($cek_siswa);
+        // $cekLulusPrestasi = Prestasi::with('siswa', 'sekolah')->where('siswa_id', auth()->user()->id)->first();
+        // dd($cekLulusPrestasi);
+
+        $cari = $request->cari;
+        $cek_siswa = Siswa::where(
+            'no_pendaftaran',
+            'like',
+            "%" . $cari . "%"
+        )->where('user_id', auth()->user()->id)->first();
+
+
+        $pdf = PDF::loadview('siswa.kartu_pendaftaran', ['cek_siswa' => $cek_siswa]);
+        return $pdf->stream('kartuPendaftaran.pdf');
     }
 
     public function cek()
@@ -97,17 +113,21 @@ class DashboardSiswaController extends Controller
         $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->where('user_id', auth()->user()->id)->first();
         // dd($cek_siswa);
         // $cekLulusPrestasi = Prestasi::with('siswa', 'sekolah')->where('siswa_id', auth()->user()->id)->first();
-        $cekLulusPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
-        // dd($cekLulusPrestasi);
-        $cekLulusAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
-        $cekLulusPindahTugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->first();
+        // $cekLulusPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        // $cekLulusAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
+        // $cekLulusPindahTugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->first();
 
         // if (!$cekLulusPrestasi && !$cekLulusAfirmasi && !$cekLulusPindahTugas) {
         if (!$cek_siswa) {
-            flash()->addError('Data Tidak Ada');
+
+            flash()
+                ->options([
+                    'timeout' => 1500, // 3 seconds
+                ])
+                ->addError('Data Tidak Ada');
             return redirect()->back();
         } else {
-            return view('siswa.hasil', compact('cekLulusPrestasi', 'cekLulusAfirmasi', 'cekLulusPindahTugas', 'cek_siswa'));
+            return view('siswa.hasil', compact('cek_siswa'));
         }
     }
 }

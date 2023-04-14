@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title>Cetak Kartu Pendaftaran</title>
 
+
     <style>
         .invoice-box {
             max-width: 800px;
@@ -67,69 +68,63 @@
 <body>
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
-            <tr>
-                <td width="80">
-                    @if (request('output') == 'pdf')
-                        <img src="{{ public_path() . '/images/logo.png' }}" alt="" width="100">
-                    @else
-                        <img src="{{ asset('images/logo.png') }}" alt="" width="70">
-                    @endif
-                </td>
 
-                <td style="text-align: left; vertical-align: middle;">
-                    {{-- <div style="font-size: 20px; font-weight: bold">{{ settings()->get('app_name', 'My App') }}</div>
-                    <div>{!! settings()->get('app_address') !!}</div> --}}
-                    <div style="font-size: 26px; font-weight: bold">DINAS PENDIDIKAN PESISIR SELATAN</div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <hr>
-                </td>
-            </tr>
 
 
             <tr class="information">
                 <td colspan="3">
                     <table>
-                        @if ($cekLulus)
-                            <tr>
-                                <td width="45%"><b>Jalur Pendaftaran</b></td>
-                                <td>: ZONASI</td>
-                                <td rowspan="8">
-                                    {{-- @if (request('output') == 'pdf')
-                                        <img src="{{ storage_path($siswa->foto) }}" width="100%">
-                                    @endif --}}
-                                </td>
-                            </tr>
-                        @endif
+                        @foreach ($cek_siswa->prestasis as $item)
+                            @if ($item->status == 1)
+                                <tr>
+                                    <td width="45%"><b>Jalur Pendaftaran</b></td>
+                                    <td>: PRESTASI</td>
+                                </tr>
+                            @endif
+                        @endforeach
+                        @foreach ($cek_siswa->pindahTugas as $item)
+                            @if ($item->status == 1)
+                                <tr>
+                                    <td width="45%"><b>Jalur Pendaftaran</b></td>
+                                    <td>: PINDAH TUGAS</td>
+                                </tr>
+                            @endif
+                        @endforeach
+                        @foreach ($cek_siswa->afirmasis as $item)
+                            @if ($item->status == 1)
+                                <tr>
+                                    <td width="45%"><b>Jalur Pendaftaran</b></td>
+                                    <td>: AFIRMASI</td>
+                                </tr>
+                            @endif
+                        @endforeach
                         <tr>
                             <td><b>Sekolah Pendaftaran</b></td>
-                            <td>: {{ $prestasi->sekolah->nama }}</td>
+                            <td>: {{ $item->sekolah->nama }}</td>
                         </tr>
                         <tr>
                             <td><b>NISN</b></td>
-                            <td>: {{ $siswa->nisn }}</td>
+                            <td>: {{ $item->siswa->nisn }}</td>
                         </tr>
                         <tr>
                             <td><b>NIK</b></td>
-                            <td>: {{ $siswa->no_nik }}</td>
+                            <td>: {{ $item->siswa->no_nik }}</td>
                         </tr>
                         <tr>
                             <td><b>Nama Lengkap</b></td>
-                            <td>: {{ $siswa->nama_lengkap }}</td>
+                            <td>: {{ $item->siswa->nama_lengkap }}</td>
                         </tr>
                         <tr>
                             <td><b>Asal Sekolah</b></td>
-                            <td>: {{ $siswa->sekolah_asal }}</td>
+                            <td>: {{ $item->siswa->sekolah_asal }}</td>
                         </tr>
                         <tr>
                             <td><b>Jenis Kelamin</b></td>
-                            <td>: {{ $siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                            <td>: {{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
                         </tr>
                         <tr>
                             <td><b>Tempat / Tanggal Lahir</b></td>
-                            <td>: {{ $siswa->getTempatTanggalLahirAttribute() }}</td>
+                            <td>: </td>
                         </tr>
                     </table>
                 </td>
@@ -139,17 +134,12 @@
                 <td colspan="3">
                     <br>
                     Padang, {{ now()->translatedFormat('d F Y') }} <br>
-                    {{-- @include('siswa.informasi_penanggung_jawab') --}}
 
                 </td>
             </tr>
 
         </table>
-        <center>
-            <a href="{{ url()->current() . '?output=pdf' }}" class="btn">
-                Download Pdf</a>
-            <a href="#" onclick="window.print()" class="btn">Cetak PDF</a>
-        </center>
+
     </div>
 </body>
 

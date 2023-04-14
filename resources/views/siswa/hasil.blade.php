@@ -20,23 +20,26 @@
                                     @include('siswa.hasil_pengumuman_prestasi')
                                     @include('siswa.hasil_pengumuman_afirmasi')
                                     @include('siswa.hasil_pengumuman_pindah_tugas')
-                                    {{-- <form action="/hasil/cetak_pdf" method="GET">
-                                            <div class="form-group-inner input-with-success">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin:6%">
-                                                        <div class="form-select-list">
-                                                            <label for="cari">Kode Pendaftaran</label>
-                                                            <input type="text" name="cari" required
-                                                                class="form-control" placeholder="Cek Hasil .."
-                                                                value="{{ $p['kode'] }}">
-                                                            <br>
-                                                            <input type="submit" class="btn btn-primary fa fa-file-pdf-o"
-                                                                value="cetak">
-                                                        </div>
+
+
+                                    {{-- <form action="{{ route('kartu_pendaftaran') }}" method="GET">
+                                        @csrf
+                                        <div class="form-group-inner input-with-success">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin:6%">
+                                                    <div class="form-select-list">
+                                                        <input type="hidden" name="cari" class="form-control"
+                                                            placeholder="Cek Hasil .."
+                                                            value="{{ $cek_siswa->no_pendaftaran }}">
+                                                        <br>
+                                                        <input type="submit" class="btn btn-primary fa fa-file-pdf-o"
+                                                            value="cetak">
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form> --}}
+                                        </div>
+                                    </form> --}}
+
                                 </table>
                             </div>
                         </div>
@@ -115,3 +118,7 @@
         </div>
     </div>
 @endsection
+
+<script>
+    window.print()
+</script>
