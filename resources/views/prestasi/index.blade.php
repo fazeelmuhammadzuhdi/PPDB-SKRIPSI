@@ -1,27 +1,62 @@
 @extends('layouts.main')
-
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Data Prestasi</h3> <small class="text-muted float-end">
-                        <a href="{{ route('prestasi.create') }}" class="btn btn-primary"><i class="fa fa-plus-circle"
-                                aria-hidden="true"></i> Tambah Data</a>
+                    <h3 class="mb-0">
+                        @if (Route::is('data_pendaftaran_prestasi.create'))
+                            <span class="text-primary">Siswa Belum Lulus Jalur Prestasi</span>
+                        @else
+                            <span class="text-primary">Siswa Yang Lulus Jalur Prestasi</span>
+                        @endif
+                    </h3> <small class="text-muted float-end">
+                        <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-outline-dark btn-sm"><i
+                                class="fas fa-backward"></i>
+                            Kembali
+                        </a>
+                        <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
+                                class="fa fa-file-pdf"></i>
+                            Export PDF
+                        </button>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive text-nowrap ">
-                        <table class="table table-striped" id="table">
+                    <div class="table-responsive text-nowrap" id="cetak">
+                        <table class="table table-hover" id="siswaPrestasiLulus">
                             <thead>
                                 <tr>
                                     <th width="1%">No</th>
                                     <th>Nama</th>
+                                    <th>Jenis Kelamin</th>
                                     <th>NISN</th>
+                                    <th>Status</th>
+                                    <th>Foto</th>
                                     <th>Alamat</th>
-                                    <th>Tempat Tanggal Lahir</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($prestasi as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->siswa->nama_lengkap }}</td>
+                                        <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                                        <td>{{ $item->siswa->nisn }}</td>
+                                        <td>
+                                            @if ($item->status == 1)
+                                                <span class="badge bg-success">Lulus</span>
+                                            @elseif ($item->status == 2)
+                                                <span class="badge bg-danger">Belum Lulus</span>
+                                            @else
+                                                <span class="badge bg-warning">Dalam Seleksi</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
+                                        </td>
+                                        <td>{!! $item->siswa->alamat !!}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -29,3 +64,11 @@
         </div>
     </div>
 @endsection
+
+@push('after-script')
+    <script>
+        $(document).ready(function() {
+            $('#siswaPrestasiLulus').DataTable();
+        });
+    </script>
+@endpush

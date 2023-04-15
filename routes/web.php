@@ -49,6 +49,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('user-sekolah', AdminSekolahController::class);
     Route::get('viewpdf/{id}', [DataPendaftaranPrestasi::class, 'viewPdf'])->name('viewpdf');
     Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+    Route::get('siswalulus', [DataPendaftaranPrestasi::class, 'siswaLulusJalurPrestasi'])->name('siswaLulusJalurPrestasi');
     Route::resource('data_pendaftaran_prestasi', DataPendaftaranPrestasi::class);
     Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class);
