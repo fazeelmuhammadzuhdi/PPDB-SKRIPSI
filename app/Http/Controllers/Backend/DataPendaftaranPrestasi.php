@@ -41,7 +41,7 @@ class DataPendaftaranPrestasi extends Controller
     {
         $sekolah = Sekolah::sekolah()->first();
         $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->orderBy('jumlah', 'desc')->get();
-        return view('prestasi.index', compact('sekolah', 'prestasi'));
+        return view('prestasi.siswa_lulus', compact('sekolah', 'prestasi'));
     }
 
     /**
@@ -129,7 +129,7 @@ class DataPendaftaranPrestasi extends Controller
     {
         $sekolah = Sekolah::sekolah()->first();
         $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->orderBy('jumlah', 'desc')->get();
-        return view('prestasi.index', compact('sekolah', 'prestasi'));
+        return view('prestasi.siswa_lulus', compact('sekolah', 'prestasi'));
     }
 
     // public function viewPdf($id)
