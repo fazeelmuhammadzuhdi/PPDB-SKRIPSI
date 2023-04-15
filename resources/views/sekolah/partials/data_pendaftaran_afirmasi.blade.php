@@ -6,8 +6,21 @@
             </div>
             <div class="card-body"> --}}
 <h2>Data Pendaftaran</h2>
+<div class="d-flex justify-content-end">
+    <a href="{{ route('data_pendaftaran_afirmasi.index') }}" class="btn btn-outline-dark btn-sm"><i
+            class="fas fa-universal-access"></i>
+        Siswa Lulus
+    </a>
+    <a href="{{ route('data_pendaftaran_afirmasi.create') }}" class="btn btn-outline-danger btn-sm mx-2"><i
+            class="fas fa-universal-access"></i>
+        Siswa Belum Lulus
+    </a>
+    <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i class="fa fa-file-pdf"></i>
+        Export PDF
+    </button>
+</div>
 <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }}.</p>
-<div class="table-responsive text-nowrap">
+<div class="table-responsive text-nowrap" id="cetak">
     <table class="table table-hover" id="myTableZonasi">
         <thead>
             <tr>
@@ -44,8 +57,6 @@
                             class="btn btn-info btn-sm mx-1">
                             <i class="fas fa-eye"></i> Detail
                         </a>
-
-
                     </td>
                 </tr>
             @endforeach

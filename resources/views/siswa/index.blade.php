@@ -50,8 +50,8 @@
                                 <div class="panel-heading">
                                     <div class="float-end">
                                         @if ($cek > 0)
-                                            <a href="{{ route('jalur_pendaftaran') }}" class="btn btn-primary mb-3"><i
-                                                    class="fa fa-user"></i> Daftar
+                                            <a href="{{ route('jalur_pendaftaran') }}" class="btn btn-primary mb-3">
+                                                <i class="fa fa-user"></i> Daftar
                                                 PPDB</a>
                                         @endif
                                     </div>

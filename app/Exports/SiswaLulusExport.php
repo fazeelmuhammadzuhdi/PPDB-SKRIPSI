@@ -34,7 +34,7 @@ class SiswaLulusExport implements FromQuery
 
     public function query()
     {
-        return Siswa::with('prestasis')->get();
+        return Siswa::query()->select('nama_lengkap', 'nisn', 'alamat', 'jenis_kelamin');
     }
 
     // public function view(): View

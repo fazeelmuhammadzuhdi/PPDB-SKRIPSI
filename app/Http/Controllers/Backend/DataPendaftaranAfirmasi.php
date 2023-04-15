@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Afirmasi;
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
 class DataPendaftaranAfirmasi extends Controller
@@ -15,7 +16,9 @@ class DataPendaftaranAfirmasi extends Controller
      */
     public function index()
     {
-        //
+        $sekolah = Sekolah::sekolah()->first();
+        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        return view('afirmasi.siswa_lulus', compact('afirmasi', 'sekolah'));
     }
 
     /**
@@ -25,7 +28,9 @@ class DataPendaftaranAfirmasi extends Controller
      */
     public function create()
     {
-        //
+        $sekolah = Sekolah::sekolah()->first();
+        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        return view('afirmasi.siswa_lulus', compact('afirmasi', 'sekolah'));
     }
 
     /**
