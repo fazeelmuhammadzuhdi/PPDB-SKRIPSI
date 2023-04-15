@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\PindahTugas;
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
 class DataPendaftaranPindahTugas extends Controller
@@ -15,7 +16,9 @@ class DataPendaftaranPindahTugas extends Controller
      */
     public function index()
     {
-        //
+        $sekolah = Sekolah::sekolah()->first();
+        $pindahTugas = PindahTugas::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        return view('pindah_tugas.siswa_lulus', compact('pindahTugas', 'sekolah'));
     }
 
     /**
@@ -25,7 +28,9 @@ class DataPendaftaranPindahTugas extends Controller
      */
     public function create()
     {
-        //
+        $sekolah = Sekolah::sekolah()->first();
+        $pindahTugas = PindahTugas::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        return view('pindah_tugas.siswa_lulus', compact('pindahTugas', 'sekolah'));
     }
 
     /**

@@ -5,24 +5,24 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">
-                        @if (Route::is('data_pendaftaran_afirmasi.index'))
-                            SISWA YANG LULUS JALUR AFIRMASI
+                        @if (Route::is('data_pendaftaran_pindah_tugas.index'))
+                            <span class="text-primary">Siswa Yang Lulus Jalur Perpindahan Tugas Orang Tua</span>
                         @else
-                            SISWA BELUM YANG LULUS JALUR AFIRMASI
+                            <span class="text-primary">Siswa Belum Lulus Jalur Perpindahan Tugas Orang Tua</span>
                         @endif
                     </h3> <small class="text-muted float-end">
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-outline-dark btn-sm"><i
                                 class="fas fa-backward"></i>
                             Kembali
                         </a>
-                        <button class="btn btn-outline-primary btn-sm mx-2" onclick="printDiv('cetak')"><i
+                        <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
                                 class="fa fa-file-pdf"></i>
                             Export PDF
                         </button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap" id="cetak">
-                        <table class="table table-hover" id="myTableZonasi">
+                        <table class="table table-hover" id="siswaLulus">
                             <thead>
                                 <tr>
                                     <th width="1%">No</th>
@@ -35,7 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($afirmasi as $item)
+                                @foreach ($pindahTugas as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->siswa->nama_lengkap }}</td>
@@ -54,7 +54,6 @@
                                             <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
                                         </td>
                                         <td>{!! $item->siswa->alamat !!}</td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -69,7 +68,7 @@
 @push('after-script')
     <script>
         $(document).ready(function() {
-            $('#myTableZonasi').DataTable();
+            $('#siswaLulus').DataTable();
         });
     </script>
 @endpush
