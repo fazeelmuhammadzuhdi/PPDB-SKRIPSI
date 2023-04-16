@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AfirmasiController;
 use App\Http\Controllers\Backend\DataPendaftaranAfirmasi;
 use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
+use App\Http\Controllers\Backend\KecamatanController;
 use App\Http\Controllers\Backend\LaporanController;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
@@ -72,6 +73,15 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::post('/pekerjaan/update', 'update')->name('pekerjaan.update');
         Route::post('/pekerjaan/hapus', 'destroy')->name('pekerjaan.hapus');
     });
+
+    Route::controller(KecamatanController::class)->middleware('auth', 'dinas')->group(function () {
+        Route::get('/kecamatan', 'index')->name('kecamatan.index');
+        Route::post('/kecamatan/store', 'store')->name('kecamatan.store');
+        Route::get('/kecamatan/edit/{id}', 'edit')->name('kecamatan.edit');
+        Route::put('/kecamatan/update/{id}', 'update')->name('kecamatan.update');
+        Route::delete('/kecamatan/hapus/{id}', 'destroy')->name('kecamatan.hapus');
+    });
+
     Route::controller(LaporanController::class)->middleware('auth', 'sekolah')->group(function () {
         Route::get('/lulus', 'lulus')->name('lulus');
         Route::get('/export', 'cetakPdfSiswaLulus')->name('cetakpdf');
