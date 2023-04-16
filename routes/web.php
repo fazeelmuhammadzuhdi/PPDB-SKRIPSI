@@ -80,6 +80,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::get('/exportexcel', 'exportExcelSiswaLulus')->name('exportExcelSiswaLulus');
         Route::get('/afirmasi/lulus', 'exportExcelAfirmasiSiswaLulus')->name('exportExcelAfirmasiSiswaLulus');
         Route::get('/afirmasi/belumlulus', 'exportExcelAfirmasiSiswaBelumLulus')->name('exportExcelAfirmasiSiswaBelumLulus');
+        Route::get('/pindahtugas/lulus', 'exportExcelPindahTugasSiswaLulus')->name('exportExcelPindahTugasSiswaLulus');
+        Route::get('/pindahtugas/belumlulus', 'exportExcelPindahTugasSiswaBelumLulus')->name('exportExcelPindahTugasSiswaBelumLulus');
     });
 });
 

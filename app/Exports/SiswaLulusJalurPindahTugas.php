@@ -2,21 +2,23 @@
 
 namespace App\Exports;
 
-use App\Models\Afirmasi;
+use App\Models\PindahTugas;
 use App\Models\Sekolah;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class SiswaLulusJalurAfirmasi implements FromQuery, WithMapping, WithHeadings
+class SiswaLulusJalurPindahTugas implements FromQuery, WithMapping, WithHeadings
 {
     use Exportable;
-
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function query()
     {
         $sekolah = Sekolah::sekolah()->first();
-        return Afirmasi::query()->where('sekolah_id', $sekolah->id)->where('status', 1);
+        return PindahTugas::query()->where('sekolah_id', $sekolah->id)->where('status', 1);
     }
 
     public function map($siswa): array

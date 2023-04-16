@@ -34,12 +34,12 @@ class SiswaBelumLulusJalurAfirmasi implements FromQuery, WithMapping, WithHeadin
     public function headings(): array
     {
         return [
-            'Nama Siswa',
+            'NAMA SISWA',
             'NISN',
-            'Jenis Kelamin',
-            'Alamat',
-            'Status Pendaftaran',
-            'Asal Sekolah',
+            'JENIS KELAMIN',
+            'ALAMAT',
+            'STATUS PENDAFTARAN',
+            'ASAL SEKOLAH',
         ];
     }
 }

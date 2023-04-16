@@ -6,15 +6,29 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">
                         @if (Route::is('data_pendaftaran_pindah_tugas.index'))
-                            <span class="text-primary">Siswa Yang Lulus Jalur Perpindahan Tugas Orang Tua</span>
+                            <span class="text-primary">Siswa Lulus Jalur Perpindahan Tugas Orang Tua</span>
                         @else
-                            <span class="text-primary">Siswa Belum Lulus Jalur Perpindahan Tugas Orang Tua</span>
+                            <span class="text-primary">Siswa Belum Lulus Jalur Pindah Tugas Orang Tua</span>
                         @endif
                     </h3> <small class="text-muted float-end">
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-outline-dark btn-sm"><i
                                 class="fas fa-backward"></i>
                             Kembali
                         </a>
+                        @if (Route::is('data_pendaftaran_pindah_tugas.index'))
+                            <a href="{{ route('exportExcelPindahTugasSiswaLulus') }}"
+                                class="btn btn-outline-success btn-sm mx-2"><i class="fas fa-excel"></i>
+                                <i class="fas fa-file-excel"></i>
+                                Export Excel
+                            </a>
+                        @else
+                            <a href="{{ route('exportExcelPindahTugasSiswaBelumLulus') }}"
+                                class="btn btn-outline-success btn-sm mx-2"><i class="fas fa-excel"></i>
+                                <i class="fas fa-file-excel"></i>
+                                Export Excel
+                            </a>
+                        @endif
+
                         <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
                                 class="fa fa-file-pdf"></i>
                             Export PDF

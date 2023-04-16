@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Exports\SiswaBelumLulusJalurAfirmasi;
+use App\Exports\SiswaBelumLulusJalurPindahTugas;
 use App\Models\Siswa;
 use App\Models\Sekolah;
 use App\Models\Afirmasi;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\SiswaLulusExport;
 use App\Exports\SiswaLulusJalurAfirmasi;
+use App\Exports\SiswaLulusJalurPindahTugas;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -96,5 +98,15 @@ class LaporanController extends Controller
     public function exportExcelAfirmasiSiswaBelumLulus()
     {
         return (new SiswaBelumLulusJalurAfirmasi)->download('siswaBelumLulusJalurAfirmasi.xlsx');
+    }
+
+    public function exportExcelPindahTugasSiswaLulus()
+    {
+        return (new SiswaLulusJalurPindahTugas)->download('siswaLulusJalurPindahTugasOrangTua.xlsx');
+    }
+
+    public function exportExcelPindahTugasSiswaBelumLulus()
+    {
+        return (new SiswaBelumLulusJalurPindahTugas)->download('siswaBelumLulusJalurPindahTugasOrangTua.xlsx');
     }
 }
