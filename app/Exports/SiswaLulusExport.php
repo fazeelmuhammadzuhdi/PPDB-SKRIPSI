@@ -7,7 +7,6 @@ use App\Models\Sekolah;
 use App\Models\Afirmasi;
 use App\Models\Prestasi;
 use App\Models\PindahTugas;
-use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;

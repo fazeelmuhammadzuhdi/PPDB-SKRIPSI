@@ -7,6 +7,7 @@
             class="fas fa-universal-access"></i>
         Siswa Belum Lulus
     </a>
+
     <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i class="fa fa-file-pdf"></i>
         Export PDF
     </button>

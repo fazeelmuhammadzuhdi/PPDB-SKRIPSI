@@ -15,7 +15,22 @@
                                 class="fas fa-backward"></i>
                             Kembali
                         </a>
-                        <button class="btn btn-outline-primary btn-sm mx-2" onclick="printDiv('cetak')"><i
+
+                        @if (Route::is('data_pendaftaran_afirmasi.index'))
+                            <a href="{{ route('exportExcelAfirmasiSiswaLulus') }}"
+                                class="btn btn-outline-success btn-sm mx-2"><i class="fas fa-excel"></i>
+                                <i class="fas fa-file-excel"></i>
+                                Export Excel
+                            </a>
+                        @else
+                            <a href="{{ route('exportExcelAfirmasiSiswaBelumLulus') }}"
+                                class="btn btn-outline-success btn-sm mx-2"><i class="fas fa-excel"></i>
+                                <i class="fas fa-file-excel"></i>
+                                Export Excel
+                            </a>
+                        @endif
+
+                        <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
                                 class="fa fa-file-pdf"></i>
                             Export PDF
                         </button>
