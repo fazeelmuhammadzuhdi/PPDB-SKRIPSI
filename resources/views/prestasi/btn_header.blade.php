@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end mb-3">
     <a href="{{ route('siswaLulusJalurPrestasi') }}" class="btn btn-outline-dark btn-sm"><i
             class="fas fa-universal-access"></i>
         Siswa Lulus
@@ -7,7 +7,7 @@
             class="fas fa-universal-access"></i>
         Siswa Belum Lulus
     </a>
-    <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i class="fa fa-file-pdf"></i>
+    <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetakSiswaPrestasi')"><i class="fa fa-file-pdf"></i>
         Export PDF
     </button>
 </div>
