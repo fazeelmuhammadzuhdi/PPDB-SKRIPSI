@@ -25,7 +25,7 @@
                                     <th>Nama Kampung</th>
                                     <th>Nama Nagari</th>
                                     <th>Nama Kecamatan</th>
-                                    <th width="20%">Aksi</th>
+                                    <th width="15%">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,8 +39,8 @@
                                             <form method="POST" action="{{ route('kampung.destroy', $item->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('kampung.edit', $item->id) }}" class="btn btn-warning"><i
-                                                        class="fa fa-edit"></i></a>
+                                                {{-- <a href="{{ route('kampung.edit', $item->id) }}" class="btn btn-warning"><i
+                                                        class="fa fa-edit"></i></a> --}}
 
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="fa fa-trash"></i></button>

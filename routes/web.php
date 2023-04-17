@@ -61,6 +61,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
+    Route::post('/getkecamatan', [KampungController::class, 'getkecamatan'])->name('getkecamatan');
     Route::resource('kampung', KampungController::class);
 
 

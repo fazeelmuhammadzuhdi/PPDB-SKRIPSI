@@ -29,9 +29,9 @@ class KampungController extends Controller
      */
     public function create()
     {
-        $nagari = Nagari::all();
+        // $nagari = Nagari::all();
         $kecamatan = Kecamatan::all();
-        return view('kampung.create', compact('nagari', 'kecamatan'));
+        return view('kampung.create', compact('kecamatan'));
     }
 
     /**
@@ -69,7 +69,7 @@ class KampungController extends Controller
     public function edit($id)
     {
         $kampung = Kampung::findOrFail($id);
-        $nagari = Nagari::get();
+        // $nagari = Nagari::get();
         $kecamatan = Kecamatan::get();
 
         return view('kampung.edit', compact('kampung', 'nagari', 'kecamatan'));
@@ -108,5 +108,20 @@ class KampungController extends Controller
 
         flash('Data berhasil dihapus');
         return redirect()->back();
+    }
+
+    public function getkecamatan(Request $request)
+    {
+        $id_kecamatan = $request->id_kecamatan;
+
+        //get Data kecamatan    
+        $kecamatan = Nagari::where('kecamatan_id', $id_kecamatan)->get();
+
+        $option = "<option>--Pilih Nagari--</option>";
+        //lakukan perulangan karena 1 provinsi mempunyai banyak kabupaten
+        foreach ($kecamatan as $kec) {
+            $option .= "<option value='$kec->id'>$kec->nama_nagari</option>";
+        }
+        return $option;
     }
 }

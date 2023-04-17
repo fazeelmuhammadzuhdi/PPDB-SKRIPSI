@@ -14,38 +14,34 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group">
-                                <label for="nama_kampung" class="form-label">Nama Kampung</label>
-                                <input type="text" class="form-control @error('nama_kampung') is-invalid @enderror"
-                                    name="nama_kampung" value="{{ old('nama_kampung') }}" required>
-                                @error('nama_kampung')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group mt-3">
-                                <label for="kk" class="form-label">Nama Nagari</label>
-                                <select name="nagari_id" class="form-control select2" required>
-                                    @foreach ($nagari as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama_nagari }}</option>
-                                    @endforeach
-                                </select>
-                                @error('nagari_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group mt-3">
                                 <label for="kecamatan_id" class="form-label">Nama Kecamatan</label>
-                                <select name="kecamatan_id" class="form-control select2" required>
+                                <select name="kecamatan_id" id="kecamatan_id" class="form-control select2" required>
+                                    <option value="">--Pilih Kecamatan--</option>
                                     @foreach ($kecamatan as $item)
                                         <option value="{{ $item->id }}">{{ $item->nama_kecamatan }}</option>
                                     @endforeach
                                 </select>
                                 @error('kecamatan_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="kk" class="form-label">Nama Nagari</label>
+                                <select name="nagari_id" id="nagari_id" class="form-control select2">
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="nama_kampung" class="form-label">Nama Kampung</label>
+                                <input type="text" class="form-control @error('nama_kampung') is-invalid @enderror"
+                                    name="nama_kampung" value="{{ old('nama_kampung') }}">
+                                @error('nama_kampung')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -65,3 +61,32 @@
         </div>
     </div>
 @endsection
+
+@push('after-script')
+    <script>
+        $(function() {
+            $('#kecamatan_id').on('change', function() {
+                //mengambil id kecamatan_id
+                let id_kecamatan = $('#kecamatan_id').val();
+                let token = $("meta[name='csrf-token']").attr("content");
+                // console.log(id_kecamatan_id);
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('getkecamatan') }}",
+                    data: {
+                        "id_kecamatan": id_kecamatan,
+                        "_token": token
+                    },
+                    cache: false,
+                    success: function(response) {
+                        $('#nagari_id').html(response);
+                    },
+                    error: function(xhr) {
+                        console.log('Error :', xhr);
+                    }
+                });
+            });
+        })
+    </script>
+@endpush
