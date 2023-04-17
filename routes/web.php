@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AfirmasiController;
 use App\Http\Controllers\Backend\DataPendaftaranAfirmasi;
 use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
+use App\Http\Controllers\Backend\KampungController;
 use App\Http\Controllers\Backend\KecamatanController;
 use App\Http\Controllers\Backend\LaporanController;
 use App\Http\Controllers\Backend\NagariController;
@@ -60,6 +61,9 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
+    Route::resource('kampung', KampungController::class);
+
+
     Route::controller(PenghasilanController::class)->group(function () {
         Route::get('/penghasilan', 'index')->name('penghasilan.index');
         Route::post('/penghasilan/store', 'store')->name('penghasilan.store');
@@ -92,7 +96,6 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::put('/nagari/update/{id}', 'update')->name('nagari.update');
         Route::delete('/nagari/delete/{id}', 'destroy')->name('nagari.delete');
     });
-
 
     Route::controller(LaporanController::class)->middleware('auth', 'sekolah')->group(function () {
         Route::get('/lulus', 'lulus')->name('lulus');

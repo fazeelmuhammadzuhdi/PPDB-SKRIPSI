@@ -120,6 +120,12 @@
                     <div data-i18n="Account Settings">Data Nagari</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('kampung.*') ? 'active' : '' }}">
+                <a href="{{ route('kampung.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Data Kampung</div>
+                </a>
+            </li>
         @elseif (Auth::user()->akses == 'Admin Sekolah')
             <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_dinas') }}" class="menu-link">
