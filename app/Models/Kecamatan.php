@@ -16,4 +16,9 @@ class Kecamatan extends Model
      */
     protected $fillable = ['nama_kecamatan'];
     protected $table = 'kecamatans';
+
+    public function nagari()
+    {
+        return $this->hasMany(Nagari::class);
+    }
 }

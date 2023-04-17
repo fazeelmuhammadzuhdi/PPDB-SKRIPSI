@@ -12,7 +12,7 @@
                     <div>
                         <input class="form-control" id="id" type="hidden" name="id">
                         <div class="col-md-12">
-                            <label class="form-label" for="nama_kecamatan">Nama Jenis Kecamatan</label>
+                            <label class="form-label" for="nama_kecamatan">Nama Kecamatan</label>
                             <input class="form-control" id="nama_kecamatan" type="text" name="nama_kecamatan"
                                 required>
                             @error('nama_kecamatan')

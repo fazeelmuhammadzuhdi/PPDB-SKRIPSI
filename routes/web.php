@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
 use App\Http\Controllers\Backend\KecamatanController;
 use App\Http\Controllers\Backend\LaporanController;
+use App\Http\Controllers\Backend\NagariController;
 use App\Http\Controllers\Backend\PekerjaanController;
 use App\Http\Controllers\Backend\PenghasilanController;
 use App\Http\Controllers\Backend\PindahTugasOrangTuaController;
@@ -81,6 +82,17 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::put('/kecamatan/update/{id}', 'update')->name('kecamatan.update');
         Route::delete('/kecamatan/hapus/{id}', 'destroy')->name('kecamatan.hapus');
     });
+
+    Route::controller(NagariController::class)->middleware('auth', 'dinas')->group(function () {
+        Route::get('/nagari', 'index')->name('nagari.index');
+        Route::get('/nagari/add', 'add')->name('nagari.add');
+        Route::post('/nagari/store', 'store')->name('nagari.store');
+        Route::get('/nagari/detail/{id}', 'detail')->name('nagari.detail');
+        Route::get('/nagari/edit/{id}', 'edit')->name('nagari.edit');
+        Route::put('/nagari/update/{id}', 'update')->name('nagari.update');
+        Route::delete('/nagari/delete/{id}', 'destroy')->name('nagari.delete');
+    });
+
 
     Route::controller(LaporanController::class)->middleware('auth', 'sekolah')->group(function () {
         Route::get('/lulus', 'lulus')->name('lulus');
