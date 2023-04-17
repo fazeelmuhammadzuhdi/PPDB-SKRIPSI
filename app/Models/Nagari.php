@@ -18,4 +18,9 @@ class Nagari extends Model
     {
         return $this->belongsTo(Kecamatan::class);
     }
+
+    public function kampung()
+    {
+        return $this->hasMany(Kampung::class);
+    }
 }
