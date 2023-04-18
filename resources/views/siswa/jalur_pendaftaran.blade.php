@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    @if ($cek > 0 && $cek_prestasi != 1 && $cek_afirmasi != 1 && $cek_pindah_tugas != 1)
+    @if ($cek > 0 && $cek_prestasi != 1 && $cek_afirmasi != 1 && $cek_pindah_tugas != 1 && $cek_zonasi != 1)
         <div class="row">
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
@@ -12,7 +12,7 @@
                     <div class="icon">
                         <i class="fas fa-arrow-circle-right"></i>
                     </div>
-                    <a href="{{ route('dashboard_siswa') }}" class="small-box-footer">Klik Disini &nbsp;
+                    <a href="{{ route('zonasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
                         <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -116,7 +116,7 @@
 
     {{-- @if (($cek_prestasi == 1 && $cekLulusJalurPrestasi?->status != 1) || $cekLulusJalurPrestasi?->status != 1 || $cekLulusJalurAfirmasi?->status != 1) --}}
 
-    @if ($cek_prestasi == 1 || $cek_afirmasi == 1 || $cek_pindah_tugas == 1)
+    @if ($cek_prestasi == 1 || $cek_afirmasi == 1 || $cek_pindah_tugas == 1 || $cek_zonasi == 1)
         {{-- <div class="alert" role="alert" style="background-color:#0ca255; color:#fff;">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-2">Info!!</h6>
             <p class="mb-0" style="font-size: 18px">Terima Kasih Telah Melakukan Pendaftaran. Tunggu Hasil Pengumuman
@@ -162,6 +162,15 @@
                                             </td>
                                         </tr>
                                     @endif
+                                    @if ($cek_zonasi)
+                                        <tr>
+                                            <td width="30%"><b>Jalur Pendaftaran</b></td>
+                                            <td width="50%">ZONASI</td>
+                                            <td width="20%" rowspan="10">
+                                                <img src="{{ Storage::url($cek_siswa->foto) }}" width="100%">
+                                            </td>
+                                        </tr>
+                                    @endif
                                     <tr>
                                         <td><b>NO PENDAFTARAN</b></td>
                                         <td><span
@@ -180,6 +189,10 @@
                                         @if ($cek_pindah_tugas)
                                             <td><b>Sekolah Pendaftaran</b></td>
                                             <td>{{ $cekLulusJalurPindahTugas->sekolah->nama }}</td>
+                                        @endif
+                                        @if ($cek_zonasi)
+                                            <td><b>Sekolah Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurZonasi->sekolah->nama }}</td>
                                         @endif
                                     </tr>
                                     <tr>
@@ -217,6 +230,21 @@
                                             <td><b>Status Pendaftaran</b></td>
                                             <td>
                                                 @foreach ($cek_siswa->pindahTugas as $item)
+                                                    @if ($item->status == 1)
+                                                        <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
+                                                    @elseif($item->status == 2)
+                                                        <span class="badge rounded-pill bg-danger fw-bold">DITOLAK</span>
+                                                    @else
+                                                        <span class="badge rounded-pill bg-warning fw-bold">PROSES
+                                                            SELEKSI</span>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        @endif
+                                        @if ($cek_zonasi)
+                                            <td><b>Status Pendaftaran</b></td>
+                                            <td>
+                                                @foreach ($cek_siswa->zonasis as $item)
                                                     @if ($item->status == 1)
                                                         <span class="badge rounded-pill bg-success fw-bold">DITERIMA</span>
                                                     @elseif($item->status == 2)

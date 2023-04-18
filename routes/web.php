@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\SiswaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\UserSiswaController;
+use App\Http\Controllers\Backend\ZonasiController;
 use App\Http\Controllers\Backend\ZonasiSekolahController;
 use App\Http\Controllers\DashboardDinasController;
 use App\Http\Controllers\DashboardSiswaController;
@@ -133,6 +134,7 @@ Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
     Route::resource('prestasi', PrestasiController::class);
     Route::resource('afirmasi', AfirmasiController::class);
     Route::resource('pindahtugas', PindahTugasOrangTuaController::class);
+    Route::resource('zonasi', ZonasiController::class);
 });
 
 Auth::routes();

@@ -85,6 +85,10 @@ class Siswa extends Model
     {
         return $this->hasMany(Afirmasi::class);
     }
+    public function zonasis(): HasMany
+    {
+        return $this->hasMany(Zonasi::class);
+    }
 
     /**
      * Get the user that owns the Siswa

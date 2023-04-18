@@ -19,7 +19,8 @@ class ZonasiSekolahController extends Controller
      */
     public function index()
     {
-        $zonasiSekolah = ZonasiSekolah::with('nagari', 'kampung', 'kecamatan')->get();
+        $sekolah = Sekolah::sekolah()->first();
+        $zonasiSekolah = ZonasiSekolah::with('nagari', 'kampung', 'kecamatan')->where('sekolah_id', $sekolah->id)->get();
 
         return view('zonasiSekolah.index', compact('zonasiSekolah'));
     }

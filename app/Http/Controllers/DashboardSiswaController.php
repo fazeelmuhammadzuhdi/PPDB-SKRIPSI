@@ -7,6 +7,7 @@ use App\Models\PindahTugas;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
+use App\Models\Zonasi;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,13 +51,15 @@ class DashboardSiswaController extends Controller
         $cekLulusJalurPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         $cekLulusJalurAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         $cekLulusJalurPindahTugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusJalurZonasi = Zonasi::where('siswa_id', $cek_siswa->id ?? '')->first();
         //cek apakah siswa sudah pernah mendaftar melalui jalur prestasi, afirmasi dll
         $cek_prestasi = Prestasi::where('siswa_id', $cek_siswa->id  ?? '')->count();
         $cek_afirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->count();
         $cek_pindah_tugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->count();
+        $cek_zonasi = Zonasi::where('siswa_id', $cek_siswa->id ?? '')->count();
         // dd($cek_afirmasi);
         // dd($cek_prestasi);
-        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi', 'cek_siswa', 'cek_afirmasi', 'cekLulusJalurAfirmasi', 'cek_pindah_tugas', 'cekLulusJalurPindahTugas'));
+        return view('siswa.jalur_pendaftaran', compact('cek', 'cek_prestasi', 'cekLulusJalurPrestasi', 'cek_siswa', 'cek_afirmasi', 'cekLulusJalurAfirmasi', 'cek_pindah_tugas', 'cekLulusJalurPindahTugas', 'cek_zonasi', 'cekLulusJalurZonasi'));
     }
 
     public function kartuPendaftaran(Request $request)
