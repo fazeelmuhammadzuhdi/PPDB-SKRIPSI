@@ -72,7 +72,7 @@ class KampungController extends Controller
         // $nagari = Nagari::get();
         $kecamatan = Kecamatan::get();
 
-        return view('kampung.edit', compact('kampung', 'nagari', 'kecamatan'));
+        return view('kampung.edit', compact('kampung',  'kecamatan'));
     }
 
     /**
@@ -90,7 +90,7 @@ class KampungController extends Controller
 
         $item->update($data);
 
-
+        flash('Data berhasil diupdate');
         return redirect()->route('kampung.index');
     }
 

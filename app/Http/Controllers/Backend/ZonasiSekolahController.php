@@ -46,7 +46,7 @@ class ZonasiSekolahController extends Controller
     {
         $data = $request->all();
         // dd($data);
-        
+
         ZonasiSekolah::create($data);
         flash('Data berhasil disimpan');
         return redirect()->route('zonasisekolah.index');
@@ -94,7 +94,12 @@ class ZonasiSekolahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ZonasiSekolah::findOrFail($id);
+
+        $data->delete();
+
+        flash('Data berhasil dihapus');
+        return redirect()->back();
     }
 
     public function getnagari(Request $request)

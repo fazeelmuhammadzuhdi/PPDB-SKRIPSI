@@ -37,7 +37,7 @@
                                         <td>{{ $item->nagari->nama_nagari }}</td>
                                         <td>{{ $item->kampung->nama_kampung }}</td>
                                         <td>
-                                            <form method="POST" action="{{ route('kampung.destroy', $item->id) }}">
+                                            <form method="POST" action="{{ route('zonasisekolah.destroy', $item->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 {{-- <a href="{{ route('kampung.edit', $item->id) }}" class="btn btn-warning"><i
