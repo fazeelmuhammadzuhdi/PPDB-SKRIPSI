@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kampung;
 use App\Models\Kecamatan;
 use App\Models\Nagari;
+use App\Models\Sekolah;
 use App\Models\ZonasiSekolah;
 use Illuminate\Http\Request;
 
@@ -44,8 +45,9 @@ class ZonasiSekolahController extends Controller
      */
     public function store(Request $request)
     {
+        $sekolah = Sekolah::sekolah()->first();
         $data = $request->all();
-        // dd($data);
+        $data['sekolah_id'] = $sekolah->id;
 
         ZonasiSekolah::create($data);
         flash('Data berhasil disimpan');

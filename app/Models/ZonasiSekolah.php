@@ -15,6 +15,7 @@ class ZonasiSekolah extends Model
         'nagari_id',
         'kampung_id',
         'kecamatan_id',
+        'sekolah_id',
     ];
 
     public function nagari()
@@ -30,5 +31,10 @@ class ZonasiSekolah extends Model
     public function kecamatan()
     {
         return $this->belongsTo(Kecamatan::class);
+    }
+
+    public function sekolah()
+    {
+        return $this->belongsTo(Sekolah::class);
     }
 }
