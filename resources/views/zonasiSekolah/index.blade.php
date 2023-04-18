@@ -14,8 +14,7 @@
                     </h3>
 
                     <a href="{{ route('zonasisekolah.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i>
-                        Add
-                        Sekolah</a>
+                        Add Zonasi Sekolah</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -40,8 +39,8 @@
                                             <form method="POST" action="{{ route('zonasisekolah.destroy', $item->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                {{-- <a href="{{ route('kampung.edit', $item->id) }}" class="btn btn-warning"><i
-                                                        class="fa fa-edit"></i></a> --}}
+                                                <a href="{{ route('zonasisekolah.edit', $item->id) }}"
+                                                    class="btn btn-warning"><i class="fa fa-edit"></i></a>
 
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="fa fa-trash"></i></button>

@@ -71,7 +71,9 @@ class ZonasiSekolahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $zonasiSekolah = ZonasiSekolah::findOrFail($id);
+        $kecamatan = Kecamatan::all();
+        return view('zonasiSekolah.edit', compact('kecamatan', 'zonasiSekolah'));
     }
 
     /**
@@ -83,7 +85,13 @@ class ZonasiSekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $item = ZonasiSekolah::findOrFail($id);
+
+        $item->update($data);
+        flash('Data berhasil diupdate');
+        return redirect()->route('zonasisekolah.index');
     }
 
     /**
