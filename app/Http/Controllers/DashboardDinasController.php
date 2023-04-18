@@ -7,6 +7,7 @@ use App\Models\PindahTugas;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
 use App\Models\Siswa;
+use App\Models\Zonasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,9 @@ class DashboardDinasController extends Controller
             $afirmasi = Afirmasi::where('sekolah_id', $sekolah?->id)->count();
             $pindahTugas = PindahTugas::where('sekolah_id', $sekolah?->id)->count();
             $prestasi = Prestasi::where('sekolah_id', $sekolah?->id)->count();
-            return view('dinas.dashboard_dinas', compact('afirmasi', 'pindahTugas', 'prestasi', 'totalSiswaLulus', 'totalSiswaBelumLulus'));
+            $zonasi = Zonasi::where('sekolah_id', $sekolah?->id)->count();
+
+            return view('dinas.dashboard_dinas', compact('afirmasi', 'pindahTugas', 'prestasi', 'totalSiswaLulus', 'totalSiswaBelumLulus', 'zonasi'));
         }
     }
 }

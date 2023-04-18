@@ -70,6 +70,19 @@
                                             </tr>
                                         @endif
                                     @endforeach
+
+                                    @foreach ($zonasi as $data)
+                                        @if ($item->id == $data->siswa_id)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>ZONASI</td>
+                                                <td>{{ $item->nama_lengkap }}</td>
+                                                <td>{{ $item->nisn }}</td>
+                                                <td>{{ $item->jenis_kelamin }}</td>
+                                                <td>{!! $item->alamat !!}</td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </tbody>
                         </table>

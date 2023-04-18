@@ -8,6 +8,7 @@ use App\Models\Penghargaan;
 use App\Models\PindahTugas;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
+use App\Models\Zonasi;
 use Illuminate\Http\Request;
 
 class DataPendaftaranPrestasi extends Controller
@@ -28,8 +29,9 @@ class DataPendaftaranPrestasi extends Controller
         $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($afirmasi);
         $pindahTugas = PindahTugas::with('siswa')->where('sekolah_id', $sekolah->id)->get();
+        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($data_prestasi);
-        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah', 'afirmasi', 'pindahTugas'));
+        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah', 'afirmasi', 'pindahTugas', 'zonasi'));
     }
 
     /**

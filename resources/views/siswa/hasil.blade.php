@@ -20,6 +20,7 @@
                                     @include('siswa.hasil_pengumuman_prestasi')
                                     @include('siswa.hasil_pengumuman_afirmasi')
                                     @include('siswa.hasil_pengumuman_pindah_tugas')
+                                    @include('siswa.hasil_pengumuman_zonasi')
 
 
                                     {{-- <form action="{{ route('kartu_pendaftaran') }}" method="GET">

@@ -17,6 +17,7 @@ use App\Exports\SiswaLulusJalurAfirmasi;
 use App\Exports\SiswaLulusJalurPindahTugas;
 use App\Exports\SiswaLulusJalurPrestasi;
 use App\Http\Controllers\Controller;
+use App\Models\Zonasi;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -30,28 +31,11 @@ class LaporanController extends Controller
         // dd($afirmasi);
         $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
         $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $zonasi = Zonasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+
         $siswa = Siswa::get();
         // dd($user);
-        return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
-    }
-
-    public function cetakPdfSiswaLulus()
-    {
-        $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $siswa = Siswa::get();
-
-        // $pdf = PDF::loadView('laporan.siswa_lulus', [
-        //     'afirmasi' => $afirmasi,
-        //     'siswa' => $siswa,
-        //     'pindahTugas' => $pindahTugas,
-        //     'prestasi' => $prestasi,
-        //     'sekolah' => $sekolah
-        // ])->setOptions(['defaultFont' => 'sans-serif']);;
-        // return $pdf->stream("LAPORAN SISWA LULUS.pdf");
-        return view('laporan.siswa_lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
+        return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
     }
 
     public function ditolak()
@@ -62,17 +46,22 @@ class LaporanController extends Controller
         // dd($afirmasi);
         $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
         $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+
         $siswa = Siswa::get();
         // dd($user);
-        return view('laporan.ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
+        return view('laporan.ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
     }
 
-    public function cetakPdfSiswaDitolak()
+
+    public function cetakPdfSiswaLulus()
     {
         $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $pindahTugas = PindahTugas::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+
         $siswa = Siswa::get();
 
         // $pdf = PDF::loadView('laporan.siswa_lulus', [
@@ -83,7 +72,27 @@ class LaporanController extends Controller
         //     'sekolah' => $sekolah
         // ])->setOptions(['defaultFont' => 'sans-serif']);;
         // return $pdf->stream("LAPORAN SISWA LULUS.pdf");
-        return view('laporan.siswa_ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi'));
+        return view('laporan.siswa_lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+    }
+
+    public function cetakPdfSiswaDitolak()
+    {
+        $sekolah = Sekolah::sekolah()->first();
+        $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $pindahTugas = PindahTugas::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $zonasi = Zonasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $siswa = Siswa::get();
+
+        // $pdf = PDF::loadView('laporan.siswa_lulus', [
+        //     'afirmasi' => $afirmasi,
+        //     'siswa' => $siswa,
+        //     'pindahTugas' => $pindahTugas,
+        //     'prestasi' => $prestasi,
+        //     'sekolah' => $sekolah
+        // ])->setOptions(['defaultFont' => 'sans-serif']);;
+        // return $pdf->stream("LAPORAN SISWA LULUS.pdf");
+        return view('laporan.siswa_ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
     }
 
     public function exportExcelSiswaLulus()

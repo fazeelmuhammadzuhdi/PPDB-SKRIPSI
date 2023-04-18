@@ -64,7 +64,7 @@
                         <i class='bx bxs-dollar-circle'></i>
                         <span class="text">
                             <p>ZONASI</p>
-                            <h3>0 Pendaftar</h3>
+                            <h3>{{ $zonasi }} Pendaftar</h3>
                         </span>
                     </li>
                     <li>
