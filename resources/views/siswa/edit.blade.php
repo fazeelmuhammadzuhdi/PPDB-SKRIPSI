@@ -27,6 +27,11 @@
                                         data-bs-target="#navs-pills-top-messages" aria-controls="navs-pills-top-messages"
                                         aria-selected="false" tabindex="-1">Data Ibu</button>
                                 </li>
+                                <li class="nav-item" role="presentation">
+                                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                        data-bs-target="#navs-pills-top-alamat" aria-controls="navs-pills-top-messages"
+                                        aria-selected="false" tabindex="-1">Data Alamat / Zonasi</button>
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade active show" id="navs-pills-top-home" role="tabpanel">
@@ -37,6 +42,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="navs-pills-top-messages" role="tabpanel">
                                     @include('siswa.partials.data_ibu')
+                                </div>
+                                <div class="tab-pane fade" id="navs-pills-top-alamat" role="tabpanel">
+                                    @include('siswa.partials.data_alamat')
                                 </div>
                                 <div class="text-end mt-2 -mb-2">
                                     <a href="{{ route('siswa.index') }}" class="btn btn-outline-secondary">Back</a>

@@ -121,6 +121,15 @@
                                                 </tr>
 
                                                 <tr>
+                                                    <td><b>Kecamatan</b> :</td>
+                                                    <td> {{ $item->kecamatan?->nama_kecamatan }}</td>
+                                                    <td><b>Nagari</b> :</td>
+                                                    <td> {{ $item->nagari?->nama_nagari }}</td>
+                                                    <td><b>Kampung</b> :</td>
+                                                    <td>{{ $item->kampung?->nama_kampung }}</td>
+                                                </tr>
+
+                                                <tr>
                                                     <td colspan="7"><b style="color:#ff6b81;">Upload foto
                                                             dan Silahkan
                                                             Lakukan Pendaftaran, Klik <a

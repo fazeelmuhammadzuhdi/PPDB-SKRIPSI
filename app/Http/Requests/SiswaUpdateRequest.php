@@ -45,6 +45,9 @@ class SiswaUpdateRequest extends FormRequest
             'nama_ibu' => 'required',
             'pekerjaan_ibu' => 'required',
             'penghasilan_ibu' => 'required',
+            'kecamatan_id' => 'required',
+            'nagari_id' => 'required',
+            'kampung_id' => 'required',
         ];
     }
 
@@ -69,6 +72,9 @@ class SiswaUpdateRequest extends FormRequest
             'nama_ibu.required' => ':attribute Tidak Boleh Kosong',
             'pekerjaan_ibu.required' => ':attribute Tidak Boleh Kosong',
             'penghasilan_ibu.required' => ':attribute Tidak Boleh Kosong',
+            'kecamatan_id' => ':attribute Tidak Boleh Kosong',
+            'nagari_id' => ':attribute Tidak Boleh Kosong',
+            'kampung_id' => ':attribute Tidak Boleh Kosong',
         ];
     }
 
@@ -91,6 +97,9 @@ class SiswaUpdateRequest extends FormRequest
             'nama_ibu' => 'Nama Ibu',
             'pekerjaan_ibu' => 'Pekerjaan Ibu',
             'penghasilan_ibu' => 'Penghasilan Ibu',
+            'kecamatan_id' => 'Kecamatan',
+            'nagari_id' => 'Nagari',
+            'kampung_id' => 'Kampung',
         ];
     }
 }

@@ -100,4 +100,19 @@ class Siswa extends Model
     {
         return $query->where('user_id', auth()->user()->id);
     }
+
+    public function nagari()
+    {
+        return $this->belongsTo(Nagari::class);
+    }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class);
+    }
+
+    public function kampung()
+    {
+        return $this->belongsTo(Kampung::class);
+    }
 }
