@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\SekolahController;
 use App\Http\Controllers\Backend\SiswaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\UserSiswaController;
+use App\Http\Controllers\Backend\ZonasiSekolahController;
 use App\Http\Controllers\DashboardDinasController;
 use App\Http\Controllers\DashboardSiswaController;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,9 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
     Route::post('/getkecamatan', [KampungController::class, 'getkecamatan'])->name('getkecamatan');
     Route::resource('kampung', KampungController::class);
+    Route::post('/getnagari', [ZonasiSekolahController::class, 'getnagari'])->name('getnagarizonasi');
+    Route::post('/getkampung', [ZonasiSekolahController::class, 'getkampung'])->name('getkampungzonasi');
+    Route::resource('zonasisekolah', ZonasiSekolahController::class);
 
 
     Route::controller(PenghasilanController::class)->group(function () {
