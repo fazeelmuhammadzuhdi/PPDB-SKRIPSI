@@ -145,7 +145,8 @@
                     <div data-i18n="Account Settings">Data Zonasi Sekolah</div>
                 </a>
             </li>
-            <li class="menu-item {{ Route::is('data_pendaftaran_prestasi.*') ? 'active' : '' }}">
+            <li
+                class="menu-item {{ Route::is('data_pendaftaran_prestasi.*') || Route::is('data_pendaftaran_afirmasi.*') || Route::is('data_pendaftaran_zonasi.*') || Route::is('data_pendaftaran_pindah_tugas.*') || Route::is('data_pendaftaran_prestasi.*') ? 'active' : '' }}">
                 <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-dock-top"></i>
                     <div data-i18n="Account Settings">Data PPDB</div>

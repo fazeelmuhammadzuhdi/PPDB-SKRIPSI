@@ -15,7 +15,7 @@ class PenghasilanController extends Controller
      */
     public function index()
     {
-        $penghasilan  = Penghasilan::latest();
+        $penghasilan  = Penghasilan::all();
         $title = 'Penghasilan';
 
         if (request()->ajax()) {

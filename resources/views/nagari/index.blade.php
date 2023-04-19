@@ -36,9 +36,12 @@
                                             <form method="POST" action="{{ route('nagari.delete', $item->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a type="button" class="btn btn-warning edit"
-                                                    data-bs-id="{{ $item->id }}"><i class="fa fa-edit"></i></a>
-                                                <a type="submit" class="btn btn-danger show_confirm">
+                                                <a type="button" class="btn btn-outline-info edit"
+                                                    data-bs-id="{{ $item->id }}"
+                                                    style="background-color: rgb(255, 255, 0); color: #fff"><i
+                                                        class="fa fa-edit"></i></a>
+                                                <a type="submit" class="btn btn-outline-danger show_confirm"
+                                                    style="background-color: rgba(255, 3, 3, 0.959); color: #fff">
                                                     <i class="fa fa-trash"></i></a>
                                             </form>
                                         </td>

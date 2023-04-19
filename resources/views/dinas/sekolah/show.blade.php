@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>Alamat Sekolah</td>
                                     <td>:</td>
-                                    <td>{{ $sekolah->alamat }}</td>
+                                    <td>{!! $sekolah->alamat !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Akreditasi Sekolah</td>

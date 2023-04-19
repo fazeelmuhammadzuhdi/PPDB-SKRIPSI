@@ -15,7 +15,7 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        $pekerjaan  = Pekerjaan::latest();
+        $pekerjaan  = Pekerjaan::all();
         $title = 'Pekerjaan';
 
         if (request()->ajax()) {

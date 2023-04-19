@@ -7,6 +7,8 @@
                 <li class="breadcrumb-item">Data Master</li>
                 <li class="breadcrumb-item active">Kecamatan</li>
             </ol>
+
+
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">
@@ -37,8 +39,11 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <a type="button" class="btn btn-warning edit"
-                                                    data-bs-id="{{ $item->id }}"><i class="fa fa-edit"></i></a>
-                                                <a type="submit" class="btn btn-danger show_confirm">
+                                                    data-bs-id="{{ $item->id }}"
+                                                    style="background-color: #0f313f; color: #fff"><i
+                                                        class="fa fa-edit"></i></a>
+                                                <a type="submit" class="btn btn-danger show_confirm"
+                                                    style="background-color: #ff0000; color: #fff">
                                                     <i class="fa fa-trash"></i></a>
                                             </form>
                                         </td>
