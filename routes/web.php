@@ -118,6 +118,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::get('/pindahtugas/belumlulus', 'exportExcelPindahTugasSiswaBelumLulus')->name('exportExcelPindahTugasSiswaBelumLulus');
         Route::get('/prestasi/lulus', 'exportExcelPrestasiSiswaLulus')->name('exportExcelPrestasiSiswaLulus');
         Route::get('/prestasi/belumlulus', 'exportExcelPrestasiSiswaBelumLulus')->name('exportExcelPrestasiSiswaBelumLulus');
+        Route::get('/zonasi/lulus', 'exportExcelZonasiSiswaLulus')->name('exportExcelZonasiSiswaLulus');
+        Route::get('/zonasi/belumlulus', 'exportExcelZonasiSiswaBelumLulus')->name('exportExcelZonasiSiswaBelumLulus');
     });
 });
 

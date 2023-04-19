@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Sekolah;
 use App\Models\Siswa;
 use App\Models\Zonasi;
 use App\Models\ZonasiSekolah;
 use Illuminate\Http\Request;
-use Termwind\Components\Dd;
 
 class ZonasiController extends Controller
 {

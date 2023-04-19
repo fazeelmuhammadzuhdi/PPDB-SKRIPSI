@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sekolah;
 use App\Models\Zonasi;
 use App\Models\ZonasiSekolah;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class DataPendaftaranZonasi extends Controller
      */
     public function index()
     {
-        //
+        $sekolah = Sekolah::sekolah()->first();
+        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        return view('zonasi.siswa_lulus', compact('zonasi', 'sekolah'));
     }
 
     /**
@@ -26,8 +29,11 @@ class DataPendaftaranZonasi extends Controller
      */
     public function create()
     {
-        //
+        $sekolah = Sekolah::sekolah()->first();
+        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        return view('zonasi.siswa_lulus', compact('zonasi', 'sekolah'));
     }
+
 
     /**
      * Store a newly created resource in storage.

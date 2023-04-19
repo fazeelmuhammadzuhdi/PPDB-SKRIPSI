@@ -1,5 +1,6 @@
 <h2>Data Pendaftaran</h2>
-<div class="table-responsive text-nowrap" id="cetak">
+@include('zonasi.btn_header')
+<div class="table-responsive text-nowrap" id="cetakSiswaZonasi">
     <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }} Jalur Zonasi</p>
     <table class="table table-hover" id="myTableZonasi">
         <thead>
