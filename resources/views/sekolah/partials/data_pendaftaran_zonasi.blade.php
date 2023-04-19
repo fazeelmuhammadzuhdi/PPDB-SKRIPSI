@@ -33,7 +33,7 @@
                         <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
                     </td>
                     <td>
-                        <a href="{{ route('data_pendaftaran_afirmasi.show', encrypt($item->id)) }}"
+                        <a href="{{ route('data_pendaftaran_zonasi.show', encrypt($item->id)) }}"
                             class="btn btn-info btn-sm mx-1">
                             <i class="fas fa-eye"></i> Detail
                         </a>

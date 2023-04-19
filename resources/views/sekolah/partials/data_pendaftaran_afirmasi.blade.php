@@ -2,7 +2,7 @@
 @include('afirmasi.btn_header')
 <div class="table-responsive text-nowrap" id="cetak">
     <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }} Jalur Afirmasi</p>
-    <table class="table table-hover" id="myTableZonasi">
+    <table class="table table-hover" id="myTableAfirmasi">
         <thead>
             <tr>
                 <th width="1%">No</th>
@@ -50,7 +50,7 @@
 @push('after-script')
     <script>
         $(document).ready(function() {
-            $('#myTableZonasi').DataTable();
+            $('#myTableAfirmasi').DataTable();
         });
     </script>
 @endpush

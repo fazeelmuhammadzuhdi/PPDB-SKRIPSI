@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AfirmasiController;
 use App\Http\Controllers\Backend\DataPendaftaranAfirmasi;
 use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
+use App\Http\Controllers\Backend\DataPendaftaranZonasi;
 use App\Http\Controllers\Backend\KampungController;
 use App\Http\Controllers\Backend\KecamatanController;
 use App\Http\Controllers\Backend\LaporanController;
@@ -60,6 +61,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class);
     Route::get('status/{id}/gagal', [DataPendaftaranPindahTugas::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_pindah_tugas', DataPendaftaranPindahTugas::class);
+    Route::get('status/{id}/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+    Route::resource('data_pendaftaran_zonasi', DataPendaftaranZonasi::class);
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');
