@@ -6,7 +6,8 @@
             <div class="card">
                 <div class="container-fluid pt-5">
                     <div class="text-center p-5">
-                        <i class="fa fa-sticky-note text-primary" aria-hidden="true" style="font-size: 64px"></i>
+                        <img src="{{ asset('images/cek_hasil.png') }}" alt="" width="250">
+                        {{-- <i class="fa fa-sticky-note text-primary" aria-hidden="true" style="font-size: 64px"></i> --}}
                         <h4 class="my-3">Apapun Hasilnya</h4>
                         <p>Itulah yang terbaik. Semangat!!</p>
 
