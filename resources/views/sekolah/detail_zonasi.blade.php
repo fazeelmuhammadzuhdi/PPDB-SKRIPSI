@@ -77,10 +77,9 @@
                                 <td>: {{ $dataZonasi->siswa->kampung->nama_kampung }}</td>
                             </tr>
                         </table>
+                        <h5 class="mt-3">Detail Sekolah</h5>
 
-                        <h5 class="mt-3"><b>DETAIL SEKOLAH</b></h5>
                         <table class="table table-sm mt-3">
-
                             <tr>
                                 <td width=38%>Nama Sekolah</td>
                                 <td style="text-transform: uppercase">: {{ $dataZonasi->sekolah->nama }}</td>
@@ -89,25 +88,72 @@
                                 <td>NPSN Sekolah</td>
                                 <td>: {{ $dataZonasi->sekolah->npsn }}</td>
                             </tr>
+
                             <tr>
-                                <td>Alamat Sekolah</td>
-                                <td>: {!! $dataZonasi->sekolah->alamat !!}</td>
+                                <td>Akreditasi Sekolah</td>
+                                <td>: {{ $dataZonasi->sekolah->akreditasi }}</td>
                             </tr>
-                            @foreach ($dataZonasiSekolah as $item)
-                                <tr>
-                                    <td>Kecamatan Sekolah</td>
-                                    <td>: {{ $item->kecamatan->nama_kecamatan }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nagari Sekolah</td>
-                                    <td>: {{ $item->nagari->nama_nagari }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Kampung Sekolah</td>
-                                    <td>: {{ $item->kampung->nama_kampung }}</td>
-                                </tr>
-                            @endforeach
                         </table>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>Zonasi Kecamatan </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($dataZonasiSekolah as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->kecamatan->nama_kecamatan }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                            <div class="col-md-4">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>Zonasi Nagari Sekolah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($dataZonasiSekolah as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->nagari->nama_nagari }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>Zonasi Kampung </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($dataZonasiSekolah as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->kampung->nama_kampung }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
                         <div class="mt-3">
                             <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary">
                                 <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>

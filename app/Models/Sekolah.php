@@ -31,4 +31,6 @@ class Sekolah extends Model
     {
         return $query->where('sekolah_id', auth()->user()->id);
     }
+
+    
 }

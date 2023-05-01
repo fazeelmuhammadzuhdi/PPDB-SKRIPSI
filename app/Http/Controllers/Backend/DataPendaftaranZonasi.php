@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kecamatan;
 use App\Models\Sekolah;
 use App\Models\Zonasi;
 use App\Models\ZonasiSekolah;
@@ -55,10 +56,11 @@ class DataPendaftaranZonasi extends Controller
     public function show($id)
     {
         $title = 'Detail Pendaftaran Zonasi';
+        $kecamatan = Kecamatan::all();
         $dataZonasi = Zonasi::with('siswa', 'sekolah')->findOrFail(decrypt($id));
         $dataZonasiSekolah = ZonasiSekolah::with('kecamatan', 'nagari', 'kampung')->where('sekolah_id', $dataZonasi->sekolah_id)->get();
         // dd($dataZonasiSekolah);
-        return view('sekolah.detail_zonasi', compact('dataZonasi', 'title', 'dataZonasiSekolah'));
+        return view('sekolah.detail_zonasi', compact('dataZonasi', 'title', 'dataZonasiSekolah', 'kecamatan'));
     }
 
     /**

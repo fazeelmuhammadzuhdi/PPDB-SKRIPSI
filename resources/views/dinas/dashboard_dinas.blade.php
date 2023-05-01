@@ -71,14 +71,14 @@
                         <i class='bx bxs-badge-check'></i>
                         <span class="text">
                             <p>Total Siswa Lulus</p>
-                            <h3>{{ $totalSiswaLulus }} Pendaftar</h3>
+                            <h3>{{ $totalSiswaLulus }} orang</h3>
                         </span>
                     </li>
                     <li>
                         <i class='bx bxs-x-square'></i>
                         <span class="text">
                             <p>Total Siswa Ditolak</p>
-                            <h3>{{ $totalSiswaBelumLulus }} Pendaftar</h3>
+                            <h3>{{ $totalSiswaBelumLulus }} orang</h3>
                         </span>
                     </li>
                 </ul>

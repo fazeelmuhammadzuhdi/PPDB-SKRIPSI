@@ -26,12 +26,14 @@ class DashboardDinasController extends Controller
             $siswaLulusPrestasi = Prestasi::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
             $siswaLulusAfirmasi = Afirmasi::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
             $siswaLulusPindahTugas = PindahTugas::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
-            $totalSiswaLulus = $siswaLulusAfirmasi + $siswaLulusPrestasi + $siswaLulusPindahTugas;
+            $siswaLulusZonasi = Zonasi::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
+            $totalSiswaLulus = $siswaLulusAfirmasi + $siswaLulusPrestasi + $siswaLulusPindahTugas + $siswaLulusZonasi;
 
             $siswaBelumLulusAfirmasi = Afirmasi::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
             $siswaBelumLulusPrestasi = Prestasi::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
             $siswaBelumLulusPindahTugas = PindahTugas::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
-            $totalSiswaBelumLulus = $siswaBelumLulusAfirmasi + $siswaBelumLulusPrestasi + $siswaBelumLulusPindahTugas;
+            $siswaBelumLulusZonasi = Zonasi::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
+            $totalSiswaBelumLulus = $siswaBelumLulusAfirmasi + $siswaBelumLulusPrestasi + $siswaBelumLulusPindahTugas + $siswaBelumLulusZonasi;
 
             $afirmasi = Afirmasi::where('sekolah_id', $sekolah?->id)->count();
             $pindahTugas = PindahTugas::where('sekolah_id', $sekolah?->id)->count();

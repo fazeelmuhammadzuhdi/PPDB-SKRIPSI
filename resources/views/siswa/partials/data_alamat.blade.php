@@ -40,10 +40,23 @@
     </div>
 </div> --}}
 
+
 @if (Request::routeIs('siswa.edit'))
     <div class="card-body">
         <div class="row">
             <div class="form-group">
+                <label for="alamat">Alamat Rumah *</label>
+                <textarea name="alamat" id="editor" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $siswa->alamat ?? '') }}
+                    </textarea>
+
+                @error('alamat')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group mt-3">
                 <label for="kecamatan_id" class="form-label">Nama Kecamatan</label>
                 <select name="kecamatan_id" id="kecamatan_id" class="form-control" required>
                     <option value="{{ $siswa->id }}" selected>{{ $siswa->kecamatan?->nama_kecamatan }}
@@ -72,14 +85,27 @@
                 <select name="kampung_id" id="kampung_id" class="form-control" required>
                     <option value="{{ $siswa->id }}" selected>{{ $siswa->kampung?->nama_kampung }}
                 </select>
-
             </div>
+
+
         </div>
     </div>
 @else
     <div class="card-body">
         <div class="row">
             <div class="form-group">
+                <label for="alamat">Alamat Rumah *</label>
+                <textarea name="alamat" id="editor" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $siswa->alamat ?? '') }}
+                    </textarea>
+
+                @error('alamat')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group mt-3">
                 <label for="kecamatan_id" class="form-label">Nama Kecamatan</label>
                 <select name="kecamatan_id" id="kecamatan_id" class="form-control" required>
                     <option value="">--Pilih Kecamatan--</option>

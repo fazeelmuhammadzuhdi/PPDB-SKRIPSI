@@ -10,9 +10,9 @@
                         <a href="{{ route('cetakpdf') }}" class="btn btn-primary" target="_blank"><i class="fa fa-file-pdf"
                                 aria-hidden="true"></i>
                             Export</a>
-                        <a href="{{ route('exportExcelSiswaLulus') }}" class="btn btn-outline-success"><i
+                        {{-- <a href="{{ route('exportExcelSiswaLulus') }}" class="btn btn-outline-success"><i
                                 class="fas fa-file-excel" aria-hidden="true"></i>
-                            Export Excel</a>
+                            Export Excel</a> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap ">

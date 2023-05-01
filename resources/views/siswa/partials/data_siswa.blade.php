@@ -114,9 +114,6 @@
                     </div>
                 @endif
 
-
-
-
                 <div class="mt-3">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                     <select name="jenis_kelamin" id="jenis_kelamin"
@@ -204,17 +201,8 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mt-3">
-                    <label for="alamat">Alamat Rumah *</label>
-                    <textarea name="alamat" id="editor" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $siswa->alamat ?? '') }}
-                    </textarea>
 
-                    @error('alamat')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+
             </div>
         </div>
     </div>
