@@ -66,7 +66,7 @@
                     <div data-i18n="Analytics">Dashboard</div>
                 </a>
             </li>
-            <li class="menu-item {{ Route::is('setting.*') ? 'active' : '' }}">
+            <li class="menu-item {{ Route::is('setting.*') || Route::is('settingppdb.*') ? 'active' : '' }}">
                 <a href="{{ route('setting.create') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-cog"></i>
                     <div data-i18n="Basic">Pengaturan Applikasi</div>
