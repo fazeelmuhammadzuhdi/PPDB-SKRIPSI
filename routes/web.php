@@ -16,6 +16,8 @@ use App\Http\Controllers\Backend\PenghasilanController;
 use App\Http\Controllers\Backend\PindahTugasOrangTuaController;
 use App\Http\Controllers\Backend\PrestasiController;
 use App\Http\Controllers\Backend\SekolahController;
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\SettingPpdbController;
 use App\Http\Controllers\Backend\SiswaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\UserSiswaController;
@@ -71,7 +73,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::post('/getnagari', [ZonasiSekolahController::class, 'getnagari'])->name('getnagarizonasi');
     Route::post('/getkampung', [ZonasiSekolahController::class, 'getkampung'])->name('getkampungzonasi');
     Route::resource('zonasisekolah', ZonasiSekolahController::class);
-
+    Route::resource('setting', SettingController::class);
+    Route::resource('settingppdb', SettingPpdbController::class);
 
     Route::controller(PenghasilanController::class)->group(function () {
         Route::get('/penghasilan', 'index')->name('penghasilan.index');

@@ -15,6 +15,7 @@
         "laravelcollective/html": "^6.4",
         "maatwebsite/excel": "^3.1",
         "php-flasher/flasher-laravel": "^1.13",
+        "qcod/laravel-settings": "^1.2",
         "yajra/laravel-datatables": "9.0"
     },
     "require-dev": {

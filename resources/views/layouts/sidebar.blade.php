@@ -66,6 +66,12 @@
                     <div data-i18n="Analytics">Dashboard</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('setting.*') ? 'active' : '' }}">
+                <a href="{{ route('setting.create') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div data-i18n="Basic">Pengaturan Applikasi</div>
+                </a>
+            </li>
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Master Data</span>
             </li>

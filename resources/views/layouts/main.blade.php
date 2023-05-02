@@ -100,6 +100,7 @@
 </html>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+ 
 <script>
     $(document).ready(function() {
         $('.select2').select2();
@@ -114,6 +115,7 @@
             console.error(error);
         });
 </script>
+
 
 <script>
     function printDiv(divName) {
