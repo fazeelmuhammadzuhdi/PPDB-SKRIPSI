@@ -76,19 +76,25 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('setting', SettingController::class);
     Route::resource('settingppdb', SettingPpdbController::class);
 
+    //penghasilan
     Route::controller(PenghasilanController::class)->group(function () {
         Route::get('/penghasilan', 'index')->name('penghasilan.index');
         Route::post('/penghasilan/store', 'store')->name('penghasilan.store');
-        Route::post('/penghasilan/edit', 'edit')->name('penghasilan.edit');
-        Route::post('/penghasilan/update', 'update')->name('penghasilan.update');
-        Route::post('/penghasilan/hapus', 'destroy')->name('penghasilan.hapus');
+        Route::get('fetchPenghasilan', 'fetchPenghasilan')->name('penghasilan.fetch');
+        Route::get('penghasilan/edit', 'edit')->name('penghasilan.edit');
+        Route::post('penghasilan/edit', 'update')->name('penghasilan.update');
+        Route::post('penghasilan/destroy', 'destroy')->name('penghasilan.destroy');
+        Route::post('penghasilan/destroy/selected', 'destroySelected')->name('penghasilan.destroySelected');
     });
+
     Route::controller(PekerjaanController::class)->middleware('auth', 'dinas')->group(function () {
         Route::get('/pekerjaan', 'index')->name('pekerjaan.index');
         Route::post('/pekerjaan/store', 'store')->name('pekerjaan.store');
-        Route::post('/pekerjaan/edit', 'edit')->name('pekerjaan.edit');
-        Route::post('/pekerjaan/update', 'update')->name('pekerjaan.update');
-        Route::post('/pekerjaan/hapus', 'destroy')->name('pekerjaan.hapus');
+        Route::get('fetchPekerjaan', 'fetchPekerjaan')->name('pekerjaan.fetch');
+        Route::get('pekerjaan/edit', 'edit')->name('pekerjaan.edit');
+        Route::post('pekerjaan/edit', 'update')->name('pekerjaan.update');
+        Route::post('pekerjaan/destroy', 'destroy')->name('pekerjaan.destroy');
+        Route::post('pekerjaan/destroy/selected', 'destroySelected')->name('pekerjaan.destroySelected');
     });
 
     Route::controller(KecamatanController::class)->middleware('auth', 'dinas')->group(function () {

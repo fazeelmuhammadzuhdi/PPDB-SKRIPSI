@@ -7,21 +7,29 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
                         <button type="button" class="btn btn-primary" id="btn-tambah" data-bs-toggle="modal"
-                            data-bs-target="#modalPekerjaan">
+                            data-bs-target="#addModalKategori">
                             <i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah
                         </button>
 
-                        <button class="btn btn-flat btn-dark btn-refresh mx-2"><i class="fa fa-refresh"></i>
-                            Refresh
+                        <button class="btn btn-danger mx-2" type="submit" id="deleteAll">
+                            <span class="fas fa-trash"></span>
+                            Hapus
                         </button>
+
+                        {{-- <button class="btn btn-flat btn-dark btn-refresh"><i class="fa fa-refresh"></i>
+                            Refresh</button> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap ">
-                        <table class="table table-striped" id="table">
+                        <table class="table table-striped" id="tableKategori">
                             <thead>
                                 <tr>
+                                    <th>
+                                        <input type="checkbox" name="main_checkbox" id="main_checkbox">
+                                        <label for=""></label>
+                                    </th>
                                     <th width="1%">No</th>
-                                    <th>Pekerjaan</th>
+                                    <th>Penghasilan</th>
                                     <th width="20%">Aksi</th>
                                 </tr>
                             </thead>
@@ -31,8 +39,9 @@
             </div>
         </div>
     </div>
-    <!-- Modal Penghasilan -->
-    @include('dinas.pekerjaan.modal_pekerjaan')
+    <!-- Modal Pekerjaan -->
+    @include('dinas.pekerjaan.addModalPekerjaan')
+    @include('dinas.pekerjaan.editModalPekerjaan')
 @endsection
 
 @push('after-script')
