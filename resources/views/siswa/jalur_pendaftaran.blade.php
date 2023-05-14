@@ -195,7 +195,7 @@
                                             <td>{{ $cekLulusJalurZonasi->sekolah->nama }}</td>
                                         @endif
                                     </tr>
-                                    <tr>
+                                    {{-- <tr>
                                         @if ($cek_prestasi)
                                             <td><b>Status Pendaftaran</b></td>
                                             <td>
@@ -256,7 +256,7 @@
                                                 @endforeach
                                             </td>
                                         @endif
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <td><b>NISN</b></td>
                                         <td>{{ $cek_siswa->nisn }}</td>

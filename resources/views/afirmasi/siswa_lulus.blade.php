@@ -65,6 +65,7 @@
                                                 <span class="badge bg-warning">Dalam Seleksi</span>
                                             @endif
                                         </td>
+
                                         <td>
                                             <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
                                         </td>

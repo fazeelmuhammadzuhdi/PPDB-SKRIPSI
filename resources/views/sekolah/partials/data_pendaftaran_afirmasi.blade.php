@@ -10,6 +10,7 @@
                 <th>Jenis Kelamin</th>
                 <th>NISN</th>
                 <th>Status</th>
+                {{-- <th>Status Zonasi</th> --}}
                 <th>Foto</th>
                 <th>Aksi</th>
             </tr>
@@ -30,6 +31,16 @@
                             <span class="badge bg-warning">Dalam Seleksi</span>
                         @endif
                     </td>
+                    {{-- <td>
+                        @foreach ($zonasiSekolah as $zone)
+                            @if ($zonasiSekolah->first()->kampung_id == $item->siswa->kampung_id)
+                            @if ($zone->kampung_id == $item->siswa->kampung_id)
+                                DALAM ZONASI
+                            @else
+                                LUAR ZONASI
+                            @endif
+                        @endforeach
+                    </td> --}}
                     <td>
                         <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
                     </td>
