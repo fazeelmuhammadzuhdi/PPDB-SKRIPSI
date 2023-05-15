@@ -75,62 +75,102 @@
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Master Data</span>
             </li>
-            <li class="menu-item {{ Route::is('user.*') ? 'active' : '' }}">
-                <a href="{{ route('user.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Admin</div>
-                </a>
 
-            </li>
-            <li class="menu-item {{ Route::is('user-sekolah.*') ? 'active' : '' }}">
-                <a href="{{ route('user-sekolah.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Admin Sekolah</div>
+            <li
+                class="menu-item {{ Route::is('user.*') || Route::is('user_siswa.*') || Route::is('user-sekolah.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
+                    <div>Master User</div>
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('user.*') ? 'active' : '' }}">
+                        <a href="{{ route('user.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Admin</div>
+                        </a>
 
-            </li>
-            <li class="menu-item {{ Route::is('user_siswa*') ? 'active' : '' }}">
-                <a href="{{ route('user_siswa.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data User Siswa</div>
-                </a>
+                    </li>
+                    <li class="menu-item {{ Route::is('user-sekolah.*') ? 'active' : '' }}">
+                        <a href="{{ route('user-sekolah.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data User Sekolah</div>
+                        </a>
+
+                    </li>
+                    <li class="menu-item {{ Route::is('user_siswa*') ? 'active' : '' }}">
+                        <a href="{{ route('user_siswa.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data User Siswa</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
-            <li class="menu-item {{ Route::is('sekolah.*') ? 'active' : '' }}">
-                <a href="{{ route('sekolah.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Sekolah</div>
+
+            <li class="menu-item {{ Route::is('sekolah.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
+                    <div>Master Sekolah</div>
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('sekolah.*') ? 'active' : '' }}">
+                        <a href="{{ route('sekolah.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Sekolah</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="menu-item {{ Route::is('penghasilan.index') ? 'active' : '' }}">
-                <a href="{{ route('penghasilan.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Penghasilan</div>
+
+
+            <li class="menu-item {{ Route::is('penghasilan.*') || Route::is('pekerjaan.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
+                    <div>Master Input Siswa</div>
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('penghasilan.index') ? 'active' : '' }}">
+                        <a href="{{ route('penghasilan.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Penghasilan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Route::is('pekerjaan.index') ? 'active' : '' }}">
+                        <a href="{{ route('pekerjaan.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Pekerjaan</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="menu-item {{ Route::is('pekerjaan.index') ? 'active' : '' }}">
-                <a href="{{ route('pekerjaan.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Pekerjaan</div>
+
+
+            <li
+                class="menu-item {{ Route::is('kecamatan.*') || Route::is('nagari.*') || Route::is('kampung.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
+                    <div>Master Zonasi</div>
                 </a>
-            </li>
-            <li class="menu-item {{ Route::is('kecamatan.index') ? 'active' : '' }}">
-                <a href="{{ route('kecamatan.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Kecamatan</div>
-                </a>
-            </li>
-            <li class="menu-item {{ Route::is('nagari.index') ? 'active' : '' }}">
-                <a href="{{ route('nagari.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Nagari</div>
-                </a>
-            </li>
-            <li class="menu-item {{ Route::is('kampung.*') ? 'active' : '' }}">
-                <a href="{{ route('kampung.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Data Kampung</div>
-                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('kecamatan.index') ? 'active' : '' }}">
+                        <a href="{{ route('kecamatan.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Kecamatan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Route::is('nagari.index') ? 'active' : '' }}">
+                        <a href="{{ route('nagari.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Nagari</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Route::is('kampung.*') ? 'active' : '' }}">
+                        <a href="{{ route('kampung.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Kampung</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
         @elseif (Auth::user()->akses == 'Admin Sekolah')
             <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">

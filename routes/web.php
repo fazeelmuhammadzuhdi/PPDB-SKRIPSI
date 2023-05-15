@@ -77,42 +77,42 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('settingppdb', SettingPpdbController::class);
 
     //penghasilan
-    Route::controller(PenghasilanController::class)->group(function () {
-        Route::get('/penghasilan', 'index')->name('penghasilan.index');
-        Route::post('/penghasilan/store', 'store')->name('penghasilan.store');
-        Route::get('fetchPenghasilan', 'fetchPenghasilan')->name('penghasilan.fetch');
-        Route::get('penghasilan/edit', 'edit')->name('penghasilan.edit');
-        Route::post('penghasilan/edit', 'update')->name('penghasilan.update');
-        Route::post('penghasilan/destroy', 'destroy')->name('penghasilan.destroy');
-        Route::post('penghasilan/destroy/selected', 'destroySelected')->name('penghasilan.destroySelected');
+    Route::controller(PenghasilanController::class)->name('penghasilan.')->group(function () {
+        Route::get('/penghasilan', 'index')->name('index');
+        Route::post('/penghasilan/store', 'store')->name('store');
+        Route::get('fetchPenghasilan', 'fetchPenghasilan')->name('fetch');
+        Route::get('penghasilan/edit', 'edit')->name('edit');
+        Route::post('penghasilan/edit', 'update')->name('update');
+        Route::post('penghasilan/destroy', 'destroy')->name('destroy');
+        Route::post('penghasilan/destroy/selected', 'destroySelected')->name('destroySelected');
     });
 
-    Route::controller(PekerjaanController::class)->middleware('auth', 'dinas')->group(function () {
-        Route::get('/pekerjaan', 'index')->name('pekerjaan.index');
-        Route::post('/pekerjaan/store', 'store')->name('pekerjaan.store');
-        Route::get('fetchPekerjaan', 'fetchPekerjaan')->name('pekerjaan.fetch');
-        Route::get('pekerjaan/edit', 'edit')->name('pekerjaan.edit');
-        Route::post('pekerjaan/edit', 'update')->name('pekerjaan.update');
-        Route::post('pekerjaan/destroy', 'destroy')->name('pekerjaan.destroy');
-        Route::post('pekerjaan/destroy/selected', 'destroySelected')->name('pekerjaan.destroySelected');
+    Route::controller(PekerjaanController::class)->middleware('auth', 'dinas')->name('pekerjaan.')->group(function () {
+        Route::get('/pekerjaan', 'index')->name('index');
+        Route::post('/pekerjaan/store', 'store')->name('store');
+        Route::get('fetchPekerjaan', 'fetchPekerjaan')->name('fetch');
+        Route::get('pekerjaan/edit', 'edit')->name('edit');
+        Route::post('pekerjaan/edit', 'update')->name('update');
+        Route::post('pekerjaan/destroy', 'destroy')->name('destroy');
+        Route::post('pekerjaan/destroy/selected', 'destroySelected')->name('destroySelected');
     });
 
-    Route::controller(KecamatanController::class)->middleware('auth', 'dinas')->group(function () {
-        Route::get('/kecamatan', 'index')->name('kecamatan.index');
-        Route::post('/kecamatan/store', 'store')->name('kecamatan.store');
-        Route::get('/kecamatan/edit/{id}', 'edit')->name('kecamatan.edit');
-        Route::put('/kecamatan/update/{id}', 'update')->name('kecamatan.update');
-        Route::delete('/kecamatan/hapus/{id}', 'destroy')->name('kecamatan.hapus');
+    Route::controller(KecamatanController::class)->middleware('auth', 'dinas')->name('kecamatan.')->group(function () {
+        Route::get('/kecamatan', 'index')->name('index');
+        Route::post('/kecamatan/store', 'store')->name('store');
+        Route::get('/kecamatan/edit/{id}', 'edit')->name('edit');
+        Route::put('/kecamatan/update/{id}', 'update')->name('update');
+        Route::delete('/kecamatan/hapus/{id}', 'destroy')->name('hapus');
     });
 
-    Route::controller(NagariController::class)->middleware('auth', 'dinas')->group(function () {
-        Route::get('/nagari', 'index')->name('nagari.index');
-        Route::get('/nagari/add', 'add')->name('nagari.add');
-        Route::post('/nagari/store', 'store')->name('nagari.store');
-        Route::get('/nagari/detail/{id}', 'detail')->name('nagari.detail');
-        Route::get('/nagari/edit/{id}', 'edit')->name('nagari.edit');
-        Route::put('/nagari/update/{id}', 'update')->name('nagari.update');
-        Route::delete('/nagari/delete/{id}', 'destroy')->name('nagari.delete');
+    Route::controller(NagariController::class)->middleware('auth', 'dinas')->name('nagari.')->group(function () {
+        Route::get('/nagari', 'index')->name('index');
+        Route::get('/nagari/add', 'add')->name('add');
+        Route::post('/nagari/store', 'store')->name('store');
+        Route::get('/nagari/detail/{id}', 'detail')->name('detail');
+        Route::get('/nagari/edit/{id}', 'edit')->name('edit');
+        Route::put('/nagari/update/{id}', 'update')->name('update');
+        Route::delete('/nagari/delete/{id}', 'destroy')->name('delete');
     });
 
     Route::controller(LaporanController::class)->middleware('auth', 'sekolah')->group(function () {
