@@ -11,6 +11,7 @@
                 <th>NISN</th>
                 <th>Rata2 Nilai Rapor</th>
                 <th>Status</th>
+                <th>Status Zonasi</th>
                 <th>Foto</th>
                 <th>Aksi</th>
             </tr>
@@ -33,26 +34,52 @@
                         @endif
                     </td>
                     <td>
-                        <img src="{{ Storage::url($item->siswa?->foto) }}" alt="" width="30">
-                    </td>
-                    <td>
-                        <a href="{{ route('data_pendaftaran_prestasi.show', encrypt($item->id)) }}"
-                            class="btn btn-info btn-sm mx-1">
-                            <i class="fas fa-eye"></i> Detail
-                        </a>
+                        @switch($item->siswa->kampung_id)
+                            @case($zonasiSekolah->first()->kampung_id)
+                                DALAM ZONASI
+                            @break
+
+                            @default
+                                @php
+                                    $luarZonasi = true;
+                                @endphp
+                                @foreach ($zonasiSekolah as $zone)
+                                    @if ($zone->kampung_id == $item->siswa->kampung_id)
+                                        @php
+                                            $luarZonasi = false;
+                                        @endphp
+                                        DALAM ZONASI
+                                    @break
+                                @endif
+                            @endforeach
+                            @if ($luarZonasi == true)
+                                LUAR ZONASI
+                            @endif
+                        @break
+
+                    @endswitch
+                </td>
+                <td>
+                    <img src="{{ Storage::url($item->siswa?->foto) }}" alt="" width="30">
+                </td>
+                <td>
+                    <a href="{{ route('data_pendaftaran_prestasi.show', encrypt($item->id)) }}"
+                        class="btn btn-info btn-sm mx-1">
+                        <i class="fas fa-eye"></i> Detail
+                    </a>
 
 
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
 </div>
 
 @push('after-script')
-    <script>
-        $(document).ready(function() {
-            $('#myTablePrestasi').DataTable();
-        });
-    </script>
+<script>
+    $(document).ready(function() {
+        $('#myTablePrestasi').DataTable();
+    });
+</script>
 @endpush
