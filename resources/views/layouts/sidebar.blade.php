@@ -107,7 +107,8 @@
             </li>
 
 
-            <li class="menu-item {{ Route::is('sekolah.*') ? 'active open' : '' }}">
+            <li
+                class="menu-item {{ Route::is('sekolah.*') || Route::is('data_zonasi_sekolah.*') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
                     <div>Master Sekolah</div>
@@ -117,6 +118,12 @@
                         <a href="{{ route('sekolah.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account Settings">Data Sekolah</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Route::is('data_zonasi_sekolah.*') ? 'active' : '' }}">
+                        <a href="{{ route('data_zonasi_sekolah.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Zonasi Sekolah</div>
                         </a>
                     </li>
                 </ul>

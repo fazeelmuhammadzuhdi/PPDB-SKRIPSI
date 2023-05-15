@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\DataPendaftaranAfirmasi;
 use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
 use App\Http\Controllers\Backend\DataPendaftaranZonasi;
+use App\Http\Controllers\Backend\DataZonasiSekolahController;
 use App\Http\Controllers\Backend\KampungController;
 use App\Http\Controllers\Backend\KecamatanController;
 use App\Http\Controllers\Backend\LaporanController;
@@ -75,6 +76,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('zonasisekolah', ZonasiSekolahController::class);
     Route::resource('setting', SettingController::class);
     Route::resource('settingppdb', SettingPpdbController::class);
+    Route::resource('data_zonasi_sekolah', DataZonasiSekolahController::class);
 
     //penghasilan
     Route::controller(PenghasilanController::class)->name('penghasilan.')->group(function () {

@@ -23,4 +23,9 @@ class Nagari extends Model
     {
         return $this->hasMany(Kampung::class);
     }
+
+    public function zonasiSekolah()
+    {
+        return $this->hasMany(ZonasiSekolah::class, 'nagari_id', 'id');
+    }
 }

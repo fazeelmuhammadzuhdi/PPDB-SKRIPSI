@@ -16,7 +16,7 @@
                             @error('kecamatan_id')
                                 <div class="valid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> 
 
                         <div class="col-md-12 mt-3">
                             <label class="form-label">Nama Nagari</label>
