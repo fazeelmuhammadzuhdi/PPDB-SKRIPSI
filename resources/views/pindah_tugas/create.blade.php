@@ -55,7 +55,8 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" id="btnSimpanPindahTugas"><i
+                        <button type="submit" class="btn btn-primary" id="btnSimpanPindahTugas"
+                            onclick="return confirm('Apakah Anda Yakin Ingin Mendaftar Di Sekolah Ini ?')"><i
                                 class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
                             Daftar</button>
                     </div>

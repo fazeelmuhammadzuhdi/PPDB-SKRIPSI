@@ -107,7 +107,11 @@ class DashboardSiswaController extends Controller
 
     public function cek()
     {
-        return view('siswa.cek_kelulusan');
+        $tanggalAkhirKelulusan = settings('jadwa_kelulusan');
+        $tanggalSekarang = now()->toDateString();
+        // dd($tanggalSekarang);
+        // dd($tanggalAkhirKelulusan);
+        return view('siswa.cek_kelulusan', compact('tanggalAkhirKelulusan', 'tanggalSekarang'));
     }
 
     public function cari(Request $request)

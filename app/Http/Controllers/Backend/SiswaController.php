@@ -75,6 +75,7 @@ class SiswaController extends Controller
      */
     public function store(SiswaStoreRequest $request)
     {
+
         $requestData = $request->validated();
         if ($request->hasFile('foto')) {
             $requestData['foto'] = $request->file('foto')->store('public');

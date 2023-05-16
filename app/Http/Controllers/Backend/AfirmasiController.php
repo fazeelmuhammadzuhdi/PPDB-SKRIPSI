@@ -62,6 +62,10 @@ class AfirmasiController extends Controller
 
         Afirmasi::create($requestData);
 
+        // return response()->json([
+        //     'success' => "Anda Berhasil Mendaftar Di Jalur Pindah Tugas Orang Tua"
+        // ]);
+
         flash("Berhasil Melakukan Pendaftaran");
         return redirect()->route('jalur_pendaftaran');
     }

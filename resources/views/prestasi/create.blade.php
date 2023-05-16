@@ -107,11 +107,7 @@
                             </div>
                         </div>
 
-
-
-
                         <h3 class="mb-3">Data Penghargaan</h3> <small class="text-muted float-end">
-
                             <table class="table table-bordered" id="table">
                                 <thead>
                                     <tr>
@@ -144,7 +140,8 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary"><i
+                        <button type="submit" class="btn btn-primary"
+                            onclick="return confirm('Apakah Anda Yakin Ingin Mendaftar Di Sekolah Ini ?')"><i
                                 class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
                             Daftar</button>
                     </div>

@@ -13,7 +13,7 @@
                     <h3 class="mb-0">Pendaftaran Jalur Afirmasi</h3> <small class="text-muted float-end">
                 </div>
 
-                <form enctype="multipart/form-data" method="POST" action="{{ route('afirmasi.store') }}">
+                <form enctype="multipart/form-data" method="POST" action="{{ route('afirmasi.store') }}" id="afirmasi">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -88,7 +88,8 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary"><i
+                        <button type="submit" class="btn btn-primary"
+                            onclick="return confirm('Apakah Anda Yakin Ingin Memilih Sekolah Ini')"><i
                                 class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
                             Daftar</button>
                     </div>
@@ -97,3 +98,57 @@
         </div>
     </div>
 @endsection
+
+{{-- @push('after-script')
+    <script>
+        $(document).on('click', '#save', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah Kamu Yakin?',
+                text: "Ingin Mendaftar Di Sekolah Ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        data: $('#afirmasi').serialize(),
+                        url: "{{ route('afirmasi.store') }}",
+                        dataType: "json",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(data) {
+                            toastr.success(
+                                data.success,
+                                'Wohoooo!', {
+                                    showDuration: 1000,
+                                    hideDuration: 1000,
+                                    timeOut: 1000,
+                                    closeButton: true,
+                                    newestOnTop: true,
+                                    progressBar: true,
+                                    onHidden: function() {
+                                        window.location.href =
+                                            "{{ route('jalur_pendaftaran') }}"
+                                    }
+                                }
+                            );
+                        },
+                        error: function(data) {
+                            var errors = data.responseJSON.errors;
+                            var errorsHtml = '';
+                            $.each(errors, function(key, value) {
+                                errorsHtml += '<li>' + value[0] + '</li>';
+                            });
+                            toastr.error(errorsHtml, 'Whoops!');
+                        }
+                    });
+                }
+            })
+        });
+    </script>
+@endpush --}}

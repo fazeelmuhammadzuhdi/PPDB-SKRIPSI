@@ -63,6 +63,7 @@
                                             @foreach ($siswa as $item)
                                                 <tr>
                                                     <td rowspan="6">
+                                                        {{-- <img src="{{ Storage::url($item->foto) }}" width="200px"> --}}
                                                         <img src="{{ Storage::url($item->foto) }}" width="200px">
                                                         <a href="{{ route('siswa.edit', encrypt($item->id)) }}"
                                                             class="btn btn-success mt-5 d-flex justify-content-center align-items-center">
