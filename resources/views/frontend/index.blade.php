@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="en">
 
 <head>
@@ -73,6 +73,86 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
+</body>
+
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page With Light/Dark Mode</title>
+    <link rel="stylesheet" href="{{ asset('sneat/assets/css/style.css') }}">
+</head>
+
+<body>
+    <main>
+        <div class="big-wrapper light">
+            <header>
+                <div class="container">
+                    <div class="logo">
+                        <img src="{{ asset('images/ppdblogo.png') }}" alt="Logo" />
+                    </div>
+
+                    <div class="links">
+                        <ul>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="{{ route('login') }}" class="btn">Login</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="overlay"></div>
+
+                    <div class="hamburger-menu">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="showcase-area">
+                <div class="container">
+                    <div class="left">
+                        <div class="big-title">
+                            <h1>PPDB ONLINE</h1>
+                            <h1>KABUPATEN PESSEL.</h1>
+                        </div>
+                        <p class="text">
+                            Website ini dibangun Dalam rangka pelaksanaan Penerimaan Peserta Didik Baru (PPDB) secara
+                            Online tahun ajaran {{ now()->format('Y') }} / {{ now()->addYear(1)->format('Y') }} yang
+                            objektif, transparan dan akuntabel tingkat SMP
+                            Daerah Kabupaten Pesisir Selatan.
+                        </p>
+                        <div class="cta">
+                            <a href="{{ route('register') }}" class="btn">Register</a>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <img src="{{ asset('images/ppdb-online.png') }}" alt="Product Image" class="product" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-area">
+                <div class="container">
+                    <button class="toggle-btn">
+                        <i class="far fa-moon"></i>
+                        <i class="far fa-sun"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="{{ asset('sneat/assets/js/app.js') }}"></script>
 </body>
 
 </html>
