@@ -25,8 +25,8 @@ class Kampung extends Model
         return $this->belongsTo(Kecamatan::class);
     }
 
-    public function zonasiSekolah()
-    {
-        return $this->hasMany(ZonasiSekolah::class, 'kampung_id', 'id');
-    }
+    // public function zonasiSekolah()
+    // {
+    //     return $this->hasMany(ZonasiSekolah::class, 'kampung_id', 'id');
+    // }
 }
