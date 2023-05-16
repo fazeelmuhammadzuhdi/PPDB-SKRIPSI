@@ -13,7 +13,8 @@
                     <h3 class="mb-0">Pendaftaran Perpindahan Tugas Orang Tua</h3> <small class="text-muted float-end">
                 </div>
 
-                <form enctype="multipart/form-data" method="POST" action="{{ route('pindahtugas.store') }}">
+                <form enctype="multipart/form-data" method="POST" action="{{ route('pindahtugas.store') }}"
+                    id="simpanDataPindahTugas">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -39,7 +40,7 @@
                                 <label for="file" class="form-label">Surat Keterangan Pindah Tugas</label>
                                 <input type="file" class="form-control @error('file') is-invalid @enderror"
                                     id="file" name="file" required>
-                                <small class="text-danger">Format Gambar / Foto JPG, JPEG, PNG (Maksimal Ukuran 2
+                                <small class="text-danger">Format File Pdf Atau Gambar JPG, JPEG, PNG (Maksimal Ukuran 2
                                     Mb)</small>
                                 @error('file')
                                     <div class="invalid-feedback">
@@ -54,7 +55,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary"><i
+                        <button type="submit" class="btn btn-primary" id="btnSimpanPindahTugas"><i
                                 class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
                             Daftar</button>
                     </div>
@@ -63,3 +64,54 @@
         </div>
     </div>
 @endsection
+
+{{-- @push('after-script')
+    <script>
+        $(document).on('click', '#btnSimpanPindahTugas', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah Kamu Yakin?',
+                text: "Ingin Mendaftar Di Sekolah Ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        data: $('#simpanDataPindahTugas').serialize(),
+                        url: "{{ route('pindahtugas.store') }}",
+                        dataType: "json",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(data) {
+                            toastr.success(
+                                data.success,
+                                'Wohoooo!', {
+                                    showDuration: 1000,
+                                    hideDuration: 1000,
+                                    timeOut: 1000,
+                                    closeButton: true,
+                                    newestOnTop: true,
+                                    progressBar: true,
+                                    onHidden: function() {
+                                        window.location.href =
+                                            "{{ route('jalur_pendaftaran') }}"
+                                    }
+                                }
+                            );
+                        },
+                        error: function(data) {
+                            var errors = data.responseJSON.errors;
+                            var errorsHtml = '';
+                            toastr.error(errorsHtml, 'Whoops!');
+                        }
+                    });
+                }
+            })
+        });
+    </script>
+@endpush --}}

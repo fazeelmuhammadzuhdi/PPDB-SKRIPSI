@@ -231,7 +231,7 @@
                 </a>
             </li>
             <li
-                class="menu-item {{ Route::is('jalur_pendaftaran') || Route::is('prestasi.*') || Route::is('afirmasi.*') || Route::is('pindahtugas.*') ? 'active' : '' }}">
+                class="menu-item {{ Route::is('jalur_pendaftaran') || Route::is('prestasi.*') || Route::is('afirmasi.*') || Route::is('pindahtugas.*') || Route::is('zonasi.*') ? 'active' : '' }}">
                 <a href="{{ route('jalur_pendaftaran') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Pendaftaran</div>

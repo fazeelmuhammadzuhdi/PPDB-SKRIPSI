@@ -5,16 +5,21 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
                 <li class="breadcrumb-item">Data Master</li>
-                <li class="breadcrumb-item active">Sekolah</li>
+                <li class="breadcrumb-item active">Zonasi Sekolah</li>
             </ol>
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">
-                        Data Zonasi Sekolah
+                        Data Zonasi Sekolah SMP Di Pesisir Selatan
                     </h3>
+                    <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetakDataZonasiSekolah')"><i
+                            class="fa fa-file-pdf"></i>
+                        Export PDF
+                    </button>
+
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive text-nowrap">
+                    <div class="table-responsive text-nowrap" id="cetakDataZonasiSekolah">
                         <table class="table table-hover" id="myTableKampung">
                             <thead>
                                 <tr>

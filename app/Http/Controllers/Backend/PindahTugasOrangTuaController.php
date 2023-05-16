@@ -50,7 +50,12 @@ class PindahTugasOrangTuaController extends Controller
 
         // dd($requestData);
 
-        PindahTugas::create($requestData);
+        $pindahTugas =  PindahTugas::create($requestData);
+        // dd($pindahTugas);
+
+        // return response()->json([
+        //     'success' => "Anda Berhasil Mendaftar Di Jalur Pindah Tugas Orang Tua"
+        // ]);
 
         flash("Berhasil Melakukan Pendaftaran");
         return redirect()->route('jalur_pendaftaran');

@@ -44,6 +44,12 @@ class ZonasiController extends Controller
      */
     public function store(Request $request)
     {
+        $validate = $request->validate([
+            'sekolah_id' => 'required',
+        ], [
+            'sekolah_id.required' => 'Sekolah tidak boleh kosong',
+        ]);
+
         $siswa = Siswa::siswa()->first();
 
         $zonasi = Zonasi::create([
@@ -51,9 +57,11 @@ class ZonasiController extends Controller
             'sekolah_id' => $request->sekolah_id,
         ]);
         // dd($zonasi);
-
-        flash('Data berhasil disimpan');
-        return redirect()->route('jalur_pendaftaran');
+        return response()->json([
+            'success' => "Anda Berhasil Mendaftar Di" . $zonasi->sekolah->nama . " Jalur Zonasi"
+        ]);
+        // flash('Data berhasil disimpan');
+        // return redirect()->route('jalur_pendaftaran');
     }
 
     /**

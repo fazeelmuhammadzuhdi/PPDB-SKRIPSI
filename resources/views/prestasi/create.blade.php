@@ -117,7 +117,7 @@
                                     <tr>
                                         <th>Nama Penghargaan</th>
                                         <th width="12%">Tahun</th>
-                                        <th width="25%">File / Foto</th>
+                                        <th width="25%">File / Foto Sertifikat</th>
                                         <th width="15%">Aksi</th>
                                     </tr>
                                 </thead>
