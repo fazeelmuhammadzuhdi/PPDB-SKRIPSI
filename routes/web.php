@@ -26,6 +26,7 @@ use App\Http\Controllers\Backend\ZonasiController;
 use App\Http\Controllers\Backend\ZonasiSekolahController;
 use App\Http\Controllers\DashboardDinasController;
 use App\Http\Controllers\DashboardSiswaController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,9 +41,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
