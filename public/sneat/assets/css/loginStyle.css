@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo&family=Poppins:wght@400;700&family=Roboto&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-custom {
+  background-color: #5A00FF;
+  color: #fff !important;
+}
+
+.text-custom {
+  color: #5A00FF;
+}
+a:hover {
+  color: #5A00FF;
+}
+
+.border-radius-custom {
+  border-radius: 10px;
+}
+
+.btn-outline-custom {
+  border: 1px solid #5A00FF;
+  color: #5A00FF !important;
+}
+
+.btn-outline-custom:hover {
+  border-color: #5A00FF;
+  background-color: rgb(25, 25, 138);
+  color: #fff !important;
+}
+
+.navbar .navbar-nav li {
+  font-size: 16px;
+  padding-left: 16px;
+}
+
+@media (max-width: 576px) {
+  .navbar-collapse {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .navbar-nav .btn-outline-custom {
+    margin-top: 10px;
+  }
+
+  .hero img {
+    width: 350px;
+    margin-top: 20px;
+  }
+}
+
+.text-orange {
+  color: #f09613 !important;
+}
+
+.badge-custom {
+  color: #6f6f6f !important;
+  background-color: #f9f6ff;
+}
+
+.bg-theme {
+  background-color: #fbfcfd;
+}
+
+.popular-barber {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}

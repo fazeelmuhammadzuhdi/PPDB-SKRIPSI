@@ -42,7 +42,10 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login_admin');
+        $tanggalSekarang = now()->toDateString();
+        $tanggalAkhirPendaftaran = settings('akhir_pendaftaran');
+
+        return view('auth.login_admin', compact('tanggalSekarang', 'tanggalAkhirPendaftaran'));
     }
 
     public function authenticated(Request $request, $user)

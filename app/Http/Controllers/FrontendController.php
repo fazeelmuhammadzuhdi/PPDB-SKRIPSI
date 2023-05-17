@@ -8,6 +8,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $tanggalSekarang = now()->toDateString();
+        $tanggalAkhirPendaftaran = settings('akhir_pendaftaran');
+        return view('frontend.index', compact('tanggalSekarang', 'tanggalAkhirPendaftaran'));
     }
 }

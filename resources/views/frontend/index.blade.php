@@ -127,9 +127,11 @@
                             objektif, transparan dan akuntabel tingkat SMP
                             Daerah Kabupaten Pesisir Selatan.
                         </p>
-                        <div class="cta">
-                            <a href="{{ route('register') }}" class="btn">Register</a>
-                        </div>
+                        @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
+                            <div class="cta">
+                                <a href="{{ route('register') }}" class="btn">Register</a>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="right">
