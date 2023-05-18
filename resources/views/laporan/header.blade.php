@@ -7,25 +7,25 @@
 
             <td style="text-align: center; vertical-align: middle;">
                 <div style="font-size: 20px; font-weight: bold">
-                    {{-- {{ settings()->get('app_name', 'My App') }} --}}
-                    DINAS PENDIDIKAN DAN KEBUDAYAAN PESISIR SELATAN
+                    {{ settings()->get('app_name', 'My App') }}
+                    {{-- DINAS PENDIDIKAN DAN KEBUDAYAAN PESISIR SELATAN --}}
                 </div>
-                {{-- <div>{!! settings()->get('app_address') !!}</div> --}}
-                <div>Jl. H. Agus Salim, Painan, IV Jurai, Painan, Iv Jurai, Kabupaten Pesisir Selatan, Sumatera Barat
+                <div>{!! settings()->get('app_address') !!}</div>
+                {{-- <div>Jl. H. Agus Salim, Painan, IV Jurai, Painan, Iv Jurai, Kabupaten Pesisir Selatan, Sumatera Barat
                     25651, Indonesia
-                </div>
+                </div> --}}
             </td>
         </tr>
         <tr>
             <td></td>
             <td class="text-end">
                 <span class="mx-3">
-                    {{-- Email : {{ settings()->get('app_email') }} --}}
-                    Email : diknaspessel@gmail.com
+                    Email : {{ settings()->get('app_email') }}
+                    {{-- Email : diknaspessel@gmail.com --}}
                 </span>
                 <span class="mx-3">
-                    {{-- Telp : {{ settings()->get('app_phone') }} --}}
-                    Telp : (0756) 21602
+                    Telp : {{ settings()->get('app_phone') }}
+                    {{-- Telp : (0756) 21602 --}}
                 </span>
             </td>
             <td></td>
