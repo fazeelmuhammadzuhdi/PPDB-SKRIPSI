@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="#" class="app-brand-link">
+        {{-- <a href="#" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -46,8 +46,20 @@
                 </svg>
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: capitalize">PPDB</span>
+        </a> --}}
+        @if (Auth::user()->akses == 'Admin Dinas' || Auth::user()->akses == 'Admin Sekolah')
+            <a href="{{ route('dashboard_dinas') }}" class="app-brand-link">
+                <img src="{{ Storage::url(settings()->get('app_logo')) }}" alt="" width="200">
+            </a>
+        @endif
 
-        </a>
+        @if (Auth::user()->akses == 'Siswa')
+            <a href="{{ route('dashboard_siswa') }}" class="app-brand-link">
+                <img src="{{ Storage::url(settings()->get('app_logo')) }}" alt="" width="200">
+            </a>
+        @endif
+
+
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>

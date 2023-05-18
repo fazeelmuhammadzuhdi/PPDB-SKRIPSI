@@ -90,7 +90,7 @@
                     <div class="mt-3">
                         <tr>
                             <td colspan="2">
-                                Padang, {{ now()->format('d F Y') }} <br>
+                                Painan, {{ now()->format('d F Y') }} <br>
                                 @include('siswa.informasi_penanggung_jawab')
                             </td>
                         </tr>

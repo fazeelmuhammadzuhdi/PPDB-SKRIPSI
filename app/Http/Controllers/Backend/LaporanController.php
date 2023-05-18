@@ -33,8 +33,9 @@ class LaporanController extends Controller
         // dd($afirmasi);
         $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
         $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $zonasi = Zonasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
 
+        // $siswa = Siswa::with('kampung')->get();
         $siswa = Siswa::get();
         // dd($user);
         return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));

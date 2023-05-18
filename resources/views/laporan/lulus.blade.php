@@ -67,6 +67,8 @@
                                                 <td>{{ $item->nisn }}</td>
                                                 <td>{{ $item->jenis_kelamin }}</td>
                                                 <td>{!! $item->alamat !!}</td>
+                                                {{-- <td>{{ $item->kampung->nama_kampung }}</td> --}}
+
                                             </tr>
                                         @endif
                                     @endforeach
@@ -80,6 +82,7 @@
                                                 <td>{{ $item->nisn }}</td>
                                                 <td>{{ $item->jenis_kelamin }}</td>
                                                 <td>{!! $item->alamat !!}</td>
+                                                {{-- <td>{{ $item->kampung->nama_kampung }}</td> --}}
                                             </tr>
                                         @endif
                                     @endforeach
