@@ -158,17 +158,42 @@
                 <center style="background-color: #fff; padding: 10px;"><b style="color:red;">PENDAFTARAN GRATIS,
                         HATI-HATI PENIPUAN</b><br> Pengumuman PPDB
                 </center>
+
+                @php
+                    $tutupPendaftaran = strtotime('2023-05-31 23:59:59');
+                    $sekarang = time();
+                    
+                    // Hitung selisih waktu
+                    $selisihWaktu = $tutupPendaftaran - $sekarang;
+                    
+                    // Hitung jumlah hari, jam, menit, dan detik
+                    $jumlahHari = floor($selisihWaktu / (60 * 60 * 24));
+                    $jumlahJam = floor(($selisihWaktu % (60 * 60 * 24)) / (60 * 60));
+                    $jumlahMenit = floor(($selisihWaktu % (60 * 60)) / 60);
+                    $jumlahDetik = $selisihWaktu % 60;
+                @endphp
+
                 <h3 align="center"
                     style="color:#8e44ad; text-shadow: 3px 2px 1px #fff; font-size: 20px; padding: 0px; margin-bottom: 0px;">
                     <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
                 </h3>
 
-                <body onload="ajax()">
+                {{-- <body onload="ajax()"> --}}
+                @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
                     <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
-                        <center>Pendaftaran PPDB Akan Di Tutup:<br> 16 hari 13 jam 22 menit 54 detik lagi</center>
+                        <center>Pendaftaran PPDB Akan Di Tutup:<br> {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam
+                            {{ $jumlahMenit }}
+                            Menit {{ $jumlahDetik }} Detik lagi
+                        </center>
                     </div>
+                @else
+                    <center style="background-color: #fff; padding: 10px;"><b style="color:red;">
+                            PENDAFTARAN Telah Di Tutup</b><br>
+                    </center>
+                @endif
 
-                </body>
+
+                {{-- </body> --}}
             </div>
         </div>
         <div class="row">
@@ -199,7 +224,7 @@
                             </div>
                             <div class="input-group">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password" id="" aria-describedby="helpId" placeholder="Password">
+                                    name="password" id="password" aria-describedby="helpId" placeholder="Password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -208,7 +233,8 @@
 
                                 <div class="input-group-append">
                                     <span class="input-group-text">
-                                        <i data-feather="eye"></i>
+                                        <input type="checkbox" id="showPasswordCheckbox" class="mr-2">
+                                        <i data-feather="eye" id="checkboxIcon"></i>
                                     </span>
                                 </div>
                             </div>
@@ -250,6 +276,24 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
         feather.replace()
+    </script>
+
+    <script>
+        const showPasswordCheckbox = document.getElementById('showPasswordCheckbox');
+        const checkboxIcon = document.getElementById('checkboxIcon');
+        const passwordInput = document.getElementById(
+            'password'); // Replace 'passwordInput' with the actual ID of your password input field
+
+        showPasswordCheckbox.addEventListener('click', function() {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+                checkboxIcon.setAttribute('data-feather', 'eye-off');
+            } else {
+                passwordInput.type = 'password';
+                checkboxIcon.setAttribute('data-feather', 'eye');
+            }
+            feather.replace(); // If you are using the Feather Icons library, this line updates the icon appearance
+        });
     </script>
 </body>
 

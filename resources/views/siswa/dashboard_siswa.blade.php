@@ -4,11 +4,48 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            <div class="alert" role="alert" style="background-color:#2e2a4cc9; color:#fff;">
+            {{-- <div class="alert" role="alert" style="background-color:#2e2a4cc9; color:#fff;">
                 <p class="mb-0"><b>Selamat Datang
                         {{ ucwords(Auth::user()->name) }} </b></p>
-            </div>
+            </div> --}}
+
             <div class="card">
+                <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                        @if ($cek < 1)
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Selamat Datang
+                                    {{ ucwords(Auth::user()->name) }} 😊</h5>
+                                <p class="mb-4">{{ $pesan }} <span>Sebelum Melakukan
+                                        Pendaftaran, Silahkan Lengkapi Biodata Kamu Terlebih Dahulu!</span> </p>
+
+                                <a href="{{ route('siswa.create') }}" class="btn btn-sm btn-primary">Lengkapi Biodata</a>
+                            </div>
+                        @else
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Selamat Datang
+                                    {{ ucwords(Auth::user()->name) }} 😊</h5>
+                                <p class="mb-4">{{ $pesan }} 😁 <br><span>Silahkan Lanjutkan Pendaftaran</span></p>
+
+                                <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-primary">View Biodata</a>
+                            </div>
+                        @endif
+
+                    </div>
+                    <div class="col-sm-5 text-center text-sm-left">
+                        <div class="card-body pb-0 px-0 px-md-4">
+                            <img src="{{ asset('sneat/assets/img/illustrations/man-with-laptop-light.png') }}"
+                                height="140" alt="View Badge User"
+                                data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                data-app-light-img="illustrations/man-with-laptop-light.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            {{-- <div class="card">
 
                 <h5 class="card-header"></h5>
 
@@ -66,7 +103,7 @@
                                 @endif
                             </center>
 
-                            {{-- <center>
+                            <center>
                                 @if ($cekLulus?->status == 1)
                                     <div class="col-8">
                                         <div class="card-body">
@@ -134,11 +171,11 @@
                                         </div>
                                     </div>
                                 @endif
-                            </center> --}}
+                            </center>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

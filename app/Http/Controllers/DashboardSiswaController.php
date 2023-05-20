@@ -35,9 +35,9 @@ class DashboardSiswaController extends Controller
 
         // dd($cek);
         if ($cek < 1) {
-            $pesan = "Biodata Anda Belum Lengkap !";
+            $pesan = "Biodata Kamu Belum Lengkap !";
         } else {
-            $pesan = "Biodata Anda Telah Lengkap.. Terima Kasih";
+            $pesan = "Biodata Kamu Telah Lengkap.. Terima Kasih";
         }
         // return view('siswa.dashboard_siswa', compact('pesan', 'cek', 'cek_lulus', 'pesanLulus'));
         return view('siswa.dashboard_siswa', compact('pesan', 'cek'));

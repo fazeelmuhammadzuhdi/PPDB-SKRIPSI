@@ -19,20 +19,21 @@
         <div class="row">
             <div class="mx-auto mt-2">
                 {{-- <img src="{{ asset('images/ppdblogo.png') }}" alt="" width="200px"> --}}
-                <center style="background-color: #fff; padding: 10px;"><b style="color:red;">PENDAFTARAN GRATIS,
-                        HATI-HATI PENIPUAN</b><br> Pengumuman PPDB
+                <center style="background-color: #fff; padding: 10px;"><b style="color:red;"><i
+                            data-feather="alert-circle"></i>
+                        PENDAFTARAN GRATIS,
+                        HATI-HATI PENIPUAN</b><br> <i data-feather="radio"></i> Pengumuman PPDB
                 </center>
                 <h3 align="center"
                     style="color:#8e44ad; text-shadow: 3px 2px 1px #fff; font-size: 20px; padding: 0px; margin-bottom: 0px;">
                     <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
                 </h3>
 
-                <body onload="ajax()">
-                    <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
-                        <center>Pendaftaran PPDB Akan Di Tutup:<br> 16 hari 13 jam 22 menit 54 detik lagi</center>
-                    </div>
-
-                </body>
+                {{-- <body onload="ajax()"> --}}
+                <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
+                    <center>Pendaftaran PPDB Akan Di Tutup:<br> 16 hari 13 jam 22 menit 54 detik lagi</center>
+                </div>
+                {{-- </body> --}}
             </div>
         </div>
         <div class="row">
@@ -75,7 +76,7 @@
 
                             <div class="input-group">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password" id="" aria-describedby="helpId" placeholder="Password"
+                                    name="password" id="password" aria-describedby="helpId" placeholder="Password"
                                     required autocomplete="new-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +86,8 @@
 
                                 <div class="input-group-append">
                                     <span class="input-group-text">
-                                        <i data-feather="eye"></i>
+                                        <input type="checkbox" id="showPasswordCheckbox" class="mr-2">
+                                        <i data-feather="eye" id="checkboxIcon"></i>
                                     </span>
                                 </div>
                             </div>
@@ -102,7 +104,8 @@
 
                                 <div class="input-group-append">
                                     <span class="input-group-text">
-                                        <i data-feather="eye"></i>
+                                        <input type="checkbox" id="showPasswordConfirmationCheckbox" class="mr-2">
+                                        <i data-feather="eye" id="checkboxIconConfirmation"></i>
                                     </span>
                                 </div>
                             </div>
@@ -128,7 +131,38 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
-        feather.replace()
+        feather.replace();
+    </script>
+    <script>
+        const showPasswordCheckbox = document.getElementById('showPasswordCheckbox');
+        const checkboxIcon = document.getElementById('checkboxIcon');
+        const checkboxIconConfirmation = document.getElementById('checkboxIconConfirmation');
+        const passwordInput = document.getElementById(
+            'password');
+        const passwordInputConfirmation = document.getElementById(
+            'password-confirm');
+
+        showPasswordCheckbox.addEventListener('click', function() {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+                checkboxIcon.setAttribute('data-feather', 'eye-off');
+            } else {
+                passwordInput.type = 'password';
+                checkboxIcon.setAttribute('data-feather', 'eye');
+            }
+            feather.replace(); // If you are using the Feather Icons library, this line updates the icon appearance
+        });
+
+        showPasswordConfirmationCheckbox.addEventListener('click', function() {
+            if (showPasswordConfirmationCheckbox.checked) {
+                passwordInputConfirmation.type = 'text';
+                checkboxIconConfirmation.setAttribute('data-feather', 'eye-off');
+            } else {
+                passwordInputConfirmation.type = 'password';
+                checkboxIconConfirmation.setAttribute('data-feather', 'eye');
+            }
+            feather.replace(); // If you are using the Feather Icons library, this line updates the icon appearance
+        });
     </script>
 </body>
 
