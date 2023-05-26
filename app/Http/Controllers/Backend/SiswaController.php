@@ -78,7 +78,7 @@ class SiswaController extends Controller
 
         $requestData = $request->validated();
         if ($request->hasFile('foto')) {
-            $requestData['foto'] = $request->file('foto')->store('public');
+            $requestData['foto'] = $request->file('foto')->store('public/file/fotosiswa');
         }
         $user = Siswa::create($requestData);
         // dd($user);
@@ -145,7 +145,7 @@ class SiswaController extends Controller
             if ($siswa->foto !== null && Storage::exists($siswa->foto)) {
                 Storage::delete($siswa->foto);
             }
-            $requestData['foto'] = $request->file('foto')->store('public');
+            $requestData['foto'] = $request->file('foto')->store('public/file/fotosiswa');
         }
         $siswa->fill($requestData);
         $siswa->save();

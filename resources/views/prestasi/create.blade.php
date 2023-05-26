@@ -11,6 +11,13 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Data Nilai Rapor</h3> <small class="text-muted float-end">
                 </div>
+                <div class="container">
+                    <small class="text-danger">* Upload Nilai Rapor SD Semester 4 - 6, Format Pdf, (Maksimal Ukuran 2
+                        Mb)</small><br>
+                    <small class="text-danger">* Sertifikat Prestasi Harus Yang Asli (Maksimal Ukuran 2
+                        Mb)</small><br>
+
+                </div>
                 <form enctype="multipart/form-data" method="POST" action="{{ route('prestasi.store') }}">
                     @csrf
                     <div class="card-body">
@@ -84,6 +91,20 @@
                             </div>
 
                             <div class="form-group col-4 mb-3">
+                                <label for="bukti_nilai_rapor" class="form-label">Bukti Nilai Rapor </label>
+                                <input type="file" class="form-control @error('bukti_nilai_rapor') is-invalid @enderror"
+                                    id="bukti_nilai_rapor" name="bukti_nilai_rapor" accept="application/pdf">
+
+                                @error('bukti_nilai_rapor')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="form-group col-12">
                                 <label for="sekolah_id" class="form-label">Sekolah Tujuan</label>
                                 {!! Form::select('sekolah_id', $sekolah, null, [
                                     'class' => 'form-control select2',
@@ -93,21 +114,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="form-group col-12">
-                                <label for="bukti_nilai_rapor" class="form-label">Bukti Nilai Rapor </label>
-                                <input type="file" class="form-control @error('bukti_nilai_rapor') is-invalid @enderror"
-                                    id="bukti_nilai_rapor" name="bukti_nilai_rapor" accept="application/pdf">
-                                <small class="text-danger">Nilai Rapor Sem 4 - 6, Format Pdf, (Maksimal Ukuran 2 Mb)</small>
-                                @error('bukti_nilai_rapor')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <h3 class="mb-3">Data Penghargaan</h3> <small class="text-muted float-end">
+                        <h3 class="mb-3">Data Penghargaan / Prestasi</h3> <small class="text-muted float-end">
                             <table class="table table-bordered" id="table">
                                 <thead>
                                     <tr>
@@ -136,6 +143,9 @@
 
                                 </tbody>
                             </table>
+                            <input type="checkbox" name="acknowledge" class="mt-3" required>
+                            <label for="acknowledge" class="text-danger">Saya menyatakan bahwa data yang saya isi adalah benar, dan bersedia
+                                menerima sanksi jika terdapat pemalsuan data.</label>
                     </div>
                     <!-- /.card-body -->
 

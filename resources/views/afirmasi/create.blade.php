@@ -10,7 +10,12 @@
             </div>
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Pendaftaran Jalur Afirmasi</h3> <small class="text-muted float-end">
+                    <h3 class="mb-0">Pendaftaran Jalur Afirmasi</h3> <small class="text-muted float-end"></small>
+                </div>
+                <div class="container">
+                    <small class="text-danger">* Format Gambar / Foto JPG, JPEG, PNG (Maksimal Ukuran 2 Mb)</small><br>
+                    <small class="text-danger">* Jika Ada KIP / PKH Surat SKTM Tidak Perlu Di Upload, Dan Jika ada Kedua -
+                        Duanya Lebih Baik</small>
                 </div>
 
                 <form enctype="multipart/form-data" method="POST" action="{{ route('afirmasi.store') }}" id="afirmasi">
@@ -18,7 +23,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group">
-                                <label for="sekolah_id" class="form-label">Sekolah Tujuan</label>
+                                <label for="sekolah_id" class="form-label"><b>Sekolah Tujuan</b></label>
                                 {{-- <select name="sekolah_id" class="form-control select2">
                                     <option value="">Pilih Sekolah</option>
                                     @foreach ($sekolah as $item)
@@ -33,11 +38,19 @@
                             </div>
 
                             <div class="form-group mt-3">
+                                <label for="kk" class="form-label"><b>Contoh Kartu</b></label><br>
+                                <img src="{{ asset('images/kip.jpg') }}" alt="Contoh Kartu" width="150">
+                                <img src="{{ asset('images/kk.jpg') }}" alt="Contoh Kartu" width="150">
+                                <img src="{{ asset('images/skl.jpg') }}" alt="Contoh Kartu" width="150">
+                                <img src="{{ asset('images/sktm.jpg') }}" alt="Contoh Kartu" width="150">
+                                <img src="{{ asset('images/pkh.jpg') }}" alt="Contoh Kartu" width="150">
+                            </div>
+
+                            <div class="form-group mt-3">
                                 <label for="kk" class="form-label">Kartu Keluarga</label>
                                 <input type="file" class="form-control @error('kk') is-invalid @enderror" id="kk"
                                     name="kk" accept="image/*" required>
-                                <small class="text-danger">Format Gambar / Foto JPG, JPEG, PNG (Maksimal Ukuran 2
-                                    Mb)</small>
+
                                 @error('kk')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -46,11 +59,10 @@
                             </div>
 
                             <div class="form-group mt-3">
-                                <label for="kip" class="form-label">KIP / KKS</label>
+                                <label for="kip" class="form-label">Upload KIP / KKS / PKH</label>
                                 <input type="file" class="form-control @error('kip') is-invalid @enderror" id="kip"
                                     name="kip" accept="image/*">
-                                <small class="text-danger">Format Gambar / Foto JPG, JPEG, PNG (Maksimal Ukuran 2
-                                    Mb) * Jika Ada SKTM Boleh Dikosongkan</small>
+
                                 @error('kip')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -62,8 +74,7 @@
                                 <label for="sktm" class="form-label">Surat Keterangan Tidak Mampu (SKTM)</label>
                                 <input type="file" class="form-control @error('sktm') is-invalid @enderror"
                                     id="sktm" name="sktm" accept="image/*">
-                                <small class="text-danger">Format Gambar / Foto JPG, JPEG, PNG (Maksimal Ukuran 2
-                                    Mb)</small>
+
                                 @error('sktm')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -75,8 +86,7 @@
                                 <label for="skl" class="form-label">Surat Keterangan Lulus / Ijazah SD</label>
                                 <input type="file" class="form-control @error('skl') is-invalid @enderror" id="skl"
                                     name="skl" accept="image/*" required>
-                                <small class="text-danger">Format Gambar / Foto JPG, JPEG, PNG (Maksimal Ukuran 2
-                                    Mb)</small>
+
                                 @error('skl')
                                     <div class="invalid-feedback">
                                         {{ $message }}

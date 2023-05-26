@@ -24,15 +24,40 @@
                         PENDAFTARAN GRATIS,
                         HATI-HATI PENIPUAN</b><br> <i data-feather="radio"></i> Pengumuman PPDB
                 </center>
+                @php
+                    $tutupPendaftaran = strtotime('2023-05-31 23:59:59');
+                    $sekarang = time();
+                    
+                    // Hitung selisih waktu
+                    $selisihWaktu = $tutupPendaftaran - $sekarang;
+                    
+                    // Hitung jumlah hari, jam, menit, dan detik
+                    $jumlahHari = floor($selisihWaktu / (60 * 60 * 24));
+                    $jumlahJam = floor(($selisihWaktu % (60 * 60 * 24)) / (60 * 60));
+                    $jumlahMenit = floor(($selisihWaktu % (60 * 60)) / 60);
+                    $jumlahDetik = $selisihWaktu % 60;
+                @endphp
+
                 <h3 align="center"
                     style="color:#8e44ad; text-shadow: 3px 2px 1px #fff; font-size: 20px; padding: 0px; margin-bottom: 0px;">
                     <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
                 </h3>
 
                 {{-- <body onload="ajax()"> --}}
-                <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
-                    <center>Pendaftaran PPDB Akan Di Tutup:<br> 16 hari 13 jam 22 menit 54 detik lagi</center>
-                </div>
+                @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
+                    <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
+                        <center>Pendaftaran PPDB Akan Di Tutup:<br> {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam
+                            {{ $jumlahMenit }}
+                            Menit {{ $jumlahDetik }} Detik lagi
+                        </center>
+                    </div>
+                @else
+                    <center style="background-color: #fff; padding: 10px;"><b style="color:red;">
+                            PENDAFTARAN Telah Di Tutup</b><br>
+                    </center>
+                @endif
+
+
                 {{-- </body> --}}
             </div>
         </div>
@@ -64,7 +89,7 @@
 
                             <div class="form-group">
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                    id="email" name="email" placeholder="Masukkan Email"
+                                    id="email" name="email" placeholder="Masukkan Email atau Username"
                                     value="{{ old('email') }}" required autofocus />
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

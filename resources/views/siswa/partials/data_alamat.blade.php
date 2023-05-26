@@ -45,7 +45,8 @@
     <div class="card-body">
         <div class="row">
             <div class="form-group">
-                <label for="alamat">Alamat Rumah *</label>
+                <label for="alamat">Alamat Rumah <span class="text-danger">(Sesuai Dengan Kartu Keluarga )
+                        *</span></label>
                 <textarea name="alamat" id="editor" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $siswa->alamat ?? '') }}
                     </textarea>
 
