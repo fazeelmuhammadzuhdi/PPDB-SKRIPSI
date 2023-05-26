@@ -51,7 +51,17 @@
                                         {{ $zonasiSekolah->kampung?->nama_kampung }}
                                     </option>
                                 </select>
+                            </div>
 
+                            <div class="form-group mt-3">
+                                <label for="nama_kampung" class="form-label">Prioritas</label>
+                                <input type="text" class="form-control" name="no_urut" id="no_urut"
+                                    placeholder="Ex : 1" required value="{{ old('no_urut', $zonasiSekolah->no_urut) }}">
+                                @error('no_urut')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>

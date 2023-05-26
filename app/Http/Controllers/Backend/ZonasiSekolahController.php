@@ -20,7 +20,7 @@ class ZonasiSekolahController extends Controller
     public function index()
     {
         $sekolah = Sekolah::sekolah()->first();
-        $zonasiSekolah = ZonasiSekolah::with('nagari', 'kampung', 'kecamatan')->where('sekolah_id', $sekolah->id)->get();
+        $zonasiSekolah = ZonasiSekolah::with('nagari', 'kampung', 'kecamatan')->where('sekolah_id', $sekolah->id)->orderBy('no_urut', 'asc')->orderBy('nilai', 'desc')->get();
 
         return view('zonasiSekolah.index', compact('zonasiSekolah'));
     }
@@ -50,6 +50,16 @@ class ZonasiSekolahController extends Controller
         $data = $request->all();
         $data['sekolah_id'] = $sekolah->id;
 
+        // jika sudah ada no urutnya maka tampilkna pesan error
+        $cekNoUrut = ZonasiSekolah::where('no_urut', $request->no_urut)->first();
+        if ($cekNoUrut) {
+            flash()->addError('No urut sudah ada');
+            return redirect(route('zonasisekolah.create')); // Hentikan eksekusi kode
+        } else {
+            $setNilai = 71;
+            $noUrut = $request->no_urut;
+            $data['nilai'] = $setNilai - $noUrut;
+        }
         ZonasiSekolah::create($data);
         flash('Data berhasil disimpan');
         return redirect()->route('zonasisekolah.index');
@@ -91,6 +101,19 @@ class ZonasiSekolahController extends Controller
         $data = $request->all();
 
         $item = ZonasiSekolah::findOrFail($id);
+        $cekNoUrut = ZonasiSekolah::where('no_urut', $request->no_urut)->first();
+        if ($cekNoUrut) {
+            flash()->addError('No urut sudah ada');
+            return redirect(route('zonasisekolah.edit', $id)); // Hentikan eksekusi kode
+        } else {
+            $setNilai = 71;
+            $noUrut = $request->no_urut;
+            $data['nilai'] = $setNilai - $noUrut;
+        }
+
+        // $setNilai = 71;
+        // $noUrut = $request->no_urut;
+        // $data['nilai'] = $setNilai - $noUrut;
 
         $item->update($data);
         flash('Data berhasil diupdate');

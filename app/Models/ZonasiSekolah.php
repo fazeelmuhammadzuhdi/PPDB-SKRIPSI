@@ -16,6 +16,8 @@ class ZonasiSekolah extends Model
         'kampung_id',
         'kecamatan_id',
         'sekolah_id',
+        'no_urut',
+        'nilai',
     ];
 
     public function nagari()

@@ -10,47 +10,62 @@
                 <th>Jenis Kelamin</th>
                 <th>NISN</th>
                 <th>Status</th>
+                <th>Nilai</th>
                 <th>Foto</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
+            @php
+                $no = 1;
+            @endphp
             @foreach ($zonasi as $item)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->siswa->nama_lengkap }}</td>
-                    <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
-                    <td>{{ $item->siswa->nisn }}</td>
-                    <td>
-                        @if ($item->status == 1)
-                            <span class="badge bg-success">Lulus</span>
-                        @elseif ($item->status == 2)
-                            <span class="badge bg-danger">Belum Lulus</span>
-                        @else
-                            <span class="badge bg-warning">Dalam Seleksi</span>
-                        @endif
-                    </td>
-                    <td>
-                        <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
-                    </td>
-                    <td>
-                        <a href="{{ route('data_pendaftaran_zonasi.show', encrypt($item->id)) }}"
-                            class="btn btn-info btn-sm mx-1">
-                            <i class="fas fa-eye"></i> Detail
-                        </a>
-                    </td>
-                </tr>
+                @foreach ($zonasiSekolah->sortByDesc('nilai') as $data)
+                    @if (
+                        $item->sekolah_id == $data->sekolah_id &&
+                            $item->siswa->kecamatan_id == $data->kecamatan_id &&
+                            $item->siswa->nagari_id == $data->nagari_id &&
+                            $item->siswa->kampung_id == $data->kampung_id)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $item->siswa->nama_lengkap }}</td>
+                            <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                            <td>{{ $item->siswa->nisn }}</td>
+                            <td>
+                                @if ($item->status == 1)
+                                    <span class="badge bg-success">Lulus</span>
+                                @elseif ($item->status == 2)
+                                    <span class="badge bg-danger">Belum Lulus</span>
+                                @else
+                                    <span class="badge bg-warning">Dalam Seleksi</span>
+                                @endif
+                            </td>
+                            <td>{{ $data->nilai }}</td>
+
+                            <td>
+                                <img src="{{ Storage::url($item->siswa->foto) }}" alt="" width="30">
+                            </td>
+                            <td>
+                                <a href="{{ route('data_pendaftaran_zonasi.show', encrypt($item->id)) }}"
+                                    class="btn btn-info btn-sm mx-1">
+                                    <i class="fas fa-eye"></i> Detail
+                                </a>
+                            </td>
+                        </tr>
+                    @break;
+                @endif
             @endforeach
-        </tbody>
-    </table>
+        @endforeach
+    </tbody>
+</table>
 </div>
 
 
 
 @push('after-script')
-    <script>
-        $(document).ready(function() {
-            $('#myTableZonasi').DataTable();
-        });
-    </script>
+<script>
+    $(document).ready(function() {
+        $('#myTableZonasi').DataTable();
+    });
+</script>
 @endpush
