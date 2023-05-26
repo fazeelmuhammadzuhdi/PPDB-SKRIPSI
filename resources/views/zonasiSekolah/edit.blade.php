@@ -38,7 +38,7 @@
                                 <label for="kk" class="form-label">Nama Nagari</label>
                                 <select name="nagari_id" id="nagari_id" class="form-control select2" required>
                                     <option value="{{ $zonasiSekolah->id }}" selected>
-                                        {{ $zonasiSekolah->nagari->nama_nagari }}
+                                        {{ $zonasiSekolah->nagari?->nama_nagari }}
                                     </option>
                                 </select>
 
@@ -48,7 +48,7 @@
                                 <label for="nama_kampung" class="form-label">Nama Kampung</label>
                                 <select name="kampung_id" id="kampung_id" class="form-control select2" required>
                                     <option value="{{ $zonasiSekolah->id }}" selected>
-                                        {{ $zonasiSekolah->kampung->nama_kampung }}
+                                        {{ $zonasiSekolah->kampung?->nama_kampung }}
                                     </option>
                                 </select>
 

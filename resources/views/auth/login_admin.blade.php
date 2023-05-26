@@ -155,8 +155,10 @@
         <div class="row">
             <div class="mx-auto mt-2">
                 {{-- <img src="{{ asset('images/ppdblogo.png') }}" alt="" width="200px"> --}}
-                <center style="background-color: #fff; padding: 10px;"><b style="color:red;">PENDAFTARAN GRATIS,
-                        HATI-HATI PENIPUAN</b><br> Pengumuman PPDB
+                <center style="background-color: #fff; padding: 10px;"><b style="color:red;"><i
+                            data-feather="alert-circle"></i>
+                        PENDAFTARAN GRATIS,
+                        HATI-HATI PENIPUAN</b><br> <i data-feather="radio"></i> Pengumuman PPDB
                 </center>
 
                 @php

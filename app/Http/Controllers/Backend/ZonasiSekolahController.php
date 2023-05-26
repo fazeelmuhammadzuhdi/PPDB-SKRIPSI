@@ -109,7 +109,7 @@ class ZonasiSekolahController extends Controller
 
         $data->delete();
 
-        flash('Data berhasil dihapus');
+        // flash('Data berhasil dihapus');
         return redirect()->back();
     }
 
