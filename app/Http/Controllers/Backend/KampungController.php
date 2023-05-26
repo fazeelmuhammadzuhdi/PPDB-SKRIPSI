@@ -106,7 +106,7 @@ class KampungController extends Controller
 
         $item->delete();
 
-        flash('Data berhasil dihapus');
+        // flash('Data berhasil dihapus');
         return redirect()->back();
     }
 

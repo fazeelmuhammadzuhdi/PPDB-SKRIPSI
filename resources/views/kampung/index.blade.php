@@ -42,7 +42,7 @@
                                                 <a href="{{ route('kampung.edit', $item->id) }}" class="btn btn-warning"><i
                                                         class="fa fa-edit"></i></a>
 
-                                                <button type="submit" class="btn btn-danger"><i
+                                                <button type="submit" class="btn btn-danger show_confirm"><i
                                                         class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
@@ -60,6 +60,49 @@
     <script>
         $(document).ready(function() {
             $('#myTableKampung').DataTable();
+        });
+    </script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger mx-2'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Kamu Ingin Menghapus Data Anggota Ini?",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit()
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Data Berhasil Di Hapus.',
+                        'success'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Data Tidak Jadi Di Hapus :)',
+                        'error'
+                    )
+                }
+            })
         });
     </script>
 @endpush
