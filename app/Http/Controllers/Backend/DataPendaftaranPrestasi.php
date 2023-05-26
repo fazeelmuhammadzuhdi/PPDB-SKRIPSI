@@ -8,10 +8,11 @@ use App\Models\Penghargaan;
 use App\Models\PindahTugas;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
-use App\Models\Siswa;
 use App\Models\Zonasi;
 use App\Models\ZonasiSekolah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 class DataPendaftaranPrestasi extends Controller
 {
@@ -150,5 +151,53 @@ class DataPendaftaranPrestasi extends Controller
     //     $pdf = Pdf::loadView('prestasi.view_pdf', compact('data', 'title'));
     //     $namaFile = "Bukti Nilai Rapor" . $data->id;
     //     return $pdf->stream($namaFile);
+    // }
+
+    // public function viewPdf($id)
+    // {
+    //     // Ambil data dari database berdasarkan $id
+    //     $dataPrestasi = Prestasi::find($id);
+
+    //     // Dapatkan path file PDF yang diunggah
+    //     // $filePath = $dataPrestasi->bukti_nilai_rapor;
+    //     // $fileContents = file_get_contents(public_path($filePath));
+
+
+    //     // $filePath = 'file/bukti_nilai_rapor/' . $dataPrestasi->bukti_nilai_rapor;
+    //     // $fileContents = file_get_contents(public_path($filePath));
+
+    //     $filePath = 'file/bukti_nilai_rapor/' . $dataPrestasi->bukti_nilai_rapor;
+    //     $fileContents = Storage::get($filePath);
+
+    //     $response = Response::make($fileContents, 200, [
+    //         'Content-Type' => 'application/pdf',
+    //         'Content-Disposition' => 'inline; filename="bukti_nilai.pdf"',
+    //     ]);
+
+    //     $file = public_path($filePath);
+    //     $permissions = 0644;
+
+    //     // Mengatur izin file
+    //     chmod($file, $permissions);
+
+
+    //     return $response;
+
+    //     // // Dapatkan data prestasi berdasarkan ID
+    //     // $dataPrestasi = Prestasi::find($id);
+
+
+    //     // $file = public_path($dataPrestasi->bukti_nilai_rapor);
+    //     // return response()->file($file);
+
+    //     // // Dapatkan path file PDF yang diunggah
+    //     // $filePath = 'file/bukti_nilai_rapor/' . $dataPrestasi->bukti_nilai_rapor;
+    //     // $fileContents = Storage::get($filePath);
+
+
+    //     // // Buat response dengan header Content-Type: application/pdf
+    //     // $response = response($fileContents)->header('Content-Type', 'application/pdf');
+
+    //     // return $response;
     // }
 }

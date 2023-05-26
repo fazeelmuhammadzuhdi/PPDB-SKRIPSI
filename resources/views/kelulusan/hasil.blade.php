@@ -1,22 +1,23 @@
 @extends('layouts.main')
-
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
+                <li class="breadcrumb-item">Data Master</li>
+                <li class="breadcrumb-item active">Kampung</li>
+            </ol>
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0 text-primary">Data Siswa Lulus {{ $sekolah->nama }}</h3> <small
-                        class="text-muted float-end">
-                        <a href="{{ route('cetakpdf') }}" class="btn btn-primary" target="_blank"><i class="fa fa-file-pdf"
-                                aria-hidden="true"></i>
-                            Export</a>
-                        {{-- <a href="{{ route('exportExcelSiswaLulus') }}" class="btn btn-outline-success"><i
-                                class="fas fa-file-excel" aria-hidden="true"></i>
-                            Export Excel</a> --}}
+                    <h3 class="mb-0">
+                        Data Siswa Lulus {{ $sekolah->nama }}
+                    </h3>
+                    <button onclick="window.print()" class="btn btn-primary ml-auto"><i class="fa fa-print"
+                            aria-hidden="true"></i> Cetak</button>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive text-nowrap ">
-                        <table class="table table-striped table-hover" id="table">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-hover" id="myTableKampung">
                             <thead>
                                 <tr>
                                     <th width="1%">No</th>
@@ -149,11 +150,3 @@
         </div>
     </div>
 @endsection
-
-@push('after-script')
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable();
-        });
-    </script>
-@endpush

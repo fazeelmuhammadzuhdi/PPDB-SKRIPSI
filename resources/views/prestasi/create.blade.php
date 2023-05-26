@@ -12,6 +12,7 @@
                     <h3 class="mb-0">Data Nilai Rapor</h3> <small class="text-muted float-end">
                 </div>
                 <div class="container">
+                    <small class="text-danger">* Kamu Lebih Di Prioritaskan Sekolah Yang Dalam Zonasi</small><br>
                     <small class="text-danger">* Upload Nilai Rapor SD Semester 4 - 6, Format Pdf, (Maksimal Ukuran 2
                         Mb)</small><br>
                     <small class="text-danger">* Sertifikat Prestasi Harus Yang Asli (Maksimal Ukuran 2
@@ -144,7 +145,8 @@
                                 </tbody>
                             </table>
                             <input type="checkbox" name="acknowledge" class="mt-3" required>
-                            <label for="acknowledge" class="text-danger">Saya menyatakan bahwa data yang saya isi adalah benar, dan bersedia
+                            <label for="acknowledge" class="text-danger">Saya menyatakan bahwa data yang saya isi adalah
+                                benar, dan bersedia
                                 menerima sanksi jika terdapat pemalsuan data.</label>
                     </div>
                     <!-- /.card-body -->

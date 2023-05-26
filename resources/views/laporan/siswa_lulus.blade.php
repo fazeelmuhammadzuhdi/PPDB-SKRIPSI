@@ -22,7 +22,65 @@
                                 @php
                                     $no = 1;
                                 @endphp
+                                @php
+                                    $dataByJalur = [
+                                        'AFIRMASI' => [],
+                                        'PINDAH TUGAS' => [],
+                                        'PRESTASI' => [],
+                                        'ZONASI' => [],
+                                    ];
+                                @endphp
+
                                 @foreach ($siswa as $item)
+                                    @foreach ($afirmasi as $data)
+                                        @if ($item->id == $data->siswa_id)
+                                            @php
+                                                $dataByJalur['AFIRMASI'][] = $item;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+
+                                    @foreach ($pindahTugas as $data)
+                                        @if ($item->id == $data->siswa_id)
+                                            @php
+                                                $dataByJalur['PINDAH TUGAS'][] = $item;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+
+                                    @foreach ($prestasi as $data)
+                                        @if ($item->id == $data->siswa_id)
+                                            @php
+                                                $dataByJalur['PRESTASI'][] = $item;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+
+                                    @foreach ($zonasi as $data)
+                                        @if ($item->id == $data->siswa_id)
+                                            @php
+                                                $dataByJalur['ZONASI'][] = $item;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endforeach
+
+                                @foreach ($dataByJalur as $jalur => $data)
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $jalur }}</td>
+                                            <td>{{ $item->nama_lengkap }}</td>
+                                            <td>{{ $item->nisn }}</td>
+                                            <td>{{ $item->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                                            <td>{{ $item->kampung?->nama_kampung }}</td>
+                                            <td>{{ $item->sekolah_asal }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+
+
+                                {{-- @foreach ($siswa->sortByDesc('kampung_id') as $item)
                                     @foreach ($afirmasi as $data)
                                         @if ($item->id == $data->siswa_id)
                                             <tr>
@@ -30,10 +88,8 @@
                                                 <td>AFIRMASI</td>
                                                 <td>{{ $item->nama_lengkap }}</td>
                                                 <td>{{ $item->nisn }}</td>
-                                                <td>{{ $item->jenis_kelamin }}</td>
-                                                <td>{!! $item->alamat !!}</td>
-                                                <td>{{ $item->sekolah_asal }}</td>
-
+                                                <td>{{ $item->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                                                <td>{{ $item->kampung?->nama_kampung }}</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -46,9 +102,7 @@
                                                 <td>{{ $item->nama_lengkap }}</td>
                                                 <td>{{ $item->nisn }}</td>
                                                 <td>{{ $item->jenis_kelamin }}</td>
-                                                <td>{!! $item->alamat !!}</td>
-                                                <td>{{ $item->sekolah_asal }}</td>
-
+                                                <td>{{ $item->kampung?->nama_kampung }}</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -61,9 +115,7 @@
                                                 <td>{{ $item->nama_lengkap }}</td>
                                                 <td>{{ $item->nisn }}</td>
                                                 <td>{{ $item->jenis_kelamin }}</td>
-                                                <td>{!! $item->alamat !!}</td>
-                                                <td>{{ $item->sekolah_asal }}</td>
-
+                                                <td>{{ $item->kampung?->nama_kampung }}</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -76,12 +128,11 @@
                                                 <td>{{ $item->nama_lengkap }}</td>
                                                 <td>{{ $item->nisn }}</td>
                                                 <td>{{ $item->jenis_kelamin }}</td>
-                                                <td>{!! $item->alamat !!}</td>
-                                                <td>{{ $item->sekolah_asal }}</td>
+                                                <td>{{ $item->kampung?->nama_kampung }}</td>
                                             </tr>
                                         @endif
                                     @endforeach
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
 

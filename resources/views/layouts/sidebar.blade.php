@@ -191,6 +191,13 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="menu-item {{ Route::is('kelulusan.*') ? 'active' : '' }}">
+                <a href="{{ route('kelulusan.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div data-i18n="Basic">Kelulusan</div>
+                </a>
+            </li>
         @elseif (Auth::user()->akses == 'Admin Sekolah')
             <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_dinas') }}" class="menu-link">

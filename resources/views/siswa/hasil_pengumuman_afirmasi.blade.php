@@ -25,7 +25,7 @@
                              Keluarga (KK)
                          </li>
                      </ul>
-                     <li>Menunjukkan Bukti / Kartu Pendaftaran yang Statusnya Telah DITERIMA </li>
+                     <li>Menunjukkan Bukti / Kartu Pendaftaran</li>
                      <li>Menunjukkan Bukti Bahwasannya Anda Telah Dinyatakan Lulus</li>
                      <li> Semua Persyaratan diatas diserahkan paling lambat
                          Hari/Tanggal : Rabu / 5 Agustus 2020</li>
@@ -43,7 +43,7 @@
              </th>
          </tr>
          <tr>
-             <br><br>
+             <br><br><br><br><br>
              <th>
                  <h2 align="center"> Hasil Penerimaan Peserta Didik Baru <br>
                      {{ $item->sekolah->nama }},</h2>
@@ -110,7 +110,7 @@
                              Keluarga (KK)
                          </li>
                      </ul>
-                     <li>Menunjukkan Bukti / Kartu Pendaftaran yang Statusnya Telah DITERIMA </li>
+                     <li>Menunjukkan Bukti / Kartu Pendaftaran</li>
                      <li>Menunjukkan Bukti Bahwasannya Anda Telah Dinyatakan Lulus</li>
                      <li> Semua Persyaratan diatas diserahkan paling lambat
                          Hari/Tanggal : Rabu / 5 Agustus 2020</li>
@@ -199,7 +199,7 @@
                              Keluarga (KK)
                          </li>
                      </ul>
-                     <li>Menunjukkan Bukti / Kartu Pendaftaran yang Statusnya Telah DITERIMA </li>
+                     <li>Menunjukkan Bukti / Kartu Pendaftaran </li>
                      <li>Menunjukkan Bukti Bahwasannya Anda Telah Dinyatakan Lulus</li>
                      <li> Semua Persyaratan diatas diserahkan paling lambat
                          Hari/Tanggal : Rabu / 5 Agustus 2020</li>

@@ -58,10 +58,16 @@
 
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary mb-3">
                             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
-                        <a href="{{ route('viewpdf', $data_prestasi->id) }}" class="btn mb-3"
+
+                        {{-- <a href="{{ Storage::url($data_prestasi->bukti_nilai_rapor) }}" class="btn mb-3"
                             style="background-color: #8e44ad; color: white">
                             <i class="fa fa-file" aria-hidden="true"></i> View
-                            Bukti Nilai Rapor</a>
+                            Bukti Nilai Rapor</a> --}}
+
+                        <a href="{{ Storage::url($data_prestasi->bukti_nilai_rapor) }}" class="btn mb-3"
+                            style="background-color: #8e44ad; color: white" target="_blank">
+                            <i class="fa fa-file" aria-hidden="true"></i> View Bukti Nilai Rapor
+                        </a>
 
 
 

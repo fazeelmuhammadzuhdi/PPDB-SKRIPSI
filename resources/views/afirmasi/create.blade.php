@@ -13,6 +13,7 @@
                     <h3 class="mb-0">Pendaftaran Jalur Afirmasi</h3> <small class="text-muted float-end"></small>
                 </div>
                 <div class="container">
+                    <small class="text-danger">* Kamu Lebih Di Prioritaskan Sekolah Yang Dalam Zonasi</small><br>
                     <small class="text-danger">* Format Gambar / Foto JPG, JPEG, PNG (Maksimal Ukuran 2 Mb)</small><br>
                     <small class="text-danger">* Jika Ada KIP / PKH Surat SKTM Tidak Perlu Di Upload, Dan Jika ada Kedua -
                         Duanya Lebih Baik</small>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\DataPendaftaranZonasi;
 use App\Http\Controllers\Backend\DataZonasiSekolahController;
 use App\Http\Controllers\Backend\KampungController;
 use App\Http\Controllers\Backend\KecamatanController;
+use App\Http\Controllers\Backend\KelulusanController;
 use App\Http\Controllers\Backend\LaporanController;
 use App\Http\Controllers\Backend\NagariController;
 use App\Http\Controllers\Backend\PekerjaanController;
@@ -134,6 +135,11 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::get('/prestasi/belumlulus', 'exportExcelPrestasiSiswaBelumLulus')->name('exportExcelPrestasiSiswaBelumLulus');
         Route::get('/zonasi/lulus', 'exportExcelZonasiSiswaLulus')->name('exportExcelZonasiSiswaLulus');
         Route::get('/zonasi/belumlulus', 'exportExcelZonasiSiswaBelumLulus')->name('exportExcelZonasiSiswaBelumLulus');
+    });
+
+    Route::controller(KelulusanController::class)->name('kelulusan.')->group(function () {
+        Route::get('/kelulusan', 'index')->name('index');
+        Route::post('/kelulusan', 'kelulusan')->name('sekolah');
     });
 });
 
