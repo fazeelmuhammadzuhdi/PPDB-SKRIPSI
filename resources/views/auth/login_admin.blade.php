@@ -148,6 +148,14 @@
     <link rel="shortcut icon" href="{{ asset('images/iconppdb.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('sneat/assets/css/loginStyle.css') }}">
     <title>Login | PPDB</title>
+
+    <style>
+        .countdown {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -182,11 +190,18 @@
 
                 {{-- <body onload="ajax()"> --}}
                 @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
-                    <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
+                    {{-- <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
                         <center>Pendaftaran PPDB Akan Di Tutup:<br> {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam
                             {{ $jumlahMenit }}
                             Menit {{ $jumlahDetik }} Detik lagi
                         </center>
+                    </div> --}}
+                    <div class="countdown">
+                        Pendaftaran PPDB Akan Ditutup dalam: <br>
+                        <span id="countdown">
+                            {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam {{ $jumlahMenit }} Menit
+                            {{ $jumlahDetik }} Detik
+                        </span>
                     </div>
                 @else
                     <center style="background-color: #fff; padding: 10px;"><b style="color:red;">

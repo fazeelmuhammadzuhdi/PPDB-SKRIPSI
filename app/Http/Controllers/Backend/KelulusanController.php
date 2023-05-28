@@ -11,7 +11,6 @@ use App\Models\Siswa;
 use App\Models\Zonasi;
 use App\Models\ZonasiSekolah;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class KelulusanController extends Controller
 {
