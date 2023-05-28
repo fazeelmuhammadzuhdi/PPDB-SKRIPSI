@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Afirmasi;
+use App\Models\Kampung;
+use App\Models\Kecamatan;
+use App\Models\Nagari;
 use App\Models\PindahTugas;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
@@ -18,7 +21,10 @@ class DashboardDinasController extends Controller
         if (auth()->user()->akses == 'Admin Dinas') {
             $siswa = Siswa::count();
             $jumlahSekolah = Sekolah::count();
-            return view('dinas.dashboard_dinas', compact('siswa', 'jumlahSekolah'));
+            $jumlahKecamatan = Kecamatan::count();
+            $jumlahNagari = Nagari::count();
+            $jumlahKampung = Kampung::count();
+            return view('dinas.dashboard_dinas', compact('siswa', 'jumlahSekolah', 'jumlahKecamatan', 'jumlahNagari', 'jumlahKampung'));
         }
 
         if (auth()->user()->akses == 'Admin Sekolah') {

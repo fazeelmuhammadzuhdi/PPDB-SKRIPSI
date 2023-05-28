@@ -197,6 +197,24 @@
                                     </tr>
                                     {{-- <tr>
                                         @if ($cek_prestasi)
+                                            <td><b>Tanggal Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurPrestasi->created_at }}</td>
+                                        @endif
+                                        @if ($cek_afirmasi)
+                                            <td><b>Sekolah Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurAfirmasi->sekolah->nama }}</td>
+                                        @endif
+                                        @if ($cek_pindah_tugas)
+                                            <td><b>Sekolah Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurPindahTugas->sekolah->nama }}</td>
+                                        @endif
+                                        @if ($cek_zonasi)
+                                            <td><b>Sekolah Pendaftaran</b></td>
+                                            <td>{{ $cekLulusJalurZonasi->sekolah->nama }}</td>
+                                        @endif
+                                    </tr> --}}
+                                    {{-- <tr>
+                                        @if ($cek_prestasi)
                                             <td><b>Status Pendaftaran</b></td>
                                             <td>
                                                 @foreach ($cek_siswa->prestasis as $item)
