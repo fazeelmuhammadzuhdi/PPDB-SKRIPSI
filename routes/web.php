@@ -92,6 +92,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::get('/laporan-kecamatan', 'laporanKecamatan')->name('kecamatan');
         Route::get('/laporan-nagari', 'laporanNagari')->name('nagari');
         Route::get('/laporan-kampung', 'laporanKampung')->name('kampung');
+        Route::get('/laporan-kecamatan-nagari-kampung', 'laporanKecamatanNagariKampung')->name('kecamatanNagariKampung');
     });
 
     //penghasilan

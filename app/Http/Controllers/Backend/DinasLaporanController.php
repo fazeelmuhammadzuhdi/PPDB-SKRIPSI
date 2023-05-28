@@ -41,7 +41,7 @@ class DinasLaporanController extends Controller
 
     public function laporanKecamatan()
     {
-        $kecamatan = Kecamatan::with(['nagari', 'kampung'])->orderBy('nama_kecamatan', 'asc')->get();
+        $kecamatan = Kecamatan::orderBy('nama_kecamatan', 'asc')->get();
         return view('dinas.laporan.kecamatan', [
             'kecamatan' => $kecamatan,
             'title' => 'Laporan Data Kecamatan Di Kabupaten Pesisir Selatan',
@@ -63,6 +63,15 @@ class DinasLaporanController extends Controller
         return view('dinas.laporan.kampung', [
             'kampung' => $kampung,
             'title' => 'Laporan Data Kampung Di Kabupaten Pesisir Selatan',
+        ]);
+    }
+
+    public function laporanKecamatanNagariKampung()
+    {
+        $kecamatan = Kecamatan::with(['nagari', 'kampung'])->orderBy('nama_kecamatan', 'asc')->get();
+        return view('dinas.laporan.kecamatan-nagari-kampung', [
+            'kecamatan' => $kecamatan,
+            'title' => 'Laporan Data Kecamatan, Nagari Dan Kampung Di Kabupaten Pesisir Selatan',
         ]);
     }
 }

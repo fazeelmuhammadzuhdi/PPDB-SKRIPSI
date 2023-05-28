@@ -240,6 +240,13 @@
                         </a>
                     </li>
 
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.kecamatanNagariKampung') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Kecamatan Nagari Dan Kampung</div>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 
