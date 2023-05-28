@@ -219,6 +219,27 @@
                         </a>
                     </li>
 
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.kecamatan') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Kecamatan</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.nagari') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Nagari</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.kampung') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Kampung</div>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 

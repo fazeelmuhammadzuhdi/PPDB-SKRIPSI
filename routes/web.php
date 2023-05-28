@@ -89,6 +89,9 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::get('/laporan-user-admin-sekolah', 'laporanUserAdminDanSekolah')->name('userAdminDanSekolah');
         Route::get('/laporan-user-siswa', 'laporanUserSiswa')->name('userSiswa');
         Route::get('/laporan-sekolah', 'laporanDataSekolah')->name('dataSekolah');
+        Route::get('/laporan-kecamatan', 'laporanKecamatan')->name('kecamatan');
+        Route::get('/laporan-nagari', 'laporanNagari')->name('nagari');
+        Route::get('/laporan-kampung', 'laporanKampung')->name('kampung');
     });
 
     //penghasilan
