@@ -16,7 +16,7 @@
                 <th>Aksi</th>
             </tr>
         </thead>
-        <tbody>
+        {{-- <tbody>
             @foreach ($prestasi as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -72,14 +72,107 @@
                 </td>
             </tr>
         @endforeach
-    </tbody>
-</table>
+    </tbody> --}}
+
+        <tbody>
+            @php
+                $statusZonasi = [
+                    '1' => 'ZONASI',
+                    '2' => 'LUAR ZONASI',
+                ];
+            @endphp
+
+            @foreach ($prestasi as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->siswa?->nama_lengkap }}</td>
+                    <td>{{ $item->siswa?->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                    <td>{{ $item->siswa?->nisn }}</td>
+                    <td class="text-center">{{ $item->jumlah }}</td>
+                    <td>
+                        @if ($item->status == 1)
+                            <span class="badge bg-success">Lulus</span>
+                        @elseif ($item->status == 2)
+                            <span class="badge bg-danger">Belum Lulus</span>
+                        @else
+                            <span class="badge bg-warning">Dalam Seleksi</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if (in_array($item->siswa->kampung_id, $zonasiSekolah->pluck('kampung_id')->toArray()))
+                            {{ $statusZonasi['1'] }}
+                        @else
+                            {{ $statusZonasi['2'] }}
+                        @endif
+                    </td>
+                    <td>
+                        <img src="{{ Storage::url($item->siswa?->foto) }}" alt="" width="30">
+                    </td>
+                    <td>
+                        <a href="{{ route('data_pendaftaran_prestasi.show', encrypt($item->id)) }}"
+                            class="btn btn-info btn-sm mx-1">
+                            <i class="fas fa-eye"></i> Detail
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+
+        {{-- <tbody>
+            @php
+                $statusZonasi = [
+                    '1' => 'ZONASI',
+                    '2' => 'LUAR ZONASI',
+                ];
+                
+                $prestasi = $prestasi->sortByDesc(function ($item) use ($zonasiSekolah) {
+                    return in_array($item->siswa->kampung_id, $zonasiSekolah->pluck('kampung_id')->toArray());
+                });
+            @endphp
+
+            @foreach ($prestasi as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->siswa?->nama_lengkap }}</td>
+                    <td>{{ $item->siswa?->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                    <td>{{ $item->siswa?->nisn }}</td>
+                    <td class="text-center">{{ $item->jumlah }}</td>
+                    <td>
+                        @if ($item->status == 1)
+                            <span class="badge bg-success">Lulus</span>
+                        @elseif ($item->status == 2)
+                            <span class="badge bg-danger">Belum Lulus</span>
+                        @else
+                            <span class="badge bg-warning">Dalam Seleksi</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if (in_array($item->siswa->kampung_id, $zonasiSekolah->pluck('kampung_id')->toArray()))
+                            {{ $statusZonasi['1'] }}
+                        @else
+                            {{ $statusZonasi['2'] }}
+                        @endif
+                    </td>
+                    <td>
+                        <img src="{{ Storage::url($item->siswa?->foto) }}" alt="" width="30">
+                    </td>
+                    <td>
+                        <a href="{{ route('data_pendaftaran_prestasi.show', encrypt($item->id)) }}"
+                            class="btn btn-info btn-sm mx-1">
+                            <i class="fas fa-eye"></i> Detail
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody> --}}
+
+    </table>
 </div>
 
 @push('after-script')
-<script>
-    $(document).ready(function() {
-        $('#myTablePrestasi').DataTable();
-    });
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#myTablePrestasi').DataTable();
+        });
+    </script>
 @endpush

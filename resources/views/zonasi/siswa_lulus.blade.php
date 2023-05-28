@@ -6,9 +6,9 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">
                         @if (Route::is('data_pendaftaran_zonasi.index'))
-                            SISWA YANG LULUS JALUR AFIRMASI
+                            SISWA YANG LULUS JALUR ZONASI
                         @else
-                            SISWA BELUM YANG LULUS JALUR AFIRMASI
+                            SISWA BELUM YANG LULUS JALUR ZONASI
                         @endif
                     </h3> <small class="text-muted float-end">
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-outline-dark btn-sm"><i

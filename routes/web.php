@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DataPendaftaranPindahTugas;
 use App\Http\Controllers\Backend\DataPendaftaranPrestasi;
 use App\Http\Controllers\Backend\DataPendaftaranZonasi;
 use App\Http\Controllers\Backend\DataZonasiSekolahController;
+use App\Http\Controllers\Backend\DinasLaporanController;
 use App\Http\Controllers\Backend\KampungController;
 use App\Http\Controllers\Backend\KecamatanController;
 use App\Http\Controllers\Backend\KelulusanController;
@@ -81,6 +82,14 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('setting', SettingController::class);
     Route::resource('settingppdb', SettingPpdbController::class);
     Route::resource('data_zonasi_sekolah', DataZonasiSekolahController::class);
+
+    //Laporan Di Halaman Dashboard Dinas
+
+    Route::controller(DinasLaporanController::class)->middleware('auth', 'dinas')->name('laporan.')->group(function () {
+        Route::get('/laporan-user-admin-sekolah', 'laporanUserAdminDanSekolah')->name('userAdminDanSekolah');
+        Route::get('/laporan-user-siswa', 'laporanUserSiswa')->name('userSiswa');
+        Route::get('/laporan-sekolah', 'laporanDataSekolah')->name('dataSekolah');
+    });
 
     //penghasilan
     Route::controller(PenghasilanController::class)->name('penghasilan.')->group(function () {

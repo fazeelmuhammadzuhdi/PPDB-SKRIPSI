@@ -192,6 +192,36 @@
                 </ul>
             </li>
 
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
+                    <div>Laporan</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.userAdminDanSekolah') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Admin Dan User Sekolah</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.userSiswa') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan User Siswa</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.dataSekolah') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Sekolah</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
             <li class="menu-item {{ Route::is('kelulusan.*') ? 'active' : '' }}">
                 <a href="{{ route('kelulusan.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-cog"></i>
