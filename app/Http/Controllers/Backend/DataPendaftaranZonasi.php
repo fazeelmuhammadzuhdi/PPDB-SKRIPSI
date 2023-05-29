@@ -104,14 +104,35 @@ class DataPendaftaranZonasi extends Controller
     }
 
 
-    public function updateStatusDitolak($id)
+    public function updateStatusDitolak(Request $request)
     {
-        $lulus = Zonasi::where('id', $id)->update([
-            'status' => 2
-        ]);
-        // dd($lulus);
+        // $lulus = Zonasi::where('id', $id)->update([
+        //     'status' => 2
+        // ]);
+        // // dd($lulus);
 
-        flash('Status Berhasil Di Update');
-        return redirect()->route('data_pendaftaran_prestasi.index');
+        // flash('Status Berhasil Di Update');
+        // return redirect()->route('data_pendaftaran_prestasi.index');
+
+        // $ids = $request->input('ids');
+
+        // Zonasi::whereIn('id', $ids)->update([
+        //     'status' => 2
+        // ]);
+
+        // flash('Status Berhasil Di Update');
+        // return redirect()->route('data_pendaftaran_prestasi.index');
+
+        $ids = $request->input('ids');
+
+        if (is_array($ids)) {
+            Zonasi::whereIn('id', $ids)->update([
+                'status' => 2
+            ]);
+
+            flash('Status Berhasil Di Update');
+        }
+
+        return response()->json(['success' => true]);
     }
 }

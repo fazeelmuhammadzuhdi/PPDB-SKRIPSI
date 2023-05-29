@@ -69,7 +69,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class);
     Route::get('status/{id}/gagal', [DataPendaftaranPindahTugas::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_pindah_tugas', DataPendaftaranPindahTugas::class);
-    Route::get('status/{id}/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+    // Route::get('status/{id}/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+    Route::post('status/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_zonasi', DataPendaftaranZonasi::class);
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);

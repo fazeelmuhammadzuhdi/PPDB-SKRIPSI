@@ -2,10 +2,12 @@
 @include('zonasi.btn_header')
 <div class="table-responsive text-nowrap" id="cetakSiswaZonasi">
     <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }} Jalur Zonasi</p>
+    {{-- <button type="button" id="btn-status" class="btn btn-success mb-3">GANTI STATUS</button> --}}
+    <button type="button" id="btn-status" class="btn btn-success mb-3" style="display: none;">GANTI STATUS</button>
     <table class="table table-hover" id="myTableZonasi">
         <thead>
             <tr>
-                <th width="1%">No</th>
+                <th><input type="checkbox" id="checked-all"></th>
                 <th>Nama</th>
                 <th>Jenis Kelamin</th>
                 <th>NISN</th>
@@ -106,7 +108,11 @@
                             $item->siswa->nagari_id == $data->nagari_id &&
                             $item->siswa->kampung_id == $data->kampung_id)
                         <tr>
-                            <td>{{ $no++ }}</td>
+                            {{-- <td>{{ $no++ }}</td> --}}
+                            {{-- <td><input type="checkbox" name="checkbox[]" value="{{ $item->id }}"
+                                    class="change-status"></td> --}}
+                            <td><input type="checkbox" class="change-status" name="ids[]" value="{{ $item->id }}">
+                            </td>
                             <td>{{ $item->siswa->nama_lengkap }}</td>
                             <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
                             <td>{{ $item->siswa->nisn }}</td>
@@ -184,6 +190,115 @@
     <script>
         $(document).ready(function() {
             $('#myTableZonasi').DataTable();
+        });
+    </script>
+
+    {{-- <script>
+        $(document).ready(function() {
+            $('#btn-status').hide();
+            $('.change-status').change(function() {
+                if ($('.change-status:checked').length > 0) {
+                    $('#btn-status').show();
+                } else {
+                    $('#btn-status').hide();
+                }
+            });
+
+            $('#checked-all').click(function(e) {
+                if ($(this).is(':checked')) {
+                    $('#btn-status').show();
+                    $(".change-status").prop('checked', true)
+                } else {
+                    $('#btn-status').hide();
+                    $(".change-status").prop('checked', false)
+                }
+            });
+
+            $('#btn-status').click(function() {
+                var confirmation = confirm('Apakah Anda yakin ingin mengganti status?');
+                if (confirmation) {
+                    var selectedIds = [];
+                    $('.change-status:checked').each(function() {
+                        selectedIds.push($(this).val());
+                    });
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "POST",
+                        url: "{{ route('updateStatusDitolak') }}",
+                        data: {
+                            ids: selectedIds
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            location.reload();
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            $('#btn-status').hide();
+            $('.change-status').change(function(e) {
+                if ($(this).prop('checked')) {
+                    $('#btn-status').show();
+                }
+
+                if ($(".change-status:checked").length == 0) {
+                    $('#btn-status').hide();
+                }
+            });
+
+            $('#checked-all').click(function(e) {
+                if ($(this).is(':checked')) {
+                    $('#btn-status').show();
+                    $(".change-status").prop('checked', true)
+                } else {
+                    $('#btn-status').hide();
+                    $(".change-status").prop('checked', false)
+                }
+            });
+
+            $("#btn-status").click(function(e) {
+                e.preventDefault();
+
+                var selectedIds = [];
+
+                $(".change-status:checked").each(function() {
+                    selectedIds.push($(this).val());
+                });
+
+                if (selectedIds.length > 0) {
+                    if (confirm("Apakah Anda yakin ingin mengubah status terpilih?")) {
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            type: "POST",
+                            url: "{{ route('updateStatusDitolak') }}",
+                            data: {
+                                ids: selectedIds
+                            },
+                            dataType: "json",
+
+                            success: function(response) {
+                                location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(error);
+                            }
+                        });
+                    }
+                }
+            });
         });
     </script>
 @endpush
