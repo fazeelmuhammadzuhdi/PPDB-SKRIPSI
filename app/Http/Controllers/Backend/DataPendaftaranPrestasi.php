@@ -34,6 +34,7 @@ class DataPendaftaranPrestasi extends Controller
         $pindahTugas = PindahTugas::with('siswa')->where('sekolah_id', $sekolah->id)->get();
         $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
 
+        // $zonasiSekolah = ZonasiSekolah::where('sekolah_id', $sekolah->id)->orderBy('no_urut', 'asc')->orderBy('nilai', 'desc')->get();
         $zonasiSekolah = ZonasiSekolah::where('sekolah_id', $sekolah->id)->get();
         // dd($sekolah);
         // $sekolah = ZonasiSekolah::get();

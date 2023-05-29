@@ -50,8 +50,20 @@ class ZonasiSekolahController extends Controller
         $data = $request->all();
         $data['sekolah_id'] = $sekolah->id;
 
+        // cek apakah data sudah ada
+        $existingData = ZonasiSekolah::where('sekolah_id', $sekolah->id)
+            ->where('kecamatan_id', $request->kecamatan_id)
+            ->where('nagari_id', $request->nagari_id)
+            ->where('kampung_id', $request->kampung_id)
+            ->first();
+
+        if ($existingData) {
+            flash()->addError('Data kecamatan, nagari, dan kampung sudah ada');
+            return redirect(route('zonasisekolah.create')); // Hentikan eksekusi kode
+        }
+
         // jika sudah ada no urutnya maka tampilkna pesan error
-        $cekNoUrut = ZonasiSekolah::where('no_urut', $request->no_urut)->first();
+        $cekNoUrut = ZonasiSekolah::where('sekolah_id', $sekolah->id)->where('no_urut', $request->no_urut)->first();
         if ($cekNoUrut) {
             flash()->addError('No urut sudah ada');
             return redirect(route('zonasisekolah.create')); // Hentikan eksekusi kode
