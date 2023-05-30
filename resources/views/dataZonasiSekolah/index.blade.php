@@ -43,7 +43,7 @@
                                         <td>
                                             @foreach ($kecamatan as $kec)
                                                 @if ($kec->sekolah_id == $item->id)
-                                                    {{ $kec->nama_kecamatan }}
+                                                    {{ $kec->nama_kecamatan . ',' }}
                                                 @endif
                                             @endforeach
                                         </td>
@@ -62,13 +62,11 @@
                                                 @endif
                                             @endforeach
                                         </td>
-                                        <td>
-
+                                        {{-- <td>
                                             <a href="{{ route('data_zonasi_sekolah.show', $item->id) }}"
                                                 class="btn btn-warning"><i class="fa fa-edit"></i></a>
 
-                                            </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
 

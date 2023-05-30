@@ -85,7 +85,7 @@
                 </a>
             </li>
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Master Data</span>
+                <span class="menu-header-text">Master Data & Laporan</span>
             </li>
 
             <li
