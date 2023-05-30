@@ -7,6 +7,7 @@
     <table class="table table-hover" id="myTableZonasi">
         <thead>
             <tr>
+                <th>No</th>
                 <th><input type="checkbox" id="checked-all"></th>
                 <th>Nama</th>
                 <th>Jenis Kelamin</th>
@@ -108,7 +109,7 @@
                             $item->siswa->nagari_id == $data->nagari_id &&
                             $item->siswa->kampung_id == $data->kampung_id)
                         <tr>
-                            {{-- <td>{{ $no++ }}</td> --}}
+                            <td>{{ $no++ }}</td>
                             {{-- <td><input type="checkbox" name="checkbox[]" value="{{ $item->id }}"
                                     class="change-status"></td> --}}
                             <td><input type="checkbox" class="change-status" name="ids[]" value="{{ $item->id }}">

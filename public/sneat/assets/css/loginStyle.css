@@ -23,6 +23,7 @@ a:hover {
 .btn-outline-custom {
   border: 1px solid #5A00FF;
   color: #5A00FF !important;
+
 }
 
 .btn-outline-custom:hover {
@@ -68,4 +69,8 @@ a:hover {
 .popular-barber {
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+li {
+  text-align: justify;
 }

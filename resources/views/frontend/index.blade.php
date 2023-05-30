@@ -101,7 +101,8 @@
                     <div class="links">
                         <ul>
                             <li><a href="{{ route('home') }}">Beranda</a></li>
-                            <li><a href="#">Informasi</a></li>
+                            <li><a href="{{ route('informasiPendafaran') }}">Informasi</a></li>
+                            <li><a href="#">Testimonials</a></li>
                             <li><a href="#">Testimonials</a></li>
                             <li><a href="{{ route('login') }}" class="btn">Login</a></li>
                         </ul>
