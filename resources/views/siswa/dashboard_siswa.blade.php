@@ -15,17 +15,26 @@
                         @if ($cek < 1)
                             <div class="card-body">
                                 <h5 class="card-title text-primary">Selamat Datang
-                                    {{ ucwords(Auth::user()->name) }} 😊</h5>
-                                <p class="mb-4">{{ $pesan }} <span>Sebelum Melakukan
-                                        Pendaftaran, Silahkan Lengkapi Biodata Kamu Terlebih Dahulu!</span> </p>
+                                    {{ isset(Auth::user()->siswa->nama_lengkap) ? ucwords(Auth::user()->siswa->nama_lengkap) : ucwords(Auth::user()->name) }}
+                                    😊
+                                </h5>
+                                {{-- <p class="mb-4">{{ $pesan }} <span>Sebelum Melakukan
+                                        Pendaftaran, Silahkan Lengkapi Biodata Kamu Terlebih Dahulu!</span> </p> --}}
+                                <p class="mb-4" style="color: #ff0000; font-weight: bold;">{{ $pesan }} <span
+                                        style="color: #ff0000;">Sebelum Melakukan Pendaftaran, Silahkan Lengkapi Biodata
+                                        Kamu Terlebih Dahulu!</span></p>
+
 
                                 <a href="{{ route('siswa.create') }}" class="btn btn-sm btn-primary">Lengkapi Biodata</a>
                             </div>
                         @else
                             <div class="card-body">
                                 <h5 class="card-title text-primary">Selamat Datang
-                                    {{ ucwords(Auth::user()->name) }} 😊</h5>
-                                <p class="mb-4">{{ $pesan }} 😁 <br><span>Silahkan Lanjutkan Pendaftaran</span></p>
+                                    {{ isset(Auth::user()->siswa->nama_lengkap) ? ucwords(Auth::user()->siswa->nama_lengkap) : ucwords(Auth::user()->name) }}
+                                    😊</h5>
+                                <p class="mb-4" style="color: #0000ff;; font-weight: bold;">{{ $pesan }}😁
+                                    <br><span style="color: #0000ff;">Silahkan Lanjutkan Pendaftaran</span>
+                                </p>
 
                                 <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-primary">View Biodata</a>
                             </div>

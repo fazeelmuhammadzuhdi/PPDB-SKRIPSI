@@ -92,7 +92,7 @@
                     <ol>
                         <li>Rata - Rata Nilai Rapor pada 5 (lima) Semester Terakhir Dari
                             Sekolah Asal</li>
-                        <li>Jalur Prestasi Hasil Lomba Akademik dan</li>
+                        <li>Jalur Prestasi Akademik dan</li>
                         <li>Jalur Prestasi Hasil Lomba Non Akademik.</li>
                         <li>Seleksi Nilai Rapor diperuntukkan bagi calon peserta didik baru SMP yang sistem penilaiannya
                             merupakan Total Nilai Rata-Rata Rapor SD 5 (lima) Semester Terakhir</li>
