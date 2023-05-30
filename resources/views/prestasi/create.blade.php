@@ -25,9 +25,10 @@
                         <div class="row">
                             <div class="form-group col-4">
                                 <label for="k4sm2" class="form-label">Kelas 4 Semester 2</label>
-                                <input type="number" class="form-control @error('k4sm2') is-invalid @enderror"
+                                <input type="text" class="form-control @error('k4sm2') is-invalid @enderror"
                                     id="k4sm2" name="k4sm2" placeholder="Nilai Rapor Kelas 4 Sem 2 Ex: 90"
-                                    value="{{ old('k4sm2') }}" autofocus>
+                                    value="{{ old('k4sm2') }}" autofocus onkeypress="return onlyNumber(event)"
+                                    maxlength="3">
 
                                 @error('k4sm2')
                                     <div class="invalid-feedback">
@@ -38,9 +39,10 @@
 
                             <div class="form-group col-4 mb-3 ">
                                 <label for="k5sm1" class="form-label">Kelas 5 Semester 1</label>
-                                <input type="number" class="form-control @error('k5sm1') is-invalid @enderror"
+                                <input type="text" class="form-control @error('k5sm1') is-invalid @enderror"
                                     id="k5sm1" name="k5sm1" placeholder="Nilai Rapor Kelas 5 Sem 1 Ex: 90"
-                                    value="{{ old('k5sm1') }}" autofocus>
+                                    value="{{ old('k5sm1') }}" autofocus onkeypress="return onlyNumber(event)"
+                                    maxlength="3">
 
                                 @error('k5sm1')
                                     <div class="invalid-feedback">
@@ -52,9 +54,10 @@
 
                             <div class="form-group col-4">
                                 <label for="k5sm2" class="form-label">Kelas 5 Semester 2</label>
-                                <input type="number" class="form-control @error('k5sm2') is-invalid @enderror"
+                                <input type="text" class="form-control @error('k5sm2') is-invalid @enderror"
                                     id="k5sm2" name="k5sm2" placeholder="Nilai Rapor Kelas 5 Sem 2 Ex: 90"
-                                    value="{{ old('k5sm2') }}" autofocus>
+                                    value="{{ old('k5sm2') }}" autofocus onkeypress="return onlyNumber(event)"
+                                    maxlength="3">
 
                                 @error('k5sm2')
                                     <div class="invalid-feedback">
@@ -68,9 +71,10 @@
                         <div class="row">
                             <div class="form-group col-4">
                                 <label for="k6sm1" class="form-label">Kelas 6 Semester 1</label>
-                                <input type="number" class="form-control @error('k6sm1') is-invalid @enderror"
+                                <input type="text" class="form-control @error('k6sm1') is-invalid @enderror"
                                     id="k6sm1" name="k6sm1" placeholder="Nilai Rapor Kelas 6 Sem 1 Ex: 90"
-                                    value="{{ old('k6sm1') }}" autofocus>
+                                    value="{{ old('k6sm1') }}" autofocus onkeypress="return onlyNumber(event)"
+                                    maxlength="3">
 
                                 @error('k6sm1')
                                     <div class="invalid-feedback">
@@ -80,9 +84,10 @@
                             </div>
                             <div class="form-group col-4 mb-3">
                                 <label for="k6sm2" class="form-label">Kelas 6 Semester 2</label>
-                                <input type="number" class="form-control @error('k6sm2') is-invalid @enderror"
+                                <input type="text" class="form-control @error('k6sm2') is-invalid @enderror"
                                     id="k6sm2" name="k6sm2" placeholder="Nilai Rapor Kelas 6 Sem 2 Ex: 90"
-                                    value="{{ old('k6sm2') }}" autofocus>
+                                    value="{{ old('k6sm2') }}" autofocus onkeypress="return onlyNumber(event)"
+                                    maxlength="3">
 
                                 @error('k6sm2')
                                     <div class="invalid-feedback">
@@ -115,18 +120,18 @@
                             </div>
                         </div>
 
-                        <h3 class="mb-3">Data Penghargaan / Prestasi</h3> <small class="text-muted float-end">
-                            <table class="table table-bordered" id="table">
-                                <thead>
-                                    <tr>
-                                        <th>Nama Penghargaan</th>
-                                        <th width="12%">Tahun</th>
-                                        <th width="25%">File / Foto Sertifikat</th>
-                                        <th width="15%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
+                        <h3 class="mb-3">Data Penghargaan / Prestasi</h3>
+                        <table class="table table-bordered" id="table">
+                            <thead>
+                                <tr>
+                                    <th>Nama Penghargaan</th>
+                                    <th width="12%">Tahun</th>
+                                    <th width="25%">File / Foto Sertifikat</th>
+                                    <th width="15%">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- <tr>
                                         <td>
                                             <input type="text" class="form-control" name="nama_penghargaan[]"
                                                 placeholder="Masukkan Penghargaan" required>
@@ -140,14 +145,29 @@
                                         <td><button type="button" name="add" id="add"
                                                 class="btn btn-success"><i class="fa fa-plus-circle"></i> Add</button>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" name="nama_penghargaan[]"
+                                            placeholder="Masukkan Penghargaan">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="tahun[]" placeholder="2023"
+                                            onkeypress="return onlyNumber(event)">
+                                    </td>
+                                    <td><input type="file" class="form-control" name="file[]" accept="image/*">
+                                    </td>
+                                    <td><button type="button" name="add" id="add" class="btn btn-success"><i
+                                                class="fa fa-plus-circle"></i> Add</button>
+                                    </td>
+                                </tr>
 
-                                </tbody>
-                            </table>
-                            <input type="checkbox" name="acknowledge" class="mt-3" required>
-                            <label for="acknowledge" class="text-danger">Saya menyatakan bahwa data yang saya isi adalah
-                                benar, dan bersedia
-                                menerima sanksi jika terdapat pemalsuan data.</label>
+                            </tbody>
+                        </table>
+                        <input type="checkbox" name="acknowledge" class="mt-3" required>
+                        <label for="acknowledge" class="text-danger">Saya menyatakan bahwa data yang saya isi adalah
+                            benar, dan bersedia
+                            menerima sanksi jika terdapat pemalsuan data.</label>
                     </div>
                     <!-- /.card-body -->
 
@@ -193,5 +213,13 @@
             });
 
         });
+    </script>
+    <script>
+        function onlyNumber(event) {
+            var angka = (event.which) ? event.which : event.keyCode
+            if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+                return false;
+            return true;
+        }
     </script>
 @endpush

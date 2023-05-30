@@ -7,9 +7,9 @@
             <tr>
                 <th width="1%">No</th>
                 <th>Nama</th>
-                <th>Jenis Kelamin</th>
                 <th>NISN</th>
                 <th>Rata2 Nilai Rapor</th>
+                <th>Jalur Prestasi</th>
                 <th>Status</th>
                 <th>Status Zonasi</th>
                 <th>Foto</th>
@@ -86,9 +86,18 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa?->nama_lengkap }}</td>
-                    <td>{{ $item->siswa?->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
                     <td>{{ $item->siswa?->nisn }}</td>
                     <td class="text-center">{{ $item->jumlah }}</td>
+                    <td>
+                        @php
+                            $totalPenghargaan = optional($penghargaan->where('siswa_id', $item->siswa_id)->first())->total_penghargaan;
+                        @endphp
+                        @if ($item->siswa_id && $totalPenghargaan > 0)
+                            <span>Jalur Prestasi Akademik dan Non Akademik</span>
+                        @else
+                            <span>Jalur Prestasi Akademik</span>
+                        @endif
+                    </td>
                     <td>
                         @if ($item->status == 1)
                             <span class="badge bg-success">Lulus</span>

@@ -82,7 +82,6 @@
                                         <th>Nama Penghargaan</th>
                                         <th>Tahun</th>
                                         <th>File</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,23 +96,20 @@
                                                     Lihat Sertifikat
                                                 </a>
                                             </td>
-                                            <td>
-                                                @if ($data_prestasi->status == null)
-                                                    <button type="submit" class="btn btn-dark mx-1">
-                                                        Diterima ✅
-                                                    </button>
-
-                                                    <a href="{{ route('updateStatusDitolak', $data_prestasi->id) }}"
-                                                        class="btn btn-dark">
-                                                        Ditolak ❌
-                                                    </a>
-                                                @endif
-                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        @if ($data_prestasi->status == null)
+                            <button type="submit" class="btn btn-dark mx-1 mt-3">
+                                Diterima ✅
+                            </button>
+
+                            <a href="{{ route('updateStatusDitolak', $data_prestasi->id) }}" class="btn btn-dark mt-3">
+                                Ditolak ❌
+                            </a>
+                        @endif
                     </div>
                     <!-- /.card-body -->
                 </form>
