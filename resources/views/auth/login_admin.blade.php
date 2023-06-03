@@ -214,17 +214,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-7 mt-3">
+            <div class="col-md-7 mt-3 col-sm-12">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('images/login.svg') }}" alt="" width="400px">
-
+                    <img src="{{ asset('images/Login1.png') }}" alt="" width="500px" class="imageLogin">
                 </a>
             </div>
 
             <div class="col-md-5 mt-3">
                 <div class="card shadow-sm p-3 border-radius-custom border-0">
                     <div class="card-body">
-                        <h4>Login</h4>
+                        <h3 style="color: #5A00FF">Login</h3>
                         <p class="text-muted">Masuk dan Daftar Sekolah Yang Di Inginkan</p>
                         <form action="{{ route('login') }}" method="POST" class="mt-4">
                             @csrf
