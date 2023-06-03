@@ -61,6 +61,10 @@
                         <li class=text-lights>Lengkapi Biodata Kamu Terlebih Dahulu.</li>
                         <li class=text-lights>Setelah Di Lengkapi Klik Menu Pendaftaran.</li>
                         <li class=text-lights>Pilih Jalur Pendaftaran Yang Kamu Inginkan.</li>
+                        <li class=text-lights>Untuk Jalur Pendaftaran Prestasi Upload Foto Nilai Rapor Dari Kelas 4 Semester
+                            2 Sampai Kelas 6.Lalu Jadikan PDF dan Upload Pada Inputan Bukti Nilai Rapor</li>
+                        <li class=text-lights>Untuk Jalur Pendaftaran Perpindahan Tugas Orang Tua. Jangan Lupa Upload PDF
+                            Bukti Yang Menyatakan Ada Surat Pindah Tugas atau Dinas </li>
                         <li class=text-lights>Pastikan Kamu Memilih Sekolah Yang Di Inginkan.</li>
                         <li class=text-lights>Kamu Hanya Dapat Memilih 1 Jalur Pendaftaran Dan Sekolah.</li>
                         <li class=text-lights>Setelah Berhasil Mendaftar, Silahkan Cetak Bukti Pendaftaran / Kartu
@@ -218,10 +222,6 @@
 
         .text-lights {
             color: #fff;
-        }
-
-        .ms-auto {
-            margin-left: 20px;
         }
 
         .card .card-body {

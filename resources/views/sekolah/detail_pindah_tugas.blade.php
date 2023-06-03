@@ -59,8 +59,24 @@
                             <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-primary">
                                 <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
 
-                            <a href="{{ Storage::url($dataPindahTugas->file) }}" class="btn btn-success" target="_blank">
-                                <i class="fa fa-eye" aria-hidden="true"></i> View Bukti Surat Pindah</a>
+                            {{-- <a href="{{ Storage::url($dataPindahTugas->file) }}" class="btn btn-success" target="_blank">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View Bukti Surat Pindah</a> --}}
+
+                            {{-- <a href="{{ Storage::url($dataPindahTugas->file) }}" class="btn btn-success" target="_blank"
+                                onclick="viewPDF('{{ Storage::url($dataPindahTugas->file) }}');">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View Bukti Surat Pindah
+                            </a>
+
+                            <canvas id="pdfCanvas"></canvas> --}}
+
+
+                            <a href="{{ Storage::url($dataPindahTugas->file) }}" class="btn btn-success" target="_blank"
+                                onclick="viewPDF('{{ Storage::url($dataPindahTugas->file) }}');">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View Bukti Surat Pindah
+                            </a>
+
+                            {{-- <canvas id="pdfCanvas1"></canvas>
+                            <canvas id="pdfCanvas2"></canvas> --}}
 
                             @if ($dataPindahTugas->status == null)
                                 <button type="submit" class="btn btn-dark mx-1">
@@ -78,3 +94,35 @@
         </div>
     </div>
 @endsection
+@push('after-script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        // Konfigurasi sumber kerja PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+
+        // Fungsi untuk menampilkan konten PDF
+        function viewPDF(url) {
+            // Muat dokumen PDF menggunakan PDF.js
+            pdfjsLib.getDocument(url).promise.then(function(pdf) {
+                // Ambil halaman pertama dari dokumen PDF
+                pdf.getPage(1).then(function(page) {
+                    var canvas = document.getElementById('pdfCanvas');
+                    var context = canvas.getContext('2d');
+
+                    var viewport = page.getViewport({
+                        scale: 1
+                    });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    // Render halaman PDF ke elemen <canvas>
+                    var renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+            });
+        }
+    </script>
+@endpush
