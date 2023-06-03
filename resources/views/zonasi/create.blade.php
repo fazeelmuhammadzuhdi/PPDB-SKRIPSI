@@ -46,9 +46,15 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" id="btnSimpan"><i
+                        <button type="submit" class="btn btn-primary me-2" id="btnSimpan"><i
                                 class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
                             Daftar</button>
+
+                        {{-- <button type="button" class="btn btn-dark"
+                            onclick="window.location.href = '/siswa/jalur_pendaftaran'">
+                            <i class="fa fa-backward me-1"></i> Kembali
+                        </button> --}}
+                        @include('components.button_kembali_siswa_jalur_pendaftaran')
                     </div>
                 </form>
             </div>

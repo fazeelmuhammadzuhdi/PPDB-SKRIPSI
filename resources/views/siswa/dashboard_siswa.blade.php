@@ -52,6 +52,27 @@
                 </div>
             </div>
 
+            <div class="card  bg-gradient-primaryr mt-3">
+                <div class="container">
+                    <h3 class="text-lights ms-auto">
+                        <i class="fa-solid fa-circle-info text-lights my-3 ms-2"></i> Informasi Cara Pendaftaran
+                    </h3>
+                    <ol class=text-lights>
+                        <li class=text-lights>Lengkapi Biodata Kamu Terlebih Dahulu.</li>
+                        <li class=text-lights>Setelah Di Lengkapi Klik Menu Pendaftaran.</li>
+                        <li class=text-lights>Pilih Jalur Pendaftaran Yang Kamu Inginkan.</li>
+                        <li class=text-lights>Pastikan Kamu Memilih Sekolah Yang Di Inginkan.</li>
+                        <li class=text-lights>Kamu Hanya Dapat Memilih 1 Jalur Pendaftaran Dan Sekolah.</li>
+                        <li class=text-lights>Setelah Berhasil Mendaftar, Silahkan Cetak Bukti Pendaftaran / Kartu
+                            Pendaftaran.</li>
+                        <li class=text-lights>Terakhir Kamu Tinggal Menunggu Informasi Kelulusan. Jika Sudah Waktunya
+                            Silahkan Cek Hasil Kelulusannya Dengan Memasukkan Nomor Pendaftaran Yang Telah Di Didapatkan.
+                        </li>
+
+                    </ol>
+
+                </div>
+            </div>
 
 
             {{-- <div class="card">
@@ -188,3 +209,60 @@
         </div>
     </div>
 @endsection
+@push('before-style')
+    <style>
+        .card {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .text-lights {
+            color: #fff;
+        }
+
+        .ms-auto {
+            margin-left: 20px;
+        }
+
+        .card .card-body {
+            padding: 1.5rem;
+        }
+
+        .card .card-body .font-weight-bold {
+            font-weight: bold;
+        }
+
+        .card .card-body .fa-3x {
+            font-size: 3rem;
+        }
+
+        .bg-gradient-primaryr {
+            background: linear-gradient(to right, #696cff, #696cff);
+        }
+
+        .bg-gradients-info {
+            background: linear-gradient(to right, #36b9cc, #1a8eac);
+        }
+
+        .bg-gradients-warning {
+            background: linear-gradient(to right, #f5d144, #f6c419);
+        }
+
+        .bg-gradients-red {
+            background: linear-gradient(to right, #df2a2a, #930707ec);
+        }
+
+        .bg-gradients-secondary {
+            background: linear-gradient(to right, #858796, #343a40);
+        }
+
+        .bg-gradients-secondary h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bg-gradients-secondary ol li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+@endpush

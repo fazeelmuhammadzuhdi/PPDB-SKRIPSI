@@ -99,10 +99,13 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary"
+                        <button type="submit" class="btn btn-primary me-2"
                             onclick="return confirm('Apakah Anda Yakin Ingin Memilih Sekolah Ini')"><i
                                 class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
                             Daftar</button>
+
+                        @include('components.button_kembali_siswa_jalur_pendaftaran')
+
                     </div>
                 </form>
             </div>
