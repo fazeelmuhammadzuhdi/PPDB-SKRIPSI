@@ -93,14 +93,15 @@
                         <i class='bx bxs-badge-check'></i>
                         <span class="text">
                             <p>Total Siswa Lulus</p>
-                            <h3>{{ $totalSiswaLulus }} orang</h3>
+                            <h3>{{ $totalSiswaLulus }} Orang</h3>
                         </span>
                     </li>
+
                     <li>
                         <i class='bx bxs-x-square'></i>
                         <span class="text">
                             <p>Total Siswa Ditolak</p>
-                            <h3>{{ $totalSiswaBelumLulus }} orang</h3>
+                            <h3>{{ $totalSiswaBelumLulus }} Orang</h3>
                         </span>
                     </li>
                 </ul>
@@ -214,6 +215,7 @@
             --dark-grey: #AAAAAA;
             --dark: #342E37;
             --red: #fa0800;
+            --light-red: #ffffffe6;
             --white: #fffffff0;
             --yellow: #FFCE26;
             --light-yellow: #FFF2C6;
@@ -280,6 +282,11 @@
         .box-info li:nth-child(5) .bx {
             background: var(--light-green);
             color: var(--green);
+        }
+
+        .box-info li:nth-child(6) .bx {
+            background: var(--red);
+            color: var(--light-red);
         }
 
         .box-info li .text {

@@ -31,23 +31,6 @@
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->akses }}</td>
                                         <td>
-                                            {{-- @if (auth()->user()->akses != 'Admin Sekolah')
-                                                <a href="{{ route($routePrefix . '.edit', $item->id) }}"
-                                                    class="btn btn-warning btn-sm">
-                                                    <i class="fas fa-edit"></i> Edit
-                                                </a>
-
-                                                <form action="{{ route($routePrefix . '.destroy', $item->id) }}"
-                                                    method="POST" class="d-inline"
-                                                    onsubmit="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm mx-2">
-                                                        <i class="fas fa-trash"></i> Hapus
-                                                    </button>
-                                                </form>
-                                            @endif --}}
-
                                             <a href="{{ route($routePrefix . '.edit', $item->id) }}"
                                                 class="btn btn-warning btn-sm">
                                                 <i class="fas fa-edit"></i> Edit
@@ -71,11 +54,6 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        {{-- 
-                        <div class="mt-3">
-                            {!! $user->links() !!}
-                        </div> --}}
-
                     </div>
                 </div>
             </div>
@@ -86,7 +64,9 @@
 @push('after-script')
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                scrollX: true
+            });
         });
     </script>
 

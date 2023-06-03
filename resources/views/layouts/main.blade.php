@@ -27,7 +27,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
-
     <link rel="shortcut icon" href="{{ asset('images/iconppdb.ico') }}" type="image/x-icon">
     <meta name="description" content="" />
     <title>{{ @$title != '' ? "$title |" : '' }} {{ settings()->get('app_name', 'MY APP') }}</title>

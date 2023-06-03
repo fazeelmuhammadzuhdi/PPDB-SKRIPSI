@@ -1,5 +1,5 @@
-<h2>Data Pendaftaran</h2>
 @include('zonasi.btn_header')
+
 <div class="table-responsive text-nowrap" id="cetakSiswaZonasi">
     <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }} Jalur Zonasi</p>
     {{-- <button type="button" id="btn-status" class="btn btn-success mb-3">GANTI STATUS</button> --}}

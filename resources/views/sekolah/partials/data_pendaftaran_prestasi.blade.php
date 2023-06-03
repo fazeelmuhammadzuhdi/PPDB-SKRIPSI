@@ -1,4 +1,3 @@
-<h2>Data Pendaftaran</h2>
 @include('prestasi.btn_header')
 <div class="table-responsive text-nowrap" id="cetakSiswaPrestasi">
     <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }} Jalur Prestasi.</p>

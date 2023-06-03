@@ -1,4 +1,4 @@
-<table class="head" width="625">
+<table class="head">
     <tr>
         <td><img src="{{ asset('images/logo.png') }}" width="150" height="120"></td>
         <td>
@@ -9,9 +9,10 @@
                 <font size="2"><i>Telp :{{ settings()->get('app_phone') }}</i></font>
             </center>
         </td>
+        <td><img src="{{ asset('images/logodinaspendidikan.png') }}" width="100" height="110"></td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="3">
             <hr>
         </td>
     </tr>

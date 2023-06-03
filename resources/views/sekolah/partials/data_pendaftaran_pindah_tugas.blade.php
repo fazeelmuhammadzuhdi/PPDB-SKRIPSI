@@ -1,4 +1,3 @@
-<h2>Data Pendaftaran</h2>
 @include('pindah_tugas.btn_header')
 <div class="table-responsive text-nowrap" id="cetakSiswaPindahTugas">
     <p class="text-info">Dibawah ini adalah data PPDB {{ $sekolah->nama }} Jalur Perpindahan Tugas Orang Tua.</p>
