@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Models\Sekolah;
+use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -152,5 +153,14 @@ class UserController extends Controller
             'title' => 'Profile',
             'admin' => User::where('id', auth()->user()->id)->first()
         ]);
+    }
+
+    public function dataCPD()
+    {
+        $dataCPD = Siswa::with(['kecamatan', 'kampung', 'nagari'])->get();
+        // dd($dataCPD);
+        $tahun = now()->format('Y');
+        $title = "Data Calon Peserta Didik Baru Tahun {$tahun}";
+        return view('data_calon_peserta_didik', compact('dataCPD', 'title'));
     }
 }

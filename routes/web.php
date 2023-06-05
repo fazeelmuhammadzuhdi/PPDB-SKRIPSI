@@ -60,6 +60,7 @@ Route::get('profile', [UserController::class, 'profile'])->name('profile');
 Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     //ini route khusus untuk dinas pendidikan dan admin sekolah
     Route::get('dashboard', [DashboardDinasController::class, 'index'])->name('dashboard_dinas');
+    Route::get('cpd', [UserController::class, 'dataCPD'])->name('dataCPD');
     Route::resource('user', UserController::class);
     Route::resource('user-sekolah', AdminSekolahController::class);
     Route::get('viewpdf/{id}', [DataPendaftaranPrestasi::class, 'viewPdf'])->name('viewpdf');

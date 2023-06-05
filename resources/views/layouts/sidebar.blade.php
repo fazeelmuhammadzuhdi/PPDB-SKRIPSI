@@ -142,7 +142,8 @@
             </li>
 
 
-            <li class="menu-item {{ Route::is('penghasilan.*') || Route::is('pekerjaan.*') ? 'active open' : '' }}">
+            <li
+                class="menu-item {{ Route::is('penghasilan.*') || Route::is('pekerjaan.*') || Route::is('dataCPD') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
                     <div>Master Input Siswa</div>
@@ -158,6 +159,12 @@
                         <a href="{{ route('pekerjaan.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account Settings">Data Pekerjaan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Route::is('dataCPD*') ? 'active' : '' }}">
+                        <a href="{{ route('dataCPD') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Data Calon Peserta Didik Baru</div>
                         </a>
                     </li>
                 </ul>

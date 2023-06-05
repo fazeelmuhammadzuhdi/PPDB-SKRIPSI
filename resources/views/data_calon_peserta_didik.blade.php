@@ -5,9 +5,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end"><a
-                            href="{{ route($routePrefix . '.create') }}" class="btn btn-primary">
-                            <i class="fa fa-circle-plus"></i> Tambah Data</a></small>
+                    <h3 class="mb-0">{{ $title }}</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -15,37 +13,28 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
-                                    <th>No Hp</th>
-                                    <th>Email</th>
-                                    <th>Hak Akses</th>
-                                    <th>Aksi</th>
+                                    <th>No Pendaftaran</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>NISN</th>
+                                    <th>TTL</th>
+                                    <th>Sekolah Asal</th>
+                                    <th>Kecamatan</th>
+                                    <th>Nagari</th>
+                                    <th>Kampung</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($user as $item)
+                                @forelse ($dataCPD as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ ucwords($item->name) }}</td>
-                                        <td>{{ $item->nohp }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->akses }}</td>
-                                        <td>
-                                            <a href="{{ route($routePrefix . '.edit', $item->id) }}"
-                                                class="btn btn-warning btn-sm">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
-
-                                            <form action="{{ route($routePrefix . '.destroy', $item->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm show_confirm">
-                                                    <i class="fas fa-trash"></i> Hapus
-                                                </button>
-                                            </form>
-
-                                        </td>
+                                        <td>{{ ucwords($item->no_pendaftaran) }}</td>
+                                        <td>{{ ucwords($item->nama_lengkap) }}</td>
+                                        <td>{{ ucwords($item->nisn) }}</td>
+                                        <td>{{ ucwords($item->getTempatTanggalLahirAttribute()) }}</td>
+                                        <td>{{ ucwords($item->sekolah_asal) }}</td>
+                                        <td>{{ $item->kecamatan?->nama_kecamatan }}</td>
+                                        <td>{{ $item->nagari?->nama_nagari }}</td>
+                                        <td>{{ $item->kampung?->nama_kampung }}</td>
                                     </tr>
                                 @empty
                                     <tr>
