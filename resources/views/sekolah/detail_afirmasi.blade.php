@@ -119,11 +119,12 @@
                             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Kembali</a>
 
                         @if ($data_afirmasi->status == null)
-                            <button type="submit" class="btn btn-dark mx-1">
+                            <button type="submit" class="btn btn-dark mx-1"
+                                onclick="return confirm('Apakah Kamu Yakin Ingin Mengupdate Status CPD Ini ?')">
                                 Diterima ✅
                             </button>
 
-                            <a href="{{ route('updateStatusDitolak', $data_afirmasi->id) }}" class="btn btn-dark">
+                            <a href="{{ route('updateStatusDitolakAfirmasi', $data_afirmasi->id) }}" class="btn btn-dark">
                                 Ditolak ❌
                             </a>
                         @endif

@@ -97,7 +97,7 @@ class DataPendaftaranPindahTugas extends Controller
         //
     }
 
-    public function updateStatusDitolak($id)
+    public function updateStatusDitolakPindahtugas($id)
     {
         $lulus = PindahTugas::where('id', $id)->update([
             'status' => 2

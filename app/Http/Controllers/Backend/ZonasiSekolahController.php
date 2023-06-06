@@ -110,22 +110,36 @@ class ZonasiSekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $data = $request->all();
+
+        // $item = ZonasiSekolah::findOrFail($id);
+        // $cekNoUrut = ZonasiSekolah::where('no_urut', $request->no_urut)->first();
+        // if ($cekNoUrut) {
+        //     flash()->addError('No urut sudah ada');
+        //     return redirect(route('zonasisekolah.edit', $id)); // Hentikan eksekusi kode
+        // } else {
+        //     $setNilai = 71;
+        //     $noUrut = $request->no_urut;
+        //     $data['nilai'] = $setNilai - $noUrut;
+        // }
+        // $item->update($data);
+        // flash('Data berhasil diupdate');
+        // return redirect()->route('zonasisekolah.index');
+
+        $sekolah = Sekolah::sekolah()->first();
         $data = $request->all();
-
         $item = ZonasiSekolah::findOrFail($id);
-        $cekNoUrut = ZonasiSekolah::where('no_urut', $request->no_urut)->first();
-        if ($cekNoUrut) {
+        $cekNoUrut = ZonasiSekolah::where('sekolah_id', $sekolah->id)->where('no_urut', $request->no_urut)->first();
+        if ($cekNoUrut && $cekNoUrut->id != $id) {
             flash()->addError('No urut sudah ada');
-            return redirect(route('zonasisekolah.edit', $id)); // Hentikan eksekusi kode
+            return redirect(route('zonasisekolah.edit', $id));
         } else {
-            $setNilai = 71;
-            $noUrut = $request->no_urut;
-            $data['nilai'] = $setNilai - $noUrut;
+            if ($request->filled('no_urut')) {
+                $setNilai = 71;
+                $noUrut = $request->no_urut;
+                $data['nilai'] = $setNilai - $noUrut;
+            }
         }
-
-        // $setNilai = 71;
-        // $noUrut = $request->no_urut;
-        // $data['nilai'] = $setNilai - $noUrut;
 
         $item->update($data);
         flash('Data berhasil diupdate');

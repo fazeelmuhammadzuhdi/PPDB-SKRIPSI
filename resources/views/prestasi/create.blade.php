@@ -127,6 +127,7 @@
                                     <th>Nama Penghargaan</th>
                                     <th width="12%">Tahun</th>
                                     <th width="25%">File / Foto Sertifikat</th>
+                                    {{-- <th width="25%">Tingkat Prestasi</th> --}}
                                     <th width="15%">Aksi</th>
                                 </tr>
                             </thead>
@@ -149,14 +150,24 @@
                                 <tr>
                                     <td>
                                         <input type="text" class="form-control" name="nama_penghargaan[]"
-                                            placeholder="Masukkan Penghargaan">
+                                            placeholder="Masukkan Penghargaan" required>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" name="tahun[]" placeholder="2023"
-                                            onkeypress="return onlyNumber(event)">
+                                            onkeypress="return onlyNumber(event)" required>
                                     </td>
-                                    <td><input type="file" class="form-control" name="file[]" accept="image/*">
+                                    <td><input type="file" class="form-control" name="file[]" accept="image/*"
+                                            required>
                                     </td>
+                                    {{-- <td>
+                                        <select name="tingkat[]" class="form-control">
+                                            <option value="" selected>--Pilih Tingkat--</option>
+                                            <option value="Kabupaten">Kabupaten</option>
+                                            <option value="Provinsi">Provinsi</option>
+                                            <option value="Nasional">Nasional</option>
+                                            <option value="Internasional">Internasional</option>
+                                        </select>
+                                    </td> --}}
                                     <td><button type="button" name="add" id="add" class="btn btn-success"><i
                                                 class="fa fa-plus-circle"></i> Add</button>
                                     </td>
@@ -205,6 +216,7 @@
                         <td>
                             <input type="file" name="file[]"  class="form-control">
                         </td>
+                        
                         <td>
                             <button type="button" class="btn btn-danger remove">Remove</button>
                         </td>

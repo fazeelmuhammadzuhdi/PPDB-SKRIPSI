@@ -96,7 +96,7 @@ class DataPendaftaranAfirmasi extends Controller
         //
     }
 
-    public function updateStatusDitolak($id)
+    public function updateStatusDitolakAfirmasi($id)
     {
         $lulus = Afirmasi::where('id', $id)->update([
             'status' => 2

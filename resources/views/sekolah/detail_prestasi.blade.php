@@ -103,16 +103,22 @@
                                 </tbody>
                             </table>
                         </div>
-                        @if ($data_prestasi->status == null)
-                            <button type="submit" class="btn btn-dark mx-1 mt-3">
-                                Diterima ✅
-                            </button>
+                        <div class="mt-3">
+                            @if ($data_prestasi->status == null)
+                                <button type="submit" class="btn btn-dark mx-1"
+                                    onclick="return confirm('Apakah Kamu Yakin Ingin Mengupdate Status CPD Ini ?')">
+                                    Diterima ✅
+                                </button>
 
-                            <a href="{{ route('updateStatusDitolak', $data_prestasi->id) }}" class="btn btn-dark mt-3">
-                                Ditolak ❌
-                            </a>
-                        @endif
+                                <a href="{{ route('updateStatusDitolakPrestasi', $data_prestasi->id) }}"
+                                    class="btn btn-dark">
+                                    Ditolak ❌
+                                </a>
+                            @endif
+                        </div>
+
                     </div>
+
                     <!-- /.card-body -->
                 </form>
 

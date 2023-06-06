@@ -63,17 +63,24 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::get('cpd', [UserController::class, 'dataCPD'])->name('dataCPD');
     Route::resource('user', UserController::class);
     Route::resource('user-sekolah', AdminSekolahController::class);
-    Route::get('viewpdf/{id}', [DataPendaftaranPrestasi::class, 'viewPdf'])->name('viewpdf');
-    Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+
+    // Route Data Pendaftaran Prestasi
     Route::get('siswalulus', [DataPendaftaranPrestasi::class, 'siswaLulusJalurPrestasi'])->name('siswaLulusJalurPrestasi');
+    Route::get('statusprestasi/{id}', [DataPendaftaranPrestasi::class, 'updateStatusDitolakPrestasi'])->name('updateStatusDitolakPrestasi');
     Route::resource('data_pendaftaran_prestasi', DataPendaftaranPrestasi::class);
-    Route::get('status/{id}/gagal', [DataPendaftaranPrestasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+
+    //Route Data Pendaftaran Afirmasi
+    Route::get('statusafirmasi/{id}', [DataPendaftaranAfirmasi::class, 'updateStatusDitolakAfirmasi'])->name('updateStatusDitolakAfirmasi');
     Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class);
-    Route::get('status/{id}/gagal', [DataPendaftaranPindahTugas::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+
+    //Route Data Pendaftaran Pindah Tugas
+    Route::get('statuspindahtugas/{id}', [DataPendaftaranPindahTugas::class, 'updateStatusDitolakPindahtugas'])->name('updateStatusDitolakPindahtugas');
     Route::resource('data_pendaftaran_pindah_tugas', DataPendaftaranPindahTugas::class);
-    // Route::get('status/{id}/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
+
+    //Route Data Pendaftaran Zonasi
     Route::post('status/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
     Route::resource('data_pendaftaran_zonasi', DataPendaftaranZonasi::class);
+
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
     Route::post('sekolahadmin', AdminSekolahShowController::class)->name('sekolahadmin.store');

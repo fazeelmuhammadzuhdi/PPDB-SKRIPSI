@@ -79,11 +79,13 @@
                             <canvas id="pdfCanvas2"></canvas> --}}
 
                             @if ($dataPindahTugas->status == null)
-                                <button type="submit" class="btn btn-dark mx-1">
+                                <button type="submit" class="btn btn-dark mx-1"
+                                    onclick="return confirm('Apakah Kamu Yakin Ingin Mengupdate Status CPD Ini ?')">
                                     Diterima ✅
                                 </button>
 
-                                <a href="{{ route('updateStatusDitolak', $dataPindahTugas->id) }}" class="btn btn-dark">
+                                <a href="{{ route('updateStatusDitolakPindahtugas', $dataPindahTugas->id) }}"
+                                    class="btn btn-dark">
                                     Ditolak ❌
                                 </a>
                             @endif

@@ -11,9 +11,6 @@ use App\Models\Sekolah;
 use App\Models\Zonasi;
 use App\Models\ZonasiSekolah;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
 
 class DataPendaftaranPrestasi extends Controller
 {
@@ -29,6 +26,7 @@ class DataPendaftaranPrestasi extends Controller
         // $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
+        // $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->where('status', null)->get();
         $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->get();
         $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($afirmasi);
@@ -38,14 +36,14 @@ class DataPendaftaranPrestasi extends Controller
         // $zonasiSekolah = ZonasiSekolah::where('sekolah_id', $sekolah->id)->orderBy('no_urut', 'asc')->orderBy('nilai', 'desc')->get();
         $zonasiSekolah = ZonasiSekolah::where('sekolah_id', $sekolah->id)->get();
         // $penghargaan = Penghargaan::where('siswa_id')->count('siswa_id');
-        $penghargaan = Penghargaan::groupBy('siswa_id')
-            ->select('siswa_id', DB::raw('COUNT(*) as total_penghargaan'))
-            ->get();
+        // $penghargaan = Penghargaan::groupBy('siswa_id')
+        //     ->select('siswa_id', DB::raw('COUNT(*) as total_penghargaan'))
+        //     ->get();
         // dd($sekolah);
         // $sekolah = ZonasiSekolah::get();
         // $siswa = Siswa::get();
         // dd($data_prestasi);
-        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah', 'afirmasi', 'pindahTugas', 'zonasi', 'zonasiSekolah', 'penghargaan'));
+        return view('sekolah.data_pendaftaran', compact('prestasi', 'sekolah', 'afirmasi', 'pindahTugas', 'zonasi', 'zonasiSekolah'));
     }
 
     /**
@@ -130,7 +128,7 @@ class DataPendaftaranPrestasi extends Controller
         //
     }
 
-    public function updateStatusDitolak($id)
+    public function updateStatusDitolakPrestasi($id)
     {
         $lulus = Prestasi::where('id', $id)->update([
             'status' => 2
