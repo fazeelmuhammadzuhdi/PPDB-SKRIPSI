@@ -91,6 +91,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('zonasisekolah', ZonasiSekolahController::class);
     Route::resource('setting', SettingController::class);
     Route::resource('settingppdb', SettingPpdbController::class);
+    Route::post('/getdatazonasinagari', [DataZonasiSekolahController::class, 'getDataNagariZonasiSekolah'])->name('getdatazonasinagarisekolah');
+    Route::post('/getdatazonasikampung', [DataZonasiSekolahController::class, 'getDataKampungZonasiSekolah'])->name('getdatazonasikampungsekolah');
     Route::resource('data_zonasi_sekolah', DataZonasiSekolahController::class);
 
     //Laporan Di Halaman Dashboard Dinas

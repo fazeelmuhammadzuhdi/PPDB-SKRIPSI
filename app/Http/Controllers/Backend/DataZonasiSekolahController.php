@@ -42,8 +42,8 @@ class DataZonasiSekolahController extends Controller
             ->get();
 
         $sekolah = Sekolah::all();
-
-        return view('dataZonasiSekolah.index', compact('kecamatan', 'sekolah', 'nagari', 'kampung'));
+        $dataKecamatan = Kecamatan::all();
+        return view('dataZonasiSekolah.index', compact('kecamatan', 'sekolah', 'nagari', 'kampung', 'dataKecamatan'));
     }
 
     /**
@@ -51,9 +51,34 @@ class DataZonasiSekolahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getDataNagariZonasiSekolah(Request $request)
     {
-        //
+        $id_kecamatan = $request->id_kecamatan;
+
+        //get Data kecamatan    
+        $kecamatan = Nagari::where('kecamatan_id', $id_kecamatan)->get();
+
+        $option = "<option>--Pilih Nagari--</option>";
+        //lakukan perulangan karena 1 provinsi mempunyai banyak kabupaten
+        foreach ($kecamatan as $kec) {
+            $option .= "<option value='$kec->id'>$kec->nama_nagari</option>";
+        }
+        return $option;
+    }
+
+    public function getDataKampungZonasiSekolah(Request $request)
+    {
+        $id_nagari = $request->id_nagari;
+
+        //get Data kecamatan    
+        $kampung = Kampung::where('nagari_id', $id_nagari)->get();
+
+        $option = "<option>--Pilih Kampung--</option>";
+        //lakukan perulangan karena 1 provinsi mempunyai banyak kabupaten
+        foreach ($kampung as $kam) {
+            $option .= "<option value='$kam->id'>$kam->nama_kampung</option>";
+        }
+        return $option;
     }
 
     /**
@@ -64,7 +89,34 @@ class DataZonasiSekolahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'sekolah_id'     => 'required',
+            'kecamatan_id'   => 'required',
+            'nagari_id'   => 'required',
+            'kampung_id'   => 'required',
+            'no_urut'   => 'required',
+        ]);
+
+        $cekNoUrut = ZonasiSekolah::where('sekolah_id', $request->sekolah_id)->where('no_urut', $request->no_urut)->first();
+        if ($cekNoUrut) {
+            return response()->json(['error' => 'No Urut Zonasi Sudah Ada']);
+        } else {
+            $setNilai = 71;
+            $noUrut = $request->no_urut;
+            $nilaiAkhirPrioritas = $setNilai - $noUrut;
+        }
+
+        ZonasiSekolah::create([
+            'sekolah_id' => $request->sekolah_id,
+            'kecamatan_id' => $request->kecamatan_id,
+            'nagari_id' => $request->nagari_id,
+            'kampung_id' => $request->kampung_id,
+            'no_urut' => $request->no_urut,
+            'nilai' => $nilaiAkhirPrioritas,
+            // tambahkan properti lainnya jika ada
+        ]);
+
+        return response()->json(['success' => 'Data Zonasi Berhasil Di Tambahkan']);
     }
 
     /**
@@ -109,6 +161,10 @@ class DataZonasiSekolahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ZonasiSekolah::where('sekolah_id', $id);
+
+        $data->delete();
+
+        return redirect()->back();
     }
 }

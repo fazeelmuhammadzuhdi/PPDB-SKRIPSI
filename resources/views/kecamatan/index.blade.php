@@ -26,6 +26,8 @@
                                 <tr>
                                     <th width="1%">No</th>
                                     <th>Nama Kecamatan</th>
+                                    <th>Nama Nagari</th>
+                                    <th>Nama Kampung</th>
                                     <th width="20%">Aksi</th>
                                 </tr>
                             </thead>
@@ -34,6 +36,16 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama_kecamatan }}</td>
+                                        <td>
+                                            @foreach ($item->nagari as $data)
+                                                {{ $loop->iteration }}. {{ $data->nama_nagari }} <br>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach ($item->kampung as $data)
+                                                {{ $loop->iteration }}. {{ $data->nama_kampung }} <br>
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <form method="POST" action="{{ route('kecamatan.hapus', $item->id) }}">
                                                 @csrf
