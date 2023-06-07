@@ -17,9 +17,9 @@
                             class="fas fa-plus-circle"></i> Add
                         Zonasi Sekolah</a> --}}
 
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
+                    {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
                         data-bs-target="#addModalDataZonasiSekolah"><i class="fas fa-plus-circle"></i> Add
-                        Zonasi Sekolah</button>
+                        Zonasi Sekolah</button> --}}
 
                     <button class="btn btn-outline-primary" onclick="printDiv('cetakDataZonasiSekolah')"><i
                             class="fa fa-file-pdf"></i>

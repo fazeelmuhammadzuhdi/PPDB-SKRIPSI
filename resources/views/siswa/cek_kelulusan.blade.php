@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    @if ($tanggalSekarang <= $tanggalAkhirKelulusan)
+    @if ($tanggalSekarang < $tanggalAkhirKelulusan)
+        {{-- @if ($tanggalSekarang <= $tanggalAkhirKelulusan) --}}
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -10,7 +11,8 @@
                             <img src="{{ asset('images/not_found.png') }}" alt="" width="250">
                             {{-- <i class="fa fa-sticky-note text-primary" aria-hidden="true" style="font-size: 64px"></i> --}}
                             <h4 class="my-3">Belum Waktunya Cek Kelulusan</h4>
-                            <p>Informasi Kelulusan Tanggal {{ $tanggalAkhirKelulusan }}</p>
+                            <p>Informasi Kelulusan Tanggal
+                                {{ \Carbon\Carbon::parse($tanggalAkhirKelulusan)->format('d F Y') }}</p>
                         </div>
                     </div>
                 </div>
