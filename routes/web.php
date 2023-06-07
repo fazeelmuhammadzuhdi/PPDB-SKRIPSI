@@ -160,6 +160,8 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
         Route::get('/prestasi/belumlulus', 'exportExcelPrestasiSiswaBelumLulus')->name('exportExcelPrestasiSiswaBelumLulus');
         Route::get('/zonasi/lulus', 'exportExcelZonasiSiswaLulus')->name('exportExcelZonasiSiswaLulus');
         Route::get('/zonasi/belumlulus', 'exportExcelZonasiSiswaBelumLulus')->name('exportExcelZonasiSiswaBelumLulus');
+        Route::get('/pendaftar', 'siswaPendaftar')->name('siswaPendaftar');
+        Route::get('/data-pendaftaran', 'cetakPdfDataPendaftar')->name('cetakPdfDataPendaftar');
     });
 
     Route::controller(KelulusanController::class)->name('kelulusan.')->group(function () {

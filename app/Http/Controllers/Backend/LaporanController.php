@@ -11,8 +11,6 @@ use App\Models\Sekolah;
 use App\Models\Afirmasi;
 use App\Models\Prestasi;
 use App\Models\PindahTugas;
-use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\SiswaLulusExport;
 use App\Exports\SiswaLulusJalurAfirmasi;
 use App\Exports\SiswaLulusJalurPindahTugas;
@@ -20,8 +18,6 @@ use App\Exports\SiswaLulusJalurPrestasi;
 use App\Exports\SiswaLulusJalurZonasi;
 use App\Http\Controllers\Controller;
 use App\Models\Zonasi;
-use Carbon\Carbon;
-use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanController extends Controller
 {
@@ -35,8 +31,7 @@ class LaporanController extends Controller
         $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
         $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
 
-        // $siswa = Siswa::with('kampung')->get();
-        $siswa = Siswa::get();
+        $siswa = Siswa::with('kampung')->get();
         // dd($user);
         return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
     }
@@ -51,9 +46,38 @@ class LaporanController extends Controller
         $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
         $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
 
-        $siswa = Siswa::get();
+        $siswa = Siswa::with('kampung')->get();
         // dd($user);
         return view('laporan.ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+    }
+
+    public function siswaPendaftar()
+    {
+        $sekolah = Sekolah::sekolah()->first();
+        // dd($sekolah);
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->get();
+        // dd($afirmasi);
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->get();
+
+        $siswa = Siswa::with('kampung')->get();
+        // $siswa = Siswa::get();
+        // dd($user);
+        return view('laporan.pendaftar', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+    }
+
+    public function cetakPdfDataPendaftar()
+    {
+        $sekolah = Sekolah::sekolah()->first();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->get();
+
+        $siswa = Siswa::with('kampung')->get();
+
+        return view('laporan.data_pendaftar', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
     }
 
 

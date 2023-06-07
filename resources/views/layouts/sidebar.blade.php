@@ -301,6 +301,12 @@
                     <div data-i18n="Analytics">Laporan Siswa Yang Ditolak</div>
                 </a>
             </li>
+            <li class="menu-item {{ Route::is('siswaPendaftar') ? 'active' : '' }}">
+                <a href="{{ route('siswaPendaftar') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Laporan Siswa Yang Mendaftar</div>
+                </a>
+            </li>
         @else
             <li class="menu-item {{ Route::is('dashboard_siswa') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_siswa') }}" class="menu-link">

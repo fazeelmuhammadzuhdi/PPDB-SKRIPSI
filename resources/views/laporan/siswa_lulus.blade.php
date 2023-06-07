@@ -112,7 +112,7 @@
     <center>
         @include('laporan.header_coba')
 
-        <table class="head" style="margin-bottom: 20px;">
+        <table class="head">
             <tr>
                 @if (Route::is('cetakpdf'))
                     <h1>Data Siswa Yang Lulus</h1>
