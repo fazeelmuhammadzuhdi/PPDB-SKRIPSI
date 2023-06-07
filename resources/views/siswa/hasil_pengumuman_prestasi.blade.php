@@ -9,10 +9,10 @@
              <th>
                  <h2 align="center"><b style="color:rgb(0, 0, 0);">Saudara :
                          {{ $item->siswa->nama_lengkap }} telah terdaftar sebagai calon
-                         Siswa</b></h2>
+                         Siswa :</b></h2>
                  <h3 style="color:rgb(0, 0, 0);" align="center">
                      </b>{{ $item->sekolah->nama }}</b></h3>
-                 <p>Cetak Bukti Pendaftaran Ini sebagai syarat untuk daftar ulang
+                 <p>Cetak Bukti Kelulusan Ini Sebagai Syarat Untuk Daftar Ulang
                      <br>
                  <ol>
                      <li> Silahkan Melengkapi Syarat-Syarat Berikut :</li>
@@ -31,7 +31,7 @@
                          Hari/Tanggal : Rabu / 5 Agustus 2020</li>
                  </ol>
 
-                 <i style="color:orange">Alamat Sekolah :
+                 <i style="color:black">Alamat Sekolah :
                      {{ $item->sekolah->alamat }},
                      Telp. {{ $item->sekolah->notelp }},
                  </i>
@@ -46,13 +46,12 @@
              <br><br><br><br><br>
              <th>
                  <h2 align="center"> Hasil Penerimaan Peserta Didik Baru <br>
-                     {{ $item->sekolah->nama }},</h2>
-                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Seleksi yang
-                     saudara lakukan
-                     pada tanggal {{ $item->siswa->created_at }} WIB. Kami panitia
-                     Penerimaan
-                     Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}
-                     Saudara yang bertanda tangan dibawah ini:<br><br>
+                     {{ $item->sekolah->nama }}</h2>
+                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Pendaftaran yang
+                     Telah Kamu lakukan
+                     pada tanggal {{ $item->formattedDateTime }} WIB. Kami panitia
+                     Penerimaan Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}
+                     :<br><br>
                      <table width="70%" class="table table-bordered">
                          <tr>
                              <td>Nama Lengkap</td>
@@ -79,11 +78,10 @@
 
                      <div class="mt-3">
                          <p>
-                             Maka dengan ini bagi nama yang telah tercantum diatas, kami
-                             menyatakan bahwa saudara <span style="color: rgb(0, 107, 0)">LULUS</span>
+                             Maka dengan ini Bagi Nama Yang tTelah Tercantum Diatas, kami
+                             menyatakan Bahwa Kamu<span style="color: rgb(0, 107, 0)"> LULUS</span> Dalam Seleksi PPDB
                          </p>
                      </div>
-
                  </h5>
              @elseif ($item->status == 2)
          <tr>
@@ -117,7 +115,7 @@
                          Hari/Tanggal : Rabu / 5 Agustus 2020</li>
                  </ol>
 
-                 <i style="color:orange">Alamat Sekolah :
+                 <i style="color:black">Alamat Sekolah :
                      {{ $item->sekolah->alamat }},
                      Telp. {{ $item->sekolah->notelp }}
                  </i>
@@ -129,16 +127,16 @@
              </th>
          </tr>
          <tr>
-             <br><br><br>
+             <br><br><br><br><br>
              <th>
                  <h2 align="center"> Hasil Penerimaan Peserta Didik Baru <br>
                      {{ $item->sekolah->nama }}</h2>
-                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Seleksi yang
-                     saudara lakukan
-                     pada tanggal {{ $item->siswa->created_at }} WIB. Kami panitia
-                     Penerimaan
-                     Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}
-                     Saudara yang bertanda tangan dibawah ini:<br><br>
+                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Pendaftaran yang
+                     Telah Kamu lakukan
+                     pada tanggal {{ $item->formattedDateTime }} WIB. Kami panitia
+                     Penerimaan Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}.
+                     Mohon Maaf, Dengan ini Kami Menyatakan Kamu<span style="color: red"> BELUM
+                         LULUS</span> Tetap Semangat!😁 :<br><br>
                      <table width="70%" class="table table-bordered">
                          <tr>
                              <td>Nama Lengkap</td>
@@ -163,14 +161,14 @@
                          </tr>
                      </table>
 
-                     <div class="mt-3">
+                     {{-- <div class="mt-3">
                          <p>
                              Mohon maaf dengan ini bagi nama yang telah tercantum
                              diatas,kami
                              menyatakan bahwa saudara<span style="color: red"> BELUM
                                  LULUS</span> Tetap Semangat 😁
                          </p>
-                     </div>
+                     </div> --}}
                  </h5>
              </th>
          </tr>
@@ -222,12 +220,13 @@
              <th>
                  <h2 align="center"> Hasil Penerimaan Peserta Didik Baru <br>
                      {{ $item->sekolah->nama }}</h2>
-                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Seleksi yang
-                     Saudara lakukan
-                     pada tanggal {{ $item->siswa->created_at }} WIB. Kami panitia
-                     Penerimaan
-                     Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}
-                     Saudara yang bertanda tangan dibawah ini:<br><br>
+                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Pendaftaran yang
+                     Telah Kamu lakukan
+                     pada tanggal {{ $item->formattedDateTime }} WIB. Kami panitia
+                     Penerimaan Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}
+                     Maka dengan ini kami menyatakan bahwa data tersebut masih
+                     dalam<span style="color: rgb(255, 200, 2)"> PROSES SELEKSI
+                     </span> :<br><br>
                      <table width="70%" class="table table-bordered">
                          <tr>
                              <td>Nama Lengkap</td>

@@ -7,9 +7,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white p-5 r-5">
-                            <div class="card-title">
 
-                            </div>
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover "
                                     data-options='{

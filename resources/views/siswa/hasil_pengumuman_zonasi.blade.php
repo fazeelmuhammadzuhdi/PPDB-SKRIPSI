@@ -12,7 +12,7 @@
                          Siswa</b></h2>
                  <h3 style="color:rgb(0, 0, 0);" align="center">
                      </b>{{ $item->sekolah->nama }}</b></h3>
-                 <p>Cetak Bukti Pendaftaran Ini sebagai syarat untuk daftar ulang
+                 <p>Cetak Bukti Kelulusan Ini Sebagai Syarat Untuk Daftar Ulang
                      <br>
                  <ol>
                      <li> Silahkan Melengkapi Syarat-Syarat Berikut :</li>
@@ -135,12 +135,12 @@
              <th>
                  <h2 align="center"> Hasil Penerimaan Peserta Didik Baru <br>
                      {{ $item->sekolah->nama }}</h2>
-                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Seleksi yang
-                     saudara lakukan
-                     pada tanggal {{ $item->siswa->created_at }} WIB. Kami panitia
-                     Penerimaan
-                     Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}
-                     Saudara yang bertanda tangan dibawah ini:<br><br>
+                 <h5 style="margin: 6%; text-align: justify"> Berdasarkan Pendaftaran yang
+                     Telah Kamu lakukan
+                     pada tanggal {{ $item->formattedDateTime }} WIB. Kami panitia
+                     Penerimaan Peserta Didik Baru Tahun Pelajaran {{ now()->format('Y') }}.
+                     Mohon Maaf, Dengan ini Kami Menyatakan Kamu<span style="color: red"> BELUM
+                         LULUS</span> Tetap Semangat!😁 :<br><br>
                      <table width="70%" class="table table-bordered">
                          <tr>
                              <td>Nama Lengkap</td>
@@ -165,14 +165,14 @@
                          </tr>
                      </table>
 
-                     <div class="mt-3">
+                     {{-- <div class="mt-3">
                          <p>
                              Mohon maaf dengan ini bagi nama yang telah tercantum
                              diatas,kami
                              menyatakan bahwa saudara<span style="color: red"> BELUM
                                  LULUS</span> Tetap Semangat 😁
                          </p>
-                     </div>
+                     </div> --}}
                  </h5>
              </th>
          </tr>

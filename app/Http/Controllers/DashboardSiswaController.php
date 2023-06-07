@@ -110,24 +110,29 @@ class DashboardSiswaController extends Controller
         $tanggalAkhirKelulusan = settings('jadwa_kelulusan');
         $tanggalSekarang = now()->toDateString();
         // dd($tanggalSekarang);
-        // dd($tanggalSekarang);
         // dd($tanggalAkhirKelulusan);
         return view('siswa.cek_kelulusan', compact('tanggalAkhirKelulusan', 'tanggalSekarang'));
     }
 
     public function cari(Request $request)
     {
+        // $cari = $request->cari;
+        // $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->where('user_id', auth()->user()->id)->first();
+        // if (!$cek_siswa) {
+
+        //     flash()
+        //         ->options([
+        //             'timeout' => 1500, // 3 seconds
+        //         ])
+        //         ->addError('Data Tidak Ada');
+        //     return redirect()->back();
+        // } else {
+        //     return view('siswa.hasil', compact('cek_siswa'));
+        // }
         $cari = $request->cari;
         $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->where('user_id', auth()->user()->id)->first();
-        // dd($cek_siswa);
-        // $cekLulusPrestasi = Prestasi::with('siswa', 'sekolah')->where('siswa_id', auth()->user()->id)->first();
-        // $cekLulusPrestasi = Prestasi::where('siswa_id', $cek_siswa->id ?? '')->first();
-        // $cekLulusAfirmasi = Afirmasi::where('siswa_id', $cek_siswa->id ?? '')->first();
-        // $cekLulusPindahTugas = PindahTugas::where('siswa_id', $cek_siswa->id ?? '')->first();
 
-        // if (!$cekLulusPrestasi && !$cekLulusAfirmasi && !$cekLulusPindahTugas) {
-        if (!$cek_siswa) {
-
+        if (!$cek_siswa || strlen($cari) !== 11) {
             flash()
                 ->options([
                     'timeout' => 1500, // 3 seconds
