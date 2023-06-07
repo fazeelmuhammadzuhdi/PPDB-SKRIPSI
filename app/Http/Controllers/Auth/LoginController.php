@@ -51,13 +51,13 @@ class LoginController extends Controller
     public function authenticated(Request $request, $user)
     {
 
-        if ($user->akses == 'Admin Dinas' || $user->akses == 'Admin Sekolah') {
+        if ($user->akses == 'Admin Dinas' || $user->akses == 'Admin Sekolah' || $user->akses == 'Kepala Dinas') {
             return redirect()->route('dashboard_dinas');
         } elseif ($user->akses == 'Siswa') {
             return redirect()->route('dashboard_siswa');
         } else {
             Auth::logout();
-            flash('Anda tidak memiliki hak akses')->error();
+            flash()->addError('Anda tidak memiliki hak akses');
             return redirect()->route('login');
         }
 

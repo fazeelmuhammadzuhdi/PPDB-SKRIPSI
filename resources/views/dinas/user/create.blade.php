@@ -35,6 +35,7 @@
                                 [
                                     'Admin Dinas' => 'Admin Dinas Pendidikan',
                                     'Admin Sekolah' => 'Admin Sekolah',
+                                    // 'Kepala Dinas' => 'Kepala Dinas Pendidikan',
                                 ],
                                 null,
                                 ['class' => 'form-control select2', 'placeholder' => 'Pilih Hak Akses'],

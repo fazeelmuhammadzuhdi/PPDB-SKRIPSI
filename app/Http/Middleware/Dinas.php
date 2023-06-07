@@ -16,7 +16,7 @@ class Dinas
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->akses == 'Admin Dinas' || $request->user()->akses == 'Admin Sekolah') {
+        if ($request->user()->akses == 'Admin Dinas' || $request->user()->akses == 'Admin Sekolah' || $request->user()->akses == 'Kepala Dinas') {
             return $next($request);
         }
         abort(403, 'Akses Khusus Admin Dinas Pendidikan');

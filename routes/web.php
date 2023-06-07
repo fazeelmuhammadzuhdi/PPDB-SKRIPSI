@@ -58,6 +58,7 @@ Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
 
 Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
+    // Route::prefix('dinas')->middleware(['auth'])->group(function () {
     //ini route khusus untuk dinas pendidikan dan admin sekolah
     Route::get('dashboard', [DashboardDinasController::class, 'index'])->name('dashboard_dinas');
     Route::get('cpd', [UserController::class, 'dataCPD'])->name('dataCPD');
@@ -65,21 +66,21 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('user-sekolah', AdminSekolahController::class);
 
     // Route Data Pendaftaran Prestasi
-    Route::get('siswalulus', [DataPendaftaranPrestasi::class, 'siswaLulusJalurPrestasi'])->name('siswaLulusJalurPrestasi');
-    Route::get('statusprestasi/{id}', [DataPendaftaranPrestasi::class, 'updateStatusDitolakPrestasi'])->name('updateStatusDitolakPrestasi');
-    Route::resource('data_pendaftaran_prestasi', DataPendaftaranPrestasi::class);
+    Route::get('siswalulus', [DataPendaftaranPrestasi::class, 'siswaLulusJalurPrestasi'])->middleware(['auth', 'sekolah'])->name('siswaLulusJalurPrestasi');
+    Route::get('statusprestasi/{id}', [DataPendaftaranPrestasi::class, 'updateStatusDitolakPrestasi'])->middleware(['auth', 'sekolah'])->name('updateStatusDitolakPrestasi');
+    Route::resource('data_pendaftaran_prestasi', DataPendaftaranPrestasi::class)->middleware(['auth', 'sekolah']);
 
     //Route Data Pendaftaran Afirmasi
-    Route::get('statusafirmasi/{id}', [DataPendaftaranAfirmasi::class, 'updateStatusDitolakAfirmasi'])->name('updateStatusDitolakAfirmasi');
-    Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class);
+    Route::get('statusafirmasi/{id}', [DataPendaftaranAfirmasi::class, 'updateStatusDitolakAfirmasi'])->middleware(['auth', 'sekolah'])->name('updateStatusDitolakAfirmasi');
+    Route::resource('data_pendaftaran_afirmasi', DataPendaftaranAfirmasi::class)->middleware(['auth', 'sekolah']);
 
     //Route Data Pendaftaran Pindah Tugas
-    Route::get('statuspindahtugas/{id}', [DataPendaftaranPindahTugas::class, 'updateStatusDitolakPindahtugas'])->name('updateStatusDitolakPindahtugas');
-    Route::resource('data_pendaftaran_pindah_tugas', DataPendaftaranPindahTugas::class);
+    Route::get('statuspindahtugas/{id}', [DataPendaftaranPindahTugas::class, 'updateStatusDitolakPindahtugas'])->middleware(['auth', 'sekolah'])->name('updateStatusDitolakPindahtugas');
+    Route::resource('data_pendaftaran_pindah_tugas', DataPendaftaranPindahTugas::class)->middleware(['auth', 'sekolah']);
 
     //Route Data Pendaftaran Zonasi
-    Route::post('status/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->name('updateStatusDitolak');
-    Route::resource('data_pendaftaran_zonasi', DataPendaftaranZonasi::class);
+    Route::post('status/gagal', [DataPendaftaranZonasi::class, 'updateStatusDitolak'])->middleware(['auth', 'sekolah'])->name('updateStatusDitolak');
+    Route::resource('data_pendaftaran_zonasi', DataPendaftaranZonasi::class)->middleware(['auth', 'sekolah']);
 
     Route::resource('user_siswa', UserSiswaController::class);
     Route::resource('sekolah', SekolahController::class);
@@ -88,7 +89,7 @@ Route::prefix('dinas')->middleware(['auth', 'dinas'])->group(function () {
     Route::resource('kampung', KampungController::class);
     Route::post('/getnagari', [ZonasiSekolahController::class, 'getnagari'])->name('getnagarizonasi');
     Route::post('/getkampung', [ZonasiSekolahController::class, 'getkampung'])->name('getkampungzonasi');
-    Route::resource('zonasisekolah', ZonasiSekolahController::class);
+    Route::resource('zonasisekolah', ZonasiSekolahController::class)->middleware(['auth', 'sekolah']);
     Route::resource('setting', SettingController::class);
     Route::resource('settingppdb', SettingPpdbController::class);
     Route::post('/getdatazonasinagari', [DataZonasiSekolahController::class, 'getDataNagariZonasiSekolah'])->name('getdatazonasinagarisekolah');

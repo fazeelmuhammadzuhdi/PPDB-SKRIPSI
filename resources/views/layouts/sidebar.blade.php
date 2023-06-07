@@ -47,7 +47,9 @@
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: capitalize">PPDB</span>
         </a> --}}
-        @if (Auth::user()->akses == 'Admin Dinas' || Auth::user()->akses == 'Admin Sekolah')
+        @if (Auth::user()->akses == 'Admin Dinas' ||
+                Auth::user()->akses == 'Admin Sekolah' ||
+                Auth::user()->akses == 'Kepala Dinas')
             <a href="{{ route('dashboard_dinas') }}" class="app-brand-link">
                 <img src="{{ Storage::url(settings()->get('app_logo')) }}" alt="" width="200">
             </a>
@@ -305,6 +307,78 @@
                 <a href="{{ route('siswaPendaftar') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Laporan Siswa Yang Mendaftar</div>
+                </a>
+            </li>
+        @elseif (Auth::user()->akses == 'Kepala Dinas')
+            <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">
+                <a href="{{ route('dashboard_dinas') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
+                    <div>Laporan</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.userAdminDanSekolah') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Admin Dan User Sekolah</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.userSiswa') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan User Siswa</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.dataSekolah') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Sekolah</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.kecamatan') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Kecamatan</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.nagari') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Nagari</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.kampung') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Data Kampung</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {{ Route::is('laporan.*') ? 'active' : '' }}">
+                        <a href="{{ route('laporan.kecamatanNagariKampung') }}" class="menu-link" target="_blank">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Laporan Kecamatan Nagari Dan Kampung</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="menu-item {{ Route::is('kelulusan.*') ? 'active' : '' }}">
+                <a href="{{ route('kelulusan.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div data-i18n="Basic">Kelulusan</div>
                 </a>
             </li>
         @else

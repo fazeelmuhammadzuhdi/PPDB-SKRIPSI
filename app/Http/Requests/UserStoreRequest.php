@@ -27,6 +27,7 @@ class UserStoreRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'nohp' => 'required|unique:users',
+            // 'akses' => 'required|in:Admin Dinas,Admin Sekolah,Kepala Dinas',
             'akses' => 'required|in:Admin Dinas,Admin Sekolah',
             'password' => 'required',
         ];

@@ -59,6 +59,51 @@
                         </span>
                     </li>
                 </ul>
+            @elseif (auth()->user()->akses == 'Kepala Dinas')
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <p>PENDAFTAR</p>
+                            <h3>{{ $siswa }} Orang</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-school'></i>
+                        <span class="text">
+                            <p>SEKOLAH</p>
+                            <h3>{{ $jumlahSekolah }} Sekolah</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-location-plus'></i>
+                        <span class="text">
+                            <p>KECAMATAN</p>
+                            <h3>{{ $jumlahKecamatan }} Kecamatan</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-home'></i>
+                        <span class="text">
+                            <p>NAGARI</p>
+                            <h3>{{ $jumlahNagari }} Nagari</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class="bx bx-map-pin"></i>
+                        <span class="text">
+                            <p>KAMPUNG</p>
+                            <h3>{{ $jumlahKampung }} Kampung</h3>
+                        </span>
+                    </li>
+                    <li>
+                        <i class="bx bx-map-pin"></i>
+                        <span class="text">
+                            <p>Jumlah Siswa Diterima</p>
+                            <h3>{{ $totalSiswaLulus }} Siswa</h3>
+                        </span>
+                    </li>
+                </ul>
             @else
                 <ul class="box-info">
                     <li>

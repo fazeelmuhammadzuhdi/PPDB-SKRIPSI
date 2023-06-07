@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('akses', ['Admin Dinas', 'Admin Sekolah', 'Siswa'])->default('Siswa');
+            $table->enum('akses', ['Admin Dinas', 'Admin Sekolah', 'Siswa', 'Kepala Dinas'])->default('Siswa');
             $table->string('nohp', 20)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
