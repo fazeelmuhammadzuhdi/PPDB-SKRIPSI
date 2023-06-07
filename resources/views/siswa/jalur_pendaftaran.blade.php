@@ -195,24 +195,32 @@
                                             <td>{{ $cekLulusJalurZonasi->sekolah->nama }}</td>
                                         @endif
                                     </tr>
-                                    {{-- <tr>
+                                    <tr>
                                         @if ($cek_prestasi)
                                             <td><b>Tanggal Pendaftaran</b></td>
-                                            <td>{{ $cekLulusJalurPrestasi->created_at }}</td>
+                                            <td>
+                                                {{ $cekLulusJalurPrestasi->formattedDateTime }}
+                                            </td>
                                         @endif
                                         @if ($cek_afirmasi)
-                                            <td><b>Sekolah Pendaftaran</b></td>
-                                            <td>{{ $cekLulusJalurAfirmasi->sekolah->nama }}</td>
+                                            <td><b>Tanggal Pendaftaran</b></td>
+                                            <td>
+                                                {{ $cekLulusJalurAfirmasi->formattedDateTime }}
+                                            </td>
                                         @endif
                                         @if ($cek_pindah_tugas)
-                                            <td><b>Sekolah Pendaftaran</b></td>
-                                            <td>{{ $cekLulusJalurPindahTugas->sekolah->nama }}</td>
+                                            <td><b>Tanggal Pendaftaran</b></td>
+                                            <td>
+                                                {{ $cekLulusJalurPindahTugas->formattedDateTime }}
+                                            </td>
                                         @endif
                                         @if ($cek_zonasi)
-                                            <td><b>Sekolah Pendaftaran</b></td>
-                                            <td>{{ $cekLulusJalurZonasi->sekolah->nama }}</td>
+                                            <td><b>Tanggal Pendaftaran</b></td>
+                                            <td>
+                                                {{ $cekLulusJalurZonasi->formattedDateTime }}
+                                            </td>
                                         @endif
-                                    </tr> --}}
+                                    </tr>
                                     {{-- <tr>
                                         @if ($cek_prestasi)
                                             <td><b>Status Pendaftaran</b></td>

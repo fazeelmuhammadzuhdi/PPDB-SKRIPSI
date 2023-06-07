@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasFormattedDateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Zonasi extends Model
 {
     use HasFactory;
-
+    use HasFormattedDateTime;
     protected $table = 'zonasis';
 
     protected $fillable = [
@@ -25,6 +26,4 @@ class Zonasi extends Model
     {
         return $this->belongsTo(Siswa::class);
     }
-    
-    
 }

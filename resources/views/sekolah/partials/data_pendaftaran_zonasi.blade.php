@@ -10,8 +10,9 @@
                 <th>No</th>
                 <th><input type="checkbox" id="checked-all"></th>
                 <th>Nama</th>
-                <th>Jenis Kelamin</th>
+                {{-- <th>Jenis Kelamin</th> --}}
                 <th>NISN</th>
+                <th>Tanggal Pendaftaran</th>
                 <th>Status</th>
                 <th>Nilai</th>
                 <th>Foto</th>
@@ -115,8 +116,11 @@
                             <td><input type="checkbox" class="change-status" name="ids[]" value="{{ $item->id }}">
                             </td>
                             <td>{{ $item->siswa->nama_lengkap }}</td>
-                            <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                            {{-- <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td> --}}
                             <td>{{ $item->siswa->nisn }}</td>
+                            <td>
+                                {{ $item->formattedDateTime }}
+                            </td>
                             <td>
                                 @if ($item->status == 1)
                                     <span class="badge bg-success">Lulus</span>

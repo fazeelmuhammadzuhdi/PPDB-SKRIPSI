@@ -6,8 +6,9 @@
             <tr>
                 <th width="1%">No</th>
                 <th>Nama</th>
-                <th>Jenis Kelamin</th>
+                {{-- <th>Jenis Kelamin</th> --}}
                 <th>NISN</th>
+                <th>Tanggal Pendaftaran</th>
                 <th>Status</th>
                 <th>Status Zonasi</th>
                 <th>Foto</th>
@@ -19,8 +20,11 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa->nama_lengkap }}</td>
-                    <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
+                    {{-- <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td> --}}
                     <td>{{ $item->siswa->nisn }}</td>
+                    <td>
+                        {{ $item->formattedDateTime }}
+                    </td>
                     <td>
                         @if ($item->status == 1)
                             <span class="badge bg-success">Lulus</span>

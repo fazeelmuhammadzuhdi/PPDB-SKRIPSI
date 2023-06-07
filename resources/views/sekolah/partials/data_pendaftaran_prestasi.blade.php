@@ -7,6 +7,7 @@
                 <th width="1%">No</th>
                 <th>Nama</th>
                 <th>NISN</th>
+                <th>Tgl Pendaftaran</th>
                 <th>Rata2 Nilai Rapor</th>
                 <th>Jalur Prestasi</th>
                 <th>Status Zonasi</th>
@@ -85,6 +86,9 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa?->nama_lengkap }}</td>
                     <td>{{ $item->siswa?->nisn }}</td>
+                    <td>
+                        {{ $item->formattedDateTime }}
+                    </td>
                     <td class="text-center">{{ $item->jumlah }}</td>
                     <td>
                         @if ($item->status == 1)

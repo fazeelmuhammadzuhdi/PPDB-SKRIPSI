@@ -27,7 +27,7 @@ class DataPendaftaranPrestasi extends Controller
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
         // $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->where('status', null)->get();
-        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->get();
+        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->orderBy('created_at', 'asc')->get();
         $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
         // dd($afirmasi);
         $pindahTugas = PindahTugas::with('siswa')->where('sekolah_id', $sekolah->id)->get();
