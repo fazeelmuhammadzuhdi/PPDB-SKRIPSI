@@ -111,7 +111,8 @@
                                 </button>
 
                                 <a href="{{ route('updateStatusDitolakPrestasi', $data_prestasi->id) }}"
-                                    class="btn btn-dark">
+                                    class="btn btn-dark"
+                                    onclick="return confirm('Apakah kamu Yakin Ingin Mengupdate Status CPD Ini ?')">
                                     Ditolak ❌
                                 </a>
                             @endif

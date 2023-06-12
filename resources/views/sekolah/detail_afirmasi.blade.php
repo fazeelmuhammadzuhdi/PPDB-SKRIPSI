@@ -124,7 +124,8 @@
                                 Diterima ✅
                             </button>
 
-                            <a href="{{ route('updateStatusDitolakAfirmasi', $data_afirmasi->id) }}" class="btn btn-dark">
+                            <a href="{{ route('updateStatusDitolakAfirmasi', $data_afirmasi->id) }}" class="btn btn-dark"
+                                onclick="return confirm('Apakah kamu Yakin Ingin Mengupdate Status CPD Ini ?')">
                                 Ditolak ❌
                             </a>
                         @endif

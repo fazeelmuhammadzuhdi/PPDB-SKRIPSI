@@ -13,9 +13,13 @@ class FrontendController extends Controller
         return view('frontend.index', compact('tanggalSekarang', 'tanggalAkhirPendaftaran'));
     }
 
-
     public function informasiPendafaran()
     {
         return view('frontend.informasi-pendaftaran');
+    }
+
+    public function jadwalPendafaran()
+    {
+        return view('frontend.jadwal-pendaftaran');
     }
 }

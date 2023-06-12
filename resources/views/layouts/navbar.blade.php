@@ -87,12 +87,14 @@
                              </a>
                          </li>
                      @endif
-                     <li>
-                         <a class="dropdown-item" href="{{ route('setting.create') }}">
-                             <i class="bx bx-cog me-2"></i>
-                             <span class="align-middle">Settings</span>
-                         </a>
-                     </li>
+                     @if (auth()->user()->akses == 'Admin Dinas')
+                         <li>
+                             <a class="dropdown-item" href="{{ route('setting.create') }}">
+                                 <i class="bx bx-cog me-2"></i>
+                                 <span class="align-middle">Settings</span>
+                             </a>
+                         </li>
+                     @endif
                      {{-- <li>
                          <a class="dropdown-item" href="#">
                              <span class="d-flex align-items-center align-middle">

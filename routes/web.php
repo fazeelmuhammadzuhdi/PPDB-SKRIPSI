@@ -49,6 +49,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/informasi-pendaftaran', [FrontendController::class, 'informasiPendafaran'])->name('informasiPendafaran');
+Route::get('/jadwal-pendaftaran', [FrontendController::class, 'jadwalPendafaran'])->name('jadwalPendafaran');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
