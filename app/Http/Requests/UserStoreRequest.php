@@ -25,7 +25,7 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|unique:users',
             'nohp' => 'required|unique:users',
             // 'akses' => 'required|in:Admin Dinas,Admin Sekolah,Kepala Dinas',
             'akses' => 'required|in:Admin Dinas,Admin Sekolah',
@@ -48,7 +48,7 @@ class UserStoreRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'email' => 'Email Address',
+            'email' => 'Email Address / Username',
             'name' => 'Nama',
             'nohp' => 'No Hp',
             'akses' => 'Hak Akses',

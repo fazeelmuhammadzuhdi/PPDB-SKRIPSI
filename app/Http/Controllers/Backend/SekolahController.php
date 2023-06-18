@@ -40,13 +40,15 @@ class SekolahController extends Controller
      */
     public function create()
     {
+        $userIdsTerdaftar = Sekolah::pluck('sekolah_id')->toArray();
+
         $data = [
             'sekolah' => new Sekolah(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN',
             'title' => 'Form Tambah Sekolah',
-            'listUser' => User::where('akses', 'Admin Sekolah')->pluck('name', 'id'),
+            'listUser' => User::whereNotIn('id', $userIdsTerdaftar)->where('akses', 'Admin Sekolah')->get(),
             'routePrefix' => $this->routePrefix,
         ];
 

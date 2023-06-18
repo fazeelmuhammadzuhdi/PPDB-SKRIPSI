@@ -12,16 +12,24 @@
                 </div>
                 <div class="card-body">
                     {!! Form::model($sekolah, ['route' => $route, 'method' => $method]) !!}
-                    {{-- <div class="form-group">
-                        <label for="sekolah_id">Nama Operator Sekolah</label>
-                        {!! Form::select('sekolah_id', $listUser, null, [
+                    @if (Route::is('sekolah.create'))
+                        <div class="form-group">
+                            <label for="sekolah_id">Nama Operator Sekolah</label>
+                            {{-- {!! Form::select('sekolah_id', $listUser, null, [
                             'class' => 'form-control select2',
                             'placeholder' => 'Pilih Nama Operator',
                         ]) !!}
-                        <small class="text-danger">{{ $errors->first('name') }}</small>
-                    </div> --}}
-                    @if (Route::is('sekolah.create'))
-                        <div class="form-group">
+                        <small class="text-danger">{{ $errors->first('name') }}</small> --}}
+                            <select name="sekolah_id" id="sekolah_id" class="form-control" required>
+                                <option value="">Pilih Nama Operator Sekolah</option>
+                                @foreach ($listUser as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
+
+                        <div class="form-group mt-3">
                             <label for="npsn">NPSN Sekolah</label>
                             {!! Form::text('npsn', null, [
                                 'class' => 'form-control',
@@ -57,7 +65,7 @@
                         <small class="text-danger">{{ $errors->first('alamat') }}</small>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="notelp">No Handphone Sekolah</label>
+                        <label for="notelp">No Handphone</label>
                         {!! Form::text('notelp', null, ['class' => 'form-control', 'placeholder' => 'Inputkan No Hp Sekolah']) !!}
                         <small class="text-danger">{{ $errors->first('notelp') }}</small>
                     </div>

@@ -109,7 +109,7 @@ class UserController extends Controller
     {
         $requestData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'email' => 'required|unique:users,email,' . $id,
             'nohp' => 'required|unique:users,nohp,' . $id,
             'akses' => 'required|in:Admin Dinas,Admin Sekolah',
             'password' => 'nullable',

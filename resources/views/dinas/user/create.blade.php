@@ -18,8 +18,8 @@
                         <small class="text-danger">{{ $errors->first('name') }}</small>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="email">Email</label>
-                        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Inputkan Email']) !!}
+                        <label for="email">Email / Username</label>
+                        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Inputkan Email / Username']) !!}
                         <small class="text-danger">{{ $errors->first('email') }}</small>
                     </div>
                     <div class="form-group mt-3">
