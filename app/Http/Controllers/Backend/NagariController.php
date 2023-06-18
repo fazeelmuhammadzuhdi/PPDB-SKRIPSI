@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Kecamatan;
 use App\Models\Nagari;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class NagariController extends Controller
 {
@@ -59,7 +58,7 @@ class NagariController extends Controller
         ]);
 
         //redirect to index
-        return response()->json(['success' => 'Jurusan successfully added!']);
+        return response()->json(['success' => 'Data Nagari Berhasil Di Tambahkan']);
     }
 
     /**
@@ -109,7 +108,7 @@ class NagariController extends Controller
         $data->nama_nagari       = $request->nama_nagari;
         $data->kecamatan_id      = $request->kecamatan_id;
         $data->update();
-        return response()->json(['success' => 'Jurusan successfully updated!']);
+        return response()->json(['success' => 'Data Nagari Berhasil Di Update!']);
     }
 
     /**

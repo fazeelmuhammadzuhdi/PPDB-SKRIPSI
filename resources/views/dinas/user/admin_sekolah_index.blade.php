@@ -19,7 +19,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>Email</th>
+                                    <th>Email / Username</th>
                                     <th>Hak Akses Sekolah</th>
                                     <th>Aksi</th>
                                 </tr>

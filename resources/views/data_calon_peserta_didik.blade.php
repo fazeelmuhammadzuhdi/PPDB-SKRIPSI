@@ -9,40 +9,51 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
-                        <table class="table table-striped" id="myTable">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>No Pendaftaran</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>NISN</th>
-                                    <th>TTL</th>
-                                    <th>Sekolah Asal</th>
-                                    <th>Kecamatan</th>
-                                    <th>Nagari</th>
-                                    <th>Kampung</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($dataCPD as $item)
+                        @if ($dataCPD->isEmpty())
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <h6 class="alert-heading d-flex align-items-center fw-bold mb-1">Pesan !</h6>
+                                <p class="mb-0">Tidak Ada Data</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                </button>
+                            </div>
+                        @else
+                            <table class="table table-striped" id="myTable">
+                                <thead>
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ ucwords($item->no_pendaftaran) }}</td>
-                                        <td>{{ ucwords($item->nama_lengkap) }}</td>
-                                        <td>{{ ucwords($item->nisn) }}</td>
-                                        <td>{{ ucwords($item->getTempatTanggalLahirAttribute()) }}</td>
-                                        <td>{{ ucwords($item->sekolah_asal) }}</td>
-                                        <td>{{ $item->kecamatan?->nama_kecamatan }}</td>
-                                        <td>{{ $item->nagari?->nama_nagari }}</td>
-                                        <td>{{ $item->kampung?->nama_kampung }}</td>
+                                        <th>No</th>
+                                        <th>No Pendaftaran</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>NISN</th>
+                                        <th>TTL</th>
+                                        <th>Sekolah Asal</th>
+                                        <th>Kecamatan</th>
+                                        <th>Nagari</th>
+                                        <th>Kampung</th>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="text-center">Data Tidak Ada</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @forelse ($dataCPD as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ ucwords($item->no_pendaftaran) }}</td>
+                                            <td>{{ ucwords($item->nama_lengkap) }}</td>
+                                            <td>{{ ucwords($item->nisn) }}</td>
+                                            <td>{{ ucwords($item->getTempatTanggalLahirAttribute()) }}</td>
+                                            <td>{{ ucwords($item->sekolah_asal) }}</td>
+                                            <td>{{ $item->kecamatan?->nama_kecamatan }}</td>
+                                            <td>{{ $item->nagari?->nama_nagari }}</td>
+                                            <td>{{ $item->kampung?->nama_kampung }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="9" class="text-center">Data Tidak Ada</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        @endif
+
+
                     </div>
                 </div>
             </div>
