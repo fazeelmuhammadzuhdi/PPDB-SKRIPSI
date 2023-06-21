@@ -7,6 +7,7 @@ use App\Models\Kampung;
 use App\Models\Kecamatan;
 use App\Models\Nagari;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KampungController extends Controller
 {
@@ -42,10 +43,54 @@ class KampungController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        // $data = Validator::make($request->all(), [
+        //     'kecamatan_id' => 'required',
+        //     'nagari_id' => 'required',
+        //     'nama_kampung' => 'required',
+        // ]);
+        // if ($data->fails()) {
+        //     return redirect()->back()->withErrors($data)->withInput();
+        // } else {
+        //     Kampung::create([
+        //         'kecamatan_id' => $request->kecamatan_id,
+        //         'nagari_id' => $request->nagari_id,
+        //         'nama_kampung' => $request->nama_kampung,
+        //     ]);
 
-        Kampung::create($data);
+        //     flash('Data berhasil disimpan');
+
+        //     return redirect()->route('nama_rute')->with('success', 'Data berhasil disimpan!');
+        // }
+
+
+        $validator = Validator::make($request->all(), [
+            'kecamatan_id' => 'required',
+            'nagari_id' => 'required|not_in:--Pilih Nagari--',
+            'nama_kampung' => 'required',
+        ], [
+            'kecamatan_id.required' => 'Kecamatan harus dipilih.',
+            'nagari_id.required' => 'Nagari harus dipilih.',
+            'nagari_id.not_in' => 'Nagari harus dipilih.',
+            'nama_kampung.required' => 'Nama Kampung harus diisi.',
+        ]);
+
+        // Jika validasi gagal, akan kembali ke halaman sebelumnya dengan pesan kesalahan
+        // dan data input yang sudah diisi sebelumnya
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Simpan data ke database jika validasi berhasil
+        Kampung::create([
+            'kecamatan_id' => $request->kecamatan_id,
+            'nagari_id' => $request->nagari_id,
+            'nama_kampung' => $request->nama_kampung,
+        ]);
+
         flash('Data berhasil disimpan');
+
         return redirect()->route('kampung.index');
     }
 
@@ -113,7 +158,6 @@ class KampungController extends Controller
     public function getkecamatan(Request $request)
     {
         $id_kecamatan = $request->id_kecamatan;
-
         //get Data kecamatan    
         $kecamatan = Nagari::where('kecamatan_id', $id_kecamatan)->get();
 

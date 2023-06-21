@@ -31,16 +31,21 @@
 
                             <div class="form-group mt-3">
                                 <label for="kk" class="form-label">Nama Nagari</label>
-                                <select name="nagari_id" id="nagari_id" class="form-control select2">
+                                <select name="nagari_id" id="nagari_id"
+                                    class="form-control select2 @error('nama_kampung') is-invalid @enderror" required>
 
                                 </select>
-
+                                @error('nagari_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="form-group mt-3">
                                 <label for="nama_kampung" class="form-label">Nama Kampung</label>
                                 <input type="text" class="form-control @error('nama_kampung') is-invalid @enderror"
-                                    name="nama_kampung" value="{{ old('nama_kampung') }}">
+                                    name="nama_kampung" value="{{ old('nama_kampung') }}" required>
                                 @error('nama_kampung')
                                     <div class="invalid-feedback">
                                         {{ $message }}
