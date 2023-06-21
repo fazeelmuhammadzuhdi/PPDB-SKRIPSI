@@ -7,14 +7,18 @@
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('kecamatan.store') }}" class="needs-validation" novalidate="" method="POST">
+                <form action="{{ route('kecamatan.store') }}" method="POST">
                     @csrf
                     <div>
                         <div class="col-md-12">
                             <label class="form-label">Nama Kecamatan</label>
-                            <input class="form-control" type="text" name="nama_kecamatan" required>
+                            <input class="form-control" type="text"
+                                name="nama_kecamatan @error('nama_kecamatan') is-invalid @enderror" required>
+
                             @error('nama_kecamatan')
-                                <div class="valid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
                     </div>
