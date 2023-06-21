@@ -70,11 +70,11 @@ CREATE TABLE `kampungs` (
   KEY `kampungs_kecamatan_id_foreign` (`kecamatan_id`),
   CONSTRAINT `kampungs_kecamatan_id_foreign` FOREIGN KEY (`kecamatan_id`) REFERENCES `kecamatans` (`id`) ON DELETE CASCADE,
   CONSTRAINT `kampungs_nagari_id_foreign` FOREIGN KEY (`nagari_id`) REFERENCES `nagaris` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kampungs` */
 
-insert  into `kampungs`(`id`,`nama_kampung`,`nagari_id`,`kecamatan_id`,`created_at`,`updated_at`) values (7,'AJO',10,7,'2023-04-18 02:42:25','2023-04-18 02:42:25'),(8,'OIOI',10,7,'2023-04-18 02:56:03','2023-04-18 02:56:03'),(10,'NDK TAU',13,7,'2023-04-18 06:56:06','2023-04-18 06:56:06'),(11,'HILALANG',8,10,'2023-05-28 14:09:28','2023-05-28 14:09:28');
+insert  into `kampungs`(`id`,`nama_kampung`,`nagari_id`,`kecamatan_id`,`created_at`,`updated_at`) values (1,'HILALANG',1,1,'2023-06-18 21:22:57','2023-06-18 21:22:57'),(2,'PANAMBAM',8,1,'2023-06-18 21:26:33','2023-06-18 21:26:33');
 
 /*Table structure for table `kecamatans` */
 
@@ -86,11 +86,11 @@ CREATE TABLE `kecamatans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `kecamatans` */
 
-insert  into `kecamatans`(`id`,`nama_kecamatan`,`created_at`,`updated_at`) values (7,'LENGAYANG','2023-04-16 10:59:47','2023-04-16 11:01:42'),(10,'PANCUNG SOAL','2023-04-17 07:34:27','2023-04-17 07:34:27');
+insert  into `kecamatans`(`id`,`nama_kecamatan`,`created_at`,`updated_at`) values (1,'PANCUNG SOAL','2023-06-18 21:07:33','2023-06-18 21:07:33'),(2,'RANAH PESISIR','2023-06-18 21:07:54','2023-06-18 21:07:54'),(3,'LENGAYANG','2023-06-18 21:08:13','2023-06-18 21:08:13'),(4,'BATANG KAPAS','2023-06-18 21:08:26','2023-06-18 21:08:26'),(5,'IV JURAI','2023-06-18 21:08:41','2023-06-18 21:08:41'),(6,'BAYANG','2023-06-18 21:08:52','2023-06-18 21:08:52'),(7,'KOTO XI TARUSAN','2023-06-18 21:09:05','2023-06-18 21:09:05'),(8,'SUTERA','2023-06-18 21:09:16','2023-06-18 21:09:16'),(9,'LINGGO SARI BAGANTI','2023-06-18 21:09:24','2023-06-18 21:09:24'),(10,'LUNANG','2023-06-18 21:09:32','2023-06-18 21:09:32'),(11,'BASA IV BALAI TAPAN','2023-06-18 21:09:38','2023-06-18 21:09:38'),(12,'IV NAGARI BAYANG UTARA','2023-06-18 21:09:44','2023-06-18 21:09:44'),(13,'AIR PURA','2023-06-18 21:09:56','2023-06-18 21:09:56'),(14,'RANAH AMPEK HULU TAPAN','2023-06-18 21:10:04','2023-06-18 21:10:04'),(15,'SILAUT','2023-06-18 21:10:10','2023-06-18 21:10:10');
 
 /*Table structure for table `migrations` */
 
@@ -120,11 +120,11 @@ CREATE TABLE `nagaris` (
   PRIMARY KEY (`id`),
   KEY `nagaris_kecamatan_id_foreign` (`kecamatan_id`),
   CONSTRAINT `nagaris_kecamatan_id_foreign` FOREIGN KEY (`kecamatan_id`) REFERENCES `kecamatans` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `nagaris` */
 
-insert  into `nagaris`(`id`,`nama_nagari`,`kecamatan_id`,`created_at`,`updated_at`) values (8,'KUDO-KUDO INDERAPURA',10,'2023-04-17 08:21:08','2023-04-17 08:21:08'),(9,'INDERAPURA BARAT',10,'2023-04-17 08:21:19','2023-04-17 08:21:19'),(10,'KAMBANG UTARA',7,'2023-04-17 08:23:03','2023-04-17 08:23:03'),(13,'KAMBANG TIMUR',7,'2023-04-18 06:55:47','2023-04-18 06:55:47');
+insert  into `nagaris`(`id`,`nama_nagari`,`kecamatan_id`,`created_at`,`updated_at`) values (1,'INDERAPURA',1,'2023-06-18 21:11:34','2023-06-18 21:11:34'),(2,'INDERAPURA SELATAN',1,'2023-06-18 21:11:54','2023-06-18 21:11:54'),(3,'INDERAPURA BARAT',1,'2023-06-18 21:12:33','2023-06-18 21:12:33'),(4,'INDERAPURA TENGAH',1,'2023-06-18 21:14:07','2023-06-18 21:14:07'),(5,'TIGA SEPAKAT INDERAPURA',1,'2023-06-18 21:14:31','2023-06-18 21:14:31'),(6,'TIGO SUNGAI INDERAPURA',1,'2023-06-18 21:14:45','2023-06-18 21:14:45'),(7,'MUARO SAKAI INDERAPURA',1,'2023-06-18 21:15:05','2023-06-18 21:15:05'),(8,'KUDO-KUDO INDERAPURA',1,'2023-06-18 21:15:22','2023-06-18 21:15:22'),(9,'TLUK AMPLU INDERAPURA',1,'2023-06-18 21:15:43','2023-06-18 21:15:43'),(10,'SIMPANG LAMA INDERAPURA',1,'2023-06-18 21:16:39','2023-06-18 21:16:39');
 
 /*Table structure for table `password_resets` */
 
@@ -168,11 +168,9 @@ CREATE TABLE `penghargaans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `penghargaans` */
-
-insert  into `penghargaans`(`id`,`siswa_id`,`nama_penghargaan`,`tahun`,`file`,`created_at`,`updated_at`) values (1,3,'Juara 1','2022','lampu.jpg','2023-03-23 10:22:12','2023-03-23 10:22:12'),(2,3,'Juara 3','2023','logo dinas.png','2023-03-23 10:22:12','2023-03-23 10:22:12'),(3,1,'Juara 2','2022',NULL,'2023-03-24 11:24:41','2023-03-24 11:24:44'),(15,9,'juara 1','2022','kip.jpg','2023-04-15 08:33:16','2023-04-15 08:33:16'),(16,1,'Exercitationem in no','2023','1151-768x591.png','2023-05-16 11:01:08','2023-05-16 11:01:08'),(20,16,'Juara 1 MLBB','2023','prestasi.png','2023-06-06 13:32:09','2023-06-06 13:32:09'),(21,16,'Juara 2 MLBB JAYANUSA','2022','Login1.png','2023-06-06 13:32:09','2023-06-06 13:32:09');
 
 /*Table structure for table `penghasilans` */
 
@@ -225,11 +223,9 @@ CREATE TABLE `pindah_tugas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `pindah_tugas` */
-
-insert  into `pindah_tugas`(`id`,`siswa_id`,`sekolah_id`,`file`,`status`,`created_at`,`updated_at`) values (1,5,1,'file/pindahtugas/hsDS3AHknjyL0kqfnH6JxHq3iY41i9FuY1rIPOqH.pdf',NULL,'2023-04-08 11:03:46','2023-06-06 15:54:32'),(2,8,1,'file/pindahtugas/lxAJvke4OGvNF18PVOBtdr2K021dflKjjJQp5cE0.jpg',NULL,'2023-04-14 08:17:34','2023-06-06 15:38:14'),(3,2,3,'file/pindahtugas/YxG7DvlpWw5GuFVtCJTdG4mKZmOATyHP8f3OKtB9.png',1,'2023-04-18 04:05:00','2023-04-18 04:09:13');
 
 /*Table structure for table `prestasis` */
 
@@ -252,11 +248,9 @@ CREATE TABLE `prestasis` (
   PRIMARY KEY (`id`),
   KEY `prestasis_sekolah_id_index` (`sekolah_id`),
   KEY `prestasis_siswa_id_index` (`siswa_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `prestasis` */
-
-insert  into `prestasis`(`id`,`sekolah_id`,`siswa_id`,`k6sm1`,`k6sm2`,`k5sm1`,`k5sm2`,`k4sm2`,`jumlah`,`bukti_nilai_rapor`,`status`,`created_at`,`updated_at`) values (1,1,7,90,90,80,80,80,80,NULL,1,'2023-05-16 11:01:08','2023-05-16 11:01:08'),(5,1,1,9,75,3,83,76,49,'file/bukti_nilai_rapor/sLYzLWPW1jznQLS5SeNvySjOHoQ1QgrWuIPVf6kQ.pdf',1,'2023-05-16 11:01:08','2023-05-19 19:06:44'),(16,1,14,80,87,80,80,90,83,'file/bukti_nilai_rapor/nXNHJD9dYgPNEQFmIvODJkerOLkkf4oxE4aJmuNI.pdf',NULL,'2023-05-30 16:44:48','2023-06-06 15:39:44'),(20,1,16,90,89,90,90,90,90,'file/bukti_nilai_rapor/IgjmeHu3ePHA4Y4PdbS6kdxlcxvVJmvFlpspBaGW.pdf',NULL,'2023-06-06 13:32:08','2023-06-07 12:11:24');
 
 /*Table structure for table `sekolahs` */
 
@@ -277,11 +271,11 @@ CREATE TABLE `sekolahs` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `sekolahs_npsn_unique` (`npsn`),
   KEY `sekolahs_sekolah_id_index` (`sekolah_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `sekolahs` */
 
-insert  into `sekolahs`(`id`,`sekolah_id`,`npsn`,`nama`,`alamat`,`akreditasi`,`kecamatan`,`notelp`,`user_id`,`created_at`,`updated_at`) values (1,2,'1231231','SMP N 6 PAINAN','Adipisci voluptate ipsa sed ducimus non','A','Et qui animi do eaq','0786968',1,'2023-03-05 02:16:52','2023-03-05 02:17:08'),(3,12,'65252662','SMP N 2 PAINAN','<p>hddd</p>','A','Padang Selatan','0837383',1,'2023-04-15 08:41:31','2023-04-15 08:41:57'),(4,7,'1212121','SMP N 3 PAINAN','<p>afafaf</p>','A','Mollitia sequi volup','4754745745',1,'2023-04-18 06:52:54','2023-04-18 06:53:11');
+insert  into `sekolahs`(`id`,`sekolah_id`,`npsn`,`nama`,`alamat`,`akreditasi`,`kecamatan`,`notelp`,`user_id`,`created_at`,`updated_at`) values (1,2,'10301932','SMP NEGERI 1 PAINAN','<p>Jl. Sutan Syahrir, Painan, Kec. Iv Jurai, Kabupaten Pesisir Selatan, Sumatera Barat 25651</p>','A','Kec. IV Jurai','081374268190',1,'2023-06-18 20:55:12','2023-06-18 20:56:15');
 
 /*Table structure for table `settings` */
 
@@ -333,11 +327,11 @@ CREATE TABLE `siswas` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `siswas_nisn_unique` (`nisn`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `siswas` */
 
-insert  into `siswas`(`id`,`no_pendaftaran`,`nama_lengkap`,`nisn`,`tempat_lahir`,`tanggal_lahir`,`jenis_kelamin`,`agama`,`sekolah_asal`,`no_kk`,`no_nik`,`alamat`,`foto`,`nama_ayah`,`pekerjaan_ayah`,`penghasilan_ayah`,`nama_ibu`,`pekerjaan_ibu`,`penghasilan_ibu`,`user_id`,`kecamatan_id`,`nagari_id`,`kampung_id`,`created_at`,`updated_at`) values (1,'20230804001','Fazeel Muhammad','14141','Padang','2004-03-11','L','Islam','Dolor pariatur Natu','12','13131313','Dolorum alias laboru','public/tqZx3MavLwLfQlvluYQ7gNp6xYtURYkS015nq9r3.png','Junaidi','PNS','> Rp.4.000,000','Daniel Benjamin','Ibu Rumah Tangga','Rp.1.000,000 s/d Rp.1.500,000',4,10,10,10,'2023-03-04 14:09:46','2023-03-16 11:15:22'),(2,'20230804002','Nanda Kuriak','1231','Padang','1992-01-01','L','Hindu','Natus et et consecte','Non doloremque neces','Sint sapiente assume','Ut iure maxime volup','public/39jWKxum2obTFSgIF0FtP6hfV0ayg5yFSsZu6PyR.png','Alyssa Sheppard','TNI/POLRI','Rp.3.500,000 s/d Rp.4.000,000','Elaine Odom','Wiraswasta','Rp.3.500,000 s/d Rp.4.000,000',6,7,7,7,'2023-03-05 03:16:44','2023-03-05 03:53:14'),(5,'20230804003','afafafaf','3111111111','Padang','2023-03-24','L','Islam','SD N 1','1313123131313131','1321312313131313','Jl.Permata','public/LZEAPlKAOAVtOfBBNY5JzGE1oHvhRFt1A4qOCbM3.png','Martena Frazier','TNI/POLRI','Rp.0 s/d Rp.500,000','Yvette Dorsey','Wiraswasta','Rp.500,000 s/d Rp.1.000,000',9,7,7,7,'2023-03-24 08:25:44','2023-03-24 08:25:44'),(7,'20230804004','Do sed vero esse ev','1234567890','Medan','2011-12-17','P','Islam','Autem quia rerum dol','1234567890123456','1234567890123456','<p>Jl.Mantap Cuy</p>','public/O19wfCdPrlq8SJqPqlDp5HxUbhdP12C7sJzL9sIM.png','Blaine Park','TNI/POLRI','Rp.3.500,000 s/d Rp.4.000,000','Jorden Booth','PNS','> Rp.4.000,000',3,10,10,10,'2023-04-08 06:34:05','2023-04-08 06:34:05'),(8,'20231404005','oioioi','1234567891','Padang','2023-04-14','L','Islam','SD N 1 PADANG','1214124124141414','2525114141414414','<p>Jl.fahfjahfa</p>','public/mAIeVsRKfD3cWCvR9RW2zys7l31Xc2U9sgQHdY8H.png','Coy coy','PNS','> Rp.4.000,000','Kevin Raymond','Ibu Rumah Tangga','Rp.3.500,000 s/d Rp.4.000,000',10,7,7,7,'2023-04-14 08:16:36','2023-04-14 08:16:36'),(9,'20231504006','Dolor eaque minim il','1234568979','paoaa','1979-10-21','L','Islam','Nemo repudiandae qua','1577267265257526','2562656752675675','<p>jhjhjh</p>','public/A5vS64FGcgSw0VzHQjVVtGCaASvx2r7vsjA1t5pr.png','Dean Barrera','Swastaa','Rp.1.500,000 s/d Rp.2.000,000','Melinda Gamble','Swastaa','Rp.3.500,000 s/d Rp.4.000,000',11,7,10,7,'2023-04-15 08:30:47','2023-04-18 07:10:34'),(10,'20231804007','Aliquid nulla quam v','1234252352','Padang','1985-11-02','L','Islam','Dolor culpa tempora','5235252352314144','2352521342143242','<p>afafafaf</p>','public/Hdgq2e1m7EpScC5PqvUMSBzY5ASaI2pU5loTwplV.png','Briar Short','TNI/POLRI','Rp.3.500,000 s/d Rp.4.000,000','Wang Pate','Wiraswasta','Rp.2.500,000 s/d Rp.3.000,000',13,7,13,10,'2023-04-18 04:50:32','2023-06-07 11:24:40'),(11,'20230105008','Et eaque eos odio v','4745745745','Padang Panjag','2003-06-20','L','Islam','Quia molestiae in ac','4868568585858568','7467474484856856','<p>Jl.Kampung Indah</p>','public/QVvFOtxBKuqSjO7jaUgpQNYTQEtI8wl2MHN3LZR1.png','Roanna Marks','TNI/POLRI','Rp.1.000,000 s/d Rp.1.500,000','Keegan Caldwell','TNI/POLRI','Rp.500,000 s/d Rp.1.000,000',15,7,10,8,'2023-05-01 07:10:32','2023-05-01 07:10:32'),(12,'20231905009','Dicta enim optio iu','1463634636','Padang','2005-10-27','L','Islam','SD 1 PADANG','3653636363463634','6346346346363634','<p>Jl. Permata</p>','public/Mb1sBL8EX6cEIZJ93U04S6JBqTyvfmS5dFYpk5t1.jpg','Carly Munoz','TNI/POLRI','Rp.100,000 s/d Rp.500,000','Ila Bentley','Ibu Rumah Tangga','Rp.4.000,000 s/d Rp.5.000,000',18,7,10,7,'2023-05-19 18:58:57','2023-05-19 18:58:57'),(14,'20230834010','Dolore est do minus','1314112412','Eos obcaecati rem a','1998-09-28','L','Islam','Possimus proident','1241412414214141','4124124141241241','<p>Jl.HAHAHAHA</p>','public/file/fotosiswa/qZhXTHTLPOMzEEQGieB39Fco5rkCZ7pygc073eFn.png','Quail Molina','Wiraswasta','Rp.4.000,000 s/d Rp.5.000,000','Veronica Pitts','Swastaa','Rp.2.500,000 s/d Rp.3.000,000',20,7,10,7,'2023-05-26 08:35:03','2023-05-26 10:45:24'),(15,'20231046011','Yogi','1472252526','Padang','1984-12-26','L','Islam','SD N 1 PAINAN','2583257259835735','2358273583574358','<p>Jl.Raya Padang</p>','public/file/fotosiswa/kD0ZxdzflYc22XgaKmwcpYMriw25PDER3BcAIjEg.png','Stephanie Johnson','PNS','Rp.2.500,000 s/d Rp.3.000,000','Arden Cameron','TNI/POLRI','Rp. >5.000,000',22,7,10,8,'2023-06-03 10:48:33','2023-06-03 10:48:33'),(16,'20231135012','Antonio Valencia','2562357625','Padang','2001-01-17','L','Islam','SD NEGERI 1 PAINAN','8234752263526735','3578357635346535','<p>Jl.Manchester</p>','public/file/fotosiswa/UlwfVkA96fvfYw9efBhjFX4va92pzDLiVwnZ6bik.png','Cheyenne Fry','Wiraswasta','Rp.3.500,000 s/d Rp.4.000,000','Dieter Foreman','Wiraswasta','Rp.3.500,000 s/d Rp.4.000,000',24,10,8,11,'2023-06-06 11:38:56','2023-06-06 13:50:46');
+insert  into `siswas`(`id`,`no_pendaftaran`,`nama_lengkap`,`nisn`,`tempat_lahir`,`tanggal_lahir`,`jenis_kelamin`,`agama`,`sekolah_asal`,`no_kk`,`no_nik`,`alamat`,`foto`,`nama_ayah`,`pekerjaan_ayah`,`penghasilan_ayah`,`nama_ibu`,`pekerjaan_ibu`,`penghasilan_ibu`,`user_id`,`kecamatan_id`,`nagari_id`,`kampung_id`,`created_at`,`updated_at`) values (1,'20231806001','Fazeel Muhammad Zuhdi','1424722424','Padang','2023-06-18','L','Islam','SD NEGERI 1 PAINAN','2523523141242152','1312423523525252','<p>Jl. Permata Harbaindo H 13 No 12</p>','public/file/fotosiswa/NHeYcoKPWnygz4lO1907XXOGia7jbr4Ic3RK6A7G.png','Ipul','Swastaa','Rp. >5.000,000','Decul','Ibu Rumah Tangga','Rp.100,000 s/d Rp.500,000',3,1,1,1,'2023-06-18 21:32:02','2023-06-18 21:50:09');
 
 /*Table structure for table `users` */
 
@@ -356,11 +350,11 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`akses`,`nohp`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'dinas','dinas@contoh.com','Admin Dinas','081234567890','2023-03-04 14:05:09','$2y$10$RamXKMFXp4JlY5h3UGBiKe9udwGltGtAt/v51zbTo9Fv3of39hrda',NULL,'2023-03-04 14:05:09','2023-03-04 14:05:09'),(2,'sekolah','sekolah@contoh.com','Admin Sekolah','081234567890','2023-03-04 14:05:09','$2y$10$cHuuTRAuD2JqbksKg9uYQuMX1Z9T57qR0kq1o0yJgVF7pnRNlY1Ji',NULL,'2023-03-04 14:05:09','2023-03-04 14:05:09'),(3,'siswa','siswa@contoh.com','Siswa','08123456782252352','2023-03-04 14:05:09','$2y$10$2VR/Y126i2MO0EZs6t9Qnu3hSweYd/u.3L3e4Ak2ZC4jwP7doODu6',NULL,'2023-03-04 14:05:09','2023-06-07 15:12:23'),(4,'FAZEEL MUHAMMAD ZUHDI','fazeelmuhammadzuhdi@gmail.com','Siswa',NULL,NULL,'$2y$10$uQGkil2ArtD.7AOFryXWBu/4qU8cF.rrMCFLIjWTsvWWnCfDyuueK',NULL,'2023-03-04 14:05:40','2023-03-04 14:05:40'),(5,'afafa','131232131@mailinator.com','Siswa','131414141412',NULL,'$2y$10$I5fikzQEuWNPP3guNIDAhufeS7BQq6au1puViULbZgvzxT05Mv4kq',NULL,'2023-03-04 14:45:11','2023-03-05 05:11:41'),(6,'Mikayla Vaughn','vymez@mailinator.com','Siswa','6856',NULL,'$2y$10$miRuYhOslYkK2Jdbz9bh8.FW03xPwtFjtGiBC2skpx9jcBgdLmXcW',NULL,'2023-03-05 02:49:50','2023-03-05 04:57:19'),(7,'Destiny Webb','keso@mailinator.com','Admin Sekolah','36363636363',NULL,'$2y$10$/k4GcJzDrjnF3dIWZ/VyJuEE/d4plNAHgmsdvkKn6RpcF58FROQCK',NULL,'2023-03-17 10:50:59','2023-03-17 10:50:59'),(8,'agung','agung@gmail.com','Siswa',NULL,NULL,'$2y$10$SUWaKK4j3g/oPeS1OCfI.uPAqKj4Ktgh99Hn.CHtdLHAN5E.F8Zc6',NULL,'2023-03-21 07:34:22','2023-03-21 07:34:22'),(9,'Acton Clayton','zuneh@mailinator.com','Siswa',NULL,NULL,'$2y$10$3NhRt1pKDKNE4yOgtNXLL.rUxZnfF/K.bLeHHTOy0LhyoHpgcQVfa',NULL,'2023-03-22 01:27:11','2023-03-22 01:27:11'),(10,'oioioi','oioi@gmail.com','Siswa',NULL,NULL,'$2y$10$qFAVzCC8FYNHFkUwpSuEE./xBLgX1khZRiFYOPpXAH14mrK/gWTcy',NULL,'2023-04-14 08:10:44','2023-04-14 08:10:44'),(11,'Chancellor Savage','vovof@mailinator.com','Siswa',NULL,NULL,'$2y$10$tH1QpH9IxNM.UA8MLSmCNOLFOraacfdIAcMQsrtUABRmxMx8CuqaS',NULL,'2023-04-15 08:28:23','2023-04-15 08:28:23'),(12,'ucokk','ucok@gmail.com','Admin Sekolah','0873837',NULL,'$2y$10$RamXKMFXp4JlY5h3UGBiKe9udwGltGtAt/v51zbTo9Fv3of39hrda',NULL,'2023-04-15 08:40:39','2023-04-15 08:40:39'),(13,'Fuller Logan','diqina@mailinator.com','Siswa',NULL,NULL,'$2y$10$kG4veqQTkJX0njuc0gyaHOlQzWQbaYDJu8yY8.3M6GMePcpkbtNpu',NULL,'2023-04-18 04:19:58','2023-04-18 04:19:58'),(14,'Gisela Moses','zenobasuq@mailinator.com','Siswa',NULL,NULL,'$2y$10$WZthStcjkEMG7s7wHQ/l/Odra3B8AeVNt5SeM3gvYr4m5iX7TFFzS',NULL,'2023-04-18 05:20:33','2023-04-18 05:20:33'),(15,'Irfan','ipan@gmail.com','Siswa',NULL,NULL,'$2y$10$BpvpdNMD/DKw5ekt2K2l/esOFiJcWwtPQfiSH6pyTqMlRB.8aoSAq',NULL,'2023-05-01 07:04:56','2023-05-01 07:04:56'),(16,'Cameron Oneal','satiryz@mailinator.com','Siswa',NULL,NULL,'$2y$10$p9cNV7XC/Fa0hFiVuazm3OIZqsAHyZ6oO6easW/U9Dk78LwtZA4D.',NULL,'2023-05-08 03:15:44','2023-05-08 03:15:44'),(17,'Winter Ratliff','cafucul@mailinator.com','Siswa',NULL,NULL,'$2y$10$ztItVBXH/fRR66Q9sbGT5.9MUXf3t88Bu0dL3gPxjAqGccaQIUh86',NULL,'2023-05-17 11:11:11','2023-05-17 11:11:11'),(18,'veri','veri@gmail','Siswa',NULL,NULL,'$2y$10$resYWPSiRAO66cssCoqitO2QzuD5micivJvDD2vrSQMhdTzIC1zbS',NULL,'2023-05-19 18:57:37','2023-05-19 18:57:37'),(19,'Stuart Fry','netipac@mailinator.com','Siswa',NULL,NULL,'$2y$10$Ak9MSMF92EWrJKlLHTEI.Ok3u8J2k0VWIrpODTytI7WAP2J8CJCzq',NULL,'2023-05-20 10:49:41','2023-05-20 10:49:41'),(20,'ucokkk','ucok','Siswa',NULL,NULL,'$2y$10$MO3jU/q1cA8ySaXuTLUMF.eaaognLVZw8b5.PhcR/ehsvGEkkPZtS',NULL,'2023-05-26 08:28:26','2023-05-26 08:28:26'),(22,'cugik','cugik','Siswa',NULL,NULL,'$2y$10$NqOeeOXYrgyuFwqE.YrPTekaLvnMZKHrLTTIPZHEMsitFDkrOaWs6',NULL,'2023-06-03 10:46:29','2023-06-03 10:46:29'),(23,'rivaldo','rivaldo','Siswa',NULL,NULL,'$2y$10$e6WaXdBDgY4zD/Xtgd5A3OSSutF6AJLg.RRgsNuY6QHk//I96xllu',NULL,'2023-06-04 15:38:55','2023-06-04 15:38:55'),(24,'anto','anto','Siswa',NULL,NULL,'$2y$10$.ktZLsSVxAHSuEukjRjAYuxtnq0QMdTTqZjEIjMuIMlvnZh183/6a',NULL,'2023-06-06 11:35:19','2023-06-06 11:35:19'),(27,'SALIM MUHAIMIN,S.Pd,M.Si','kepaladinas@gmail.com','Kepala Dinas','4225285252525',NULL,'$2y$10$t/12Cxh2RM27mYwSmQ6FzOm.uV0rMLmXgyJBAgL70FH3.MdR58lZe',NULL,'2023-06-07 15:39:17','2023-06-07 15:39:17');
+insert  into `users`(`id`,`name`,`email`,`akses`,`nohp`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'admin','admin@contoh.com','Admin Dinas','08236426425',NULL,'$2y$10$R7MdWvCNtCAHMjft7zemXOVMxUuWDz85GKdPoLZjGezExWdfp.gvW',NULL,'2023-06-18 20:23:18','2023-06-18 20:23:20'),(2,'Linda','smpn1painan@gmail.com','Admin Sekolah','081266251435',NULL,'$2y$10$0BYy4xRsFZ72IMxg18J2pe4.gBVLjWa.pfWqUe9cibQ1J4FWl7MFq',NULL,'2023-06-18 20:31:51','2023-06-18 20:31:51'),(3,'FAZEEL MUHAMMAD ZUHDI','fazeel@gmail.com','Siswa',NULL,NULL,'$2y$10$a7Sv5wRRLtSvglAfKbEQ7uLPZSsu9qcrSoTO263Cz68DkBTKQkWg.',NULL,'2023-06-18 20:42:54','2023-06-18 20:42:54');
 
 /*Table structure for table `zonasi_sekolahs` */
 
@@ -377,11 +371,11 @@ CREATE TABLE `zonasi_sekolahs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `zonasi_sekolahs` */
 
-insert  into `zonasi_sekolahs`(`id`,`nagari_id`,`kampung_id`,`kecamatan_id`,`sekolah_id`,`no_urut`,`nilai`,`created_at`,`updated_at`) values (13,10,7,7,4,'1','70','2023-05-29 17:10:44','2023-05-29 17:10:44'),(14,10,8,7,4,'2','69','2023-05-29 17:17:02','2023-05-29 17:17:02'),(15,8,11,10,3,'1','70','2023-06-06 11:42:24','2023-06-06 11:50:38'),(37,13,10,7,1,'1','70','2023-06-07 11:19:10','2023-06-07 11:19:10');
+insert  into `zonasi_sekolahs`(`id`,`nagari_id`,`kampung_id`,`kecamatan_id`,`sekolah_id`,`no_urut`,`nilai`,`created_at`,`updated_at`) values (1,1,1,1,1,'1','70','2023-06-18 21:28:40','2023-06-18 21:28:40'),(2,8,2,1,1,'2','69','2023-06-18 21:29:09','2023-06-18 21:29:09');
 
 /*Table structure for table `zonasis` */
 
@@ -395,11 +389,9 @@ CREATE TABLE `zonasis` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `zonasis` */
-
-insert  into `zonasis`(`id`,`sekolah_id`,`siswa_id`,`created_at`,`updated_at`,`status`) values (1,4,9,'2023-04-18 07:24:12','2023-05-29 21:02:16','1'),(3,4,11,'2023-05-01 07:15:05','2023-05-29 21:00:15','1'),(22,4,12,'2023-05-19 19:02:26','2023-05-29 21:00:15','1'),(24,1,10,'2023-06-07 11:24:53','2023-06-07 11:24:53','1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

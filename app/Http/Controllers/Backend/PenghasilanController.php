@@ -70,7 +70,7 @@ class PenghasilanController extends Controller
         $validation = Validator::make($request->all(), [
             'name' => 'required|string',
         ], [
-            'name.required' => 'Field Jenis Buku Wajib Diisi',
+            'name.required' => 'Field Penghasilan Wajib Diisi',
         ]);
 
         if ($validation->fails()) {
@@ -115,7 +115,7 @@ class PenghasilanController extends Controller
             'name' => 'required|string',
 
         ], [
-            'name.required' => 'Field Wajib Diisi',
+            'name.required' => 'Field Penghasilan Wajib Diisi',
 
         ]);
 
