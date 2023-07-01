@@ -18,7 +18,7 @@ class KampungController extends Controller
      */
     public function index()
     {
-        $kampung = Kampung::with('nagari', 'kecamatan')->get();
+        $kampung = Kampung::with('nagari', 'kecamatan')->orderBy('kecamatan_id', 'asc')->orderBy('nagari_id', 'asc')->orderBy('nama_kampung', 'asc')->get();
 
         return view('kampung.index', compact('kampung'));
     }

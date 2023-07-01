@@ -37,13 +37,15 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama_kecamatan }}</td>
                                         <td>
-                                            @foreach ($item->nagari as $data)
-                                                {{ $loop->iteration }}. {{ $data->nama_nagari }} <br>
+                                            @foreach ($item->nagari->sortBy('nama_nagari') as $data)
+                                                {{ $loop->iteration }}. {{ $data->nama_nagari }} <br
+                                                    style="margin-bottom: 0;">
                                             @endforeach
                                         </td>
                                         <td>
-                                            @foreach ($item->kampung as $data)
-                                                {{ $loop->iteration }}. {{ $data->nama_kampung }} <br>
+                                            @foreach ($item->kampung->sortBy('nama_kampung') as $data)
+                                                {{ $loop->iteration }}. {{ $data->nama_kampung }} <br
+                                                    style="margin-bottom: 0;">
                                             @endforeach
                                         </td>
                                         <td>
@@ -71,6 +73,7 @@
     @include('kecamatan.add')
     @include('kecamatan.edit')
 @endsection
+
 
 @push('after-script')
     <script>
