@@ -127,7 +127,6 @@
 
     <script>
         $(document).ready(function() {
-
             $('.add').on("click", function(e) {
                 e.preventDefault()
                 $.ajax({
@@ -188,7 +187,7 @@
                 });
             });
 
-            $('.edit').on("click", function(e) {
+            $(document).on("click", ".edit", function(e) {
                 e.preventDefault();
                 var id = $(this).attr('data-bs-id');
                 $.ajax({
@@ -198,8 +197,6 @@
                     success: function(data) {
                         $('#id').val(data['item'].id);
                         $('#nama_nagari').val(data['item'].nama_nagari);
-
-
                         $('#kecamatan_id').empty();
 
                         $.each(data['option'], function(i, value) {

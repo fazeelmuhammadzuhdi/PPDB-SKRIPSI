@@ -29,7 +29,7 @@ class SekolahController extends Controller
             // 'sekolah' => Sekolah::latest()->get(),
             'sekolah' => Sekolah::with('adminSekolah')->latest()->get(),
             'routePrefix' => $this->routePrefix,
-            'title' => 'Data Semua Sekolah',
+            'title' => 'Data Semua Sekolah SMP Kabupaten Pesisir Selatan',
         ]);
     }
 
@@ -67,7 +67,7 @@ class SekolahController extends Controller
         $requestData['user_id'] = auth()->user()->id;
         // dd($requestData);
         $sekolah = Sekolah::create($requestData);
-        flash('Data berhasil disimpan');
+        flash('Data Sekolah ' .  $sekolah->nama . ' Berhasil Di Simpan');
         return redirect()->route('sekolah.index');
     }
 
@@ -120,7 +120,7 @@ class SekolahController extends Controller
         $requestData['user_id'] = auth()->user()->id;
         $sekolah = Sekolah::findOrFail($id);
         $sekolah->update($requestData);
-        flash('Data berhasil diUpdate');
+        flash("Data Sekolah $sekolah->nama Berhasil Di Update");
         return redirect()->route('sekolah.index');
     }
 
@@ -133,11 +133,8 @@ class SekolahController extends Controller
     public function destroy($id)
     {
         $sekolah = Sekolah::findOrFail($id);
-
-        flash("Data Berhasil Di Hapus");
-        return back();
         $sekolah->delete();
-        // flash('Data berhasil dihapus');
+        // flash("Data Sekolah $sekolah->nama Berhasil Di Hapus");
         return back();
     }
 }

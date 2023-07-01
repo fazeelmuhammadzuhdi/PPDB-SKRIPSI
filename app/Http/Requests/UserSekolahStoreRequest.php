@@ -25,7 +25,7 @@ class UserSekolahStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required',
             'nohp' => 'required|unique:users',
             'password' => 'required',
         ];
@@ -36,7 +36,6 @@ class UserSekolahStoreRequest extends FormRequest
         return [
             'name.required' => ':attribute Tidak Boleh Kosong',
             'email.required' => ':attribute Tidak Boleh Kosong',
-            'email.unique' => ':attribute Sudah Terdaftar',
             'nohp.required' => ':attribute Tidak Boleh Kosong',
             'password.required' => ':attribute Tidak Boleh Kosong',
         ];

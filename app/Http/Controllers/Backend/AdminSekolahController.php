@@ -46,7 +46,7 @@ class AdminSekolahController extends Controller
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN',
-            'title' => 'Form Edit User Sekolah',
+            'title' => 'Form Input User Sekolah',
             'routePrefix' => $this->routePrefix,
         ];
 
@@ -118,7 +118,7 @@ class AdminSekolahController extends Controller
     {
         $requestData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'email' => 'required' . $id,
             'nohp' => 'required|unique:users,nohp,' . $id,
             'password' => 'nullable',
         ]);

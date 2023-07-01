@@ -14,7 +14,7 @@
                     {!! Form::model($sekolah, ['route' => $route, 'method' => $method]) !!}
                     @if (Route::is('sekolah.create'))
                         <div class="form-group">
-                            <label for="sekolah_id">Nama Operator Sekolah</label>
+                            <label for="sekolah_id">Nama Operator / Admin Sekolah</label>
                             {{-- {!! Form::select('sekolah_id', $listUser, null, [
                             'class' => 'form-control select2',
                             'placeholder' => 'Pilih Nama Operator',

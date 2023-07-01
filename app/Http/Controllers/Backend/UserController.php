@@ -61,7 +61,7 @@ class UserController extends Controller
         $requestData =  $request->validated();
         $requestData['password'] = bcrypt($request->password);
         $user = User::create($requestData);
-        flash('Data berhasil disimpan');
+        flash('Data Berhasil Di Simpan');
         return redirect()->route('user.index');
     }
 
@@ -123,7 +123,7 @@ class UserController extends Controller
             unset($requestData['password']);
         }
         $user->update($requestData);
-        flash('Data berhasil diUpdate');
+        flash('Data User Dengan Nama ' .  $user->name  . ' Berhasil di Update');
         return redirect()->route('user.index');
     }
 

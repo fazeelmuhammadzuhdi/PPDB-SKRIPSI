@@ -16,7 +16,7 @@ class NagariController extends Controller
      */
     public function index()
     {
-        $nagari = Nagari::with('kecamatan')->get();
+        $nagari = Nagari::with('kecamatan')->orderBy('kecamatan_id', 'asc')->orderBy('nama_nagari', 'asc')->get();
         return view('nagari.index', compact('nagari'));
     }
 
@@ -50,6 +50,9 @@ class NagariController extends Controller
         $this->validate($request, [
             'nama_nagari'     => 'required',
             'kecamatan_id'   => 'required',
+        ], [
+            'kecamatan_id.required' => "Nama Kecamatan Tidak Boleh Kosong",
+            'nama_nagari.required' => "Nama Nagari Tidak Boleh Kosong",
         ]);
 
         Nagari::create([
