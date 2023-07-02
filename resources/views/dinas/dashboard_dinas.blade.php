@@ -58,6 +58,14 @@
                             <h3>{{ $jumlahKampung }} Kampung</h3>
                         </span>
                     </li>
+
+                    <li>
+                        <i class="bx bx-map-pin"></i>
+                        <span class="text">
+                            <p>Jumlah Siswa Diterima</p>
+                            <h3>{{ $totalSiswaLulus }} Siswa</h3>
+                        </span>
+                    </li>
                 </ul>
             @elseif (auth()->user()->akses == 'Kepala Dinas')
                 <ul class="box-info">

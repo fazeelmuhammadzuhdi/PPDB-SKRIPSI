@@ -24,7 +24,14 @@ class DashboardDinasController extends Controller
             $jumlahKecamatan = Kecamatan::count();
             $jumlahNagari = Nagari::count();
             $jumlahKampung = Kampung::count();
-            return view('dinas.dashboard_dinas', compact('siswa', 'jumlahSekolah', 'jumlahKecamatan', 'jumlahNagari', 'jumlahKampung'));
+
+            $siswaLulusPrestasi = Prestasi::where('status', 1)->count();
+            $siswaLulusAfirmasi = Afirmasi::where('status', 1)->count();
+            $siswaLulusPindahTugas = PindahTugas::where('status', 1)->count();
+            $siswaLulusZonasi = Zonasi::where('status', 1)->count();
+            $totalSiswaLulus = $siswaLulusAfirmasi + $siswaLulusPrestasi + $siswaLulusPindahTugas + $siswaLulusZonasi;
+
+            return view('dinas.dashboard_dinas', compact('siswa', 'jumlahSekolah', 'jumlahKecamatan', 'jumlahNagari', 'jumlahKampung', 'totalSiswaLulus'));
         }
 
         if (auth()->user()->akses == 'Kepala Dinas') {
