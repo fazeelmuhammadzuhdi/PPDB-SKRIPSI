@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Creata Data Kampung</h3> <small class="text-muted float-end">
+                    <h3 class="mb-0">Create Data Kampung</h3> <small class="text-muted float-end">
                 </div>
 
                 <form enctype="multipart/form-data" method="POST" action="{{ route('kampung.store') }}">
@@ -15,7 +15,8 @@
                         <div class="row">
                             <div class="form-group">
                                 <label for="kecamatan_id" class="form-label">Nama Kecamatan</label>
-                                <select name="kecamatan_id" id="kecamatan_id" class="form-control select2" required>
+                                <select name="kecamatan_id" id="kecamatan_id" class="form-control select2" autofocus
+                                    required>
                                     <option value="">--Pilih Kecamatan--</option>
                                     @foreach ($kecamatan as $item)
                                         <option value="{{ $item->id }}">{{ $item->nama_kecamatan }}</option>

@@ -129,7 +129,13 @@ class KampungController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        // $data = $request->all();
+
+        $data = $request->validate([
+            'kecamatan_id' => 'required',
+            'nagari_id' => 'required',
+            'nama_kampung' => 'required',
+        ]);
 
         $item = Kampung::findOrFail($id);
 
