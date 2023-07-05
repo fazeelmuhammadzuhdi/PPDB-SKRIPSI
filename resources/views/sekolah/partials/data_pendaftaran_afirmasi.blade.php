@@ -45,7 +45,7 @@
                             @endif
                         @endforeach --}}
                         @switch($item->siswa->kampung_id)
-                            @case($zonasiSekolah->first()->kampung_id)
+                            @case($zonasiSekolah->first()->kampung_id ?? '')
                                 DALAM ZONASI
                             @break
 

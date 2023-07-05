@@ -11,10 +11,7 @@ use App\Models\Nagari;
 use App\Models\Pekerjaan;
 use App\Models\Penghasilan;
 use App\Models\Siswa;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -32,7 +29,7 @@ class SiswaController extends Controller
         // dd($data);
         return view('siswa.index', [
             'siswa' => Siswa::with('kecamatan', 'nagari', 'kampung')->siswa()->get(),
-            'title' => 'BIODATA SISWA',
+            'title' => 'BIODATA CALON PESERTA DIDIK',
             'cek' =>  Siswa::siswa()->count()
         ]);
     }

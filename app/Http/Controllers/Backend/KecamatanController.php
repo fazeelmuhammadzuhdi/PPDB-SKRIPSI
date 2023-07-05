@@ -17,7 +17,7 @@ class KecamatanController extends Controller
     {
         $kecamatan = Kecamatan::with(['nagari', 'kampung'])->get();
 
-        return view('kecamatan.index', compact('kecamatan'));;
+        return view('kecamatan.index', compact('kecamatan'));
     }
 
     /**
@@ -41,7 +41,7 @@ class KecamatanController extends Controller
         $this->validate($request, [
             'nama_kecamatan' => 'required'
         ]);
-
+ 
         Kecamatan::create([
             'nama_kecamatan' => $request->nama_kecamatan
         ]);
