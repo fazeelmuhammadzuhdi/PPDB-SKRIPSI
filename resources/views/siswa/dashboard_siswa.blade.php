@@ -72,7 +72,9 @@
                         <li class=text-lights>Terakhir Kamu Tinggal Menunggu Informasi Kelulusan. Jika Sudah Waktunya
                             Silahkan Cek Hasil Kelulusannya Dengan Memasukkan Nomor Pendaftaran Yang Telah Di Didapatkan.
                         </li>
-
+                        <li class="text-lights">Berikut Ini Contoh Upload Bukti Nilai Rapor</li>
+                        <a href="{{ asset('images/Bukti Nilai Rapor.pdf') }}" class="btn btn-danger mt-2" download>Contoh Upload
+                            Bukti Nilai Rapor</a>
                     </ol>
 
                 </div>
