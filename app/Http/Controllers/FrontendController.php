@@ -20,6 +20,9 @@ class FrontendController extends Controller
 
     public function jadwalPendafaran()
     {
-        return view('frontend.jadwal-pendaftaran');
+        $awalPendaftaran = settings('awal_pendaftaran');
+        $akhirPendaftaran = settings('akhir_pendaftaran');
+        $pengumumanKelulusan = settings('jadwa_kelulusan');
+        return view('frontend.jadwal-pendaftaran', compact('awalPendaftaran', 'akhirPendaftaran', 'pengumumanKelulusan'));
     }
 }

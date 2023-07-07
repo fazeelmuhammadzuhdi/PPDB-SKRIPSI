@@ -25,7 +25,7 @@ class SettingPpdbController extends Controller
     public function create()
     {
         return view('setting.settingppdb', [
-            'title' => 'PENGATURAN PPDB',
+            'title' => 'PENGATURAN PPDB TAHUN AJARAN',
         ]);
     }
 

@@ -21,7 +21,8 @@
         <div class="container">
             <div class="row gx-5">
                 <div class="col-md-12">
-                    <h2>Jadwal Pendaftaran PPDB Tahun Ajaran {{ now()->format('Y') }}</h2>
+                    <h2>Jadwal Pendaftaran PPDB Tahun Ajaran {{ now()->format('Y') }} /
+                        {{ now()->addYears(1)->format('Y') }}</h2>
                 </div>
             </div>
         </div>
@@ -30,7 +31,8 @@
         <div class="container mt-4">
             <h3><b>Jadwal Pelaksanaan PPDB</b></h3>
             <div class="row">
-                <p>Adapun jadwal pelaksanaan PPDB Pesisir Selatan tahun 2023 adalah sebagai berikut : </p>
+                <p>Adapun jadwal pelaksanaan PPDB Pesisir Selatan Tahun {{ now()->format('Y') }} adalah sebagai berikut
+                    : </p>
                 <table class="table table-hover table-bordered table-responsive">
                     <thead class="bg-primary" style="color: white;">
                         <tr>
@@ -42,33 +44,28 @@
                     <tbody>
                         <tr>
                             <th>1.</th>
-                            <td>15 - 19 Mei 2023</td>
-                            <td>Pendaftaran PPDB </td>
+                            <td>{{ \Carbon\Carbon::parse($awalPendaftaran)->format('d F Y') }}</td>
+                            <td>Awal Pendaftaran PPDB </td>
                         </tr>
                         <tr>
                             <th>2.</th>
-                            <td>20 – 24 Mei 2023</td>
-                            <td>Pendaftaran PPDB </td>
+                            <td>{{ \Carbon\Carbon::parse($akhirPendaftaran)->format('d F Y') }}</td>
+                            <td>Akhir Pendaftaran PPDB </td>
                         </tr>
-                        <tr>
-                            <th>3.</th>
-                            <td>25 - 26 Mei 2023</td>
-                            <td>Pendaftaran PPDB </td>
-                        </tr>
-
-                        <tr>
+                        {{-- <tr>
                             <th>4.</th>
-                            <td>27 - 30 Mei 2023</td>
+                            <td>{{ \Carbon\Carbon::parse($awalPendaftaran)->format('d F Y') }} -
+                                {{ \Carbon\Carbon::parse($akhirPendaftaran)->format('d F Y') }}</td>
                             <td>Seleksi PPDB </td>
-                        </tr>
+                        </tr> --}}
 
                         <tr>
                             <th>5.</th>
-                            <td>31 Mei 2023</td>
-                            <td>Pengumuman PPDB</td>
+                            <td>{{ \Carbon\Carbon::parse($pengumumanKelulusan)->format('d F Y') }}</td>
+                            <td>Pengumuman Kelulusan PPDB</td>
                         </tr>
 
-                        <tr>
+                        {{-- <tr>
                             <th style="background-color:grey"></th>
                             <td style="background-color:grey"></td>
                             <td style="background-color:grey"></td>
@@ -114,7 +111,7 @@
                             <th>11.</th>
                             <td>27 Juni - 03 Juli 2023</td>
                             <td>Pendaftaran ulang PPDB </td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>

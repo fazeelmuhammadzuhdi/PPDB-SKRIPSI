@@ -28,7 +28,7 @@
                                 <input type="text" class="form-control @error('k4sm2') is-invalid @enderror"
                                     id="k4sm2" name="k4sm2" placeholder="Nilai Rapor Kelas 4 Sem 2 Ex: 90"
                                     value="{{ old('k4sm2') }}" autofocus onkeypress="return onlyNumber(event)"
-                                    maxlength="3">
+                                    maxlength="5">
 
                                 @error('k4sm2')
                                     <div class="invalid-feedback">
@@ -42,7 +42,7 @@
                                 <input type="text" class="form-control @error('k5sm1') is-invalid @enderror"
                                     id="k5sm1" name="k5sm1" placeholder="Nilai Rapor Kelas 5 Sem 1 Ex: 90"
                                     value="{{ old('k5sm1') }}" autofocus onkeypress="return onlyNumber(event)"
-                                    maxlength="3">
+                                    maxlength="5">
 
                                 @error('k5sm1')
                                     <div class="invalid-feedback">
@@ -57,7 +57,7 @@
                                 <input type="text" class="form-control @error('k5sm2') is-invalid @enderror"
                                     id="k5sm2" name="k5sm2" placeholder="Nilai Rapor Kelas 5 Sem 2 Ex: 90"
                                     value="{{ old('k5sm2') }}" autofocus onkeypress="return onlyNumber(event)"
-                                    maxlength="3">
+                                    maxlength="5">
 
                                 @error('k5sm2')
                                     <div class="invalid-feedback">
@@ -74,7 +74,7 @@
                                 <input type="text" class="form-control @error('k6sm1') is-invalid @enderror"
                                     id="k6sm1" name="k6sm1" placeholder="Nilai Rapor Kelas 6 Sem 1 Ex: 90"
                                     value="{{ old('k6sm1') }}" autofocus onkeypress="return onlyNumber(event)"
-                                    maxlength="3">
+                                    maxlength="5">
 
                                 @error('k6sm1')
                                     <div class="invalid-feedback">
@@ -87,7 +87,7 @@
                                 <input type="text" class="form-control @error('k6sm2') is-invalid @enderror"
                                     id="k6sm2" name="k6sm2" placeholder="Nilai Rapor Kelas 6 Sem 2 Ex: 90"
                                     value="{{ old('k6sm2') }}" autofocus onkeypress="return onlyNumber(event)"
-                                    maxlength="3">
+                                    maxlength="5">
 
                                 @error('k6sm2')
                                     <div class="invalid-feedback">

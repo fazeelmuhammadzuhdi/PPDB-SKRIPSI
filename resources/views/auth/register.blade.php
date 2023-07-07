@@ -25,7 +25,7 @@
                         HATI-HATI PENIPUAN</b><br> <i data-feather="radio"></i> Pengumuman PPDB
                 </center>
                 @php
-                    $tutupPendaftaran = strtotime('2023-08-31 23:59:59');
+                    $tutupPendaftaran = strtotime($tanggalAkhirPendaftaran);
                     $sekarang = time();
                     
                     // Hitung selisih waktu

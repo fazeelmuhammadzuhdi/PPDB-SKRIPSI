@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <h5 class="card-header">{{ $title }}</h5>
+                <h5 class="card-header">{{ $title }} {{ now()->format('Y') }} / {{ now()->addYears('1')->format('Y') }}</h5>
                 <div class="card-body">
 
                     {!! Form::open([
