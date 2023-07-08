@@ -309,6 +309,12 @@
                     <div data-i18n="Analytics">Laporan Siswa Yang Mendaftar</div>
                 </a>
             </li>
+            <li class="menu-item">
+                <a href="{{ route('createLaporan') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Laporan</div>
+                </a>
+            </li>
         @elseif (Auth::user()->akses == 'Kepala Dinas')
             <li class="menu-item {{ Route::is('dashboard_dinas') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_dinas') }}" class="menu-link">

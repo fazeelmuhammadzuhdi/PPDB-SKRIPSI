@@ -38,9 +38,6 @@ class DataPendaftaranPrestasi extends Controller
         //     ->whereIn(DB::raw('YEAR(created_at)'), $getCreatedAtZonasi)
         //     ->get();
 
-
-
-
         // $now = now()->addYears('1')->format('Y');
         $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
