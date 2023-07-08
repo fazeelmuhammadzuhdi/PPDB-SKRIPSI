@@ -22,16 +22,44 @@ class DataPendaftaranPrestasi extends Controller
     public function index()
     {
 
+        // dd($now, $getCreatedAtZonasi);
+
+        // dd($yearFromZonasi, $now);
         //get data prestasi
         // $sekolah = Sekolah::where('sekolah_id', auth()->user()->id)->first();
+
+        // $getCreatedAtZonasi = Zonasi::pluck('created_at')->map(function ($item) {
+        //     return strval($item->format('Y'));
+        // });
+
+        // $sekolah = Sekolah::sekolah()->first();
+        // $zonasi = Zonasi::with('siswa')
+        //     ->where('sekolah_id', $sekolah->id)
+        //     ->whereIn(DB::raw('YEAR(created_at)'), $getCreatedAtZonasi)
+        //     ->get();
+
+
+
+
+        // $now = now()->addYears('1')->format('Y');
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
         // $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->where('status', null)->get();
-        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->orderBy('jumlah', 'desc')->orderBy('created_at', 'asc')->get();
-        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
+        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->orderBy('jumlah', 'desc')->orderBy('created_at', 'asc')->get();
+        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
         // dd($afirmasi);
-        $pindahTugas = PindahTugas::with('siswa')->where('sekolah_id', $sekolah->id)->get();
-        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
+        $pindahTugas = PindahTugas::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
+        $zonasi = Zonasi::with('siswa')
+            ->where(
+                'sekolah_id',
+                $sekolah->id
+            )
+            ->whereYear('created_at', $now)
+            ->get();
+
+        // dd($zonasi);
+        // $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->get();
 
         // $zonasiSekolah = ZonasiSekolah::where('sekolah_id', $sekolah->id)->orderBy('no_urut', 'asc')->orderBy('nilai', 'desc')->get();
         $zonasiSekolah = ZonasiSekolah::where('sekolah_id', $sekolah->id)->get();

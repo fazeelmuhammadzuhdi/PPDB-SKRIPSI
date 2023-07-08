@@ -46,17 +46,38 @@ class PrestasiController extends Controller
         $siswa = Siswa::siswa()->first();
         // dd($siswa);
 
-        $collection = collect([$request->k4sm2, $request->k5sm1, $request->k5sm2, $request->k6sm1, $request->k6sm2,]);
+        // $collection = collect([$request->k4sm2, $request->k5sm1, $request->k5sm2, $request->k6sm1, $request->k6sm2,]);
 
-        $mapped = $collection->map(function ($item) {
-            return (int) $item;
-        });
+        // $mapped = $collection->map(function ($item) {
+        //     return (int) $item;
+        // });
 
-        $hasil = round($mapped->avg());
-        // dd($hasil);
+        // $hasil = round($mapped->avg());
+
+        // $k6sm1 = floatval(str_replace(',', '.', $request->input('k6sm1')));
+        // $k6sm2 = floatval(str_replace(',', '.', $request->input('k6sm2')));
+        // $k5sm1 = floatval(str_replace(',', '.', $request->input('k5sm1')));
+        // $k5sm2 = floatval(str_replace(',', '.', $request->input('k5sm2')));
+        // $k4sm2 = floatval(str_replace(',', '.', $request->input('k4sm2')));
+
+        // // Melakukan perhitungan rata-rata
+        // $rata_rata = ($k6sm1 + $k6sm2 + $k5sm1 + $k5sm2 + $k4sm2) / 5;
+        // $rataRataNilai = round($rata_rata, 2);
+
+        $k6sm1 = round(floatval(str_replace(',', '.', $request->input('k6sm1'))), 2);
+        $k6sm2 = round(floatval(str_replace(',', '.', $request->input('k6sm2'))), 2);
+        $k5sm1 = round(floatval(str_replace(',', '.', $request->input('k5sm1'))), 2);
+        $k5sm2 = round(floatval(str_replace(',', '.', $request->input('k5sm2'))), 2);
+        $k4sm2 = round(floatval(str_replace(',', '.', $request->input('k4sm2'))), 2);
+
+        // Melakukan perhitungan rata-rata
+        $rata_rata = ($k6sm1 + $k6sm2 + $k5sm1 + $k5sm2 + $k4sm2) / 5;
+        $rataRataNilai = round($rata_rata, 2);
+        
+        // dd($rataRataNilai);
         $requestData = $request->validated();
         $requestData['siswa_id'] = $siswa->id;
-        $requestData['jumlah'] = $hasil;
+        $requestData['jumlah'] = $rataRataNilai;
         if ($request->hasFile('bukti_nilai_rapor')) {
             $requestData['bukti_nilai_rapor'] = $request->file('bukti_nilai_rapor')->store('file/bukti_nilai_rapor', 'public');
         }

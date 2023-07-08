@@ -25,11 +25,15 @@ class PrestasiStoreRequest extends FormRequest
     {
         return [
             'sekolah_id' => 'required',
-            'k6sm1' => 'required',
-            'k6sm2' => 'required',
-            'k5sm1' => 'required',
-            'k5sm2' => 'required',
-            'k4sm2' => 'required',
+            'k6sm1' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'k6sm2' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'k5sm1' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'k5sm2' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'k4sm2' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            // 'k6sm2' => 'required',
+            // 'k5sm1' => 'required',
+            // 'k5sm2' => 'required',
+            // 'k4sm2' => 'required',
             'bukti_nilai_rapor' => 'required|file|mimes:pdf|max:2048',
         ];
     }
@@ -43,6 +47,11 @@ class PrestasiStoreRequest extends FormRequest
             'k5sm1.required' => ':attribute Tidak Boleh Kosong',
             'k5sm2.required' => ':attribute Tidak Boleh Kosong',
             'k4sm2.required' => ':attribute Tidak Boleh Kosong',
+            'k6sm1.regex' => 'Format nilai tidak valid. Contoh Yang Valid Seperti Ini 80.8 / 80.80',
+            'k6sm2.regex' => 'Format nilai tidak valid. Contoh Yang Valid Seperti Ini 90 / 80.80',
+            'k5sm1.regex' => 'Format nilai tidak valid. Contoh Yang Valid Seperti Ini 70.75 / 80.80',
+            'k5sm2.regex' => 'Format nilai tidak valid. Contoh Yang Valid Seperti Ini 80.8 / 80.80',
+            'k4sm2.regex' => 'Format nilai tidak valid. Contoh Yang Valid Seperti Ini 80.8 / 80.80',
             'bukti_nilai_rapor.required' => ':attribute Tidak Boleh Kosong',
             'bukti_nilai_rapor.max' => ':attribute Maksimal 2 MB',
         ];
