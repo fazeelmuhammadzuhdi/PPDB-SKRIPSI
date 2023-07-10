@@ -18,33 +18,34 @@ class DashboardDinasController extends Controller
 {
     public function index()
     {
+        $now = now()->format('Y');
         if (auth()->user()->akses == 'Admin Dinas') {
-            $siswa = Siswa::count();
+            $siswa = Siswa::whereYear('created_at', $now)->count();
             $jumlahSekolah = Sekolah::count();
             $jumlahKecamatan = Kecamatan::count();
             $jumlahNagari = Nagari::count();
             $jumlahKampung = Kampung::count();
 
-            $siswaLulusPrestasi = Prestasi::where('status', 1)->count();
-            $siswaLulusAfirmasi = Afirmasi::where('status', 1)->count();
-            $siswaLulusPindahTugas = PindahTugas::where('status', 1)->count();
-            $siswaLulusZonasi = Zonasi::where('status', 1)->count();
+            $siswaLulusPrestasi = Prestasi::where('status', 1)->whereYear('created_at', $now)->count();
+            $siswaLulusAfirmasi = Afirmasi::where('status', 1)->whereYear('created_at', $now)->count();
+            $siswaLulusPindahTugas = PindahTugas::where('status', 1)->whereYear('created_at', $now)->count();
+            $siswaLulusZonasi = Zonasi::where('status', 1)->whereYear('created_at', $now)->count();
             $totalSiswaLulus = $siswaLulusAfirmasi + $siswaLulusPrestasi + $siswaLulusPindahTugas + $siswaLulusZonasi;
 
             return view('dinas.dashboard_dinas', compact('siswa', 'jumlahSekolah', 'jumlahKecamatan', 'jumlahNagari', 'jumlahKampung', 'totalSiswaLulus'));
         }
 
         if (auth()->user()->akses == 'Kepala Dinas') {
-            $siswa = Siswa::count();
+            $siswa = Siswa::whereYear('created_at', $now)->count();
             $jumlahSekolah = Sekolah::count();
             $jumlahKecamatan = Kecamatan::count();
             $jumlahNagari = Nagari::count();
             $jumlahKampung = Kampung::count();
             //Menghitunga Jumlah Siswa Lulus
-            $siswaLulusPrestasi = Prestasi::where('status', 1)->count();
-            $siswaLulusAfirmasi = Afirmasi::where('status', 1)->count();
-            $siswaLulusPindahTugas = PindahTugas::where('status', 1)->count();
-            $siswaLulusZonasi = Zonasi::where('status', 1)->count();
+            $siswaLulusPrestasi = Prestasi::where('status', 1)->whereYear('created_at', $now)->count();
+            $siswaLulusAfirmasi = Afirmasi::where('status', 1)->whereYear('created_at', $now)->count();
+            $siswaLulusPindahTugas = PindahTugas::where('status', 1)->whereYear('created_at', $now)->count();
+            $siswaLulusZonasi = Zonasi::where('status', 1)->whereYear('created_at', $now)->count();
             $totalSiswaLulus = $siswaLulusAfirmasi + $siswaLulusPrestasi + $siswaLulusPindahTugas + $siswaLulusZonasi;
 
             return view('dinas.dashboard_dinas', compact('siswa', 'jumlahSekolah', 'jumlahKecamatan', 'jumlahNagari', 'jumlahKampung', 'totalSiswaLulus'));
@@ -52,22 +53,22 @@ class DashboardDinasController extends Controller
 
         if (auth()->user()->akses == 'Admin Sekolah') {
             $sekolah = Sekolah::sekolah()->first();
-            $siswaLulusPrestasi = Prestasi::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
-            $siswaLulusAfirmasi = Afirmasi::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
-            $siswaLulusPindahTugas = PindahTugas::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
-            $siswaLulusZonasi = Zonasi::where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaLulusPrestasi = Prestasi::whereYear('created_at', $now)->where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaLulusAfirmasi = Afirmasi::whereYear('created_at', $now)->where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaLulusPindahTugas = PindahTugas::whereYear('created_at', $now)->where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaLulusZonasi = Zonasi::whereYear('created_at', $now)->where('status', 1)->where('sekolah_id', $sekolah?->id)->count();
             $totalSiswaLulus = $siswaLulusAfirmasi + $siswaLulusPrestasi + $siswaLulusPindahTugas + $siswaLulusZonasi;
 
-            $siswaBelumLulusAfirmasi = Afirmasi::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
-            $siswaBelumLulusPrestasi = Prestasi::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
-            $siswaBelumLulusPindahTugas = PindahTugas::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
-            $siswaBelumLulusZonasi = Zonasi::where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaBelumLulusAfirmasi = Afirmasi::whereYear('created_at', $now)->where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaBelumLulusPrestasi = Prestasi::whereYear('created_at', $now)->where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaBelumLulusPindahTugas = PindahTugas::whereYear('created_at', $now)->where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
+            $siswaBelumLulusZonasi = Zonasi::whereYear('created_at', $now)->where('status', 2)->where('sekolah_id', $sekolah?->id)->count();
             $totalSiswaBelumLulus = $siswaBelumLulusAfirmasi + $siswaBelumLulusPrestasi + $siswaBelumLulusPindahTugas + $siswaBelumLulusZonasi;
 
-            $afirmasi = Afirmasi::where('sekolah_id', $sekolah?->id)->count();
-            $pindahTugas = PindahTugas::where('sekolah_id', $sekolah?->id)->count();
-            $prestasi = Prestasi::where('sekolah_id', $sekolah?->id)->count();
-            $zonasi = Zonasi::where('sekolah_id', $sekolah?->id)->count();
+            $afirmasi = Afirmasi::where('sekolah_id', $sekolah?->id)->whereYear('created_at', $now)->count();
+            $pindahTugas = PindahTugas::where('sekolah_id', $sekolah?->id)->whereYear('created_at', $now)->count();
+            $prestasi = Prestasi::where('sekolah_id', $sekolah?->id)->whereYear('created_at', $now)->count();
+            $zonasi = Zonasi::where('sekolah_id', $sekolah?->id)->whereYear('created_at', $now)->count();
 
             return view('dinas.dashboard_dinas', compact('afirmasi', 'pindahTugas', 'prestasi', 'totalSiswaLulus', 'totalSiswaBelumLulus', 'zonasi'));
         }

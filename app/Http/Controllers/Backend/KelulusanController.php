@@ -23,15 +23,16 @@ class KelulusanController extends Controller
     public function kelulusan(Request $request)
     {
         // $idSek = $request->input('id_sekolah');
-
+        $now = now()->format('Y');
         $idSekolah = $request->input('id_sekolah');
+
         $sekolah = Sekolah::find($idSekolah);
 
-        $afirmasi = Afirmasi::where('sekolah_id', $idSekolah)->where('status', 1)->get();
+        $afirmasi = Afirmasi::where('sekolah_id', $idSekolah)->whereYear('created_at', $now)->where('status', 1)->get();
         // dd($afirmasi);
-        $pindahTugas = PindahTugas::where('sekolah_id', $idSekolah)->where('status', 1)->get();
-        $prestasi = Prestasi::where('sekolah_id', $idSekolah)->where('status', 1)->get();
-        $zonasi = Zonasi::where('sekolah_id', $idSekolah)->where('status', 1)->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $idSekolah)->whereYear('created_at', $now)->where('status', 1)->get();
+        $prestasi = Prestasi::where('sekolah_id', $idSekolah)->whereYear('created_at', $now)->where('status', 1)->get();
+        $zonasi = Zonasi::where('sekolah_id', $idSekolah)->whereYear('created_at', $now)->where('status', 1)->get();
 
         $zonasiSekolah = ZonasiSekolah::where('sekolah_id', $idSekolah)->get();
         $siswa = Siswa::with(['kampung'])->get();
