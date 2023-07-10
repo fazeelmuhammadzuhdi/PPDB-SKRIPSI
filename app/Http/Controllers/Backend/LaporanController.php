@@ -18,68 +18,73 @@ use App\Exports\SiswaLulusJalurPrestasi;
 use App\Exports\SiswaLulusJalurZonasi;
 use App\Http\Controllers\Controller;
 use App\Models\Zonasi;
-use App\Models\ZonasiSekolah;
 use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
     public function lulus()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
-        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
         // dd($afirmasi);
-        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
 
         $siswa = Siswa::with('kampung')->get();
         // dd($user);
-        return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+        return view('laporan.lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi', 'now'));
     }
 
     public function ditolak()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
-        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
         // dd($afirmasi);
-        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
 
         $siswa = Siswa::with('kampung')->get();
         // dd($user);
-        return view('laporan.ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+        return view('laporan.ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi', 'now'));
     }
 
     public function siswaPendaftar()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
         // dd($sekolah);
-        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->get();
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
         // dd($afirmasi);
-        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->get();
-        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->get();
-        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->get();
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
 
         $siswa = Siswa::with('kampung')->get();
         // $siswa = Siswa::get();
         // dd($user);
-        return view('laporan.pendaftar', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+        return view('laporan.pendaftar', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi', 'now'));
     }
 
     public function cetakPdfDataPendaftar()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->get();
-        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->get();
-        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->get();
-        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->get();
+        // dd($sekolah);
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
+        // dd($afirmasi);
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->get();
 
         $siswa = Siswa::with('kampung')->get();
 
-        return view('laporan.data_pendaftar', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+        return view('laporan.data_pendaftar', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi', 'now'));
     }
 
     public function createLaporan()
@@ -108,6 +113,7 @@ class LaporanController extends Controller
             if ($selectedJalur == 'zonasi' || !$selectedJalur) {
                 $zonasi = Zonasi::where('sekolah_id', $sekolah->id)
                     ->whereYear('created_at', $selectedYear)
+                    ->where('status', $selectedStatus)
                     ->get();
                 foreach ($zonasi as $item) {
                     $dataByJalur['ZONASI'][] = $siswa->firstWhere('id', $item->siswa_id);
@@ -252,7 +258,7 @@ class LaporanController extends Controller
         $sekolah = Sekolah::sekolah()->first();
         $siswa = Siswa::with('kampung')->get();
         $now = now()->addYears('1')->format('Y');
-        $title = "Laporan PPDB Berdasarkan: Tahun Ajaran $selectedYear - $now";
+        $title = "Laporan Calon Peserta Didik Yang Mendaftar PPDB Berdasarkan: Tahun Ajaran $selectedYear - $now";
 
         if ($request->filled('tahunajaran')) {
             $prestasi = Prestasi::where('sekolah_id', $sekolah->id)
@@ -278,43 +284,39 @@ class LaporanController extends Controller
 
     public function cetakPdfSiswaLulus()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
-        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        // dd($sekolah);
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
+        // dd($afirmasi);
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
+
+        $siswa = Siswa::with('kampung')->get();
+        // $sekolah = Sekolah::sekolah()->first();
+        // $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        // $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        // $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        // $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->where('status', 1)->get();
 
         $siswa = Siswa::get();
-
-        // $pdf = PDF::loadView('laporan.siswa_lulus', [
-        //     'afirmasi' => $afirmasi,
-        //     'siswa' => $siswa,
-        //     'pindahTugas' => $pindahTugas,
-        //     'prestasi' => $prestasi,
-        //     'sekolah' => $sekolah
-        // ])->setOptions(['defaultFont' => 'sans-serif']);;
-        // return $pdf->stream("LAPORAN SISWA LULUS.pdf");
-        return view('laporan.siswa_lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+        return view('laporan.siswa_lulus', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi', 'now'));
     }
 
     public function cetakPdfSiswaDitolak()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $pindahTugas = PindahTugas::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $prestasi = Prestasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $zonasi = Zonasi::with('sekolah', 'siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
-        $siswa = Siswa::get();
+        // dd($sekolah);
+        $afirmasi = Afirmasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
+        // dd($afirmasi);
+        $pindahTugas = PindahTugas::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
+        $prestasi = Prestasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
+        $zonasi = Zonasi::where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
 
-        // $pdf = PDF::loadView('laporan.siswa_lulus', [
-        //     'afirmasi' => $afirmasi,
-        //     'siswa' => $siswa,
-        //     'pindahTugas' => $pindahTugas,
-        //     'prestasi' => $prestasi,
-        //     'sekolah' => $sekolah
-        // ])->setOptions(['defaultFont' => 'sans-serif']);;
-        // return $pdf->stream("LAPORAN SISWA LULUS.pdf");
-        return view('laporan.siswa_ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi'));
+        $siswa = Siswa::with('kampung')->get();
+        return view('laporan.siswa_ditolak', compact('afirmasi', 'sekolah', 'siswa', 'pindahTugas', 'prestasi', 'zonasi', 'now'));
     }
 
     public function exportExcelSiswaLulus()

@@ -10,30 +10,31 @@
                         @else
                             SISWA BELUM YANG LULUS JALUR ZONASI
                         @endif
-                    </h3> <small class="text-muted float-end">
+                    </h3>
+                    <small class="text-muted float-end">
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-outline-dark btn-sm"><i
                                 class="fas fa-backward"></i>
                             Kembali
                         </a>
+                    </small>
+                    @if (Route::is('data_pendaftaran_zonasi.index'))
+                        <a href="{{ route('exportExcelZonasiSiswaLulus') }}" class="btn btn-outline-success btn-sm mx-2"><i
+                                class="fas fa-excel"></i>
+                            <i class="fas fa-file-excel"></i>
+                            Export Excel
+                        </a>
+                    @else
+                        <a href="{{ route('exportExcelZonasiSiswaBelumLulus') }}"
+                            class="btn btn-outline-success btn-sm mx-2"><i class="fas fa-excel"></i>
+                            <i class="fas fa-file-excel"></i>
+                            Export Excel
+                        </a>
+                    @endif
 
-                        @if (Route::is('data_pendaftaran_zonasi.index'))
-                            <a href="{{ route('exportExcelZonasiSiswaLulus') }}"
-                                class="btn btn-outline-success btn-sm mx-2"><i class="fas fa-excel"></i>
-                                <i class="fas fa-file-excel"></i>
-                                Export Excel
-                            </a>
-                        @else
-                            <a href="{{ route('exportExcelZonasiSiswaBelumLulus') }}"
-                                class="btn btn-outline-success btn-sm mx-2"><i class="fas fa-excel"></i>
-                                <i class="fas fa-file-excel"></i>
-                                Export Excel
-                            </a>
-                        @endif
-
-                        <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
-                                class="fa fa-file-pdf"></i>
-                            Export PDF
-                        </button>
+                    <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
+                            class="fa fa-file-pdf"></i>
+                        Export PDF
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap" id="cetak">

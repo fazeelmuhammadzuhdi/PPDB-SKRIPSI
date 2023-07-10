@@ -104,7 +104,7 @@
 <html>
 
 <head>
-    <title>Laporan Siswa Lulus</title>
+    <title>Laporan Siswa Lulus Tahun Ajaran {{ $now }} / {{ now()->addYears('1')->format('Y') }}</title>
     @include('laporan.style_header_coba')
 </head>
 
@@ -115,9 +115,10 @@
         <table class="head">
             <tr>
                 @if (Route::is('cetakpdf'))
-                    <h1>Data Siswa Yang Lulus</h1>
+                    <h1>Data Siswa Lulus Tahun Ajaran {{ $now }} / {{ now()->addYears('1')->format('Y') }}</h1>
                 @else
-                    <h1>Data Siswa Yang Belum Lulus</h1>
+                    <h1>Data Siswa Belum Lulus Tahun Ajaran {{ $now }} /
+                        {{ now()->addYears('1')->format('Y') }}</h1>
                 @endif
             </tr>
         </table>

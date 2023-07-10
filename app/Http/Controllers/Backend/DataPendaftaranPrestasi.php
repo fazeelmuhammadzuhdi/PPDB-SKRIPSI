@@ -78,8 +78,10 @@ class DataPendaftaranPrestasi extends Controller
      */
     public function create()
     {
+        $now = now()->format('Y');
+
         $sekolah = Sekolah::sekolah()->first();
-        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->orderBy('jumlah', 'desc')->get();
+        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->orderBy('jumlah', 'desc')->get();
         return view('prestasi.siswa_lulus', compact('sekolah', 'prestasi'));
     }
 
@@ -166,8 +168,9 @@ class DataPendaftaranPrestasi extends Controller
 
     public function siswaLulusJalurPrestasi()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->orderBy('jumlah', 'desc')->get();
+        $prestasi = Prestasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->orderBy('jumlah', 'desc')->get();
         return view('prestasi.siswa_lulus', compact('sekolah', 'prestasi'));
     }
 

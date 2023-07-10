@@ -12,7 +12,8 @@
 
         <table class="head">
             <tr>
-                <h1>Data Siswa Yang Telah Melakukan Pendaftaran</h1>
+                <h1>Data Siswa Yang Telah Melakukan Pendaftaran Tahun Ajaran {{ $now }} /
+                    {{ now()->addYears('1')->format('Y') }}</h1>
             </tr>
         </table>
         @php

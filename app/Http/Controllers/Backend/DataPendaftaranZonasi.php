@@ -18,8 +18,9 @@ class DataPendaftaranZonasi extends Controller
      */
     public function index()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
         return view('zonasi.siswa_lulus', compact('zonasi', 'sekolah'));
     }
 
@@ -30,8 +31,9 @@ class DataPendaftaranZonasi extends Controller
      */
     public function create()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $zonasi = Zonasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
         return view('zonasi.siswa_lulus', compact('zonasi', 'sekolah'));
     }
 

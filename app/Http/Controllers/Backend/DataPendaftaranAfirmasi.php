@@ -16,8 +16,9 @@ class DataPendaftaranAfirmasi extends Controller
      */
     public function index()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 1)->get();
+        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 1)->get();
         return view('afirmasi.siswa_lulus', compact('afirmasi', 'sekolah'));
     }
 
@@ -28,8 +29,9 @@ class DataPendaftaranAfirmasi extends Controller
      */
     public function create()
     {
+        $now = now()->format('Y');
         $sekolah = Sekolah::sekolah()->first();
-        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->where('status', 2)->get();
+        $afirmasi = Afirmasi::with('siswa')->where('sekolah_id', $sekolah->id)->whereYear('created_at', $now)->where('status', 2)->get();
         return view('afirmasi.siswa_lulus', compact('afirmasi', 'sekolah'));
     }
 

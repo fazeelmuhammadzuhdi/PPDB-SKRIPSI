@@ -129,8 +129,9 @@ class DashboardSiswaController extends Controller
         // } else {
         //     return view('siswa.hasil', compact('cek_siswa'));
         // }
+        $now = now()->format('Y');
         $cari = $request->cari;
-        $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->where('user_id', auth()->user()->id)->first();
+        $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->whereYear('created_at', $now)->where('user_id', auth()->user()->id)->first();
 
         if (!$cek_siswa || strlen($cari) !== 11) {
             flash()
