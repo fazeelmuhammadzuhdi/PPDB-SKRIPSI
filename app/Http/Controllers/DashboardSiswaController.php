@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Afirmasi;
 use App\Models\PindahTugas;
 use App\Models\Prestasi;
-use App\Models\Sekolah;
 use App\Models\Siswa;
 use App\Models\Zonasi;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class DashboardSiswaController extends Controller
 {
@@ -109,9 +107,13 @@ class DashboardSiswaController extends Controller
     {
         $tanggalAkhirKelulusan = settings('jadwa_kelulusan');
         $tanggalSekarang = now()->toDateString();
-        // dd($tanggalSekarang);
-        // dd($tanggalAkhirKelulusan);
-        return view('siswa.cek_kelulusan', compact('tanggalAkhirKelulusan', 'tanggalSekarang'));
+        $now = now()->format('Y');
+        $cek_siswa = Siswa::siswa()->first();
+        $cekLulusJalurPrestasi = Prestasi::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusJalurAfirmasi = Afirmasi::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusJalurPindahTugas = PindahTugas::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusJalurZonasi = Zonasi::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        return view('siswa.cek_kelulusan', compact('tanggalAkhirKelulusan', 'tanggalSekarang', 'cekLulusJalurPrestasi', 'cekLulusJalurAfirmasi', 'cekLulusJalurPindahTugas', 'cekLulusJalurZonasi'));
     }
 
     public function cari(Request $request)
@@ -130,18 +132,42 @@ class DashboardSiswaController extends Controller
         //     return view('siswa.hasil', compact('cek_siswa'));
         // }
         $now = now()->format('Y');
-        $cari = $request->cari;
-        $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->whereYear('created_at', $now)->where('user_id', auth()->user()->id)->first();
+        $cek_siswa = Siswa::siswa()->whereYear('created_at', $now)->first();
 
-        if (!$cek_siswa || strlen($cari) !== 11) {
-            flash()
-                ->options([
-                    'timeout' => 1500, // 3 seconds
-                ])
-                ->addError('Data Tidak Ada');
-            return redirect()->back();
-        } else {
-            return view('siswa.hasil', compact('cek_siswa'));
-        }
+        return view('siswa.hasil', compact('cek_siswa'));
+        // $now = now()->format('Y');
+        // $cari = $request->cari;
+        // $cek_siswa = Siswa::where('no_pendaftaran', 'like', "%" . $cari . "%")->whereYear('created_at', $now)->where('user_id', auth()->user()->id)->first();
+
+        // if (!$cek_siswa || strlen($cari) !== 11) {
+        //     flash()
+        //         ->options([
+        //             'timeout' => 1500, // 3 seconds
+        //         ])
+        //         ->addError('Data Tidak Ada');
+        //     return redirect()->back();
+        // } else {
+        //     return view('siswa.hasil', compact('cek_siswa'));
+        // }
+    }
+
+    public function viewCekHasil()
+    {
+        $tanggalAkhirKelulusan = settings('jadwa_kelulusan');
+        $tanggalSekarang = now()->toDateString();
+        $now = now()->format('Y');
+        $cek_siswa = Siswa::siswa()->first();
+        $cekLulusJalurPrestasi = Prestasi::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusJalurAfirmasi = Afirmasi::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusJalurPindahTugas = PindahTugas::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        $cekLulusJalurZonasi = Zonasi::whereYear('created_at', $now)->where('siswa_id', $cek_siswa->id ?? '')->first();
+        return view('siswa.v_cek_hasil', compact(
+            'tanggalAkhirKelulusan',
+            'tanggalSekarang',
+            'cekLulusJalurPrestasi',
+            'cekLulusJalurAfirmasi',
+            'cekLulusJalurPindahTugas',
+            'cekLulusJalurZonasi'
+        ));
     }
 }

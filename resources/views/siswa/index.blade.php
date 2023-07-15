@@ -36,7 +36,7 @@
                                         <td>{{ $item->tempat_tanggal_lahir }}</td>
                                         <td>
                                             <a href="{{ route('siswa.edit', $item->id) }}" class="btn btn-sm btn-warning"><i
-                                                    class="fa fa-edit"></i> Edit
+                                                    class="bx bx-edit-alt"></i> Edit
                                             </a>
                                         </td>
                                     </tr>
@@ -51,7 +51,7 @@
                                     <div class="float-end">
                                         @if ($cek > 0)
                                             <a href="{{ route('jalur_pendaftaran') }}" class="btn btn-primary mb-3">
-                                                <i class="fa fa-user"></i> Daftar
+                                                <i class="bx bx-user"></i> Daftar
                                                 PPDB</a>
                                         @endif
                                     </div>
@@ -67,7 +67,7 @@
                                                         <img src="{{ Storage::url($item->foto) }}" width="200px">
                                                         <a href="{{ route('siswa.edit', encrypt($item->id)) }}"
                                                             class="btn btn-success mt-5 d-flex justify-content-center align-items-center">
-                                                            <i class="fa fa-edit"> &nbsp; </i> Edit Data</a>
+                                                            <i class="bx bx-edit mx-1"></i> Edit Data</a>
                                                     </td>
                                                     <td><b>No Pendaftaran</b>:</td>
                                                     <td><span class="badge rounded bg-primary fw-bold">

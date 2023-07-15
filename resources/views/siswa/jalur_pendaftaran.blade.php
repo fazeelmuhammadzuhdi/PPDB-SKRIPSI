@@ -10,10 +10,10 @@
                         <h5 class="text-white fw-bold">ZONASI</h5>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-arrow-circle-right"></i>
+                        <i class="bx bx-right-arrow-circle"></i>
                     </div>
                     <a href="{{ route('zonasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
-                        <i class="fas fa-arrow-circle-right"></i></a>
+                        <i class="bx bx-right-arrow-circle  "></i></a>
                 </div>
             </div>
 
@@ -26,10 +26,10 @@
                         </h5>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user"></i>
+                        <i class="bx bx-right-arrow-circle"></i>
                     </div>
                     <a href="{{ route('pindahtugas.create') }}" class="small-box-footer">Klik Disini &nbsp;
-                        <i class="fas fa-arrow-circle-right"></i></a>
+                        <i class="bx bx-right-arrow-circle  "></i></a>
                 </div>
             </div>
 
@@ -41,10 +41,10 @@
                         <h5 class="text-white fw-bold">AFIRMASI</h5>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-brands fa-github"></i>
+                        <i class="bx bx-right-arrow-circle"></i>
                     </div>
                     <a href="{{ route('afirmasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
-                        <i class="fas fa-arrow-circle-right"></i></a>
+                        <i class="bx bx-right-arrow-circle  "></i></a>
                 </div>
             </div>
 
@@ -55,11 +55,11 @@
                         <h5 class="text-white fw-bold">PRESTASI</h5>
                     </div>
                     <div class="icon">
-                        {{-- <i class="fas fa-arrow-circle-right"></i> --}}
-                        <i class="fas fa-duotone fa-circle-exclamation"></i>
+                        {{-- <i class="bx bx-right-arrow-circle "></i> --}}
+                        <i class="bx bx-right-arrow-circle"></i>
                     </div>
                     <a href="{{ route('prestasi.create') }}" class="small-box-footer">Klik Disini &nbsp;
-                        <i class="fas fa-arrow-circle-right"></i></a>
+                        <i class="bx bx-right-arrow-circle  "></i></a>
                 </div>
             </div>
 
@@ -455,7 +455,7 @@
         }
 
 
-        .small-box .icon>i.fas {
+        .small-box .icon>i.bx {
             font-size: 70px;
             top: 20px;
         }

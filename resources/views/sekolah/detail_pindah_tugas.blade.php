@@ -25,7 +25,7 @@
                                         @if ($dataPindahTugas->status == 1)
                                             <span class="badge bg-success">Lulus</span>
                                         @elseif ($dataPindahTugas->status == 2)
-                                            <span class="badge bg-danger">Belum Lulus</span>
+                                            <span class="badge bg-danger">Tidak Lulus</span>
                                         @else
                                             <span class="badge bg-warning">Dalam Seleksi</span>
                                         @endif

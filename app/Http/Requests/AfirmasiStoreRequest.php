@@ -25,7 +25,7 @@ class AfirmasiStoreRequest extends FormRequest
     {
         return [
             'sekolah_id' => 'required',
-            'kk' => 'required|mimes:png,jpg,jpeg|max:2048',
+            // 'kk' => 'required|mimes:png,jpg,jpeg|max:2048',
             'kip' => 'nullable|mimes:png,jpg,jpeg|max:2048',
             'sktm' => 'nullable|mimes:png,jpg,jpeg|max:2048',
             'skl' => 'required|mimes:png,jpg,jpeg|max:2048',
@@ -37,8 +37,8 @@ class AfirmasiStoreRequest extends FormRequest
     {
         return [
             'sekolah_id.required' => ':attribute Tidak Boleh Kosong',
-            'kk.required' => ':attribute Tidak Boleh Kosong',
-            'kk.max' => ':attribute Ukuran Max 2 Mb',
+            // 'kk.required' => ':attribute Tidak Boleh Kosong',
+            // 'kk.max' => ':attribute Ukuran Max 2 Mb',
             'kip.max' => ':attribute Ukuran Max 2 Mb',
             'sktm.max' => ':attribute Ukuran Max 2 Mb',
             'skl.required' => ':attribute Tidak Boleh Kosong',
@@ -51,7 +51,7 @@ class AfirmasiStoreRequest extends FormRequest
     {
         return [
             'sekolah_id' => 'Nama Sekolah',
-            'kk' => 'Kartu Keluarga',
+            // 'kk' => 'Kartu Keluarga',
             'kip' => 'Kartu Indonesia Pintar / Kartu Keluarga Sejahtera',
             'sktm' => 'Surat Keterangan Tidak Mampu',
             'skl' => 'Surat Keterangan Lulus',

@@ -17,12 +17,12 @@
                             class="fas fa-plus-circle"></i> Add
                         Zonasi Sekolah</a> --}}
 
-                    {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
-                        data-bs-target="#addModalDataZonasiSekolah"><i class="fas fa-plus-circle"></i> Add
-                        Zonasi Sekolah</button> --}}
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
+                        data-bs-target="#addModalDataZonasiSekolah"><i class="bx bx-plus-circle"></i> Add
+                        Zonasi Sekolah</button>
 
                     <button class="btn btn-outline-primary" onclick="printDiv('cetakDataZonasiSekolah')"><i
-                            class="fa fa-file-pdf"></i>
+                            class="bx bxs-file-pdf"></i>
                         Export PDF
                     </button>
 
@@ -78,10 +78,10 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 {{-- <a href="{{ route('data_zonasi_sekolah.show', $item->id) }}"
-                                                class="btn btn-warning"><i class="fa fa-edit"></i></a> --}}
+                                                class="btn btn-warning"><i class="bx bx-edit-alt"></i></a> --}}
 
                                                 <button type="submit" class="btn btn-danger show_confirm"><i
-                                                        class="fa fa-trash"></i></button>
+                                                        class="bx bxs-trash-alt"></i></button>
                                             </form>
 
                                         </td>

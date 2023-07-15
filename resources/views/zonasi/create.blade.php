@@ -47,7 +47,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary me-2" id="btnSimpan"><i
-                                class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
+                                class="bx bx-clipboard me-1"></i>
                             Daftar</button>
 
                         {{-- <button type="button" class="btn btn-dark"

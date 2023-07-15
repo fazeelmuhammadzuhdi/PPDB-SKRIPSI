@@ -115,7 +115,7 @@
             @else
                 <ul class="box-info">
                     <li>
-                        <i class='bx bxs-calendar-check'></i>
+                        <i class='bx bxs-user-voice'></i>
                         <span class="text">
                             <p>AFIRMASI</p>
                             <h3>{{ $afirmasi }} Pendaftar</h3>
@@ -129,14 +129,14 @@
                         </span>
                     </li>
                     <li>
-                        <i class='bx bxs-dollar-circle'></i>
+                        <i class='bx bxs-user-detail'></i>
                         <span class="text">
                             <p>PRESTASI</p>
                             <h3>{{ $prestasi }} Pendaftar</h3>
                         </span>
                     </li>
                     <li>
-                        <i class='bx bxs-dollar-circle'></i>
+                        <i class='bx bxs-user-check'></i>
                         <span class="text">
                             <p>ZONASI</p>
                             <h3>{{ $zonasi }} Pendaftar</h3>

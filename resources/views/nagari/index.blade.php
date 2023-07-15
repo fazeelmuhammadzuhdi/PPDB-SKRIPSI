@@ -13,7 +13,7 @@
                         Data Nagari
                     </h3>
 
-                    <button class="btn btn-primary add" type="button"><i class="fa fa-circle-plus"></i> Add Nagari</button>
+                    <button class="btn btn-primary add" type="button"><i class="bx bx-plus-circle"></i> Add Nagari</button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -39,10 +39,10 @@
                                                 <a type="button" class="btn btn-outline-info edit"
                                                     data-bs-id="{{ $item->id }}"
                                                     style="background-color: rgb(255, 255, 0); color: #fff"><i
-                                                        class="fa fa-edit"></i></a>
+                                                        class="bx bx-edit-alt"></i></a>
                                                 <a type="submit" class="btn btn-outline-danger show_confirm"
                                                     style="background-color: rgba(255, 3, 3, 0.959); color: #fff">
-                                                    <i class="fa fa-trash"></i></a>
+                                                    <i class="bx bxs-trash-alt"></i></a>
                                             </form>
                                         </td>
                                     </tr>

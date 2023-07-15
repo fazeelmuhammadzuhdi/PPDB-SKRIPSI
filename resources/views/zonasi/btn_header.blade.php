@@ -5,10 +5,10 @@
             <i class="fas fa-universal-access"></i> Siswa Lulus
         </a>
         <a href="{{ route('data_pendaftaran_zonasi.create') }}" class="btn btn-outline-danger btn-sm mx-2">
-            <i class="fas fa-universal-access"></i> Siswa Belum Lulus
+            <i class="fas fa-universal-access"></i> Siswa Tidak Lulus
         </a>
         <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetakSiswaZonasi')">
-            <i class="fa fa-file-pdf"></i> Export PDF
+            <i class="bx bxs-file-pdf"></i> Export PDF
         </button>
     </div>
 </div>

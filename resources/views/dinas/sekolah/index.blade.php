@@ -7,7 +7,8 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
                         <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary"> <i
-                                class="fa fa-circle-plus"></i> Tambah Data</a></small>
+                                class="bx bx-plus-circle"></i> Tambah Data</a></small>
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -43,12 +44,12 @@
                                             <td>
                                                 <a href="{{ route($routePrefix . '.edit', $item->id) }}"
                                                     class="btn btn-warning btn-sm">
-                                                    <i class="fas fa-edit"></i> Edit
+                                                    <i class="bx bx-edit-alt"></i> Edit
                                                 </a>
 
                                                 <a href="{{ route($routePrefix . '.show', $item->id) }}"
                                                     class="btn btn-info btn-sm mx-1">
-                                                    <i class="fas fa-eye"></i> Detail
+                                                    <i class="bx bx-show-alt"></i> Detail
                                                 </a>
 
                                                 <form action="{{ route($routePrefix . '.destroy', $item->id) }}"
@@ -57,7 +58,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger show_confirm btn-sm">
-                                                        <i class="fas fa-trash"></i> Hapus
+                                                        <i class="bx bxs-trash-alt"></i> Hapus
                                                     </button>
                                                 </form>
                                             </td>

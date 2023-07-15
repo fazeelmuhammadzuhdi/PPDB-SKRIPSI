@@ -145,6 +145,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
+    {{-- <link rel="stylesheet" href="{{ asset('sneat/assets/css/botstrap46.css') }}" /> --}}
+
     <link rel="shortcut icon" href="{{ asset('images/iconppdb.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('sneat/assets/css/loginStyle.css') }}">
     <title>Login | PPDB</title>
@@ -169,12 +171,51 @@
                         HATI-HATI PENIPUAN</b><br> <i data-feather="radio"></i> Pengumuman PPDB
                 </center>
 
+                {{-- @php
+                    $tutupPendaftaran = strtotime($tanggalAkhirPendaftaran);
+                    $sekarang = time();
+                    dd($sekarang);
+                    
+                    // Hitung selisih waktu
+                    $selisihWaktu = max(0, $tutupPendaftaran - $sekarang);
+                    
+                    // Hitung jumlah hari, jam, menit, dan detik
+                    $jumlahHari = floor($selisihWaktu / (60 * 60 * 24));
+                    $jumlahJam = floor(($selisihWaktu % (60 * 60 * 24)) / (60 * 60));
+                    $jumlahMenit = floor(($selisihWaktu % (60 * 60)) / 60);
+                    $jumlahDetik = $selisihWaktu % 60;
+                @endphp
+
+                <h3 align="center"
+                    style="color:#8e44ad; text-shadow: 3px 2px 1px #fff; font-size: 20px; padding: 0px; margin-bottom: 0px;">
+                    <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
+                </h3>
+                @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
+                    <div class="countdown">
+                        Pendaftaran PPDB Akan Ditutup dalam: <br>
+                        <span id="countdown">
+                            {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam {{ $jumlahMenit }} Menit
+                            {{ $jumlahDetik }} Detik
+                        </span>
+                    </div>
+                @else
+                    <center style="background-color: #fff; padding: 10px;"><b style="color:red;">
+                            PENDAFTARAN TELAH DI TUTUP</b><br>
+                    </center>
+                @endif --}}
+
                 @php
                     $tutupPendaftaran = strtotime($tanggalAkhirPendaftaran);
                     $sekarang = time();
                     
-                    // Hitung selisih waktu
-                    $selisihWaktu = $tutupPendaftaran - $sekarang;
+                    // Jika tanggal sekarang sama dengan tanggal penutupan pendaftaran
+                    if ($sekarang >= $tutupPendaftaran) {
+                        // Menutup pendaftaran
+                        $selisihWaktu = 0;
+                    } else {
+                        // Hitung selisih waktu
+                        $selisihWaktu = max(0, $tutupPendaftaran - $sekarang);
+                    }
                     
                     // Hitung jumlah hari, jam, menit, dan detik
                     $jumlahHari = floor($selisihWaktu / (60 * 60 * 24));
@@ -188,14 +229,7 @@
                     <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
                 </h3>
 
-                {{-- <body onload="ajax()"> --}}
-                @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
-                    {{-- <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
-                        <center>Pendaftaran PPDB Akan Di Tutup:<br> {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam
-                            {{ $jumlahMenit }}
-                            Menit {{ $jumlahDetik }} Detik lagi
-                        </center>
-                    </div> --}}
+                @if ($selisihWaktu > 0)
                     <div class="countdown">
                         Pendaftaran PPDB Akan Ditutup dalam: <br>
                         <span id="countdown">
@@ -204,13 +238,10 @@
                         </span>
                     </div>
                 @else
-                    <center style="background-color: #fff; padding: 10px;"><b style="color:red;">
-                            PENDAFTARAN Telah Di Tutup</b><br>
+                    <center style="background-color: #fff; padding: 10px;">
+                        <b style="color:red;">PENDAFTARAN TELAH DI TUTUP</b><br>
                     </center>
                 @endif
-
-
-                {{-- </body> --}}
             </div>
         </div>
         <div class="row">
@@ -265,16 +296,27 @@
                                 </div>
                             </div>
                             <button class="btn btn-custom btn-block p-2 mt-2">Masuk</button>
-                            @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
+                            @if ($selisihWaktu > 0)
+                                <p class="text-center mt-3">
+                                    Belum punya akun ? <a href="{{ route('register') }}"
+                                        class="text-decoration-none text-custom">Daftar</a>
+                                </p>
+                            @else
+                                <center style="background-color: #fff; padding: 10px;">
+                                    <b style="color:red;">PENDAFTARAN TELAH DI TUTUP</b><br>
+                                </center>
+                            @endif
+
+                            {{-- @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
                                 <p class="text-center mt-3">
                                     Belum punya akun ? <a href="{{ route('register') }}"
                                         class="text-decoration-none text-custom">Daftar</a>
                                 </p>
                             @else
                                 <p class="text-center mt-3">
-                                    <span class="text-danger">Pendaftaran Sudah Di Tutup</span>
+                                    <span class="text-danger">PENDAFTARAN SUDAH DITUTUP</span>
                                 </p>
-                            @endif
+                            @endif --}}
 
                         </form>
                     </div>
@@ -283,13 +325,22 @@
         </div>
     </div>
 
+
+    {{-- asset offline --}}
+    {{-- <script src="{{ asset('sneat/assets/js/jquery.js') }}"></script> --}}
+    {{-- <script src="{{ asset('sneat/assets/js/boostrap46.js') }}"></script>
+    <script src="{{ asset('sneat/assets/js/icon.js') }}"></script> --}}
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
     <script>
         feather.replace()
     </script>

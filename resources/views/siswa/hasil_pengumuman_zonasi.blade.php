@@ -161,7 +161,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Zonasi</td>
+                             <td>ZONASI</td>
                          </tr>
                      </table>
 
@@ -251,7 +251,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Zonasi</td>
+                             <td>ZONASI</td>
                          </tr>
                      </table>
 

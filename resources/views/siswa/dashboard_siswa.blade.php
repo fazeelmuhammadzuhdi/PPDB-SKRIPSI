@@ -36,7 +36,8 @@
                                     <br><span style="color: #0000ff;">Silahkan Lanjutkan Pendaftaran</span>
                                 </p>
 
-                                <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-primary">View Biodata</a>
+                                <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-primary"><i
+                                        class="bx bx-show"></i>View Biodata</a>
                             </div>
                         @endif
 
@@ -52,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="card  bg-gradient-primaryr mt-3">
+            <div class="card bg-gradient-primaryr mt-3">
                 <div class="container">
                     <h3 class="text-lights ms-auto">
                         <i class="fa-solid fa-circle-info text-lights my-3 ms-2"></i> Informasi Cara Pendaftaran
@@ -73,7 +74,8 @@
                             Silahkan Cek Hasil Kelulusannya Dengan Memasukkan Nomor Pendaftaran Yang Telah Di Didapatkan.
                         </li>
                         <li class="text-lights">Berikut Ini Contoh Upload Bukti Nilai Rapor</li>
-                        <a href="{{ asset('images/Bukti Nilai Rapor.pdf') }}" class="btn btn-danger mt-2" download>Contoh Upload
+                        <a href="{{ asset('images/Bukti Nilai Rapor.pdf') }}" class="btn btn-danger mt-2" download>Contoh
+                            Upload
                             Bukti Nilai Rapor</a>
                     </ol>
 
@@ -171,7 +173,7 @@
                                                 <div class="d-flex flex-column ps-1">
                                                     <h2
                                                         class="alert-heading d-flex justify-content-center align-items-center fw-bold mb-1">
-                                                        Maaf, Anda Belum Lulus
+                                                        Maaf, Anda Tidak Lulus
                                                     </h2>
                                                     <span style="width:100%">Silahkan Lanjutkan Pendaftaran..</span>
 

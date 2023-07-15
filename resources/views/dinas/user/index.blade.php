@@ -7,7 +7,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end"><a
                             href="{{ route($routePrefix . '.create') }}" class="btn btn-primary">
-                            <i class="fa fa-circle-plus"></i> Tambah Data</a></small>
+                            <i class="bx bx-plus-circle"></i> Tambah Data</a></small>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -33,7 +33,7 @@
                                         <td>
                                             <a href="{{ route($routePrefix . '.edit', $item->id) }}"
                                                 class="btn btn-warning btn-sm">
-                                                <i class="fas fa-edit"></i> Edit
+                                                <i class="bx bx-edit-alt"></i> Edit
                                             </a>
 
                                             <form action="{{ route($routePrefix . '.destroy', $item->id) }}" method="POST"
@@ -41,7 +41,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm show_confirm">
-                                                    <i class="fas fa-trash"></i> Hapus
+                                                    <i class="bx bxs-trash-alt"></i> Hapus
                                                 </button>
                                             </form>
 

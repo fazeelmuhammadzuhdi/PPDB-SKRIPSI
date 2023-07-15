@@ -168,7 +168,6 @@
         feather.replace()
         AOS.init();
     </script>
-
 </body>
 
 </html>

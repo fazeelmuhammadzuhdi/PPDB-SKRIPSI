@@ -13,7 +13,7 @@
                         Data Zonasi Sekolah
                     </h3>
 
-                    <a href="{{ route('zonasisekolah.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i>
+                    <a href="{{ route('zonasisekolah.create') }}" class="btn btn-primary"><i class="bx bx-plus-circle"></i>
                         Add Zonasi Sekolah</a>
                 </div>
                 <div class="card-body">
@@ -40,10 +40,10 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <a href="{{ route('zonasisekolah.edit', $item->id) }}"
-                                                    class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                                    class="btn btn-warning"><i class="bx bx-edit-alt"></i></a>
 
                                                 <button type="submit" class="btn btn-danger show_confirm"><i
-                                                        class="fa fa-trash"></i></button>
+                                                        class="bx bxs-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>

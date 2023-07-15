@@ -7,10 +7,10 @@
         </a>
         <a href="{{ route('data_pendaftaran_pindah_tugas.create') }}" class="btn btn-outline-danger btn-sm mx-2"><i
                 class="fas fa-universal-access"></i>
-            Siswa Belum Lulus
+            Siswa Tidak Lulus
         </a>
         <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetakSiswaPindahTugas')"><i
-                class="fa fa-file-pdf"></i>
+                class="bx bxs-file-pdf"></i>
             Export PDF
         </button>
     </div>

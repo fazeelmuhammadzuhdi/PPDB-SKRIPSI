@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Creata Data Zonasi Sekolah</h3> <small class="text-muted float-end">
+                    <h3 class="mb-0">Tambah Data Zonasi Sekolah</h3> <small class="text-muted float-end">
                 </div>
 
                 <form enctype="multipart/form-data" method="POST" action="{{ route('zonasisekolah.store') }}">
@@ -60,7 +60,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
+                            <i class="bx bxs-save me-1"></i>
                             Save</button>
                     </div>
                 </form>

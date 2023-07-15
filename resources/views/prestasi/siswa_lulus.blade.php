@@ -6,7 +6,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">
                         @if (Route::is('data_pendaftaran_prestasi.create'))
-                            <span class="text-primary">Siswa Belum Lulus Jalur Prestasi</span>
+                            <span class="text-primary">Siswa Tidak Lulus Jalur Prestasi</span>
                         @else
                             <span class="text-primary">Siswa Yang Lulus Jalur Prestasi</span>
                         @endif
@@ -30,7 +30,7 @@
                         @endif
 
                         <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
-                                class="fa fa-file-pdf"></i>
+                                class="bx bxs-file-pdf"></i>
                             Export PDF
                         </button>
                 </div>
@@ -59,7 +59,7 @@
                                             @if ($item->status == 1)
                                                 <span class="badge bg-success">Lulus</span>
                                             @elseif ($item->status == 2)
-                                                <span class="badge bg-danger">Belum Lulus</span>
+                                                <span class="badge bg-danger">Tidak Lulus</span>
                                             @else
                                                 <span class="badge bg-warning">Dalam Seleksi</span>
                                             @endif

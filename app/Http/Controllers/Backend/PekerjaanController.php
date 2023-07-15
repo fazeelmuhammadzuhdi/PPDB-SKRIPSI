@@ -31,10 +31,10 @@ class PekerjaanController extends Controller
                     return '
                         <div class="btn-group">
                             <button id="btnEditKategori" class="btn btn-warning btn-sm" data-id="' . $row['id'] . '">
-                                <span class="fas fa-edit"></span> Edit
+                                <span class="bx bx-edit-alt"></span> Edit
                             </button>
                             <button id="btnDeleteKategori" class="btn btn-danger btn-sm mx-2" data-id="' . $row['id'] . '">
-                                <span class="fas fa-trash-alt"></span> Hapus
+                                <span class="bx bxs-trash-alt"></span> Hapus
                             </button>
                         </div>
                     ';

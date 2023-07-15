@@ -26,7 +26,7 @@
                                     @if ($data_afirmasi->status == 1)
                                         <span class="badge bg-success">Lulus</span>
                                     @elseif ($data_afirmasi->status == 2)
-                                        <span class="badge bg-danger">Belum Lulus</span>
+                                        <span class="badge bg-danger">Tidak Lulus</span>
                                     @else
                                         <span class="badge bg-warning">Dalam Seleksi</span>
                                     @endif
@@ -84,7 +84,7 @@
                                 <td>{{ $no++ }}</td>
                                 <td>
                                     <a href="javascript:void(0)"
-                                        onclick="popupCenter({url: '{{ Storage::url($data_afirmasi->kk) }}', title: 'Sertifikat', w: 800, h: 600});">
+                                        onclick="popupCenter({url: '{{ Storage::url($data_afirmasi->siswa->kk) }}', title: 'Sertifikat', w: 800, h: 600});">
                                         Lihat KK
                                     </a>
                                 </td>

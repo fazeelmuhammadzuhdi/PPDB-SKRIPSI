@@ -72,7 +72,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Prestasi</td>
+                             <td>PRESTASI</td>
                          </tr>
                      </table>
 
@@ -157,7 +157,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Prestasi</td>
+                             <td>PRESTASI</td>
                          </tr>
                      </table>
 
@@ -247,7 +247,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Prestasi</td>
+                             <td>PRESTASI</td>
                          </tr>
                      </table>
 

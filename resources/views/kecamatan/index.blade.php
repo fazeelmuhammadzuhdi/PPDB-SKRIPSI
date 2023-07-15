@@ -55,10 +55,10 @@
                                                 <a type="button" class="btn btn-warning edit"
                                                     data-bs-id="{{ $item->id }}"
                                                     style="background-color: #0f313f; color: #fff"><i
-                                                        class="fa fa-edit"></i></a>
+                                                        class="bx bx-edit-alt"></i></a>
                                                 <a type="submit" class="btn btn-danger show_confirm"
                                                     style="background-color: #ff0000; color: #fff">
-                                                    <i class="fa fa-trash"></i></a>
+                                                    <i class="bx bxs-trash-alt"></i></a>
                                             </form>
                                         </td>
                                     </tr>

@@ -28,7 +28,7 @@
         <select name="status" id="status" class="form-control" required>
             <option value="">Pilih Status Pendaftaran</option>
             <option value="1">Lulus</option>
-            <option value="2">Belum Lulus</option>
+            <option value="2">Tidak Lulus</option>
         </select>
     </div>
     <div class="col-md-2 col-sm-12 mt-4">

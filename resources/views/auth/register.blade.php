@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
+    {{-- <link rel="stylesheet" href="{{ asset('sneat/assets/css/botstrap46.css') }}" /> --}}
     <link rel="shortcut icon" href="{{ asset('images/iconppdb.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('sneat/assets/css/loginStyle.css') }}">
     <title>Registrasi | PPDB</title>
@@ -148,16 +149,25 @@
         </div>
     </div>
 
+    {{-- asset offline --}}
+    {{-- <script src="{{ asset('sneat/assets/js/jquery.js') }}"></script> --}}
+    {{-- <script src="{{ asset('sneat/assets/js/boostrap46.js') }}"></script>
+    <script src="{{ asset('sneat/assets/js/icon.js') }}"></script> --}}
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
     <script>
-        feather.replace();
+        feather.replace()
     </script>
+
     <script>
         const showPasswordCheckbox = document.getElementById('showPasswordCheckbox');
         const checkboxIcon = document.getElementById('checkboxIcon');

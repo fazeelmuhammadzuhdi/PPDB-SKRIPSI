@@ -57,7 +57,7 @@
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary me-2" id="btnSimpanPindahTugas"
                             onclick="return confirm('Apakah Anda Yakin Ingin Mendaftar Di Sekolah Ini ?')"><i
-                                class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
+                                class="bx bx-clipboard me-1"></i>
                             Daftar</button>
                         @include('components.button_kembali_siswa_jalur_pendaftaran')
                     </div>

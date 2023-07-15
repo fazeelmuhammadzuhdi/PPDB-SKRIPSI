@@ -8,7 +8,7 @@
                         @if (Route::is('data_pendaftaran_pindah_tugas.index'))
                             <span class="text-primary">Siswa Lulus Jalur Perpindahan Tugas Orang Tua</span>
                         @else
-                            <span class="text-primary">Siswa Belum Lulus Jalur Pindah Tugas Orang Tua</span>
+                            <span class="text-primary">Siswa Tidak Lulus Jalur Pindah Tugas Orang Tua</span>
                         @endif
                     </h3> <small class="text-muted float-end">
                         <a href="{{ route('data_pendaftaran_prestasi.index') }}" class="btn btn-outline-dark btn-sm"><i
@@ -30,7 +30,7 @@
                         @endif
 
                         <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
-                                class="fa fa-file-pdf"></i>
+                                class="bx bxs-file-pdf"></i>
                             Export PDF
                         </button>
                 </div>
@@ -59,7 +59,7 @@
                                             @if ($item->status == 1)
                                                 <span class="badge bg-success">Lulus</span>
                                             @elseif ($item->status == 2)
-                                                <span class="badge bg-danger">Belum Lulus</span>
+                                                <span class="badge bg-danger">Tidak Lulus</span>
                                             @else
                                                 <span class="badge bg-warning">Dalam Seleksi</span>
                                             @endif

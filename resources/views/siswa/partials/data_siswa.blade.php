@@ -3,10 +3,27 @@
         <div class="card mb-4">
             <div class="card-body">
                 @if (Request::routeIs('siswa.edit'))
-                    <label for="nama_lengkap">Foto <span class="text-danger">*</span></label>
+                    <label for="nama_lengkap">Foto<span class="text-danger">*</span></label>
                     <input type="file" name="foto" id="foto" accept="image/*"
                         class="form-control @error('foto') 'is-invalid' @enderror">
                     @error('foto')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    <div class="mt-4">
+                        <div class="fw-bold">Drop files here or click to upload.</div>
+                        <div>
+                            This is just a demo dropzone. Selected files are <span class="fw-bold">not</span>
+                            actually uploaded.
+                        </div>
+                    </div>
+
+                    <label for="kk" class="form-label mt-4">Kartu Keluarga <span
+                            class="text-danger">*</span></label>
+                    <input type="file" name="kk" id="kk" accept="image/*"
+                        class="form-control @error('kk') 'is-invalid' @enderror">
+                    @error('kk')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -27,12 +44,20 @@
                             {{ $message }}
                         </div>
                     @enderror
+                    {{-- <div class="mt-4">
+                        <div class="fw-bold">Drop files here or click to upload.</div>
+                    </div> --}}
+
+                    <label for="kk" class="form-label mt-4">Upload Kartu Keluarga</label>
+                    <input type="file" name="kk" accept="image/*" id="kk"
+                        class="form-control @error('kk') 'is-invalid' @enderror" required>
+                    @error('kk')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     <div class="mt-4">
                         <div class="fw-bold">Drop files here or click to upload.</div>
-                        <div>
-                            This is just a demo dropzone. Selected files are <span class="fw-bold">not</span>
-                            actually uploaded.
-                        </div>
                     </div>
                 @endif
             </div>

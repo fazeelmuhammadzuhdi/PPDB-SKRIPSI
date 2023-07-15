@@ -128,37 +128,34 @@
     </div>
 @endsection
 @push('after-script')
-    @push('after-script')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-        <script>
-            // Konfigurasi sumber kerja PDF.js
-            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        // Konfigurasi sumber kerja PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
 
-            // Fungsi untuk menampilkan konten PDF
-            function viewPDF(url) {
-                // Muat dokumen PDF menggunakan PDF.js
-                pdfjsLib.getDocument(url).promise.then(function(pdf) {
-                    // Ambil halaman pertama dari dokumen PDF
-                    pdf.getPage(1).then(function(page) {
-                        var canvas = document.getElementById('pdfCanvas');
-                        var context = canvas.getContext('2d');
+        // Fungsi untuk menampilkan konten PDF
+        function viewPDF(url) {
+            // Muat dokumen PDF menggunakan PDF.js
+            pdfjsLib.getDocument(url).promise.then(function(pdf) {
+                // Ambil halaman pertama dari dokumen PDF
+                pdf.getPage(1).then(function(page) {
+                    var canvas = document.getElementById('pdfCanvas');
+                    var context = canvas.getContext('2d');
 
-                        var viewport = page.getViewport({
-                            scale: 1
-                        });
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-
-                        // Render halaman PDF ke elemen <canvas>
-                        var renderContext = {
-                            canvasContext: context,
-                            viewport: viewport
-                        };
-                        page.render(renderContext);
+                    var viewport = page.getViewport({
+                        scale: 1
                     });
-                });
-            }
-        </script>
-    @endpush
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
 
+                    // Render halaman PDF ke elemen <canvas>
+                    var renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+            });
+        }
+    </script>
 @endpush

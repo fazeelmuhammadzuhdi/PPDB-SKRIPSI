@@ -40,10 +40,10 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <a href="{{ route('kampung.edit', $item->id) }}" class="btn btn-warning"><i
-                                                        class="fa fa-edit"></i></a>
+                                                        class="bx bx-edit-alt"></i></a>
 
                                                 <button type="submit" class="btn btn-danger show_confirm"><i
-                                                        class="fa fa-trash"></i></button>
+                                                        class="bx bxs-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>

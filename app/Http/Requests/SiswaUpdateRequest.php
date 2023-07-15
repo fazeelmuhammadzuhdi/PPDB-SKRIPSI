@@ -48,6 +48,8 @@ class SiswaUpdateRequest extends FormRequest
             'kecamatan_id' => 'required',
             'nagari_id' => 'required',
             'kampung_id' => 'required',
+            'kk' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+
         ];
     }
 
@@ -75,6 +77,7 @@ class SiswaUpdateRequest extends FormRequest
             'kecamatan_id' => ':attribute Tidak Boleh Kosong',
             'nagari_id' => ':attribute Tidak Boleh Kosong',
             'kampung_id' => ':attribute Tidak Boleh Kosong',
+            'kk' => ':attribute Tidak Boleh Kosong',
         ];
     }
 
@@ -100,6 +103,7 @@ class SiswaUpdateRequest extends FormRequest
             'kecamatan_id' => 'Kecamatan',
             'nagari_id' => 'Nagari',
             'kampung_id' => 'Kampung',
+            'kk' => 'Kartu Keluarga',
         ];
     }
 }

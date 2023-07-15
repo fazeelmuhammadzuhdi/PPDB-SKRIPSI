@@ -109,7 +109,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Prestasi</td>
+                             <td>AFIRMASI</td>
                          </tr>
                      </table>
 
@@ -194,7 +194,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Afirmasi</td>
+                             <td>AFIRMASI</td>
                          </tr>
                      </table>
 
@@ -283,7 +283,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Afirmasi</td>
+                             <td>AFIRMASI</td>
                          </tr>
                      </table>
 

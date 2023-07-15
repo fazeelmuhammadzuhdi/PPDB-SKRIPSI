@@ -7,7 +7,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0 text-primary">Data Siswa Lulus {{ $sekolah->nama }} Tahun Ajaran {{ $now }} /
                         {{ now()->addYears('1')->format('Y') }}</h3> <small class="text-muted float-end">
-                        <a href="{{ route('cetakpdf') }}" class="btn btn-primary" target="_blank"><i class="fa fa-file-pdf"
+                        <a href="{{ route('cetakpdf') }}" class="btn btn-primary" target="_blank"><i class="bx bxs-file-pdf"
                                 aria-hidden="true"></i>
                             Export</a>
                         {{-- <a href="{{ route('exportExcelSiswaLulus') }}" class="btn btn-outline-success"><i

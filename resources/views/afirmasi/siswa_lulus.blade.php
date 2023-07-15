@@ -31,7 +31,7 @@
                         @endif
 
                         <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
-                                class="fa fa-file-pdf"></i>
+                                class="bx bxs-file-pdf"></i>
                             Export PDF
                         </button>
                 </div>
@@ -60,7 +60,7 @@
                                             @if ($item->status == 1)
                                                 <span class="badge bg-success">Lulus</span>
                                             @elseif ($item->status == 2)
-                                                <span class="badge bg-danger">Belum Lulus</span>
+                                                <span class="badge bg-danger">Tidak Lulus</span>
                                             @else
                                                 <span class="badge bg-warning">Dalam Seleksi</span>
                                             @endif

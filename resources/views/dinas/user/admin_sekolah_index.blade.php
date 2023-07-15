@@ -8,7 +8,7 @@
                     <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
                         @if (auth()->user()->akses != 'Admin Sekolah')
                             <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary"> <i
-                                    class="fa fa-plus-circle"></i>
+                                    class="bx bx-plus-circle"></i>
                                 Tambah</a>
                         @endif
                 </div>
@@ -36,7 +36,7 @@
                                                 {{-- @if (auth()->user()->akses != 'Admin Sekolah')
                                                 <a href="{{ route($routePrefix . '.edit', $item->id) }}"
                                                     class="btn btn-warning btn-sm">
-                                                    <i class="fas fa-edit"></i> Edit
+                                                    <i class="bx bx-edit-alt"></i> Edit
                                                 </a>
 
                                                 <form action="{{ route($routePrefix . '.destroy', $item->id) }}"
@@ -45,19 +45,19 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm mx-2">
-                                                        <i class="fas fa-trash"></i> Hapus
+                                                        <i class="bx bxs-trash-alt"></i> Hapus
                                                     </button>
                                                 </form>
                                             @endif --}}
 
                                                 {{-- <a href="{{ route($routePrefix . '.edit', $item->id) }}"
                                                     class="btn btn-warning btn-sm">
-                                                    <i class="fas fa-edit"></i> Edit
+                                                    <i class="bx bx-edit-alt"></i> Edit
                                                 </a> --}}
 
                                                 <a href="{{ route($routePrefix . '.show', $item->id) }}"
                                                     class="btn btn-info btn-sm">
-                                                    <i class="fas fa-eye"></i> Detail
+                                                    <i class="bx bx-show-alt"></i> Detail
                                                 </a>
 
                                                 <form action="{{ route($routePrefix . '.destroy', $item->id) }}"
@@ -65,7 +65,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm">
-                                                        <i class="fas fa-trash"></i> Hapus
+                                                        <i class="bx bxs-trash-alt"></i> Hapus
                                                     </button>
                                                 </form>
 
@@ -86,12 +86,12 @@
                                             <td>
                                                 <a href="{{ route($routePrefix . '.edit', $item->id) }}"
                                                     class="btn btn-warning btn-sm">
-                                                    <i class="fas fa-edit"></i> Edit
+                                                    <i class="bx bx-edit-alt"></i> Edit
                                                 </a>
 
                                                 {{-- <a href="{{ route($routePrefix . '.show', $item->id) }}"
                                                     class="btn btn-info btn-sm">
-                                                    <i class="fas fa-eye"></i> Detail
+                                                    <i class="bx bx-show-alt"></i> Detail
                                                 </a>
 
                                                 <form action="{{ route($routePrefix . '.destroy', $item->id) }}"
@@ -100,7 +100,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">
-                                                        <i class="fas fa-trash"></i> Hapus
+                                                        <i class="bx bxs-trash-alt"></i> Hapus
                                                     </button>
                                                 </form> --}}
 

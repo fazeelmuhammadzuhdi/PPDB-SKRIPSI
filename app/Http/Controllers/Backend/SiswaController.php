@@ -56,8 +56,8 @@ class SiswaController extends Controller
 
         return view('siswa.create', [
             'title' => 'Biodata Siswa',
-            'penghasilan' => Penghasilan::all(),
-            'pekerjaan' => Pekerjaan::all(),
+            'penghasilan' => Penghasilan::orderBy('nama', 'asc')->get(),
+            'pekerjaan' => Pekerjaan::orderBy('nama', 'asc')->get(),
             'cek' => $cek,
             'noPendaftaran' => Siswa::noPendaftaran(),
             'kecamatan' => Kecamatan::all(),
@@ -76,6 +76,9 @@ class SiswaController extends Controller
         $requestData = $request->validated();
         if ($request->hasFile('foto')) {
             $requestData['foto'] = $request->file('foto')->store('public/file/fotosiswa');
+        }
+        if ($request->hasFile('kk')) {
+            $requestData['kk'] = $request->file('kk')->store('public/file/kartukeluarga');
         }
         $user = Siswa::create($requestData);
         // dd($user);
@@ -118,8 +121,8 @@ class SiswaController extends Controller
 
         return view("siswa.edit", [
             'siswa' => $siswa,
-            "penghasilan" => Penghasilan::all(),
-            "pekerjaan" => Pekerjaan::all(),
+            'penghasilan' => Penghasilan::orderBy('nama', 'asc')->get(),
+            'pekerjaan' => Pekerjaan::orderBy('nama', 'asc')->get(),
             'noPendaftaran' => Siswa::noPendaftaran(),
             'kecamatan' => Kecamatan::all(),
         ]);
@@ -143,6 +146,13 @@ class SiswaController extends Controller
                 Storage::delete($siswa->foto);
             }
             $requestData['foto'] = $request->file('foto')->store('public/file/fotosiswa');
+        }
+
+        if ($request->hasFile('kk')) {
+            if ($siswa->kk !== null && Storage::exists($siswa->kk)) {
+                Storage::delete($siswa->kk);
+            }
+            $requestData['kk'] = $request->file('kk')->store('public/file/kartukeluarga');
         }
         $siswa->fill($requestData);
         $siswa->save();

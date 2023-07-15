@@ -18,7 +18,7 @@
                         </a>
                     </small>
                     @if (Route::is('data_pendaftaran_zonasi.index'))
-                        <a href="{{ route('exportExcelZonasiSiswaLulus') }}" class="btn btn-outline-success btn-sm mx-2"><i
+                        <a href="{{ route('exportExcelZonasiSiswaLulus') }}" class="btn btn-outline-success btn-sm"><i
                                 class="fas fa-excel"></i>
                             <i class="fas fa-file-excel"></i>
                             Export Excel
@@ -32,7 +32,7 @@
                     @endif
 
                     <button class="btn btn-outline-primary btn-sm" onclick="printDiv('cetak')"><i
-                            class="fa fa-file-pdf"></i>
+                            class="bx bxs-file-pdf"></i>
                         Export PDF
                     </button>
                 </div>
@@ -61,7 +61,7 @@
                                             @if ($item->status == 1)
                                                 <span class="badge bg-success">Lulus</span>
                                             @elseif ($item->status == 2)
-                                                <span class="badge bg-danger">Belum Lulus</span>
+                                                <span class="badge bg-danger">Tidak Lulus</span>
                                             @else
                                                 <span class="badge bg-warning">Dalam Seleksi</span>
                                             @endif

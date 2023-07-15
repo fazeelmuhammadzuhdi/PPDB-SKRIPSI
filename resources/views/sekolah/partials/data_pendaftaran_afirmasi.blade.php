@@ -29,7 +29,7 @@
                         @if ($item->status == 1)
                             <span class="badge bg-success">Lulus</span>
                         @elseif ($item->status == 2)
-                            <span class="badge bg-danger">Belum Lulus</span>
+                            <span class="badge bg-danger">Tidak Lulus</span>
                         @else
                             <span class="badge bg-warning">Dalam Seleksi</span>
                         @endif
@@ -75,7 +75,7 @@
                 <td>
                     <a href="{{ route('data_pendaftaran_afirmasi.show', encrypt($item->id)) }}"
                         class="btn btn-info btn-sm mx-1">
-                        <i class="fas fa-eye"></i> Detail
+                        <i class="bx bx-show-alt"></i> Detail
                     </a>
                 </td>
             </tr>

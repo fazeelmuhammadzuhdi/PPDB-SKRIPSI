@@ -25,7 +25,7 @@
                                         @if ($dataZonasi->status == 1)
                                             <span class="badge bg-success">Lulus</span>
                                         @elseif ($dataZonasi->status == 2)
-                                            <span class="badge bg-danger">Belum Lulus</span>
+                                            <span class="badge bg-danger">Tidak Lulus</span>
                                         @else
                                             <span class="badge bg-warning">Dalam Seleksi</span>
                                         @endif
@@ -65,6 +65,10 @@
                                 <td>: {{ $dataZonasi->siswa->agama }}</td>
                             </tr>
                             <tr>
+                                <td>Nomor Kartu Keluarga</td>
+                                <td>: {{ $dataZonasi->siswa->no_kk }}</td>
+                            </tr>
+                            <tr>
                                 <td>Kecamatan</td>
                                 <td>: {{ $dataZonasi->siswa->kecamatan->nama_kecamatan }}</td>
                             </tr>
@@ -77,6 +81,13 @@
                                 <td>: {{ $dataZonasi->siswa->kampung->nama_kampung }}</td>
                             </tr>
                         </table>
+                      
+                        <a href="href="javascript:void(0)" class="btn mt-3"
+                            style="background-color: #8e44ad; color: white; margin-bottom: 10px;" target="_blank"
+                            onclick="popupCenter({url: '{{ Storage::url($data_afirmasi->kk) }}', title: 'Sertifikat', w: 800, h: 600});">
+                            <i class="fa fa-file" aria-hidden="true"></i> View Kartu Keluarga
+                        </a>
+
                         <h5 class="mt-3">Detail Sekolah</h5>
 
                         <table class="table table-sm mt-3">
@@ -174,3 +185,4 @@
         </div>
     </div>
 @endsection
+

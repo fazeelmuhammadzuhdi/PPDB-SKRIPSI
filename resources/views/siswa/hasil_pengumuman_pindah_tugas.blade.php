@@ -75,7 +75,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Pindah Tugas</td>
+                             <td>PINDAH TUGAS ORANG TUA</td>
                          </tr>
                      </table>
 
@@ -161,7 +161,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Pindah Tugas</td>
+                             <td>PINDAH TUGAS ORANG TUA</td>
                          </tr>
                      </table>
 
@@ -251,7 +251,7 @@
                          </tr>
                          <tr>
                              <td>Jalur Pendaftaran</td>
-                             <td>Pindah Tugas</td>
+                             <td>PINDAH TUGAS ORANG TUA</td>
                          </tr>
                      </table>
 

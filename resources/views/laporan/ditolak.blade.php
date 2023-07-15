@@ -9,7 +9,7 @@
                         {{ $now }} / {{ now()->addYears('1')->format('Y') }} </h3> <small
                         class="text-muted float-end">
                         <a href="{{ route('cetakPdfSiswaDitolak') }}" class="btn btn-primary" target="_blank"><i
-                                class="fa fa-file-pdf" aria-hidden="true"></i>
+                                class="bx bxs-file-pdf" aria-hidden="true"></i>
                             Export</a>
                 </div>
                 <div class="card-body">

@@ -47,7 +47,7 @@
                                 <img src="{{ asset('images/pkh.jpg') }}" alt="Contoh Kartu" width="150">
                             </div>
 
-                            <div class="form-group mt-3">
+                            {{-- <div class="form-group mt-3">
                                 <label for="kk" class="form-label">Kartu Keluarga</label>
                                 <input type="file" class="form-control @error('kk') is-invalid @enderror" id="kk"
                                     name="kk" accept="image/*" required>
@@ -57,7 +57,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="form-group mt-3">
                                 <label for="kip" class="form-label">Upload KIP / KKS / PKH</label>
@@ -101,7 +101,7 @@
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary me-2"
                             onclick="return confirm('Apakah Anda Yakin Ingin Memilih Sekolah Ini')"><i
-                                class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
+                                class="bx bx-clipboard me-1"></i>
                             Daftar</button>
 
                         @include('components.button_kembali_siswa_jalur_pendaftaran')

@@ -59,7 +59,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fa-sharp fa-solid fa-clipboard-list me-1"></i>
+                            <i class="bx bxs-save me-1"></i>
                             Save</button>
                     </div>
                 </form>

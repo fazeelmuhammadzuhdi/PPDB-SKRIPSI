@@ -117,7 +117,7 @@
                 @if (Route::is('cetakpdf'))
                     <h1>Data Siswa Lulus Tahun Ajaran {{ $now }} / {{ now()->addYears('1')->format('Y') }}</h1>
                 @else
-                    <h1>Data Siswa Belum Lulus Tahun Ajaran {{ $now }} /
+                    <h1>Data Siswa Tidak Lulus Tahun Ajaran {{ $now }} /
                         {{ now()->addYears('1')->format('Y') }}</h1>
                 @endif
             </tr>

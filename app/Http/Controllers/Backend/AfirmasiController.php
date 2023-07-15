@@ -46,9 +46,9 @@ class AfirmasiController extends Controller
         $requestData = $request->validated();
         $requestData['siswa_id'] = $siswa->id;
         // dd($requestData);
-        if ($request->hasFile('kk')) {
-            $requestData['kk'] = $request->file('kk')->store('file/kk', 'public');
-        }
+        // if ($request->hasFile('kk')) {
+        //     $requestData['kk'] = $request->file('kk')->store('file/kk', 'public');
+        // }
         if ($request->hasFile('skl')) {
             $requestData['skl'] = $request->file('skl')->store('file/skl', 'public');
         }
