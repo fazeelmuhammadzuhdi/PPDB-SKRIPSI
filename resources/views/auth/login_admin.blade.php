@@ -164,46 +164,11 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto mt-2">
-                {{-- <img src="{{ asset('images/ppdblogo.png') }}" alt="" width="200px"> --}}
                 <center style="background-color: #fff; padding: 10px;"><b style="color:red;"><i
                             data-feather="alert-circle"></i>
                         PENDAFTARAN GRATIS,
                         HATI-HATI PENIPUAN</b><br> <i data-feather="radio"></i> Pengumuman PPDB
                 </center>
-
-                {{-- @php
-                    $tutupPendaftaran = strtotime($tanggalAkhirPendaftaran);
-                    $sekarang = time();
-                    dd($sekarang);
-                    
-                    // Hitung selisih waktu
-                    $selisihWaktu = max(0, $tutupPendaftaran - $sekarang);
-                    
-                    // Hitung jumlah hari, jam, menit, dan detik
-                    $jumlahHari = floor($selisihWaktu / (60 * 60 * 24));
-                    $jumlahJam = floor(($selisihWaktu % (60 * 60 * 24)) / (60 * 60));
-                    $jumlahMenit = floor(($selisihWaktu % (60 * 60)) / 60);
-                    $jumlahDetik = $selisihWaktu % 60;
-                @endphp
-
-                <h3 align="center"
-                    style="color:#8e44ad; text-shadow: 3px 2px 1px #fff; font-size: 20px; padding: 0px; margin-bottom: 0px;">
-                    <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
-                </h3>
-                @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
-                    <div class="countdown">
-                        Pendaftaran PPDB Akan Ditutup dalam: <br>
-                        <span id="countdown">
-                            {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam {{ $jumlahMenit }} Menit
-                            {{ $jumlahDetik }} Detik
-                        </span>
-                    </div>
-                @else
-                    <center style="background-color: #fff; padding: 10px;"><b style="color:red;">
-                            PENDAFTARAN TELAH DI TUTUP</b><br>
-                    </center>
-                @endif --}}
-
                 @php
                     $tutupPendaftaran = strtotime($tanggalAkhirPendaftaran);
                     $sekarang = time();

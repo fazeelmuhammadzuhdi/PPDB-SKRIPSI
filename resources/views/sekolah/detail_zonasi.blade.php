@@ -81,10 +81,10 @@
                                 <td>: {{ $dataZonasi->siswa->kampung->nama_kampung }}</td>
                             </tr>
                         </table>
-                      
+
                         <a href="href="javascript:void(0)" class="btn mt-3"
                             style="background-color: #8e44ad; color: white; margin-bottom: 10px;" target="_blank"
-                            onclick="popupCenter({url: '{{ Storage::url($data_afirmasi->kk) }}', title: 'Sertifikat', w: 800, h: 600});">
+                            onclick="popupCenter({url: '{{ Storage::url($dataZonasi->siswa->kk) }}', title: 'Sertifikat', w: 800, h: 600});">
                             <i class="fa fa-file" aria-hidden="true"></i> View Kartu Keluarga
                         </a>
 
@@ -185,4 +185,3 @@
         </div>
     </div>
 @endsection
-

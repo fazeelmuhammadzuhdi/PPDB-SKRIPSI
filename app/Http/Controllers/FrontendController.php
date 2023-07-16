@@ -10,6 +10,7 @@ class FrontendController extends Controller
     {
         $tanggalSekarang = now()->toDateString();
         $tanggalAkhirPendaftaran = settings('akhir_pendaftaran');
+        // dd($tanggalAkhirPendaftaran);
         return view('frontend.index', compact('tanggalSekarang', 'tanggalAkhirPendaftaran'));
     }
 

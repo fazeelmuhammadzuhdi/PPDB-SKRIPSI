@@ -19,7 +19,6 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto mt-2">
-                {{-- <img src="{{ asset('images/ppdblogo.png') }}" alt="" width="200px"> --}}
                 <center style="background-color: #fff; padding: 10px;"><b style="color:red;"><i
                             data-feather="alert-circle"></i>
                         PENDAFTARAN GRATIS,
@@ -29,8 +28,14 @@
                     $tutupPendaftaran = strtotime($tanggalAkhirPendaftaran);
                     $sekarang = time();
                     
-                    // Hitung selisih waktu
-                    $selisihWaktu = $tutupPendaftaran - $sekarang;
+                    // Jika tanggal sekarang melebihi tanggal penutupan pendaftaran
+                    if ($sekarang >= $tutupPendaftaran) {
+                        // Menutup pendaftaran
+                        $selisihWaktu = 0;
+                    } else {
+                        // Hitung selisih waktu
+                        $selisihWaktu = max(0, $tutupPendaftaran - $sekarang);
+                    }
                     
                     // Hitung jumlah hari, jam, menit, dan detik
                     $jumlahHari = floor($selisihWaktu / (60 * 60 * 24));
@@ -39,27 +44,20 @@
                     $jumlahDetik = $selisihWaktu % 60;
                 @endphp
 
-                <h3 align="center"
-                    style="color:#8e44ad; text-shadow: 3px 2px 1px #fff; font-size: 20px; padding: 0px; margin-bottom: 0px;">
-                    <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
-                </h3>
-
-                {{-- <body onload="ajax()"> --}}
-                @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
-                    <div id="hasil" style="text-shadow: 3px 2px 1px #fff; font-size: 15px; margin-top: 10px">
-                        <center>Pendaftaran PPDB Akan Di Tutup:<br> {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam
-                            {{ $jumlahMenit }}
-                            Menit {{ $jumlahDetik }} Detik lagi
-                        </center>
+                @if ($selisihWaktu > 0)
+                    <div class="countdown">
+                        Pendaftaran PPDB Akan Ditutup dalam: <br>
+                        <span id="countdown">
+                            {{ $jumlahHari }} Hari {{ $jumlahJam }} Jam {{ $jumlahMenit }} Menit
+                            {{ $jumlahDetik }} Detik
+                        </span>
                     </div>
                 @else
-                    <center style="background-color: #fff; padding: 10px;"><b style="color:red;">
-                            PENDAFTARAN Telah Di Tutup</b><br>
+                    <center style="background-color: #fff; padding: 10px;">
+                        <b style="color:red;">PENDAFTARAN TELAH DI TUTUP</b><br>
                     </center>
                 @endif
 
-
-                {{-- </body> --}}
             </div>
         </div>
         <div class="row">
@@ -136,12 +134,14 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-custom btn-block p-2 mt-3">Daftar</button>
+                            @if ($selisihWaktu > 0)
+                                <button class="btn btn-custom btn-block p-2 mt-3">Daftar</button>
 
-                            <p class="text-center mt-3">
-                                Sudah punya akun ? <a href="{{ route('login') }}"
-                                    class="text-decoration-none text-custom">Masuk</a>
-                            </p>
+                                <p class="text-center mt-3">
+                                    Sudah punya akun ? <a href="{{ route('login') }}"
+                                        class="text-decoration-none text-custom">Masuk</a>
+                                </p>
+                            @endif
                         </form>
                     </div>
                 </div>
