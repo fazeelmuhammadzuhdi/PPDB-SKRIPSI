@@ -60,16 +60,5 @@ class LoginController extends Controller
             flash()->addError('Anda tidak memiliki hak akses');
             return redirect()->route('login');
         }
-
-        // if ($request->user()->akses == 'operator' || $request->user()->akses == 'admin') {
-        //     return redirect()->route('operator.beranda');
-        // } elseif ($request->user()->akses == 'wali') {
-        //     return redirect()->route('wali.beranda');
-        // } else {
-        // Auth::user()->logout();
-
-        //     flash('Anda tidak memiliki hak akses')->error();
-        //     return redirect()->route('login');
-        // }
     }
 }

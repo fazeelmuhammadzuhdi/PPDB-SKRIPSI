@@ -5,19 +5,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">{{ $title }}</h3> <small class="text-muted float-end">
+                    <h3 class="mb-0">{{ $title }}</h3>
+                    <small class="text-muted float-end">
                         <button type="button" class="btn btn-primary" id="btn-tambah" data-bs-toggle="modal"
                             data-bs-target="#addModalKategori">
                             <i class="bx bx-plus-circle" aria-hidden="true"></i> Tambah
                         </button>
-
-                        <button class="btn btn-danger mx-2" type="submit" id="deleteAll">
-                            <span class="bx bxs-trash-alt"></span>
-                            Hapus
-                        </button>
-
-                        {{-- <button class="btn btn-flat btn-dark btn-refresh"><i class="fa fa-refresh"></i>
-                            Refresh</button> --}}
+                    </small>
+                    <button class="btn btn-danger mx-2" type="submit" id="deleteAll">
+                        <span class="bx bxs-trash-alt"></span>
+                        Hapus
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap ">

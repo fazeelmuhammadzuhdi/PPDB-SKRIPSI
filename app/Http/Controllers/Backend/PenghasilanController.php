@@ -9,21 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class PenghasilanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $title = "Penghasilan";
         return view('dinas.penghasilan.index', compact('title'));
     }
-
     public function fetchPenghasilan(Request $request)
     {
         $penghasilan = Penghasilan::all();
-
         if ($request->ajax()) {
             return datatables()->of($penghasilan)
                 ->addIndexColumn()
@@ -49,22 +42,6 @@ class PenghasilanController extends Controller
                 ->make(true);
         }
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
@@ -72,7 +49,6 @@ class PenghasilanController extends Controller
         ], [
             'name.required' => 'Field Penghasilan Wajib Diisi',
         ]);
-
         if ($validation->fails()) {
             return response()->json([
                 'status' => 400,
@@ -82,43 +58,27 @@ class PenghasilanController extends Controller
             $penghasilan = new Penghasilan();
             $penghasilan->nama = $request->name;
             $penghasilan->save();
-
             return response()->json([
                 'status' => 200,
                 'success' => "Data " . $penghasilan->nama . " Berhasil Di Simpan"
             ]);
         }
     }
-
-
     public function edit(Request $request)
     {
-        $jenisBuku = Penghasilan::findOrFail($request->idKategori);
-        // $user = User::findOrFail($request->get('idUser'));
-
+        $penghasilan = Penghasilan::findOrFail($request->idKategori);
         return response()->json([
             'status' => 200,
-            'jenisBuku' => $jenisBuku
+            'jenisBuku' => $penghasilan
         ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $validation = Validator::make($request->all(), [
             'name' => 'required|string',
-
         ], [
             'name.required' => 'Field Penghasilan Wajib Diisi',
-
         ]);
-
         if ($validation->fails()) {
             return response()->json([
                 'status' => 400,
@@ -127,38 +87,26 @@ class PenghasilanController extends Controller
         } else {
             $penghasilan = Penghasilan::findOrFail($request->idKategori);
             $penghasilan->nama = $request->name;
-
             $penghasilan->update();
-
             return response()->json([
                 'status' => 200,
                 'success' => "Data Penghasilan Dengan Nama " . $penghasilan->nama . " Berhasil Di Update"
             ]);
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request)
     {
         $penghasilan = Penghasilan::findOrFail($request->idKategori);
         $penghasilan->delete();
-
         return response()->json([
             'status' => 200,
             'success' => "Data Dengan Nama Penghasilan " . $penghasilan->nama . " Berhasil Di Hapus"
         ]);
     }
-
     public function destroySelected(Request $request)
     {
         $idKategori = $request->idKategoris;
         $query = Penghasilan::whereIn('id', $idKategori)->delete();
-
         if ($query) {
             return response()->json([
                 'status' => 200,

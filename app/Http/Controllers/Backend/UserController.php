@@ -13,14 +13,7 @@ class UserController extends Controller
 {
     private $viewIndex = 'index';
     private $viewCreate = 'create';
-    private $viewEdit = 'crete';
-    private $viewShow = 'show';
     private $routePrefix = 'user';
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('dinas.user.' . $this->viewIndex, [
@@ -30,12 +23,6 @@ class UserController extends Controller
             'title' => 'Data User Dinas Pendidikan dan Admin Sekolah',
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $data = [
@@ -46,16 +33,8 @@ class UserController extends Controller
             'title' => 'Form Tambah User',
             'routePrefix' => $this->routePrefix,
         ];
-
         return view('dinas.user.' . $this->viewCreate, $data);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserStoreRequest $request)
     {
         $requestData =  $request->validated();
@@ -65,23 +44,6 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data = [
@@ -92,19 +54,9 @@ class UserController extends Controller
             'title' => 'Form Edit User',
             'routePrefix' => $this->routePrefix,
         ];
-
         // dd($data);
-
         return view('dinas.user.' . $this->viewCreate, $data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $requestData = $request->validate([
@@ -115,7 +67,6 @@ class UserController extends Controller
             'password' => 'nullable',
         ]);
         $user = User::findOrFail($id);
-
         // if password is not empty, then update password
         if ($request->password) {
             $requestData['password'] = bcrypt($request->password);
@@ -126,13 +77,6 @@ class UserController extends Controller
         flash('Data User Dengan Nama ' .  $user->name  . ' Berhasil di Update');
         return redirect()->route('user.index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -146,7 +90,6 @@ class UserController extends Controller
         flash('Data berhasil dihapus');
         return back();
     }
-
     public function profile()
     {
         return view('dinas.user.profile', [
@@ -154,7 +97,6 @@ class UserController extends Controller
             'admin' => User::where('id', auth()->user()->id)->first()
         ]);
     }
-
     public function dataCPD()
     {
         $dataCPD = Siswa::with(['kecamatan', 'kampung', 'nagari'])->get();

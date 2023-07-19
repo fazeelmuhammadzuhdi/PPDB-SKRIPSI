@@ -140,24 +140,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
-    {{-- <link rel="stylesheet" href="{{ asset('sneat/assets/css/botstrap46.css') }}" /> --}}
-
-    <link rel="shortcut icon" href="{{ asset('images/iconppdb.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('sneat/assets/css/loginStyle.css') }}">
     <title>Login | PPDB</title>
 
-    <style>
-        .countdown {
-            font-size: 20px;
-            text-align: center;
-            margin-top: 10px;
-        }
-    </style>
+    @include('components.style_admin')
 </head>
 
 <body>
@@ -172,7 +157,6 @@
                 @php
                     $tutupPendaftaran = strtotime($tanggalAkhirPendaftaran);
                     $sekarang = time();
-                    
                     // Jika tanggal sekarang sama dengan tanggal penutupan pendaftaran
                     if ($sekarang >= $tutupPendaftaran) {
                         // Menutup pendaftaran
@@ -181,19 +165,16 @@
                         // Hitung selisih waktu
                         $selisihWaktu = max(0, $tutupPendaftaran - $sekarang);
                     }
-                    
                     // Hitung jumlah hari, jam, menit, dan detik
                     $jumlahHari = floor($selisihWaktu / (60 * 60 * 24));
                     $jumlahJam = floor(($selisihWaktu % (60 * 60 * 24)) / (60 * 60));
                     $jumlahMenit = floor(($selisihWaktu % (60 * 60)) / 60);
                     $jumlahDetik = $selisihWaktu % 60;
                 @endphp
-
                 <h3 align="center"
                     style="color:#8e44ad; text-shadow: 3px 2px 1px #fff; font-size: 20px; padding: 0px; margin-bottom: 0px;">
                     <b>PPDB ONLINE {{ now()->format('Y') }}</b> <br> Kabupaten Pesisir Selatan<br>
                 </h3>
-
                 @if ($selisihWaktu > 0)
                     <div class="countdown">
                         Pendaftaran PPDB Akan Ditutup dalam: <br>
@@ -215,7 +196,6 @@
                     <img src="{{ asset('images/Login1.png') }}" alt="" width="500px" class="imageLogin">
                 </a>
             </div>
-
             <div class="col-md-5 mt-3">
                 <div class="card shadow-sm p-3 border-radius-custom border-0">
                     <div class="card-body">
@@ -242,7 +222,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <input type="checkbox" id="showPasswordCheckbox" class="mr-2">
@@ -271,62 +250,18 @@
                                     <b style="color:red;">PENDAFTARAN TELAH DI TUTUP</b><br>
                                 </center>
                             @endif
-
-                            {{-- @if ($tanggalSekarang <= $tanggalAkhirPendaftaran)
-                                <p class="text-center mt-3">
-                                    Belum punya akun ? <a href="{{ route('register') }}"
-                                        class="text-decoration-none text-custom">Daftar</a>
-                                </p>
-                            @else
-                                <p class="text-center mt-3">
-                                    <span class="text-danger">PENDAFTARAN SUDAH DITUTUP</span>
-                                </p>
-                            @endif --}}
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    {{-- asset offline --}}
-    {{-- <script src="{{ asset('sneat/assets/js/jquery.js') }}"></script> --}}
-    {{-- <script src="{{ asset('sneat/assets/js/boostrap46.js') }}"></script>
-    <script src="{{ asset('sneat/assets/js/icon.js') }}"></script> --}}
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-
-    <script>
-        feather.replace()
-    </script>
-
-    <script>
-        const showPasswordCheckbox = document.getElementById('showPasswordCheckbox');
-        const checkboxIcon = document.getElementById('checkboxIcon');
-        const passwordInput = document.getElementById(
-            'password'); // Replace 'passwordInput' with the actual ID of your password input field
-
-        showPasswordCheckbox.addEventListener('click', function() {
-            if (showPasswordCheckbox.checked) {
-                passwordInput.type = 'text';
-                checkboxIcon.setAttribute('data-feather', 'eye-off');
-            } else {
-                passwordInput.type = 'password';
-                checkboxIcon.setAttribute('data-feather', 'eye');
-            }
-            feather.replace(); // If you are using the Feather Icons library, this line updates the icon appearance
-        });
-    </script>
+    @include('components.script_admin')
 </body>
 
 </html>
+
+{{-- asset offline --}}
+{{-- <script src="{{ asset('sneat/assets/js/jquery.js') }}"></script> --}}
+{{-- <script src="{{ asset('sneat/assets/js/boostrap46.js') }}"></script>
+    <script src="{{ asset('sneat/assets/js/icon.js') }}"></script> --}}
